@@ -1,0 +1,63 @@
+<section class="cta">
+  <div class="container">
+    <h2>Prêt à lancer votre projet&nbsp;?</h2>
+    <p style="margin-bottom: 2rem; opacity: 0.8">
+      Réservez un créneau pour échanger sur vos besoins, vos objectifs et vos
+      idées.
+    </p>
+    <a
+      href="https://calendly.com/agence-habeprod"
+      class="btn-appel"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span>Réserver un appel</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 600px;
+    background: #fff;
+    color: #000;
+    text-align: center;
+  }
+
+  .btn-appel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.95rem 2.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #000;
+    background: transparent;
+    transition: all var(--transition-speed);
+  }
+
+  /* ✅ SHADOW NOIR DOUX UNIQUEMENT AU HOVER */
+  .btn-appel:hover {
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+    transform: translateY(-1px);
+  }
+
+  /* ✅ Pas d'animation en mobile */
+  @media (max-width: 900px) {
+    .btn-appel {
+      transition: none;
+    }
+
+    .btn-appel:hover {
+      transform: none;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+    }
+  }
+</style>

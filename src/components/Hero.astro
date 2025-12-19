@@ -1,0 +1,256 @@
+<section class="hero">
+  <img
+    src="/background-hero.webp"
+    alt=""
+    class="hero-bg"
+    loading="eager"
+    fetchpriority="high"
+    decoding="async"
+  />
+
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <h1 class="visually-hidden">Habeprod agence de communication le Mans</h1>
+
+      <div class="hero-kicker">HABEPROD</div>
+
+      <h2 class="hero-title">Votre agence de communication au Mans</h2>
+
+      <p class="hero-subtitle">
+        Ensemble donnons vie à votre future identité digitale et construisons
+        une présence de marque forte, cohérente et mémorable.
+      </p>
+
+      <a href="#contact" class="hero-cta">
+        <span>Parlons de votre projet</span>
+      </a>
+    </div>
+
+    <div class="hero-visual"></div>
+  </div>
+
+  <div class="hero-bottom-strip"></div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 7rem 0 6rem;
+  }
+
+  /* IMAGE BACKGROUND PRIORITAIRE */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.6s ease-out;
+  }
+
+  .hero-bg.loaded {
+    opacity: 1;
+  }
+
+  /* DÉGRADÉ PENDANT CHARGEMENT (FORT) */
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        circle 600px at 10% 20%,
+        rgba(1, 7, 18, 0.95) 0%,
+        transparent 40%
+      ),
+      radial-gradient(
+        circle 600px at 90% 20%,
+        rgba(1, 7, 18, 0.95) 0%,
+        transparent 40%
+      ),
+      radial-gradient(
+        circle 500px at 15% 90%,
+        rgba(1, 7, 18, 0.95) 0%,
+        transparent 40%
+      ),
+      radial-gradient(
+        circle 500px at 85% 90%,
+        rgba(1, 7, 18, 0.95) 0%,
+        transparent 40%
+      );
+    z-index: 1;
+  }
+
+  /* DÉGRADÉ FINAL PLUS SOMBRE GAUCHE/DROITE/HAUT */
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        circle 500px at 10% 10%,
+        rgba(1, 7, 18, 0.92) 0%,
+        transparent 40%
+      ),
+      radial-gradient(
+        circle 500px at 90% 10%,
+        rgba(1, 7, 18, 0.92) 0%,
+        transparent 40%
+      ),
+      radial-gradient(
+        circle 600px at 15% 90%,
+        rgba(1, 7, 18, 0.88) 0%,
+        transparent 40%
+      ),
+      radial-gradient(
+        circle 600px at 85% 90%,
+        rgba(1, 7, 18, 0.88) 0%,
+        transparent 40%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(1, 7, 18, 0.65) 0%,
+        rgba(1, 7, 18, 0.35) 35%,
+        rgba(1, 7, 18, 0.15) 65%,
+        rgba(1, 7, 18, 0.05) 100%
+      );
+    z-index: 1;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+    align-items: center;
+    column-gap: 4rem;
+    max-width: var(--layout-width);
+    margin: 0 auto;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+
+  .hero-copy {
+    color: #ffffff;
+  }
+
+  .hero-kicker {
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+  }
+
+  .hero-kicker::after {
+    content: "°";
+    color: #eb6432;
+    margin-left: 3px;
+  }
+
+  .hero-title {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    max-width: 520px;
+    opacity: 0.9;
+  }
+
+  .hero-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.95rem 2.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: transparent;
+    transition: all var(--transition-speed);
+  }
+
+  .hero-cta:hover {
+    box-shadow: 0 6px 25px rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+  }
+
+  .hero-cta > span {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-bottom-strip {
+    position: absolute;
+    bottom: 0;
+    width: calc(var(--layout-width) - (var(--gutter) * 2));
+    height: 70px;
+    background: #ffffff;
+    z-index: 3;
+  }
+
+  .hero-visual {
+    position: relative;
+    height: 520px;
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      padding: 7rem 0 4.5rem;
+    }
+
+    /* MOBILE : Overlay noir simple sur l'image */
+    .hero::before {
+      display: none;
+    }
+
+    .hero::after {
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-inner {
+      grid-template-columns: 1fr;
+      row-gap: 3rem;
+      padding-left: var(--gutter-mobile);
+      padding-right: var(--gutter-mobile);
+    }
+
+    .hero-visual {
+      height: 360px;
+      order: -1;
+      display: none;
+    }
+
+    .hero-bottom-strip {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const heroImg = document.querySelector(".hero-bg");
+
+  if (heroImg) {
+    if (heroImg.complete) {
+      heroImg.classList.add("loaded");
+    } else {
+      heroImg.addEventListener("load", () => {
+        heroImg.classList.add("loaded");
+      });
+    }
+  }
+</script>

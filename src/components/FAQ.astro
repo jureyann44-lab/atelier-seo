@@ -1,0 +1,170 @@
+<section class="faq-section">
+  <div class="container">
+    <h2 class="section-title">Des questions sur nos services&nbsp;?</h2>
+    <p class="faq-intro">
+      Découvrez les réponses aux questions les plus fréquentes concernant notre
+      agence Habeprod.
+    </p>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Quels types de sites crée l'agence Habeprod ?</h3>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>
+            Nous concevons des sites vitrines, e-commerce, landing pages et
+            portfolios sur mesure.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>
+            Est-ce que Habeprod travaille uniquement avec des entreprises du
+            Mans ?
+          </h3>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>
+            Non, nous accompagnons des clients partout en France grâce à des
+            outils à distance.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>
+            L'agence propose-t-elle des services de référencement naturel (SEO)
+            ?
+          </h3>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>
+            Oui : audit, optimisation, contenus, netlinking et suivi des
+            performances.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Est-ce que Habeprod peut refondre un site existant ?</h3>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>
+            Oui, pour améliorer UX, design et SEO tout en respectant votre
+            identité.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Combien coûte un site web avec Habeprod ?</h3>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>
+            Le tarif dépend du projet : un devis personnalisé suit toujours un
+            échange.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Pourquoi choisir une agence locale comme Habeprod au Mans ?</h3>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>
+            Pour un contact direct, une connaissance du tissu local et un suivi
+            de proximité.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  .faq-intro {
+    max-width: 800px;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .faq-list {
+    max-width: var(--layout-width);
+    margin: 3rem auto 0;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1.4rem 0;
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .faq-question h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-right: 1rem;
+  }
+
+  .faq-icon {
+    font-size: 1.4rem;
+    transition: transform 0.25s;
+    color: #ffffff;
+    flex-shrink: 0;
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .faq-answer.active {
+    max-height: 400px;
+    margin-top: 0.9rem;
+  }
+
+  .faq-item.active .faq-icon {
+    transform: rotate(45deg);
+  }
+</style>
+
+<script>
+  document.querySelectorAll(".faq-question").forEach((question) => {
+    question.addEventListener("click", () => {
+      const item = question.parentElement;
+      const answer = item?.querySelector(".faq-answer");
+      if (item && answer) {
+        item.classList.toggle("active");
+        answer.classList.toggle("active");
+      }
+    });
+  });
+</script>

@@ -1,0 +1,125 @@
+---
+
+---
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-subtitle">Formulaire de contact</div>
+        <a href="mailto:agence.habeprod@gmail.com">
+          <span>agence.habeprod@gmail.com</span><span aria-hidden="true">→</span
+          >
+        </a>
+        <a href="tel:+33627252568">
+          <span>+33 6 27 25 25 68</span><span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <form class="contact-form">
+        <input type="text" placeholder="Nom" required aria-label="Votre nom" />
+        <input
+          type="email"
+          placeholder="Email"
+          required
+          aria-label="Votre email"
+        />
+        <input
+          type="tel"
+          placeholder="Téléphone"
+          aria-label="Votre téléphone"
+        />
+        <textarea placeholder="Message" required aria-label="Votre message"
+        ></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+    gap: 3rem;
+    margin-top: 2.5rem;
+  }
+
+  .contact-info a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem 0;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.98rem;
+    transition: opacity var(--transition-speed);
+  }
+
+  .contact-info a:hover {
+    opacity: 0.7;
+  }
+
+  /* Flèche cachée par défaut */
+  .contact-info a span:last-child {
+    opacity: 0;
+    transform: translateX(-15px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+
+  /* Flèche visible progressivement au hover */
+  .contact-info a:hover span:last-child {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--color-border);
+    font-family: inherit;
+    font-size: 0.98rem;
+    margin-bottom: 1rem;
+    transition: border-color var(--transition-speed);
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .contact-form textarea {
+    min-height: 160px;
+    resize: vertical;
+  }
+
+  .contact-form button {
+    padding: 0.9rem 2.4rem;
+    border-radius: 999px;
+    border: none;
+    background: var(--color-dark);
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      transform 0.25s,
+      box-shadow 0.25s;
+  }
+
+  .contact-form button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.35);
+  }
+
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

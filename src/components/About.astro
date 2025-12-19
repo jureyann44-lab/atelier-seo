@@ -1,0 +1,138 @@
+---
+
+---
+
+<section class="about" id="agence">
+  <div class="about-inner">
+    <div class="about-image">
+      <img
+        src="/bureau-agence-habeprod.webp"
+        alt="Bureau de l'agence Habeprod au Mans"
+        loading="lazy"
+      />
+    </div>
+    <div class="about-text">
+      <div class="section-subtitle">À propos</div>
+      <h2 class="section-title">
+        Communication, design & visibilité pour les entreprises du Mans
+      </h2>
+      <p class="about-body">
+        Chez <strong>Habeprod</strong>, nous accompagnons les entreprises du
+        Mans et de la Sarthe dans leurs projets de
+        <strong>communication digitale</strong> et de
+        <strong>création de site web</strong>.
+      </p>
+      <p class="about-body">
+        Nous aidons également nos clients à renforcer leur
+        <strong>identité visuelle</strong>
+        et à déployer des stratégies de communication sur mesure.
+      </p>
+      <p class="about-body">
+        Agence de proximité, nous mettons notre expertise au service des
+        <strong>TPE</strong>, <strong>PME</strong> et artisans du Mans, avec un suivi
+        personnalisé.
+      </p>
+    </div>
+  </div>
+  <div class="about-bottom-strip"></div>
+</section>
+
+<style>
+  .about {
+    background: #ffffff;
+    position: relative;
+  }
+
+  .about-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    column-gap: 4rem;
+    align-items: center;
+  }
+
+  .about-image {
+    width: 100%;
+    max-width: 500.39px;
+    height: 596px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(60px);
+    transition:
+      opacity 0.9s ease-out,
+      transform 0.9s ease-out;
+    will-change: opacity, transform;
+  }
+
+  .about-image.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-text {
+    color: #111827;
+  }
+
+  .about-text .section-subtitle {
+    color: #9ca3af;
+  }
+
+  .about-body {
+    line-height: 1.8;
+    color: #4b5563;
+    margin-bottom: 1.1rem;
+  }
+
+  .about-bottom-strip {
+    position: absolute;
+    right: 0;
+    bottom: -70px;
+    width: 50%;
+    height: 70px;
+    background: #ffffff;
+    z-index: 3;
+  }
+
+  @media (max-width: 900px) {
+    .about-inner {
+      grid-template-columns: 1fr;
+      row-gap: 2.5rem;
+    }
+
+    .about-image {
+      order: -1;
+      width: 100%;
+      height: auto;
+    }
+    .about-bottom-strip {
+      display: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      height: 0 !important;
+    }
+  }
+  }
+</style>
+
+<script>
+  const aboutImage = document.querySelector(".about-image");
+
+  if (aboutImage) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          aboutImage.classList.add("in-view");
+          observer.unobserve(aboutImage);
+        }
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(aboutImage);
+  }
+</script>

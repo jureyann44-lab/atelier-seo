@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Services from "../components/Services.astro";
+import Expertise from "../components/Expertise.astro";
+import Projects from "../components/Projects.astro";
+import Contact from "../components/Contact.astro";
+import FAQ from "../components/FAQ.astro";
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
+
+import "../styles/global.css";
+---
+
+<Layout
+  title="Habeprod - Agence Communication Digitale Le Mans | Création Web & SEO"
+  description="Habeprod - Agence de communication digitale au Mans. Création de sites web, SEO, branding et identité visuelle pour TPE et PME en Sarthe."
+>
+  <Nav />
+  <Hero />
+  <About />
+  <Services />
+  <Expertise />
+  <Projects />
+  <Contact />
+  <FAQ />
+  <CTA />
+  <Footer />
+</Layout>
+
+<script>
+  // Smooth scroll pour tous les liens d'ancrage
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const href = anchor.getAttribute("href");
+      if (!href || href === "#") return;
+
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+</script>

@@ -1,0 +1,128 @@
+<section class="services-collage" id="services">
+  <div class="services-inner">
+    <div class="services-rotator">
+      <div class="services-collage-grid">
+        <div class="rotating-box">
+          <div class="rotating-box-rotator">
+            <img
+              src="/image-site-service.webp"
+              alt="Communication web"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div class="rotating-box">
+          <div class="rotating-box-rotator">
+            <img
+              src="/image-print-service.webp"
+              alt="Communication print"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div class="rotating-box">
+          <div class="rotating-box-rotator">
+            <img
+              src="/image-branding-service.webp"
+              alt="Branding et identité visuelle"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div class="rotating-box">
+          <div class="rotating-box-rotator">
+            <img
+              src="/image-web-services.webp"
+              alt="Référencement et visibilité en ligne"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="services-text">
+      <div class="section-subtitle services-subtitle">Nos services</div>
+      <h2 class="section-title services-title">
+        Print, Web &amp; Branding au service de votre image sur le Mans
+      </h2>
+      <div class="services-list">
+        <h3>Communication Web</h3>
+        <p>Création et refonte de vos sites web.</p>
+        <h3>Communication Print</h3>
+        <p>Flyers, affiches, brochures.</p>
+        <h3>Branding &amp; Identité visuelle</h3>
+        <p>Logos, chartes, univers, valeurs.</p>
+        <h3>Référencement SEO</h3>
+        <p>Google, visibilité, contenus, stratégie.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-collage {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  .services-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: center;
+    column-gap: 4rem;
+  }
+
+  .services-collage-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .rotating-box {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #1a1a1a;
+  }
+
+  .rotating-box-rotator {
+    width: 100%;
+    height: 100%;
+  }
+
+  .rotating-box-rotator img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .services-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 0.75rem;
+  }
+
+  .services-list h3 {
+    font-size: 1rem;
+    margin: 1rem 0 0.25rem;
+  }
+
+  .services-list p {
+    line-height: 20px;
+    margin-bottom: 0.4rem;
+  }
+
+  @media (max-width: 900px) {
+    .services-inner {
+      grid-template-columns: 1fr;
+      row-gap: 3rem;
+    }
+  }
+</style>
