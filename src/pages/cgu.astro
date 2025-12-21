@@ -1,0 +1,224 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SeoLayout from "../layouts/SeoLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+
+import "../styles/global.css";
+---
+
+<SeoLayout
+  title="CGU | Habeprod - Agence Web au Mans"
+  description="Conditions Générales d'Utilisation de l'agence Habeprod."
+  canonical="https://www.habeprod-agence.fr/cgu"
+/>
+
+<Layout>
+  <Nav />
+
+  <main class="mentions-legales">
+    <div class="container">
+      <h1>Conditions Générales d'Utilisation (CGU)</h1>
+
+      <section class="legal-section">
+        <h2>Objet</h2>
+        <p>
+          Les présentes Conditions Générales d'Utilisation (CGU) ont pour objet
+          de définir les modalités de mise à disposition des services du site <strong
+            >Habeprod</strong
+          > et les conditions d'utilisation par l'Utilisateur.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Acceptation des CGU</h2>
+        <p>
+          L'accès et l'utilisation du site impliquent l'acceptation pleine et
+          entière des présentes CGU. Elles sont accessibles à tout moment sur le
+          site.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Services proposés</h2>
+        <p>
+          Habeprod propose sur son site des services de : création de sites web,
+          design graphique, stratégie de marque, référencement. Ces services
+          sont susceptibles d'évoluer.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Accès au site</h2>
+        <p>
+          Le site est accessible gratuitement à tout utilisateur disposant d'un
+          accès à Internet. Tous les frais supportés par l'utilisateur pour
+          accéder au service (matériel informatique, logiciels, connexion
+          Internet, etc.) sont à sa charge.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Propriété intellectuelle</h2>
+        <p>
+          Tous les contenus présents sur le site, y compris les textes, images,
+          graphismes, logos, vidéos, etc., sont la propriété exclusive de
+          Habeprod ou de ses partenaires. Toute reproduction, distribution,
+          modification, adaptation ou publication de ces éléments est
+          strictement interdite sans l'autorisation préalable de Habeprod.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Responsabilités</h2>
+        <p>
+          Habeprod s'efforce d'assurer au mieux l'exactitude des informations
+          diffusées sur le site. Toutefois, Habeprod ne peut garantir
+          l'exactitude, la complétude ou l'actualité des informations.
+          L'utilisateur utilise les informations du site sous sa propre
+          responsabilité.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Protection des données personnelles</h2>
+        <p>
+          Habeprod s'engage à respecter la confidentialité des données
+          personnelles fournies par les utilisateurs du site et à les traiter
+          conformément aux lois en vigueur. Pour plus d'informations, consultez
+          notre <a href="/politique-de-confidentialite" class="legal-link"
+            >Politique de confidentialité</a
+          >.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Liens hypertextes</h2>
+        <p>
+          Le site peut contenir des liens vers d'autres sites. Habeprod n'assume
+          aucune responsabilité quant au contenu de ces sites externes.
+          L'utilisateur est invité à consulter les conditions d'utilisation et
+          la politique de confidentialité de ces sites.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Modification des CGU</h2>
+        <p>
+          Habeprod se réserve le droit de modifier les présentes CGU à tout
+          moment. Les modifications entrent en vigueur dès leur publication sur
+          le site. Il est conseillé aux utilisateurs de consulter régulièrement
+          les CGU.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>Loi applicable et juridiction</h2>
+        <p>
+          Les présentes CGU sont soumises à la loi française. En cas de litige,
+          et à défaut d'accord amiable, les tribunaux français seront seuls
+          compétents.
+        </p>
+      </section>
+
+      <p class="last-update">Dernière mise à jour : 21 décembre 2025</p>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .mentions-legales {
+    background: #000;
+    color: #fff;
+    min-height: 100vh;
+    padding-top: calc(var(--nav-height) + 4rem);
+    padding-bottom: 4rem;
+  }
+
+  .mentions-legales section {
+    padding: 0 !important;
+  }
+
+  .mentions-legales h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .legal-section {
+    margin-bottom: 3rem;
+  }
+
+  .mentions-legales h2 {
+    font-size: 1.5rem !important;
+    font-weight: 500 !important;
+    margin-bottom: 1.5rem !important;
+    color: #fff;
+    letter-spacing: -0.01em !important;
+  }
+
+  .mentions-legales h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .mentions-legales p {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .mentions-legales strong {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .legal-link {
+    color: #eb6432;
+    text-decoration: none;
+    transition: opacity var(--transition-speed);
+  }
+
+  .legal-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+
+  .last-update {
+    margin-top: 4rem;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.6;
+    font-style: italic;
+  }
+
+  @media (max-width: 900px) {
+    .mentions-legales {
+      padding-top: calc(var(--nav-height) + 2rem);
+      padding-bottom: 2rem;
+    }
+
+    .mentions-legales h1 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .mentions-legales h2 {
+      font-size: 1.25rem !important;
+    }
+
+    .mentions-legales h3 {
+      font-size: 1.1rem;
+    }
+
+    .legal-section {
+      margin-bottom: 2rem;
+    }
+  }
+</style>

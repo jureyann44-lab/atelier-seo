@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import SeoLayout from "../layouts/SeoLayout.astro"; // <-- ajouté
 import Nav from "../components/Nav.astro";
 import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
@@ -12,12 +13,73 @@ import CTA from "../components/CTA.astro";
 import Footer from "../components/Footer.astro";
 
 import "../styles/global.css";
+
+const faq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Quels types de sites crée l’agence Habeprod ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Habeprod conçoit des sites vitrines, e-commerce, landing pages et portfolios sur mesure, optimisés pour le SEO et adaptés aux besoins de chaque client.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Est-ce que Habeprod travaille uniquement avec des entreprises du Mans ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Non, même si nous sommes basés au Mans, nous accompagnons des clients partout en France grâce à nos outils de gestion de projet à distance.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "L’agence propose-t-elle des services de référencement naturel (SEO) ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Oui, nous réalisons des audits, optimisations on-site, création de contenus optimisés, netlinking et suivi des performances.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Est-ce que Habeprod peut refondre un site existant ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Oui, nous proposons des refontes pour améliorer le design, l’expérience utilisateur et la performance SEO tout en conservant l’identité du site.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Combien coûte un site web avec Habeprod ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Le tarif dépend du type de projet, mais nous faisons toujours un devis personnalisé après discussion avec le client.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Pourquoi choisir une agence locale comme Habeprod au Mans ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Travailler avec une agence locale permet une vraie proximité, une réactivité forte et une connaissance du tissu économique de la Sarthe.",
+      },
+    },
+  ],
+};
 ---
 
-<Layout
-  title="Habeprod - Agence Communication Digitale Le Mans | Création Web & SEO"
-  description="Habeprod - Agence de communication digitale au Mans. Création de sites web, SEO, branding et identité visuelle pour TPE et PME en Sarthe."
->
+<!-- Ajout SeoLayout -->
+<SeoLayout
+  title="Agence Web & SEO au Mans – Sites performants | Habeprod"
+  description="Agence web au Mans spécialisée en création de sites performants, SEO local et stratégie digitale. Plus de 10 ans d’expérience. Devis gratuit."
+  canonical="https://www.habeprod-agence.fr/"
+  ogImage="https://cdn.prod.website-files.com/681b6b36dcb0f115f4d39f76/681c83218f79910e7d6aff03_image-hero.webp"
+  faq={faq}
+/>
+
+<Layout>
   <Nav />
   <Hero />
   <About />

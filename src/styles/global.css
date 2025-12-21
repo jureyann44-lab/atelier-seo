@@ -125,12 +125,14 @@ h2,
 }
 
 p {
-  margin-bottom: 1.1rem;
+  font-size: 1.1rem;      /* taille uniforme */
+  margin-bottom: 2.5rem;  /* espacement uniforme */
 }
 
 p:last-child {
   margin-bottom: 0;
 }
+
 
 /* ===== SHADOW SIMPLE - PAS D'ANIMATIONS COMPLEXES ===== */
 .hero-cta,

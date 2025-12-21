@@ -40,9 +40,11 @@
     display: flex;
     align-items: center;
     padding: 7rem 0 6rem;
+    /* ✅ COULEUR DE FOND PENDANT CHARGEMENT */
+    background: #010712;
   }
 
-  /* IMAGE BACKGROUND PRIORITAIRE */
+  /* IMAGE BACKGROUND - OPACITÉ 1 PAR DÉFAUT */
   .hero-bg {
     position: absolute;
     inset: 0;
@@ -51,11 +53,7 @@
     object-fit: cover;
     object-position: center;
     z-index: 0;
-    opacity: 0;
-    transition: opacity 0.6s ease-out;
-  }
-
-  .hero-bg.loaded {
+    /* ✅ OPACITÉ 1 DÈS LE DÉPART */
     opacity: 1;
   }
 
@@ -242,15 +240,11 @@
 </style>
 
 <script>
-  const heroImg = document.querySelector(".hero-bg");
-
-  if (heroImg) {
-    if (heroImg.complete) {
-      heroImg.classList.add("loaded");
-    } else {
-      heroImg.addEventListener("load", () => {
-        heroImg.classList.add("loaded");
-      });
-    }
-  }
+  // ✅ PRELOAD de l'image dans le <head> pour chargement prioritaire
+  const preloadLink = document.createElement("link");
+  preloadLink.rel = "preload";
+  preloadLink.as = "image";
+  preloadLink.href = "/background-hero.webp";
+  preloadLink.fetchpriority = "high";
+  document.head.appendChild(preloadLink);
 </script>
