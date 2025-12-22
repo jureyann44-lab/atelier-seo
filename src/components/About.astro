@@ -1,7 +1,3 @@
----
-
----
-
 <section class="about" id="agence">
   <div class="about-inner">
     <div class="about-image">
@@ -17,10 +13,27 @@
         Communication, design & visibilité pour les entreprises du Mans
       </h2>
       <p class="about-body">
-        Chez <span>Habeprod</span>, nous accompagnons les <span>entreprises du Mans</span> et de la <span>Sarthe</span> dans leurs projets de <span>communication digitale</span> et de <span>création de site web</span>.  
-        Notre équipe conçoit des <span>sites vitrines modernes</span>, <span>performants</span> et optimisés pour le <span>référencement local</span>.  
-        Nous aidons également nos clients à renforcer leur <span>identité visuelle</span> et à déployer des <span>stratégies de communication sur mesure</span> : <span>création de contenus</span>, <span>branding</span>, <span>gestion des réseaux sociaux</span> et <span>campagnes publicitaires</span>.  
-        Agence de proximité, nous mettons notre <span>expertise</span> au service des <span>TPE</span>, <span>PME</span> et <span>artisans du Mans</span>, avec un <span>suivi personnalisé</span> et des <span>solutions adaptées</span> à chaque <span>secteur d’activité</span>.
+        Chez <span>Habeprod</span>, nous accompagnons les <span
+          >entreprises du Mans</span
+        > et de la <span>Sarthe</span> dans leurs projets de <span
+          >communication digitale</span
+        > et de <span>création de site web</span>. Notre équipe conçoit des <span
+          >sites vitrines modernes</span
+        >, <span>performants</span> et optimisés pour le <span
+          >référencement local</span
+        >. Nous aidons également nos clients à renforcer leur <span
+          >identité visuelle</span
+        > et à déployer des <span>stratégies de communication sur mesure</span> :
+        <span>création de contenus</span>, <span>branding</span>, <span
+          >gestion des réseaux sociaux</span
+        > et <span>campagnes publicitaires</span>. Agence de proximité, nous
+        mettons notre <span>expertise</span> au service des <span>TPE</span>, <span
+          >PME</span
+        > et <span>artisans du Mans</span>, avec un <span
+          >suivi personnalisé</span
+        > et des <span>solutions adaptées</span> à chaque <span
+          >secteur d'activité</span
+        >.
       </p>
     </div>
   </div>
@@ -89,6 +102,42 @@
     z-index: 3;
   }
 
+  /* 📱 MOBILE LANDSCAPE - Typo compacte + image réduite */
+  @media (max-width: 767px) and (orientation: landscape) {
+    .about-inner {
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      column-gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .about-image {
+      max-width: 280px;
+      height: 340px;
+    }
+
+    .section-subtitle {
+      font-size: 0.7rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: 20px !important;
+      line-height: 1.2 !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .about-body {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-bottom-strip {
+      display: none;
+    }
+  }
+
+  /* 📱 TABLETTE + MOBILE PORTRAIT */
   @media (max-width: 900px) {
     .about-inner {
       grid-template-columns: 1fr;
@@ -100,15 +149,17 @@
     .about-image {
       order: -1;
       width: 100%;
+      max-width: 100%;
       height: auto;
+      aspect-ratio: 4/5;
     }
+
     .about-bottom-strip {
       display: none !important;
       opacity: 0 !important;
       visibility: hidden !important;
       height: 0 !important;
     }
-  }
   }
 </style>
 
