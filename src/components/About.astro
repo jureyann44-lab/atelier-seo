@@ -102,47 +102,48 @@
     z-index: 3;
   }
 
-  /* 📱 MOBILE LANDSCAPE - Version verticale compacte avec marges réduites */
+  /* 📱 MOBILE LANDSCAPE - Même format que 900px mais ultra compact */
   @media (max-width: 767px) and (orientation: landscape) {
     .about {
-      padding: 3rem 0;
+      padding: 2rem 0;
     }
 
     .about-inner {
       grid-template-columns: 1fr;
-      row-gap: 1.5rem;
+      row-gap: 1rem;
       padding-left: var(--gutter-mobile);
       padding-right: var(--gutter-mobile);
     }
 
     .about-image {
+      order: -1;
       width: 100%;
       max-width: 100%;
       height: auto;
-      max-height: 280px;
-      order: -1;
+      max-height: 220px;
     }
 
     .about-image img {
       object-fit: cover;
+      width: 100%;
       height: 100%;
     }
 
     .section-subtitle {
-      font-size: 0.7rem;
-      margin-bottom: 0.4rem;
+      font-size: 0.65rem;
+      margin-bottom: 0.3rem;
     }
 
     .section-title {
-      font-size: 20px !important;
-      line-height: 1.2 !important;
-      margin-bottom: 0.75rem !important;
+      font-size: 18px !important;
+      line-height: 1.15 !important;
+      margin-bottom: 0.6rem !important;
     }
 
     .about-body {
-      font-size: 0.85rem;
-      line-height: 1.5;
-      margin-bottom: 0.5rem;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      margin-bottom: 0.4rem;
     }
 
     .about-bottom-strip {
