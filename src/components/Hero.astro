@@ -247,6 +247,34 @@
     }
   }
 
+  /* 📱 TABLETTE PORTRAIT + MOBILE */
+  @media (max-width: 900px) {
+    .hero {
+      padding: 7rem 0 4.5rem;
+    }
+
+    .hero::before {
+      display: none;
+    }
+
+    .hero::after {
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-inner {
+      grid-template-columns: 1fr;
+      row-gap: 3rem;
+    }
+
+    .hero-visual {
+      display: none;
+    }
+
+    .hero-bottom-strip {
+      display: none;
+    }
+  }
+
   /* 📱 TABLETTE PORTRAIT SEULEMENT - Alignement gauche forcé */
   @media (min-width: 768px) and (max-width: 900px) and (orientation: portrait) {
     .hero-inner {
