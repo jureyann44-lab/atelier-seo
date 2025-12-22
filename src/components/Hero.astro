@@ -247,47 +247,35 @@
     }
   }
 
-  /* 📱 TABLETTE PORTRAIT + MOBILE */
-  @media (max-width: 900px) {
-    .hero {
-      padding: 7rem 0 4.5rem;
-    }
-
-    .hero::before {
-      display: none;
-    }
-
-    .hero::after {
-      background: rgba(0, 0, 0, 0.4);
-    }
-
+  /* 📱 TABLETTE PORTRAIT SEULEMENT - Alignement gauche forcé */
+  @media (min-width: 768px) and (max-width: 900px) and (orientation: portrait) {
     .hero-inner {
-      grid-template-columns: 1fr;
-      row-gap: 3rem;
-      text-align: left; /* ✅ AJOUTÉ */
+      text-align: left !important;
+      justify-items: start !important;
     }
 
     .hero-copy {
-      text-align: left; /* ✅ AJOUTÉ */
+      text-align: left !important;
+      width: 100%;
     }
 
-    .hero-kicker,
-    .hero-title,
+    .hero-kicker {
+      text-align: left !important;
+    }
+
+    .hero-title {
+      text-align: left !important;
+    }
+
     .hero-subtitle {
-      text-align: left; /* ✅ AJOUTÉ */
+      text-align: left !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
     }
 
     .hero-cta {
-      margin-left: 0; /* ✅ AJOUTÉ */
-      margin-right: auto; /* ✅ AJOUTÉ */
-    }
-
-    .hero-visual {
-      display: none;
-    }
-
-    .hero-bottom-strip {
-      display: none;
+      margin-left: 0 !important;
+      margin-right: auto !important;
     }
   }
 
