@@ -27,16 +27,26 @@
   --h2-mb: 1.5rem;
 }
 
-/* 📱 MOBILE LANDSCAPE - Marges latérales comme iPad Pro */
+/* 📱 MOBILE LANDSCAPE - Contenu centré avec marges */
 @media (max-width: 767px) and (orientation: landscape) {
   :root {
-    --layout-width: 480px;  /* ⭐ Largeur max = mobile portrait */
-    --gutter: 15%;           /* ⭐ Grandes marges comme About */
+    --gutter: 10%;  /* Marges de 10% de chaque côté */
     --h2-size: 22px;
   }
   
   section:not(.hero) {
     padding: 4rem 0;
+  }
+  
+  /* Force largeur max pour centrer le contenu */
+  .hero-inner,
+  .about-inner,
+  .services-inner,
+  .projects-inner,
+  .projects-header,
+  .footer-content,
+  .footer-bottom {
+    max-width: 600px;  /* Largeur confortable pour lecture */
   }
 }
 
