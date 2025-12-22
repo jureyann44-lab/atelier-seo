@@ -102,83 +102,47 @@
     z-index: 3;
   }
 
-  /* 📱 TABLETTE + MOBILE PORTRAIT (mais PAS mobile landscape) */
-  @media (max-width: 900px) and (orientation: portrait) {
+  /* 📱 MOBILE LANDSCAPE - Version verticale compacte avec marges réduites */
+  @media (max-width: 767px) and (orientation: landscape) {
+    .about {
+      padding: 3rem 0;
+    }
+
     .about-inner {
       grid-template-columns: 1fr;
-      row-gap: 2.5rem;
+      row-gap: 1.5rem;
       padding-left: var(--gutter-mobile);
       padding-right: var(--gutter-mobile);
     }
 
     .about-image {
-      order: -1;
       width: 100%;
       max-width: 100%;
       height: auto;
-      aspect-ratio: 4/5;
-    }
-
-    .about-bottom-strip {
-      display: none !important;
-      opacity: 0 !important;
-      visibility: hidden !important;
-      height: 0 !important;
-    }
-  }
-
-  /* 📱 MOBILE PORTRAIT uniquement */
-  @media (max-width: 767px) and (orientation: portrait) {
-    .about-inner {
-      grid-template-columns: 1fr;
-      row-gap: 2.5rem;
-    }
-
-    .about-image {
+      max-height: 280px;
       order: -1;
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      aspect-ratio: 4/5;
-    }
-  }
-
-  /* 📱 MOBILE LANDSCAPE - Typo compacte + image à gauche */
-  @media (max-width: 767px) and (orientation: landscape) {
-    .about-inner {
-      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr) !important;
-      column-gap: 2rem;
-      align-items: flex-start;
-      row-gap: 0;
     }
 
-    .about-image {
-      max-width: 280px !important;
-      height: 340px !important;
-      order: 1;
-      width: 100%;
-      aspect-ratio: auto;
-    }
-
-    .about-text {
-      order: 2;
+    .about-image img {
+      object-fit: cover;
+      height: 100%;
     }
 
     .section-subtitle {
       font-size: 0.7rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .section-title {
       font-size: 20px !important;
       line-height: 1.2 !important;
-      margin-bottom: 1rem !important;
+      margin-bottom: 0.75rem !important;
     }
 
     .about-body {
       font-size: 0.85rem;
       line-height: 1.5;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
 
     .about-bottom-strip {
@@ -205,9 +169,6 @@
 
     .about-bottom-strip {
       display: none !important;
-      opacity: 0 !important;
-      visibility: hidden !important;
-      height: 0 !important;
     }
   }
 </style>
