@@ -120,10 +120,27 @@ section:not(.hero) {
   padding: 6rem 0;
 }
 
-/* 📱 MOBILE LANDSCAPE - Réduit le padding vertical */
+/* 📱 MOBILE LANDSCAPE - Contenu centré avec marges (comme tablette) */
 @media (max-width: 767px) and (orientation: landscape) {
+  :root {
+    --gutter: 3rem;  /* Marges fixes sur les côtés */
+    --h2-size: 22px;
+  }
+  
   section:not(.hero) {
     padding: 4rem 0;
+  }
+  
+  /* Force largeur mobile classique (375px-428px) au centre */
+  .hero-inner,
+  .about-inner,
+  .services-inner,
+  .projects-inner,
+  .projects-header,
+  .footer-content,
+  .footer-bottom {
+    max-width: 400px;  /* Largeur mobile standard centrée */
+    margin: 0 auto;     /* Centre le contenu */
   }
 }
 
