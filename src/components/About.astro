@@ -152,8 +152,8 @@
     }
   }
 
-  /* 📱 TABLETTE + MOBILE PORTRAIT */
-  @media (max-width: 900px) {
+  /* 📱 TABLETTE + MOBILE PORTRAIT (pas mobile landscape) */
+  @media (max-width: 900px) and (orientation: portrait) {
     .about-inner {
       grid-template-columns: 1fr;
       row-gap: 2.5rem;
@@ -171,6 +171,14 @@
 
     .about-bottom-strip {
       display: none !important;
+    }
+  }
+
+  /* 📱 TABLETTE LANDSCAPE - Grandes marges */
+  @media (min-width: 901px) and (max-width: 1400px) {
+    .about-inner {
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
     }
   }
 </style>
