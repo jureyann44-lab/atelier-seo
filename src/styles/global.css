@@ -30,7 +30,7 @@
 /* 📱 MOBILE LANDSCAPE - Contenu centré avec marges */
 @media (max-width: 767px) and (orientation: landscape) {
   :root {
-    --gutter: 10%;  /* Marges de 10% de chaque côté */
+    --gutter: 3rem;  /* Marges fixes sur les côtés */
     --h2-size: 22px;
   }
   
@@ -38,15 +38,33 @@
     padding: 4rem 0;
   }
   
-  /* Force largeur max pour centrer le contenu */
+  /* Force largeur mobile classique au centre */
   .hero-inner,
   .about-inner,
   .services-inner,
   .projects-inner,
   .projects-header,
-  .footer-content,
+  .footer-content {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  /* Copyright noir plus large et centré */
   .footer-bottom {
-    max-width: 600px;  /* Largeur confortable pour lecture */
+    background-color: #0a0a0a;
+    max-width: 500px !important;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    text-align: center;
+  }
+  
+  /* Images optimisées dans les marges */
+  .services-grid,
+  .projects-grid,
+  img,
+  .project-image {
+    max-width: 100%;
+    height: auto;
   }
 }
 
