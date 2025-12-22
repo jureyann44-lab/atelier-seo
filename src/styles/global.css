@@ -50,10 +50,10 @@
 }
 
 /* 💻 TABLETTE LANDSCAPE */
-@media (min-width: 901px) and (max-width: 1024px) {
+@media (min-width: 901px) and (max-width: 1100px) {
   :root {
     --layout-width: 1200px;
-    --gutter: 2.5rem;
+    --gutter: 4rem;  /* ⭐ Augmenté de 2.5rem à 4rem */
     --h2-size: 28px;
   }
 }
