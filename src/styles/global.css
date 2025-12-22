@@ -131,9 +131,8 @@ section:not(.hero) {
   padding-right: var(--gutter);
 }
 
-/* ✅ TOUS LES INNERS RESPONSIVE */
+/* ✅ TOUS LES INNERS RESPONSIVE (sans about-inner) */
 .hero-inner,
-.about-inner,
 .services-inner,
 .projects-inner,
 .projects-header,
