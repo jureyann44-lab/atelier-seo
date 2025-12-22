@@ -102,18 +102,46 @@
     z-index: 3;
   }
 
-  /* 📱 MOBILE LANDSCAPE - Typo compacte + image réduite */
-  @media (max-width: 767px) and (orientation: landscape) {
+  /* 📱 TABLETTE + MOBILE PORTRAIT */
+  @media (max-width: 900px) {
     .about-inner {
-      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-      column-gap: 2rem;
-      align-items: flex-start;
+      grid-template-columns: 1fr;
+      row-gap: 2.5rem;
+      padding-left: var(--gutter-mobile);
+      padding-right: var(--gutter-mobile);
     }
 
     .about-image {
-      max-width: 280px;
-      height: 340px;
+      order: -1;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      aspect-ratio: 4/5;
+    }
+
+    .about-bottom-strip {
+      display: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      height: 0 !important;
+    }
+  }
+
+  /* 📱 MOBILE LANDSCAPE - Typo compacte + image à gauche */
+  @media (max-width: 767px) and (orientation: landscape) {
+    .about-inner {
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr) !important;
+      column-gap: 2rem;
+      align-items: flex-start;
+      row-gap: 0;
+    }
+
+    .about-image {
+      max-width: 280px !important;
+      height: 340px !important;
       order: 1;
+      width: 100%;
+      aspect-ratio: auto;
     }
 
     .about-text {
