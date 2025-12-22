@@ -53,13 +53,13 @@
 @media (min-width: 901px) and (max-width: 1400px) {
   :root {
     --layout-width: 1200px;
-    --gutter: 5rem;  /* ⭐ Encore plus de marge */
+    --gutter: 5rem;
     --h2-size: 28px;
   }
 }
 
-/* 🖥️ DESKTOP */
-@media (min-width: 1025px) {
+/* 🖥️ DESKTOP (à partir de 1401px) */
+@media (min-width: 1401px) {
   :root {
     --layout-width: 1400px;
     --gutter: 3rem;
@@ -131,9 +131,8 @@ section:not(.hero) {
   padding-right: var(--gutter);
 }
 
-/* ✅ TOUS LES INNERS RESPONSIVE */
+/* ✅ TOUS LES INNERS RESPONSIVE (sans about-inner) */
 .hero-inner,
-.about-inner,
 .services-inner,
 .projects-inner,
 .projects-header,
