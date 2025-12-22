@@ -275,16 +275,26 @@
     }
   }
 
-  /* 📱 TABLETTE PORTRAIT SEULEMENT - Alignement gauche forcé */
+  /* 📱 TABLETTE PORTRAIT SEULEMENT - Alignement gauche ET haut */
   @media (min-width: 768px) and (max-width: 900px) and (orientation: portrait) {
+    .hero {
+      align-items: flex-start !important;
+      padding-top: 9rem !important;
+    }
+
     .hero-inner {
       text-align: left !important;
       justify-items: start !important;
+      align-items: flex-start !important;
+      margin-left: 0 !important; /* ✅ ENLÈVE la marge gauche auto */
+      margin-right: auto !important; /* ✅ GARDE la marge droite auto */
+      padding-left: var(--gutter) !important; /* ✅ Aligne avec le logo */
     }
 
     .hero-copy {
       text-align: left !important;
       width: 100%;
+      padding-left: 0 !important; /* ✅ PAS de padding en plus */
     }
 
     .hero-kicker {
@@ -298,7 +308,6 @@
     .hero-subtitle {
       text-align: left !important;
       margin-left: 0 !important;
-      margin-right: 0 !important;
     }
 
     .hero-cta {
@@ -306,7 +315,6 @@
       margin-right: auto !important;
     }
   }
-
   /* 💻 TABLETTE LANDSCAPE */
   @media (min-width: 901px) and (max-width: 1100px) {
     .hero-inner {
