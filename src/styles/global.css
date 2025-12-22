@@ -27,36 +27,6 @@
   --h2-mb: 1.5rem;
 }
 
-/* 📱 MOBILE LANDSCAPE - Contenu centré avec marges */
-@media (max-width: 932px) and (orientation: landscape) and (max-height: 500px) {
-  :root {
-    --gutter: 3rem;
-    --h2-size: 22px;
-  }
-  
-  section:not(.hero) {
-    padding: 4rem 0;
-  }
-  
-  .hero-inner,
-  .about-inner,
-  .services-inner,
-  .projects-inner,
-  .projects-header,
-  .footer-content {
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  .footer-bottom {
-    background-color: #0a0a0a;
-    max-width: 500px !important;
-    margin: 0 auto;
-    padding: 1.5rem 2rem;
-    text-align: center;
-  }
-}
-
 /* 📱 TABLETTE PORTRAIT */
 @media (min-width: 768px) and (max-width: 900px) {
   :root {
@@ -127,36 +97,6 @@ section:not(.hero) {
   padding: 6rem 0;
 }
 
-/* 📱 MOBILE LANDSCAPE - Contenu centré avec marges (comme tablette) */
-@media (max-width: 767px) and (orientation: landscape) {
-  :root {
-    --gutter: 2rem;  /* Marges fixes sur les côtés */
-    --layout-width: 400px;  /* Force la largeur mobile partout */
-    --h2-size: 22px;
-  }
-  
-  section:not(.hero) {
-    padding: 4rem 0;
-  }
-  
-  /* Applique à TOUS les conteneurs */
-  body > *,
-  section,
-  .container,
-  nav,
-  .hero-inner,
-  .about-inner,
-  .services-inner,
-  .projects-inner,
-  .projects-header,
-  .footer-content,
-  .footer-bottom {
-    max-width: 400px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-}
-
 /* 📱 TABLETTE */
 @media (min-width: 768px) and (max-width: 1024px) {
   section:not(.hero) {
@@ -205,14 +145,6 @@ p {
   margin-bottom: 2.5rem;
 }
 
-/* 📱 MOBILE LANDSCAPE - Réduit la taille du texte */
-@media (max-width: 767px) and (orientation: landscape) {
-  p {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-  }
-}
-
 /* 📱 TABLETTE - Ajuste la taille du texte */
 @media (min-width: 768px) and (max-width: 1024px) {
   p {
@@ -254,5 +186,43 @@ p:last-child {
   .btn-appel:hover,
   .project-link:hover {
     transform: none;
+  }
+}
+
+/* 📱 MOBILE LANDSCAPE - Contenu centré avec marges (UN SEUL MEDIA QUERY) */
+@media (max-width: 932px) and (orientation: landscape) and (max-height: 500px) {
+  :root {
+    --gutter: 3rem;
+    --h2-size: 22px;
+  }
+  
+  section:not(.hero) {
+    padding: 4rem 0;
+  }
+  
+  p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Tous les conteneurs centrés à 400px */
+  .hero-inner,
+  .about-inner,
+  .services-inner,
+  .projects-inner,
+  .projects-header,
+  .footer-content {
+    max-width: 400px !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Footer copyright spécifique */
+  .footer-bottom {
+    background-color: #ffffff;
+    max-width: 500px !important;
+    margin: 0 auto !important;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    color: #0a0a0a;
   }
 }
