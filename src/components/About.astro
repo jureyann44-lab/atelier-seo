@@ -102,7 +102,7 @@
     z-index: 3;
   }
 
-  /* 📱 MOBILE LANDSCAPE - Même format que 900px mais ultra compact */
+  /* 📱 MOBILE LANDSCAPE - Version portrait avec marges latérales */
   @media (max-width: 767px) and (orientation: landscape) {
     .about {
       padding: 2rem 0;
@@ -111,8 +111,9 @@
     .about-inner {
       grid-template-columns: 1fr;
       row-gap: 1rem;
-      padding-left: var(--gutter-mobile);
-      padding-right: var(--gutter-mobile);
+      padding-left: 15%;
+      padding-right: 15%;
+      max-width: 100%;
     }
 
     .about-image {
@@ -120,7 +121,7 @@
       width: 100%;
       max-width: 100%;
       height: auto;
-      max-height: 220px;
+      max-height: 200px;
     }
 
     .about-image img {
