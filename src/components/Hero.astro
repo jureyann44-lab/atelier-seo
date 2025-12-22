@@ -1,3 +1,4 @@
+<!-- ========== HERO.ASTRO ========== -->
 <section class="hero">
   <img
     src="/background-hero.webp"
@@ -40,11 +41,9 @@
     display: flex;
     align-items: center;
     padding: 7rem 0 6rem;
-    /* ✅ COULEUR DE FOND PENDANT CHARGEMENT */
     background: #010712;
   }
 
-  /* IMAGE BACKGROUND - OPACITÉ 1 PAR DÉFAUT */
   .hero-bg {
     position: absolute;
     inset: 0;
@@ -53,11 +52,9 @@
     object-fit: cover;
     object-position: center;
     z-index: 0;
-    /* ✅ OPACITÉ 1 DÈS LE DÉPART */
     opacity: 1;
   }
 
-  /* DÉGRADÉ PENDANT CHARGEMENT (FORT) */
   .hero::before {
     content: "";
     position: absolute;
@@ -86,7 +83,6 @@
     z-index: 1;
   }
 
-  /* DÉGRADÉ FINAL PLUS SOMBRE GAUCHE/DROITE/HAUT */
   .hero::after {
     content: "";
     position: absolute;
@@ -195,7 +191,10 @@
   .hero-bottom-strip {
     position: absolute;
     bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: calc(var(--layout-width) - (var(--gutter) * 2));
+    max-width: calc(100% - (var(--gutter) * 2));
     height: 70px;
     background: #ffffff;
     z-index: 3;
@@ -206,30 +205,48 @@
     height: 520px;
   }
 
+  /* 📱 MOBILE LANDSCAPE */
+  @media (max-width: 767px) and (orientation: landscape) {
+    .hero {
+      min-height: 70vh;
+      padding: 5rem 0 3rem;
+    }
+
+    .hero-kicker {
+      font-size: 24px;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-bottom-strip {
+      display: none;
+    }
+  }
+
+  /* 📱 TABLETTE PORTRAIT + MOBILE */
   @media (max-width: 900px) {
     .hero {
       padding: 7rem 0 4.5rem;
     }
 
-    /* MOBILE : Overlay noir simple sur l'image */
     .hero::before {
       display: none;
     }
 
     .hero::after {
-      background: rgba(0, 0, 0, 0.36);
+      background: rgba(0, 0, 0, 0.4);
     }
 
     .hero-inner {
       grid-template-columns: 1fr;
       row-gap: 3rem;
-      padding-left: var(--gutter-mobile);
-      padding-right: var(--gutter-mobile);
     }
 
     .hero-visual {
-      height: 360px;
-      order: -1;
       display: none;
     }
 
@@ -237,11 +254,30 @@
       display: none;
     }
   }
-  
+
+  /* 💻 TABLETTE LANDSCAPE */
+  @media (min-width: 901px) and (max-width: 1024px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+      justify-items: center;
+    }
+
+    .hero-subtitle {
+      max-width: 600px;
+    }
+
+    .hero-visual {
+      display: none;
+    }
+
+    .hero-bottom-strip {
+      height: 60px;
+    }
+  }
 </style>
 
 <script>
-  // ✅ PRELOAD de l'image dans le <head> pour chargement prioritaire
   const preloadLink = document.createElement("link");
   preloadLink.rel = "preload";
   preloadLink.as = "image";

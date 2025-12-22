@@ -1,3 +1,4 @@
+<!-- ========== NAV.ASTRO ========== -->
 <nav class="nav transparent">
   <div class="nav-container">
     <a href="/" class="nav-logo" aria-label="Retour à l'accueil Habeprod">
@@ -344,21 +345,35 @@
     display: none;
   }
 
-  /* --- CORRECTION MENU MOBILE --- */
-  @media (max-width: 900px) {
+  /* 🖥️ DESKTOP - Overlay transparent */
+  @media (min-width: 1025px) {
+    .nav.transparent {
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.75),
+        rgba(0, 0, 0, 0.3)
+      );
+      backdrop-filter: blur(8px);
+    }
+  }
+
+  /* 📱 TABLETTE + MOBILE - Burger menu */
+  @media (max-width: 1024px) {
     .nav-container {
-      padding: 1.5rem var(--gutter-mobile);
+      padding: 1.5rem var(--gutter);
     }
 
+    /* Cache les liens du menu classique */
     .nav-links {
       position: fixed;
-      inset: 70px var(--gutter-mobile) auto var(--gutter-mobile);
+      inset: 70px var(--gutter) auto var(--gutter);
       flex-direction: column;
-      background: rgba(0, 0, 0, 0.9);
-      padding: 1.5rem 1.5rem 2rem;
+      background: rgba(0, 0, 0, 0.95);
+      padding: 2rem 1.5rem 2.5rem;
       border-radius: 16px;
       border: 1px solid rgba(255, 255, 255, 0.15);
       display: none;
+      gap: 1rem;
     }
 
     .nav.open .nav-links {
@@ -368,14 +383,18 @@
     .nav.open .nav-links a {
       color: #ffffff;
       opacity: 1;
+      font-size: 0.85rem;
     }
 
+    /* Cache les icônes sociales desktop */
     .nav-right .social-links {
       display: none;
     }
+
+    /* Affiche les icônes sociales dans le menu burger */
     .nav-social {
       display: block;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
       padding-top: 1.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.3);
     }
@@ -386,22 +405,21 @@
       justify-content: center;
     }
 
+    /* Affiche le burger */
     .burger {
       display: flex;
       align-items: center;
       justify-content: center;
     }
-  }
 
-  /* --- NOUVELLE OVERLAY POUR NAV TRANSPARENT EN DESKTOP --- */
-  @media (min-width: 901px) {
-    .nav.transparent {
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.75),
-        rgba(0, 0, 0, 0.3)
-      );
-      backdrop-filter: blur(8px);
+    /* Supprime le séparateur du logo en tablette/mobile */
+    .nav-logo {
+      padding-right: 0;
+      margin-right: 0;
+    }
+
+    .nav-logo::after {
+      display: none;
     }
   }
 </style>
