@@ -27,10 +27,11 @@
   --h2-mb: 1.5rem;
 }
 
-/* 📱 MOBILE LANDSCAPE */
+/* 📱 MOBILE LANDSCAPE - Marges latérales comme iPad Pro */
 @media (max-width: 767px) and (orientation: landscape) {
   :root {
-    --gutter: 1.5rem;
+    --layout-width: 480px;  /* ⭐ Largeur max = mobile portrait */
+    --gutter: 15%;           /* ⭐ Grandes marges comme About */
     --h2-size: 22px;
   }
   
