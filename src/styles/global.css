@@ -49,11 +49,11 @@
   }
 }
 
-/* 💻 TABLETTE LANDSCAPE */
-@media (min-width: 901px) and (max-width: 1100px) {
+/* 💻 TABLETTE LANDSCAPE (iPad Pro inclus) */
+@media (min-width: 901px) and (max-width: 1400px) {
   :root {
     --layout-width: 1200px;
-    --gutter: 4rem;  /* ⭐ Augmenté de 2.5rem à 4rem */
+    --gutter: 5rem;  /* ⭐ Encore plus de marge */
     --h2-size: 28px;
   }
 }
