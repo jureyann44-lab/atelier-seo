@@ -102,8 +102,8 @@
     z-index: 3;
   }
 
-  /* 📱 TABLETTE + MOBILE PORTRAIT */
-  @media (max-width: 900px) {
+  /* 📱 TABLETTE + MOBILE PORTRAIT (mais PAS mobile landscape) */
+  @media (max-width: 900px) and (orientation: portrait) {
     .about-inner {
       grid-template-columns: 1fr;
       row-gap: 2.5rem;
@@ -124,6 +124,22 @@
       opacity: 0 !important;
       visibility: hidden !important;
       height: 0 !important;
+    }
+  }
+
+  /* 📱 MOBILE PORTRAIT uniquement */
+  @media (max-width: 767px) and (orientation: portrait) {
+    .about-inner {
+      grid-template-columns: 1fr;
+      row-gap: 2.5rem;
+    }
+
+    .about-image {
+      order: -1;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      aspect-ratio: 4/5;
     }
   }
 
