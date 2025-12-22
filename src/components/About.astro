@@ -111,8 +111,8 @@
     .about-inner {
       grid-template-columns: 1fr;
       row-gap: 1rem;
-      padding-left: 15%;
-      padding-right: 15%;
+      padding-left: 15% !important;
+      padding-right: 15% !important;
       max-width: 100%;
     }
 
@@ -152,13 +152,11 @@
     }
   }
 
-  /* 📱 TABLETTE + MOBILE PORTRAIT (pas mobile landscape) */
+  /* 📱 TABLETTE + MOBILE PORTRAIT */
   @media (max-width: 900px) and (orientation: portrait) {
     .about-inner {
       grid-template-columns: 1fr;
       row-gap: 2.5rem;
-      padding-left: var(--gutter-mobile);
-      padding-right: var(--gutter-mobile);
     }
 
     .about-image {
@@ -171,14 +169,6 @@
 
     .about-bottom-strip {
       display: none !important;
-    }
-  }
-
-  /* 📱 TABLETTE LANDSCAPE - Grandes marges */
-  @media (min-width: 901px) and (max-width: 1400px) {
-    .about-inner {
-      padding-left: var(--gutter);
-      padding-right: var(--gutter);
     }
   }
 </style>
