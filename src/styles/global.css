@@ -120,33 +120,20 @@ section:not(.hero) {
   padding: 6rem 0;
 }
 
-/* 📱 MOBILE LANDSCAPE - Contenu centré avec marges (comme tablette) */
+/* 📱 MOBILE LANDSCAPE - Copyright spécifique */
 @media (max-width: 767px) and (orientation: landscape) {
-  :root {
-    --gutter: 3rem;  /* Marges fixes sur les côtés */
-    --layout-width: 400px;  /* Force la largeur mobile partout */
-    --h2-size: 22px;
-  }
-  
-  section:not(.hero) {
-    padding: 4rem 0;
-  }
-  
-  /* Applique à TOUS les conteneurs */
-  body > *,
-  section,
-  .container,
-  nav,
-  .hero-inner,
-  .about-inner,
-  .services-inner,
-  .projects-inner,
-  .projects-header,
-  .footer-content,
   .footer-bottom {
-    max-width: 400px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    background-color: #0a0a0a;  /* Fond noir */
+    max-width: 500px !important;  /* Un peu plus large */
+    margin: 0 auto;
+    padding-left: 2rem;  /* Moins de marge que 3rem */
+    padding-right: 2rem;
+    text-align: center;  /* Centre le texte */
+  }
+  
+  .footer-bottom p,
+  .footer-bottom * {
+    text-align: center;  /* Centre tout le contenu */
   }
 }
 
