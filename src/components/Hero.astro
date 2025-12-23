@@ -275,26 +275,24 @@
     }
   }
 
-  /* 📱 TABLETTE PORTRAIT SEULEMENT - Alignement gauche ET haut */
+  /* 📱 TABLETTE PORTRAIT - iPad Pro inclus */
   @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
     .hero {
-      align-items: flex-start !important;
-      padding-top: 9rem !important;
+      align-items: center !important; /* ✅ CENTRE verticalement */
+      padding-top: 7rem !important; /* ✅ Padding normal */
     }
 
     .hero-inner {
-      margin: 0 !important; /* ✅ RESET complet des marges */
+      margin: 0 !important;
       padding-left: var(--gutter) !important;
       padding-right: var(--gutter) !important;
       text-align: left !important;
       justify-items: start !important;
-      align-items: flex-start !important;
-      max-width: 100% !important; /* ✅ Prend toute la largeur */
+      align-items: center !important; /* ✅ CENTRE le contenu */
     }
 
     .hero-copy {
       text-align: left !important;
-      width: 100%;
     }
 
     .hero-kicker,
