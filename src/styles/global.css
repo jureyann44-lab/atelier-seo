@@ -93,14 +93,25 @@ img {
 }
 
 /* ===== ALIGNEMENT GLOBAL ===== */
-section:not(.hero) {
+section:not(.hero):not(.services-collage) {  /* ✅ MODIFIÉ - Ajoute :not(.services-collage) */
   padding: 6rem 0;
 }
 
 /* 📱 TABLETTE */
 @media (min-width: 768px) and (max-width: 1024px) {
-  section:not(.hero) {
+  section:not(.hero):not(.services-collage) {  /* ✅ MODIFIÉ - Ajoute :not(.services-collage) */
     padding: 5rem 0;
+  }
+}
+
+/* ✅ EXCEPTION SERVICES-COLLAGE - Padding 96px sauf mobile */
+.services-collage {
+  padding: 96px 0 !important;
+}
+
+@media (max-width: 900px) {
+  .services-collage {
+    padding: 0 !important;
   }
 }
 
@@ -196,8 +207,12 @@ p:last-child {
     --h2-size: 22px;
   }
   
-  section:not(.hero) {
+  section:not(.hero):not(.services-collage) {  /* ✅ MODIFIÉ - Ajoute :not(.services-collage) */
     padding: 4rem 0;
+  }
+  
+  .services-collage {  /* ✅ AJOUTÉ - Pas de padding en mobile paysage */
+    padding: 0 !important;
   }
   
   p {
