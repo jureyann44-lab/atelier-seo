@@ -67,7 +67,7 @@
   .services-collage {
     background: #000000;
     color: #ffffff;
-    padding: 96px 0; /* ✅ AJOUTÉ - Padding haut/bas 96px par défaut */
+    padding: 96px 0 !important;
   }
 
   .services-inner {
@@ -120,10 +120,9 @@
     margin-bottom: 0.4rem;
   }
 
-  /* 📱 MOBILE & TABLETTE - Pas de padding vertical */
   @media (max-width: 900px) {
     .services-collage {
-      padding: 0; /* ✅ AJOUTÉ - Enlève le padding sur mobile */
+      padding: 0 !important;
     }
 
     .services-inner {
@@ -132,10 +131,9 @@
     }
   }
 
-  /* 📱 MOBILE LANDSCAPE - Pas de padding vertical */
   @media (max-width: 932px) and (orientation: landscape) and (max-height: 500px) {
     .services-collage {
-      padding: 0; /* ✅ AJOUTÉ - Enlève le padding en mobile paysage */
+      padding: 0 !important;
     }
   }
 </style>
