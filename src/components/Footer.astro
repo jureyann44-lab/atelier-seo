@@ -1,3 +1,7 @@
+---
+import GoogleReviewsBadge from "./GoogleReviewsBadge.astro";
+---
+
 <footer>
   <div class="footer-content">
     <div class="footer-section-logo">
@@ -47,6 +51,16 @@
           </a>
         </li>
       </ul>
+    </div>
+
+    <!-- ✅ NOUVELLE SECTION - Avis Google -->
+    <div class="footer-section footer-reviews">
+      <h3>Nos avis</h3>
+      <GoogleReviewsBadge
+        rating={5.0}
+        reviewCount={24}
+        businessUrl="https://g.page/r/TON_LIEN_GOOGLE_BUSINESS"
+      />
     </div>
   </div>
 </footer>
@@ -154,6 +168,13 @@
     padding-right: 1.5rem;
     height: 100%;
     align-self: stretch;
+  }
+
+  /* ✅ Section avis Google */
+  .footer-reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
   }
 
   /* ✅ SECTION BLANCHE 80px SANS AUCUN PADDING */
