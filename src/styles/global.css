@@ -93,13 +93,13 @@ img {
 }
 
 /* ===== ALIGNEMENT GLOBAL ===== */
-section:not(.hero):not(.services-collage) {  /* ✅ MODIFIÉ - Ajoute :not(.services-collage) */
+section:not(.hero):not(.services-collage) {
   padding: 6rem 0;
 }
 
 /* 📱 TABLETTE */
 @media (min-width: 768px) and (max-width: 1024px) {
-  section:not(.hero):not(.services-collage) {  /* ✅ MODIFIÉ - Ajoute :not(.services-collage) */
+  section:not(.hero):not(.services-collage) {
     padding: 5rem 0;
   }
 }
@@ -123,7 +123,7 @@ section:not(.hero):not(.services-collage) {  /* ✅ MODIFIÉ - Ajoute :not(.serv
   padding-right: var(--gutter);
 }
 
-/* ✅ TOUS LES INNERS RESPONSIVE (AVEC about-inner) */
+/* ✅ TOUS LES INNERS RESPONSIVE */
 .hero-inner,
 .about-inner,
 .services-inner,
@@ -200,44 +200,57 @@ p:last-child {
   }
 }
 
-/* 📱 MOBILE LANDSCAPE - Contenu centré avec marges (UN SEUL MEDIA QUERY) */
-@media (max-width: 932px) and (orientation: landscape) and (max-height: 500px) {
+/* 📱 MOBILE LANDSCAPE - Couvre TOUS les smartphones (iPhone SE → Pixel 9 Pro XL) */
+@media (min-width: 667px) and (max-width: 960px) and (orientation: landscape) and (max-height: 450px) {
   :root {
-    --gutter: 3rem;
+    --gutter: 2rem;
     --h2-size: 22px;
   }
   
-  section:not(.hero):not(.services-collage) {  /* ✅ MODIFIÉ - Ajoute :not(.services-collage) */
-    padding: 4rem 0;
+  /* Padding réduit pour mobile paysage */
+  section:not(.hero):not(.services-collage) {
+    padding: 3rem 0;
   }
   
-  .services-collage {  /* ✅ AJOUTÉ - Pas de padding en mobile paysage */
+  .services-collage {
     padding: 0 !important;
   }
   
+  /* Texte plus compact */
   p {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
   }
   
-  /* Tous les conteneurs centrés à 400px */
+  /* Conteneurs avec largeur confortable */
   .hero-inner,
   .about-inner,
   .services-inner,
   .projects-inner,
   .projects-header,
   .footer-content {
-    max-width: 400px !important;
+    max-width: 90% !important;
     margin: 0 auto !important;
   }
   
-  /* Footer copyright spécifique */
+  /* Footer copyright adapté */
   .footer-bottom {
     background-color: #ffffff;
-    max-width: 500px !important;
+    max-width: 100% !important;
     margin: 0 auto !important;
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
     text-align: center;
     color: #0a0a0a;
+    font-size: 0.85rem;
+  }
+  
+  /* Titres adaptés */
+  h2,
+  .hero-title,
+  .section-title,
+  .services-title {
+    font-size: 20px !important;
+    margin-bottom: 1rem !important;
   }
 }
