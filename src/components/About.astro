@@ -13,7 +13,7 @@
         Communication, design & visibilité pour les entreprises du Mans
       </h2>
       <p class="about-body">
-        Chez <span>Habeprod</span>, nous accompagnons les <span
+        Chez <span>Habeprod</span>, nous accompagnons leas <span
           >entreprises du Mans</span
         > et de la <span>Sarthe</span> dans leurs projets de <span
           >communication digitale</span
@@ -102,8 +102,8 @@
     z-index: 3;
   }
 
-  /* 📱 MOBILE LANDSCAPE - Version portrait avec marges latérales */
-  @media (max-width: 767px) and (orientation: landscape) {
+  /* 📱 MOBILE LANDSCAPE - Aligné avec le reste du site */
+  @media (min-width: 667px) and (max-width: 960px) and (orientation: landscape) and (max-height: 450px) {
     .about {
       padding: 2rem 0;
     }
@@ -111,9 +111,10 @@
     .about-inner {
       grid-template-columns: 1fr;
       row-gap: 1rem;
-      padding-left: 15% !important;
-      padding-right: 15% !important;
-      max-width: 100%;
+      max-width: 90% !important;
+      margin: 0 auto !important;
+      padding-left: 2rem !important;
+      padding-right: 2rem !important;
     }
 
     .about-image {
@@ -136,14 +137,14 @@
     }
 
     .section-title {
-      font-size: 18px !important;
+      font-size: 20px !important;
       line-height: 1.15 !important;
       margin-bottom: 0.6rem !important;
     }
 
     .about-body {
-      font-size: 0.8rem;
-      line-height: 1.4;
+      font-size: 0.95rem;
+      line-height: 1.5;
       margin-bottom: 0.4rem;
     }
 
