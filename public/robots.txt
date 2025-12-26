@@ -1,0 +1,14 @@
+# robots.txt pour Habeprod - Agence de communication Le Mans
+
+User-agent: *
+Allow: /
+
+# Pages à ne pas indexer
+Disallow: /404
+Disallow: /search
+Disallow: /mentions-legales
+Disallow: /cgu
+
+# Sitemap (remplace par ton vrai domaine)
+Sitemap: https://habeprod.fr/sitemap.xml
+
