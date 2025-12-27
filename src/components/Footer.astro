@@ -80,7 +80,7 @@ import GoogleReviewsBadge from "./GoogleReviewsBadge.astro";
   footer {
     background: #020308;
     color: #ffffff;
-    height: 450px;
+    min-height: 450px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -90,7 +90,7 @@ import GoogleReviewsBadge from "./GoogleReviewsBadge.astro";
 
   .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2.5rem;
     align-items: stretch;
     max-width: var(--layout-width);
@@ -203,13 +203,30 @@ import GoogleReviewsBadge from "./GoogleReviewsBadge.astro";
     max-width: var(--layout-width);
   }
 
-  @media (max-width: 900px) {
+  /* 📱 TABLETTE - 2 colonnes */
+  @media (max-width: 1024px) and (min-width: 768px) {
+    .footer-content {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .footer-section-logo,
+    .footer-section-nav {
+      border-right: none;
+      padding-right: 0;
+    }
+  }
+
+  /* 📱 MOBILE - 1 colonne */
+  @media (max-width: 767px) {
     footer {
-      padding: 2rem var(--gutter-mobile);
+      min-height: auto;
+      padding: 3rem var(--gutter-mobile);
     }
 
     .footer-content {
-      gap: 2rem;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
     }
 
     .footer-section-logo,
