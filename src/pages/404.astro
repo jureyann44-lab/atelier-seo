@@ -1,0 +1,119 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="404 - Page introuvable | Habeprod"
+  description="La page que vous recherchez n'existe pas."
+  canonical="https://www.habeprod-agence.fr/404"
+>
+  <div class="error-container">
+    <div class="error-content">
+      <h1 class="error-code">404</h1>
+      <h2 class="error-title">Oups ! Page introuvable</h2>
+      <p class="error-message">
+        La page que vous cherchez semble avoir disparu dans les méandres du web.
+      </p>
+      <a href="/" class="error-cta"> Retour à l'accueil </a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .error-container {
+    min-height: 100vh;
+    width: 100%;
+    background: #020308;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .error-content {
+    text-align: center;
+    max-width: 600px;
+  }
+
+  .error-code {
+    font-size: clamp(120px, 20vw, 200px);
+    font-weight: 600;
+    color: #ff8a3c;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    animation: glitch 3s infinite;
+  }
+
+  @keyframes glitch {
+    0%,
+    96%,
+    100% {
+      text-shadow:
+        2px 2px 0 rgba(255, 138, 60, 0.3),
+        -2px -2px 0 rgba(255, 138, 60, 0.3);
+    }
+    97% {
+      text-shadow:
+        5px 5px 0 rgba(255, 138, 60, 0.5),
+        -5px -5px 0 rgba(255, 138, 60, 0.5);
+    }
+    98% {
+      text-shadow:
+        -5px 5px 0 rgba(255, 138, 60, 0.5),
+        5px -5px 0 rgba(255, 138, 60, 0.5);
+    }
+  }
+
+  .error-title {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 300;
+    color: #ffffff;
+    margin: 2rem 0 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .error-message {
+    font-size: clamp(16px, 2vw, 18px);
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+  }
+
+  .error-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    background: #ff8a3c;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(255, 138, 60, 0.3);
+  }
+
+  .error-cta:hover {
+    background: #e67730;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(255, 138, 60, 0.4);
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .error-container {
+      padding: 1.5rem;
+    }
+
+    .error-message {
+      margin-bottom: 2rem;
+    }
+
+    .error-cta {
+      padding: 0.875rem 2rem;
+      font-size: 0.95rem;
+    }
+  }
+</style>
