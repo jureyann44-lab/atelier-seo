@@ -1,5 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import SeoLayout from "../layouts/SeoLayout.astro";
 import Nav from "../components/Nav.astro";
 import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
@@ -14,9 +14,10 @@ import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 ---
 
-<Layout
+<SeoLayout
   title="Agence Web & SEO au Mans – Sites performants | Habeprod"
   description="Agence web au Mans spécialisée en création de sites performants, SEO local et stratégie digitale. Plus de 10 ans d'expérience. Devis gratuit."
+  canonical="https://www.habeprod-agence.fr/"
 >
   <Nav />
   <Hero />
@@ -28,7 +29,7 @@ import "../styles/global.css";
   <FAQ />
   <CTA />
   <Footer />
-</Layout>
+</SeoLayout>
 
 <script>
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
