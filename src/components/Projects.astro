@@ -56,7 +56,7 @@ const projects = [
               <p class="project-tag">{project.tag}</p>
               <h2 class="project-title">{project.title}</h2>
               <p class="project-desc">{project.desc}</p>
-              <a
+              
                 class="project-link"
                 href={project.link}
                 target="_blank"
@@ -163,6 +163,8 @@ const projects = [
     will-change: transform;
     transform: rotate(180deg);
     isolation: isolate;
+    align-self: flex-start;
+    height: fit-content;
   }
 
   .sticky-image {
@@ -193,6 +195,7 @@ const projects = [
     display: flex;
     flex-direction: column;
     gap: 5rem;
+    padding-bottom: 50vh;
   }
 
   .project-item {
