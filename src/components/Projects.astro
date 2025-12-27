@@ -3,14 +3,14 @@ const projects = [
   {
     tag: "SITE WEB – WORDPRESS",
     title: "Design Intérieur – Laure Mora",
-    desc: "Depuis près de 20 ans, Laure Mora accompagne ses clients dans la création d’intérieurs uniques, où design et personnalité s’harmonisent avec élégance. À l’écoute de vos envies, elle privilégie une approche sur mesure, mêlant tendances actuelles, matériaux authentiques et sensibilité personnelle. Chaque projet devient une aventure créative pour transformer votre intérieur en un lieu de vie chaleureux, inspirant et à votre image.",
+    desc: "Depuis près de 20 ans, Laure Mora accompagne ses clients dans la création d'intérieurs uniques, où design et personnalité s'harmonisent avec élégance. À l'écoute de vos envies, elle privilégie une approche sur mesure, mêlant tendances actuelles, matériaux authentiques et sensibilité personnelle. Chaque projet devient une aventure créative pour transformer votre intérieur en un lieu de vie chaleureux, inspirant et à votre image.",
     image: "/projet-laure-mora-habeprod.webp",
     link: "https://lauremora.fr/",
   },
   {
     tag: "SITE WEB – WORDPRESS",
     title: "Pierre.SPS Coordination Sécurité Protection de la Santé",
-    desc: "Spécialisée dans la coordination en matière de sécurité et de protection de la santé, notre entreprise intervient sur tous types de chantiers, du plus modeste au plus ambitieux, en Sarthe et dans les départements voisins. Portée par des valeurs humaines fortes, notre équipe mise sur l’écoute et la collaboration pour garantir des environnements de travail sûrs et conformes à la réglementation. Engagés dans une démarche RSE, nous œuvrons chaque jour pour une sécurité durable et responsable sur les sites de construction. Construisons ensemble un avenir plus sûr.",
+    desc: "Spécialisée dans la coordination en matière de sécurité et de protection de la santé, notre entreprise intervient sur tous types de chantiers, du plus modeste au plus ambitieux, en Sarthe et dans les départements voisins. Portée par des valeurs humaines fortes, notre équipe mise sur l'écoute et la collaboration pour garantir des environnements de travail sûrs et conformes à la réglementation. Engagés dans une démarche RSE, nous œuvrons chaque jour pour une sécurité durable et responsable sur les sites de construction. Construisons ensemble un avenir plus sûr.",
     image: "/projet-spspierre-habeprod.webp",
     link: "https://www.pierresps-lemans.fr/",
   },
@@ -56,7 +56,7 @@ const projects = [
               <p class="project-tag">{project.tag}</p>
               <h2 class="project-title">{project.title}</h2>
               <p class="project-desc">{project.desc}</p>
-              <a
+              
                 class="project-link"
                 href={project.link}
                 target="_blank"
@@ -163,6 +163,7 @@ const projects = [
     will-change: transform;
     transform: rotate(180deg);
     isolation: isolate;
+    align-self: start; /* ✅ AJOUTÉ - Permet à l'image de descendre */
   }
 
   .sticky-image {
