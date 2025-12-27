@@ -123,10 +123,11 @@ section:not(.hero):not(.services-collage) {
   padding-right: var(--gutter);
 }
 
-/* ✅ TOUS LES INNERS RESPONSIVE - SANS .projects-inner */
+/* ✅ TOUS LES INNERS RESPONSIVE */
 .hero-inner,
 .about-inner,
 .services-inner,
+.projects-inner,
 .projects-header,
 .footer-content,
 .footer-bottom {
@@ -222,6 +223,7 @@ p:last-child {
   .hero-inner,
   .about-inner,
   .services-inner,
+  .projects-inner,
   .projects-header,
   .footer-content {
     max-width: 90% !important;
