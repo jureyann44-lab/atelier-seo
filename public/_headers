@@ -1,9 +1,21 @@
-# /public/_headers
+# Security Headers pour habeprod-agence.fr
+# Place ce fichier dans /public/_headers
 
 /*
+  # Protection contre le clickjacking
   X-Frame-Options: SAMEORIGIN
+  
+  # Empêche le navigateur de deviner le type MIME
   X-Content-Type-Options: nosniff
+  
+  # Politique de référence sécurisée
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  
+  # Contrôle des permissions des API
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()
+  
+  # Force HTTPS sur tout le site (HSTS)
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.prod.website-files.com https://scripts.feedspring.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://habeprod-contact-form.agence-habeprod.workers.dev https://api.resend.com;
+  
+  # Content Security Policy - Protection XSS
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.prod.website-files.com https://scripts.feedspring.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://habeprod-contact-form.agence-habeprod.workers.dev https://api.resend.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';
