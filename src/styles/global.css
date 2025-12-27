@@ -104,7 +104,7 @@ section:not(.hero):not(.services-collage) {
   }
 }
 
-/* ✅ EXCEPTION SERVICES-COLLAGE - Padding 96px sauf mobile */
+/* ✅ EXCEPTION SERVICES-COLLAGE - Padding 96px desktop/tablette, 0 sur mobile */
 .services-collage {
   padding: 96px 0 !important;
 }
@@ -210,10 +210,6 @@ p:last-child {
   /* Padding réduit pour mobile paysage */
   section:not(.hero):not(.services-collage) {
     padding: 3rem 0;
-  }
-  
-  .services-collage {
-    padding: 0 !important;
   }
   
   /* Texte plus compact */
