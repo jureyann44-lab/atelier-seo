@@ -4,9 +4,17 @@ import CookieBanner from "../components/CookieBanner.astro";
 interface Props {
   title: string;
   description: string;
+  canonical?: string;
 }
 
-const { title, description } = Astro.props;
+const {
+  title,
+  description,
+  canonical = "https://www.habeprod-agence.fr/",
+} = Astro.props;
+
+const ogImage =
+  "https://cdn.prod.website-files.com/681b6b36dcb0f115f4d39f76/681c83218f79910e7d6aff03_image-hero.webp";
 ---
 
 <!doctype html>
@@ -16,39 +24,22 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <link rel="canonical" href={canonical} />
 
     <!-- ✅ BALISES OPEN GRAPH -->
-    <meta
-      property="og:title"
-      content="Habeprod – Agence de communication au Mans"
-    />
-    <meta
-      property="og:description"
-      content="Conçois un site web qui performe, booste ton SEO et déploie ta visibilité grâce à Habeprod, agence de communication au Mans."
-    />
-    <meta
-      property="og:image"
-      content="https://cdn.prod.website-files.com/681b6b36dcb0f115f4d39f76/681c83218f79910e7d6aff03_image-hero.webp"
-    />
-    <meta property="og:url" content="https://www.habeprod-agence.fr/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Habeprod" />
     <meta property="og:locale" content="fr_FR" />
 
     <!-- ✅ TWITTER CARD -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Habeprod – Agence de communication au Mans"
-    />
-    <meta
-      name="twitter:description"
-      content="Conçois un site web qui performe, booste ton SEO, et fais décoller ta stratégie digitale au Mans et en France."
-    />
-    <meta
-      name="twitter:image"
-      content="https://cdn.prod.website-files.com/681b6b36dcb0f115f4d39f76/681c83218f79910e7d6aff03_image-hero.webp"
-    />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -86,54 +77,50 @@ const { title, description } = Astro.props;
     </style>
 
     <!-- ✅ DONNÉES STRUCTURÉES SCHEMA.ORG -->
-    <script type="application/ld+json">
-      {
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "@id": "https://habeprod-agence.fr/#localbusiness",
-        "name": "Habeprod – Agence de communication au Mans",
-        "legalName": "HabeProd",
-        "description": "Agence spécialisée en communication visuelle, digitale, print et création de site web au Mans",
-        "url": "https://habeprod-agence.fr/",
-        "logo": "https://cdn.prod.website-files.com/681b6b36dcb0f115f4d39f76/681c8bff61b0c16e5eae49aa_logo-version-2.webp",
-        "image": "https://cdn.prod.website-files.com/681b6b36dcb0f115f4d39f76/681c8bff61b0c16e5eae49aa_logo-version-2.webp",
-        "foundingDate": "2018",
-        "priceRange": "$$",
-        "telephone": "+33627252568",
-        "address": {
+        name: "Habeprod – Agence de communication au Mans",
+        legalName: "HabeProd",
+        description:
+          "Agence spécialisée en communication visuelle, digitale, print et création de site web au Mans",
+        url: "https://habeprod-agence.fr/",
+        logo: ogImage,
+        image: ogImage,
+        foundingDate: "2018",
+        priceRange: "$$",
+        telephone: "+33627252568",
+        address: {
           "@type": "PostalAddress",
-          "streetAddress": "35 rue d'Iena",
-          "postalCode": "72000",
-          "addressLocality": "Le Mans",
-          "addressCountry": "FR"
+          streetAddress: "35 rue d'Iena",
+          postalCode: "72000",
+          addressLocality: "Le Mans",
+          addressCountry: "FR",
         },
-        "geo": {
+        geo: {
           "@type": "GeoCoordinates",
-          "latitude": 48.003386,
-          "longitude": 0.199563
+          latitude: 48.003386,
+          longitude: 0.199563,
         },
-        "openingHoursSpecification": [
+        openingHoursSpecification: [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-              "Monday",
-              "Tuesday",
-              "Wednesday",
-              "Thursday",
-              "Friday"
-            ],
-            "opens": "09:00",
-            "closes": "18:00"
-          }
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "09:00",
+            closes: "18:00",
+          },
         ],
-        "sameAs": [
+        sameAs: [
           "https://www.facebook.com/habeprod",
           "https://www.instagram.com/habeprod",
           "https://www.linkedin.com/company/habeprod",
-          "https://discord.gg/gna3b2YNUq"
-        ]
-      }
-    </script>
+          "https://discord.gg/gna3b2YNUq",
+        ],
+      })}
+    />
   </head>
   <body>
     <slot />
@@ -151,3 +138,7 @@ const { title, description } = Astro.props;
     </script>
   </body>
 </html>
+
+<style is:global>
+  @import "../styles/global.css";
+</style>
