@@ -1,252 +1,407 @@
-/* ===== RESET & VARIABLES ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+---
+const projects = [
+  {
+    tag: "SITE WEB – WORDPRESS",
+    title: "Design Intérieur – Laure Mora",
+    desc: "Depuis près de 20 ans, Laure Mora accompagne ses clients dans la création d'intérieurs uniques, où design et personnalité s'harmonisent avec élégance. À l'écoute de vos envies, elle privilégie une approche sur mesure, mêlant tendances actuelles, matériaux authentiques et sensibilité personnelle. Chaque projet devient une aventure créative pour transformer votre intérieur en un lieu de vie chaleureux, inspirant et à votre image.",
+    image: "/projet-laure-mora-habeprod.webp",
+    link: "https://lauremora.fr/",
+  },
+  {
+    tag: "SITE WEB – WORDPRESS",
+    title: "Pierre.SPS Coordination Sécurité Protection de la Santé",
+    desc: "Spécialisée dans la coordination en matière de sécurité et de protection de la santé, notre entreprise intervient sur tous types de chantiers, du plus modeste au plus ambitieux, en Sarthe et dans les départements voisins. Portée par des valeurs humaines fortes, notre équipe mise sur l'écoute et la collaboration pour garantir des environnements de travail sûrs et conformes à la réglementation. Engagés dans une démarche RSE, nous œuvrons chaque jour pour une sécurité durable et responsable sur les sites de construction. Construisons ensemble un avenir plus sûr.",
+    image: "/projet-spspierre-habeprod.webp",
+    link: "https://www.pierresps-lemans.fr/",
+  },
+  {
+    tag: "CATALOGUE – PRINT",
+    title: "Apothical – Groupement pharmaceutique",
+    desc: "Apothical s'engage à vous proposer des produits de parapharmacie de grandes marques au meilleur prix, des conseils d'experts santé et des services personnalisés et innovants.",
+    image: "/projet-apotihical-habeprod.webp",
+    link: "https://www.apothical.fr/",
+  },
+];
+---
 
-:root {
-  --color-dark: #0a0a0a;
-  --color-light: #ffffff;
-  --color-accent: #ff8a3c;
-  --color-gray: #666;
-  --color-border: #e5e5e5;
-  --font-main: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  
-  /* 📱 MOBILE PAR DÉFAUT */
-  --layout-width: 100%;
-  --nav-height: 70px;
-  --transition-speed: 0.3s;
-  --project-fade-duration: 1.2s;
-  --gutter: 1.5rem;
-  --gutter-mobile: 1.5rem;
-  --h2-size: 24px;
-  --h2-weight: 300;
-  --h2-line: 1.2;
-  --h2-letter: 0.01em;
-  --h2-mb: 1.5rem;
-}
+<section id="projects" class="projects-section">
+  <div class="projects-inner">
+    <div class="sticky-image-wrapper">
+      <img
+        class="sticky-image sticky-image--back"
+        src={projects[0].image}
+        alt={projects[0].title}
+        loading="lazy"
+      />
+      <img
+        class="sticky-image sticky-image--front"
+        src={projects[0].image}
+        alt={projects[0].title}
+        loading="lazy"
+      />
+    </div>
 
-/* 📱 TABLETTE PORTRAIT */
-@media (min-width: 768px) and (max-width: 900px) {
-  :root {
-    --layout-width: 1200px;
-    --gutter: 2rem;
-    --gutter-mobile: 2rem;
-    --h2-size: 28px;
+    <div class="projects-list">
+      {
+        projects.map((project, index) => (
+          <article
+            class={`project-item ${index === 0 ? "is-active" : ""}`}
+            data-image={project.image}
+            data-index={index}
+          >
+            <div class="project-mobile-image">
+              <img src={project.image} alt={project.title} loading="lazy" />
+            </div>
+            <div class="project-content">
+              <p class="project-tag">{project.tag}</p>
+              <h2 class="project-title">{project.title}</h2>
+              <p class="project-desc">{project.desc}</p>
+              <a
+                class="project-link"
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Découvrir le site →
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+
+  <header class="projects-header">
+    <span class="projects-label">SERVICES</span>
+    <div class="projects-progress">
+      <div class="projects-progress-fill"></div>
+    </div>
+    <button
+      class="projects-skip"
+      type="button"
+      aria-label="Passer à la section contact"
+    >
+      <span>SKIP</span><span aria-hidden="true">↓</span>
+    </button>
+  </header>
+</section>
+
+<style>
+  .projects-section {
+    background: #000;
+    color: #fff;
+    position: relative;
   }
-}
 
-/* 💻 TABLETTE LANDSCAPE (iPad Pro inclus) */
-@media (min-width: 901px) and (max-width: 1400px) {
-  :root {
-    --layout-width: 1200px;
-    --gutter: 5rem;
-    --h2-size: 28px;
+  .projects-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 10%;
   }
-}
 
-/* 🖥️ DESKTOP (à partir de 1401px) */
-@media (min-width: 1401px) {
-  :root {
-    --layout-width: 1400px;
-    --gutter: 3rem;
-    --h2-size: 30px;
-  }
-}
-
-/* 🖥️ ULTRA-GRAND ECRANS */
-@media (min-width: 1920px) {
-  :root {
-    --layout-width: 1600px;
-    --gutter: 4rem;
-  }
-}
-
-/* ===== ACCESSIBILITÉ ===== */
-.visually-hidden {
-  position: absolute !important;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-body {
-  font-family: var(--font-main);
-  line-height: 1.6;
-  color: var(--color-dark);
-  overflow-x: hidden;
-}
-
-a {
-  color: inherit;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* ===== ALIGNEMENT GLOBAL ===== */
-section:not(.hero):not(.services-collage) {
-  padding: 6rem 0;
-}
-
-/* 📱 TABLETTE */
-@media (min-width: 768px) and (max-width: 1024px) {
-  section:not(.hero):not(.services-collage) {
-    padding: 5rem 0;
-  }
-}
-
-/* ✅ EXCEPTION SERVICES-COLLAGE - Padding 96px desktop/tablette, 0 sur mobile */
-.services-collage {
-  padding: 96px 0 !important;
-}
-
-@media (max-width: 900px) {
-  .services-collage {
-    padding: 0 !important;
-  }
-}
-
-/* ✅ CONTAINER UNIFIÉ + RESPONSIVE */
-.container {
-  max-width: var(--layout-width);
-  margin: 0 auto;
-  padding-left: var(--gutter);
-  padding-right: var(--gutter);
-}
-
-/* ✅ TOUS LES INNERS RESPONSIVE */
-.hero-inner,
-.about-inner,
-.services-inner,
-.projects-inner,
-.projects-header,
-.footer-content,
-.footer-bottom {
-  max-width: var(--layout-width);
-  margin: 0 auto;
-  padding-left: var(--gutter);
-  padding-right: var(--gutter);
-}
-
-/* ===== TITRES UNIFIÉS ===== */
-h2,
-.hero-title,
-.section-title,
-.services-title,
-.project-title,
-.cta h2 {
-  font-size: var(--h2-size) !important;
-  font-weight: var(--h2-weight) !important;
-  line-height: var(--h2-line) !important;
-  letter-spacing: var(--h2-letter) !important;
-  margin-bottom: var(--h2-mb) !important;
-}
-
-p {
-  font-size: 1.1rem;
-  margin-bottom: 2.5rem;
-}
-
-/* 📱 TABLETTE - Ajuste la taille du texte */
-@media (min-width: 768px) and (max-width: 1024px) {
-  p {
-    font-size: 1.05rem;
-    margin-bottom: 2rem;
-  }
-}
-
-p:last-child {
-  margin-bottom: 0;
-}
-
-/* ===== SHADOW SIMPLE - PAS D'ANIMATIONS COMPLEXES ===== */
-.hero-cta,
-.btn-appel,
-.project-link,
-.social-links a,
-.social-links-mobile a {
-  transition: all var(--transition-speed);
-}
-
-/* Tous les boutons - Effet shadow + lift */
-.hero-cta,
-.btn-appel,
-.project-link {
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
-
-.hero-cta:hover,
-.btn-appel:hover,
-.project-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-}
-
-/* 📱 MOBILE - Désactive les effets hover pour éviter les bugs tactiles */
-@media (hover: none) and (pointer: coarse) {
-  .hero-cta:hover,
-  .btn-appel:hover,
-  .project-link:hover {
-    transform: none;
-  }
-}
-
-/* 📱 MOBILE LANDSCAPE - Couvre TOUS les smartphones (iPhone SE → Pixel 9 Pro XL) */
-@media (min-width: 667px) and (max-width: 960px) and (orientation: landscape) and (max-height: 450px) {
-  :root {
-    --gutter: 2rem;
-    --h2-size: 22px;
-  }
-  
-  /* Padding réduit pour mobile paysage */
-  section:not(.hero):not(.services-collage) {
-    padding: 3rem 0;
-  }
-  
-  /* Texte plus compact */
-  p {
-    font-size: 0.95rem;
-    margin-bottom: 1.25rem;
-    line-height: 1.5;
-  }
-  
-  /* Conteneurs avec largeur confortable */
-  .hero-inner,
-  .about-inner,
-  .services-inner,
-  .projects-inner,
-  .projects-header,
-  .footer-content {
-    max-width: 90% !important;
-    margin: 0 auto !important;
-  }
-  
-  /* Footer copyright adapté */
-  .footer-bottom {
-    background-color: #ffffff;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    padding: 1rem 2rem;
-    text-align: center;
-    color: #0a0a0a;
+  .projects-label {
     font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
-  
-  /* Titres adaptés */
-  h2,
-  .hero-title,
-  .section-title,
-  .services-title {
-    font-size: 20px !important;
-    margin-bottom: 1rem !important;
+
+  .projects-progress {
+    flex: 1;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.18);
+    position: relative;
+    overflow: hidden;
   }
-}
+
+  .projects-progress-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: #ffffff;
+    transition: width 0.6s ease-out;
+  }
+
+  .projects-skip {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+    transition: opacity var(--transition-speed);
+  }
+
+  .projects-skip:hover {
+    opacity: 0.7;
+  }
+
+  .projects-inner {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+    gap: 4rem;
+    align-items: flex-start;
+  }
+
+  .sticky-image-wrapper {
+    position: sticky;
+    top: 120px;
+    width: 80%;
+    max-width: 712px;
+    aspect-ratio: 1 / 1;
+    background: #1f2933;
+    overflow: hidden;
+    border-radius: 8px;
+    will-change: transform;
+    transform: rotate(180deg);
+    isolation: isolate;
+  }
+
+  .sticky-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    will-change: transform, opacity;
+    transform: scale(1.42) rotate(-180deg);
+    transition: opacity var(--project-fade-duration) ease-in-out;
+  }
+
+  .sticky-image--back {
+    opacity: 1;
+  }
+
+  .sticky-image--front {
+    opacity: 0;
+  }
+
+  .sticky-image--front.is-visible {
+    opacity: 1;
+  }
+
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  .project-item {
+    opacity: 0.4;
+    transform: translateY(20px);
+    transition:
+      opacity 0.35s ease-out,
+      transform 0.35s ease-out;
+    min-height: 50vh;
+  }
+
+  .project-item.is-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Image mobile cachée en desktop */
+  .project-mobile-image {
+    display: none;
+  }
+
+  .project-tag {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.75rem;
+  }
+
+  .project-desc {
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.25rem;
+    padding: 0.75rem 1.4rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    font-size: 0.95rem;
+    text-decoration: none;
+    color: #ffffff;
+    transition:
+      transform 0.25s ease,
+      opacity var(--transition-speed);
+    --outline-hover-color: rgba(255, 255, 255, 1);
+  }
+
+  .project-link:hover {
+    opacity: 0.95;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 900px) {
+    .projects-inner {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    /* Cacher l'image sticky en mobile */
+    .sticky-image-wrapper {
+      display: none;
+    }
+
+    .projects-list {
+      gap: 4rem;
+    }
+
+    .project-item {
+      min-height: auto;
+      opacity: 1;
+      transform: translateY(0);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Afficher l'image mobile */
+    .project-mobile-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #1f2933;
+    }
+
+    .project-mobile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  const section = document.querySelector(".projects-section");
+  const items = Array.from(document.querySelectorAll(".project-item"));
+  const stickyWrapper = document.querySelector(".sticky-image-wrapper");
+  const stickyBack = document.querySelector(".sticky-image--back");
+  const stickyFront = document.querySelector(".sticky-image--front");
+  const progressFill = document.querySelector(".projects-progress-fill");
+  const skipButton = document.querySelector(".projects-skip");
+
+  let ticking = false;
+  let swapTimeout = null;
+
+  function requestTick() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      handleRotation();
+      ticking = false;
+    });
+  }
+
+  function handleRotation() {
+    if (!section || !stickyWrapper || !stickyBack || !stickyFront) return;
+
+    const rect = section.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const ENTER_THRESHOLD = 0.2;
+    const EXIT_THRESHOLD = 0.2;
+    const sectionHeight = rect.height;
+    const start = viewportHeight;
+    const end = -sectionHeight;
+    const totalDistance = start - end;
+
+    let rawProgress = (start - rect.top) / totalDistance;
+    rawProgress = Math.max(0, Math.min(1, rawProgress));
+
+    if (progressFill) progressFill.style.width = `${rawProgress * 100}%`;
+
+    if (rawProgress < ENTER_THRESHOLD || rawProgress > 1 - EXIT_THRESHOLD) {
+      stickyWrapper.style.transform = "rotate(180deg)";
+      stickyBack.style.transform = "scale(1.42) rotate(-180deg)";
+      stickyFront.style.transform = "scale(1.42) rotate(-180deg)";
+      return;
+    }
+
+    const activeRange = 1 - ENTER_THRESHOLD - EXIT_THRESHOLD;
+    let progress = (rawProgress - ENTER_THRESHOLD) / activeRange;
+    progress = Math.max(0, Math.min(1, progress));
+    const rotation = 180 + progress * 360;
+
+    stickyWrapper.style.transform = `rotate(${rotation}deg)`;
+    stickyBack.style.transform = `scale(1.42) rotate(${-rotation}deg)`;
+    stickyFront.style.transform = `scale(1.42) rotate(${-rotation}deg)`;
+  }
+
+  function crossfadeTo(newSrc) {
+    if (!newSrc || !stickyBack || !stickyFront) return;
+    if (stickyBack.src.includes(newSrc)) return;
+
+    if (swapTimeout) clearTimeout(swapTimeout);
+
+    const preloader = new Image();
+    preloader.onload = () => {
+      stickyFront.classList.remove("is-visible");
+      stickyFront.src = newSrc;
+
+      requestAnimationFrame(() => stickyFront.classList.add("is-visible"));
+
+      const durStr = getComputedStyle(document.documentElement)
+        .getPropertyValue("--project-fade-duration")
+        .trim()
+        .replace("s", "");
+      const dur = parseFloat(durStr);
+      const ms = Number.isFinite(dur) ? dur * 1000 : 1200;
+
+      swapTimeout = setTimeout(() => {
+        stickyBack.src = newSrc;
+        stickyFront.classList.remove("is-visible");
+      }, ms);
+    };
+
+    preloader.src = newSrc;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+
+        items.forEach((p) => p.classList.remove("is-active"));
+        el.classList.add("is-active");
+
+        const newSrc = el.dataset.image;
+        if (newSrc) crossfadeTo(newSrc);
+      });
+    },
+    { rootMargin: "-40% 0px -40% 0px", threshold: 0.1 }
+  );
+
+  items.forEach((item) => observer.observe(item));
+
+  window.addEventListener("scroll", requestTick, { passive: true });
+  window.addEventListener("resize", requestTick, { passive: true });
+
+  skipButton?.addEventListener("click", () => {
+    document
+      .querySelector("#contact")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  handleRotation();
+</script>
