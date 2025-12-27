@@ -6,6 +6,8 @@
     loading="eager"
     fetchpriority="high"
     decoding="async"
+    width="1920"
+    height="1080"
   />
 
   <div class="hero-inner">
@@ -278,8 +280,8 @@
   /* 📱 TABLETTE PORTRAIT - iPad Pro inclus */
   @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
     .hero {
-      align-items: center !important; /* ✅ CENTRE verticalement */
-      padding-top: 7rem !important; /* ✅ Padding normal */
+      align-items: center !important;
+      padding-top: 7rem !important;
     }
 
     .hero-inner {
@@ -288,7 +290,7 @@
       padding-right: var(--gutter) !important;
       text-align: left !important;
       justify-items: start !important;
-      align-items: center !important; /* ✅ CENTRE le contenu */
+      align-items: center !important;
     }
 
     .hero-copy {
@@ -306,6 +308,7 @@
       margin-right: auto !important;
     }
   }
+
   /* 💻 TABLETTE LANDSCAPE */
   @media (min-width: 901px) and (max-width: 1100px) {
     .hero-inner {
