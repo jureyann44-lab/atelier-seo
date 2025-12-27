@@ -57,13 +57,21 @@ const { title, description } = Astro.props;
       rel="stylesheet"
     />
 
-    <!-- ✅ STYLE ANTI-OVERSCROLL -->
+    <!-- ✅ STYLE ANTI-OVERSCROLL + ANTI-HORIZONTAL -->
     <style>
-      html,
-      body {
-        overscroll-behavior-y: none;
-        touch-action: pan-x pan-y;
+      html {
+        overflow-x: hidden;
+        overscroll-behavior: none;
       }
+
+      body {
+        overflow-x: hidden;
+        overscroll-behavior: none;
+        touch-action: pan-y;
+        position: relative;
+        width: 100%;
+      }
+
       .visually-hidden {
         position: absolute;
         width: 1px;
