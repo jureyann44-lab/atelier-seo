@@ -1,7 +1,4 @@
 ---
-// GoogleReviewsBadge.astro
-// Badge Google Avis à placer dans le footer
-
 interface Props {
   rating?: number;
   reviewCount?: number;
@@ -10,47 +7,44 @@ interface Props {
 
 const {
   rating = 5.0,
-  reviewCount = 24,
-  businessUrl = "https://g.page/r/VOTRE_LIEN_GOOGLE_BUSINESS", // ⚠️ REMPLACE PAR TON LIEN
+  reviewCount = 13,
+  businessUrl = "https://share.google.com/cqRIHTQP3u9IWAiJ5",
 } = Astro.props;
 
 const stars = Array.from({ length: 5 }, (_, i) => i < Math.floor(rating));
 ---
 
 <div class="google-badge">
-  <a
-    href={businessUrl}
-    target="_blank"
-    rel="noopener noreferrer"
-    class="google-badge-link"
-    aria-label={`Voir nos ${reviewCount} avis Google avec ${rating} étoiles`}
+  href={businessUrl}
+  target="_blank" rel="noopener noreferrer" class="google-badge-link" aria-label={
+    `Voir nos ${reviewCount} avis Google avec ${rating} étoiles`
+  }
   >
-    <div class="google-badge-content">
-      <img
-        src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_74x24dp.png"
-        alt="Google"
-        class="google-logo"
-        width="74"
-        height="24"
-        loading="lazy"
-      />
+  <div class="google-badge-content">
+    <img
+      src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_74x24dp.png"
+      alt="Google"
+      class="google-logo"
+      width="74"
+      height="24"
+      loading="lazy"
+    />
 
-      <div class="stars">
-        {
-          stars.map((filled) => (
-            <span class="star" aria-hidden="true">
-              {filled ? "★" : "☆"}
-            </span>
-          ))
-        }
-      </div>
-
-      <div class="rating-text">
-        <span class="rating-number">{rating.toFixed(1)}</span>
-        <span class="review-count">({reviewCount} avis)</span>
-      </div>
+    <div class="stars">
+      {
+        stars.map((filled) => (
+          <span class="star" aria-hidden="true">
+            {filled ? "★" : "☆"}
+          </span>
+        ))
+      }
     </div>
-  </a>
+
+    <div class="rating-text">
+      <span class="rating-number">{rating.toFixed(1)}</span>
+      <span class="review-count">({reviewCount} avis)</span>
+    </div>
+  </div>
 </div>
 
 <style>
@@ -115,7 +109,6 @@ const stars = Array.from({ length: 5 }, (_, i) => i < Math.floor(rating));
     color: #5f6368;
   }
 
-  /* 📱 Mobile */
   @media (max-width: 640px) {
     .google-badge-link {
       padding: 0.6rem 1rem;
