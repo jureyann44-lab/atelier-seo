@@ -14,12 +14,13 @@ const {
 const stars = Array.from({ length: 5 }, (_, i) => i < Math.floor(rating));
 ---
 
-<div class="google-badge">
+<a
+  class="google-badge-link"
   href={businessUrl}
-  target="_blank" rel="noopener noreferrer" class="google-badge-link" aria-label={
-    `Voir nos ${reviewCount} avis Google avec ${rating} étoiles`
-  }
-  >
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={`Voir nos ${reviewCount} avis Google avec ${rating} étoiles`}
+>
   <div class="google-badge-content">
     <img
       src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_74x24dp.png"
@@ -45,15 +46,11 @@ const stars = Array.from({ length: 5 }, (_, i) => i < Math.floor(rating));
       <span class="review-count">({reviewCount} avis)</span>
     </div>
   </div>
-</div>
+</a>
 
 <style>
-  .google-badge {
-    display: inline-block;
-  }
-
   .google-badge-link {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     padding: 0.75rem 1.25rem;
     background: #ffffff;
