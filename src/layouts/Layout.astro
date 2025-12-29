@@ -1,23 +1,6 @@
 ---
-// Props explicites, non optionnelles pour éviter les erreurs
-interface Props {
-  title: string;
-  description: string;
-  canonical: string;
-}
-
-// On récupère Astro.props avec fallback
-const props: Props = {
-  title:
-    Astro.props.title ||
-    "Agence Web & SEO au Mans – Sites performants | Habeprod",
-  description:
-    Astro.props.description ||
-    "Agence web au Mans spécialisée en création de sites performants, SEO local et stratégie digitale.",
-  canonical: Astro.props.canonical || "https://www.habeprod-agence.fr/",
-};
-
-const { title, description, canonical } = props;
+const { title, description, canonical } = Astro.props;
+import CookieBanner from "../components/CookieBanner.astro";
 
 const ogImage =
   "https://cdn.prod.website-files.com/681b6b36dcb0f115f4d39f76/681c83218f79910e7d6aff03_image-hero.webp";
@@ -28,11 +11,11 @@ const ogImage =
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
     <title>{title}</title>
+    <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
-    <!-- OPEN GRAPH -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
@@ -41,13 +24,11 @@ const ogImage =
     <meta property="og:site_name" content="Habeprod" />
     <meta property="og:locale" content="fr_FR" />
 
-    <!-- TWITTER CARD -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -58,6 +39,7 @@ const ogImage =
 
   <body>
     <slot />
+    <CookieBanner />
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
