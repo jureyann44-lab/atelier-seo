@@ -1,24 +1,21 @@
 ---
-import CookieBanner from "../components/CookieBanner.astro";
-
 const {
   title = "Agence Web & SEO au Mans – Sites performants | Habeprod",
   description = "Agence web au Mans spécialisée en création de sites performants, SEO local et stratégie digitale. Plus de 10 ans d'expérience. Devis gratuit.",
   canonical = "https://www.habeprod-agence.fr/",
   ogImage = "https://cdn.prod.website-files.com/681b6b36dcb0f115f4d39f76/681c83218f79910e7d6aff03_image-hero.webp",
-  faq = null,
+  faq = {},
 } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="fr">
   <head>
-    <!-- META SEO -->
-    <title>{title}</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <title>{title}</title>
 
     <!-- OPEN GRAPH -->
     <meta property="og:title" content={title} />
@@ -49,7 +46,6 @@ const {
         overflow-x: hidden;
         overscroll-behavior: none;
       }
-
       body {
         overflow-x: hidden;
         overscroll-behavior: none;
@@ -57,7 +53,6 @@ const {
         position: relative;
         width: 100%;
       }
-
       .visually-hidden {
         position: absolute;
         width: 1px;
@@ -71,7 +66,7 @@ const {
       }
     </style>
 
-    <!-- SCHEMA LOCAL BUSINESS -->
+    <!-- SCHEMA LOCAL BUSINESS + FAQ -->
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
@@ -116,25 +111,35 @@ const {
       })}
     />
 
-    <!-- SCHEMA FAQ (optionnel) -->
-    {
-      faq && (
-        <script type="application/ld+json" set:html={JSON.stringify(faq)} />
-      )
-    }
+    <script type="application/ld+json" set:html={JSON.stringify(faq)} />
   </head>
 
   <body>
     <slot />
 
-    <!-- ✅ Bandeau cookies RGPD -->
-    <CookieBanner />
-
-    <!-- ✅ SÉCURITÉ LIENS EXTERNES -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("DOMContentLoaded", () => {
+        // ✅ Sécurité liens externes
         document.querySelectorAll('a[target="_blank"]').forEach((link) => {
           link.setAttribute("rel", "noopener noreferrer");
+        });
+
+        // ✅ Smooth scroll pour les liens d'ancrage
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", (e) => {
+            const href = anchor.getAttribute("href");
+            if (!href || href === "#") return;
+            const target = document.querySelector(href);
+            if (!target) return;
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+        });
+
+        // ✅ Déclenchement des animations après DOM prêt
+        const animatedElements = document.querySelectorAll(".animate-on-load");
+        animatedElements.forEach((el) => {
+          el.classList.add("start-animation");
         });
       });
     </script>

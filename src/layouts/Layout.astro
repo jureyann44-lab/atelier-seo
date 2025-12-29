@@ -1,17 +1,23 @@
 ---
-import CookieBanner from "../components/CookieBanner.astro";
-
+// Props explicites, non optionnelles pour éviter les erreurs
 interface Props {
   title: string;
   description: string;
-  canonical?: string;
+  canonical: string;
 }
 
-const {
-  title,
-  description,
-  canonical = "https://www.habeprod-agence.fr/",
-} = Astro.props;
+// On récupère Astro.props avec fallback
+const props: Props = {
+  title:
+    Astro.props.title ||
+    "Agence Web & SEO au Mans – Sites performants | Habeprod",
+  description:
+    Astro.props.description ||
+    "Agence web au Mans spécialisée en création de sites performants, SEO local et stratégie digitale.",
+  canonical: Astro.props.canonical || "https://www.habeprod-agence.fr/",
+};
+
+const { title, description, canonical } = props;
 
 const ogImage =
   "https://cdn.prod.website-files.com/681b6b36dcb0f115f4d39f76/681c83218f79910e7d6aff03_image-hero.webp";
@@ -26,7 +32,7 @@ const ogImage =
     <title>{title}</title>
     <link rel="canonical" href={canonical} />
 
-    <!-- ✅ BALISES OPEN GRAPH -->
+    <!-- OPEN GRAPH -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
@@ -35,102 +41,26 @@ const ogImage =
     <meta property="og:site_name" content="Habeprod" />
     <meta property="og:locale" content="fr_FR" />
 
-    <!-- ✅ TWITTER CARD -->
+    <!-- TWITTER CARD -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
+    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-
-    <!-- ✅ STYLE ANTI-OVERSCROLL + ANTI-HORIZONTAL -->
-    <style>
-      html {
-        overflow-x: hidden;
-        overscroll-behavior: none;
-      }
-
-      body {
-        overflow-x: hidden;
-        overscroll-behavior: none;
-        touch-action: pan-y;
-        position: relative;
-        width: 100%;
-      }
-
-      .visually-hidden {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-      }
-    </style>
-
-    <!-- ✅ DONNÉES STRUCTURÉES SCHEMA.ORG -->
-    <script
-      type="application/ld+json"
-      set:html={JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "@id": "https://habeprod-agence.fr/#localbusiness",
-        name: "Habeprod – Agence de communication au Mans",
-        legalName: "HabeProd",
-        description:
-          "Agence spécialisée en communication visuelle, digitale, print et création de site web au Mans",
-        url: "https://habeprod-agence.fr/",
-        logo: ogImage,
-        image: ogImage,
-        foundingDate: "2018",
-        priceRange: "$$",
-        telephone: "+33627252568",
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "35 rue d'Iena",
-          postalCode: "72000",
-          addressLocality: "Le Mans",
-          addressCountry: "FR",
-        },
-        geo: {
-          "@type": "GeoCoordinates",
-          latitude: 48.003386,
-          longitude: 0.199563,
-        },
-        openingHoursSpecification: [
-          {
-            "@type": "OpeningHoursSpecification",
-            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-            opens: "09:00",
-            closes: "18:00",
-          },
-        ],
-        sameAs: [
-          "https://www.facebook.com/habeprod",
-          "https://www.instagram.com/habeprod",
-          "https://www.linkedin.com/company/habeprod",
-          "https://discord.gg/gna3b2YNUq",
-        ],
-      })}
-    />
   </head>
+
   <body>
     <slot />
 
-    <!-- ✅ Bandeau cookies RGPD -->
-    <CookieBanner />
-
-    <!-- ✅ SÉCURITÉ LIENS EXTERNES -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('a[target="_blank"]').forEach((link) => {
           link.setAttribute("rel", "noopener noreferrer");
         });
