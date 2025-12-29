@@ -5,6 +5,7 @@ const projects = [
     title: "Design Intérieur – Laure Mora",
     desc: "Depuis près de 20 ans, Laure Mora accompagne ses clients dans la création d'intérieurs uniques, où design et personnalité s'harmonisent avec élégance. À l'écoute de vos envies, elle privilégie une approche sur mesure, mêlant tendances actuelles, matériaux authentiques et sensibilité personnelle. Chaque projet devient une aventure créative pour transformer votre intérieur en un lieu de vie chaleureux, inspirant et à votre image.",
     image: "/projet-laure-mora-habeprod.webp",
+    alt: "Site web design intérieur Laure Mora - Création Habeprod WordPress",
     link: "https://lauremora.fr/",
   },
   {
@@ -12,6 +13,7 @@ const projects = [
     title: "Pierre.SPS Coordination Sécurité Protection de la Santé",
     desc: "Spécialisée dans la coordination en matière de sécurité et de protection de la santé, notre entreprise intervient sur tous types de chantiers, du plus modeste au plus ambitieux, en Sarthe et dans les départements voisins. Portée par des valeurs humaines fortes, notre équipe mise sur l'écoute et la collaboration pour garantir des environnements de travail sûrs et conformes à la réglementation. Engagés dans une démarche RSE, nous œuvrons chaque jour pour une sécurité durable et responsable sur les sites de construction. Construisons ensemble un avenir plus sûr.",
     image: "/projet-spspierre-habeprod.webp",
+    alt: "Site web Pierre.SPS coordination sécurité chantier - Réalisation Habeprod Le Mans",
     link: "https://www.pierresps-lemans.fr/",
   },
   {
@@ -19,6 +21,7 @@ const projects = [
     title: "Apothical – Groupement pharmaceutique",
     desc: "Apothical s'engage à vous proposer des produits de parapharmacie de grandes marques au meilleur prix, des conseils d'experts santé et des services personnalisés et innovants.",
     image: "/projet-apotihical-habeprod.webp",
+    alt: "Catalogue print Apothical groupement pharmaceutique - Design Habeprod",
     link: "https://www.apothical.fr/",
   },
 ];
@@ -30,13 +33,13 @@ const projects = [
       <img
         class="sticky-image sticky-image--back"
         src={projects[0].image}
-        alt={projects[0].title}
+        alt={projects[0].alt}
         loading="lazy"
       />
       <img
         class="sticky-image sticky-image--front"
         src={projects[0].image}
-        alt={projects[0].title}
+        alt={projects[0].alt}
         loading="lazy"
       />
     </div>
@@ -50,13 +53,13 @@ const projects = [
             data-index={index}
           >
             <div class="project-mobile-image">
-              <img src={project.image} alt={project.title} loading="lazy" />
+              <img src={project.image} alt={project.alt} loading="lazy" />
             </div>
             <div class="project-content">
               <p class="project-tag">{project.tag}</p>
               <h2 class="project-title">{project.title}</h2>
               <p class="project-desc">{project.desc}</p>
-              <a
+              
                 class="project-link"
                 href={project.link}
                 target="_blank"
