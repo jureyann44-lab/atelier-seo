@@ -45,32 +45,32 @@ const projects = [
     </div>
 
     <div class="projects-list">
-      {
-        projects.map((project, index) => (
-          <article
-            class={`project-item ${index === 0 ? "is-active" : ""}`}
-            data-image={project.image}
-            data-index={index}
-          >
-            <div class="project-mobile-image">
-              <img src={project.image} alt={project.alt} loading="lazy" />
-            </div>
-            <div class="project-content">
-              <p class="project-tag">{project.tag}</p>
-              <h2 class="project-title">{project.title}</h2>
-              <p class="project-desc">{project.desc}</p>
-              
-                class="project-link"
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Découvrir le site →
-              </a>
-            </div>
-          </article>
-        ))
-      }
+      {projects.map((project, index) => (
+        <article
+          class={`project-item ${index === 0 ? "is-active" : ""}`}
+          data-image={project.image}
+          data-index={index}
+        >
+          <div class="project-mobile-image">
+            <img src={project.image} alt={project.alt} loading="lazy" />
+          </div>
+          <div class="project-content">
+            <p class="project-tag">{project.tag}</p>
+            <h2 class="project-title">{project.title}</h2>
+            <p class="project-desc">{project.desc}</p>
+
+            <!-- Bouton style hero -->
+            <a
+              class="hero-cta project-link"
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Découvrir le site</span>
+            </a>
+          </div>
+        </article>
+      ))}
     </div>
   </div>
 
@@ -212,7 +212,6 @@ const projects = [
     transform: translateY(0);
   }
 
-  /* Image mobile cachée en desktop */
   .project-mobile-image {
     display: none;
   }
@@ -230,26 +229,32 @@ const projects = [
     color: rgba(255, 255, 255, 0.8);
   }
 
-  .project-link {
+  /* BOUTON HERO */
+  .project-link.hero-cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     margin-top: 1.25rem;
-    padding: 0.75rem 1.4rem;
+    padding: 0.95rem 2.6rem;
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.35);
-    font-size: 0.95rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
     text-decoration: none;
     color: #ffffff;
-    transition:
-      transform 0.25s ease,
-      opacity var(--transition-speed);
-    --outline-hover-color: rgba(255, 255, 255, 1);
+    background: transparent;
+    transition: all var(--transition-speed);
   }
 
-  .project-link:hover {
-    opacity: 0.95;
+  .project-link.hero-cta:hover {
+    box-shadow: 0 6px 25px rgba(255, 255, 255, 0.25);
     transform: translateY(-1px);
+  }
+
+  .project-link.hero-cta > span {
+    position: relative;
+    z-index: 2;
   }
 
   @media (max-width: 900px) {
@@ -258,7 +263,6 @@ const projects = [
       gap: 0;
     }
 
-    /* Cacher l'image sticky en mobile */
     .sticky-image-wrapper {
       display: none;
     }
@@ -276,7 +280,6 @@ const projects = [
       gap: 1.5rem;
     }
 
-    /* Afficher l'image mobile */
     .project-mobile-image {
       display: block;
       width: 100%;
