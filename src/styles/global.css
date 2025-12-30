@@ -253,9 +253,10 @@ p:last-child {
     font-size: 20px !important;
     margin-bottom: 1rem !important;
   }
-  .hero h1 {
-  font-size: 2.5rem;
-  line-height: 1.1;
-}
 
+  /* ⚡ Correction warning H1 API obsolète */
+  h1.visually-hidden {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
 }
