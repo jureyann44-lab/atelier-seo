@@ -1,5 +1,10 @@
 ---
-const { title, description, canonical } = Astro.props;
+const {
+  title,
+  description,
+  canonical = "https://www.habeprod-agence.fr/",
+} = Astro.props;
+
 import CookieBanner from "../components/CookieBanner.astro";
 
 const ogImage =
