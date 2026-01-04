@@ -9,4 +9,4 @@ Disallow: /mentions-legales
 Disallow: /cgu
 
 # Sitemap
-Sitemap: https://www.habeprod-agence.fr/sitemap.xml
+Sitemap: https://www.habeprod-agence.fr/sitemap-index.xml

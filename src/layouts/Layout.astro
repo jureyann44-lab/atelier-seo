@@ -11,11 +11,13 @@ const ogImage =
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
+    <!-- OPEN GRAPH -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
@@ -24,11 +26,41 @@ const ogImage =
     <meta property="og:site_name" content="Habeprod" />
     <meta property="og:locale" content="fr_FR" />
 
+    <!-- TWITTER CARD -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
+    <!-- SCHEMA LOCAL BUSINESS -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": canonical + "#localbusiness",
+        name: "Habeprod",
+        legalName: "Habeprod",
+        description: description,
+        url: canonical,
+        logo: ogImage,
+        image: ogImage,
+        priceRange: "$$",
+        telephone: "+33627252568",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Le Mans",
+          postalCode: "72000",
+          addressCountry: "FR",
+        },
+        sameAs: [
+          "https://www.instagram.com/habeprod",
+          "https://www.linkedin.com/company/habeprod",
+        ],
+      })}
+    />
+
+    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

@@ -67,7 +67,7 @@ const {
       }
     </style>
 
-    <!-- SCHEMA LOCAL BUSINESS + FAQ (statique) -->
+    <!-- SCHEMA LOCAL BUSINESS (SANS FAQ) -->
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
@@ -118,7 +118,6 @@ const {
               "https://discord.gg/gna3b2YNUq",
             ],
           },
-          faq || {}, // Même si faq est null, insère un objet vide
         ],
       })}
     />
