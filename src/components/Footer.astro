@@ -1,8 +1,10 @@
 <footer>
+  <!-- ✅ LES 3 COLONNES -->
   <div class="footer-content">
     <div class="footer-section-logo">
       <h3>Habeprod<span class="accent">°</span></h3>
     </div>
+
     <div class="footer-section footer-section-nav">
       <h3>Navigation</h3>
       <ul>
@@ -48,8 +50,30 @@
         </li>
       </ul>
     </div>
+  </div>
 
-    <!-- ✅ Section avis Google supprimée -->
+  <!-- ✅ BADGE GOOGLE (HORS GRID, CENTRÉ) -->
+  <div class="footer-google-badge">
+    <a
+      class="google-reviews-badge__link"
+      href="https://share.google/izJ5IwEVjQ1qhxXWP"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Voir nos avis Google"
+    >
+      <img
+        src="/logo-google-96.svg"
+        alt="Google"
+        class="google-reviews-badge__logo"
+        width="22"
+        height="22"
+        loading="lazy"
+      />
+
+      <div class="google-reviews-badge__stars" aria-hidden="true">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+    </a>
   </div>
 </footer>
 
@@ -76,13 +100,28 @@
     padding: 2rem var(--gutter);
   }
 
+  /* ✅ GRID : les 3 colonnes */
   .footer-content {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
     align-items: stretch;
+
     max-width: var(--layout-width);
     width: 100%;
+  }
+
+  /* ✅ BADGE GOOGLE (hors grid => centré parfaitement) */
+  .footer-google-badge {
+    width: 100%;
+    max-width: var(--layout-width);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 50px;
+    padding-top: 20px;
   }
 
   .footer-section-logo {
@@ -158,7 +197,54 @@
     align-self: stretch;
   }
 
-  /* ✅ SECTION BLANCHE 80px SANS AUCUN PADDING */
+  /* ✅ Badge Google (Webflow-like clean) */
+  .google-reviews-badge__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 14px;
+    border-radius: 999px;
+
+    text-decoration: none;
+
+    background: rgba(2, 3, 8, 0.92);
+    border: 1px solid rgba(0, 160, 220, 0.4);
+
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(8px);
+
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+    opacity: 0.95;
+  }
+
+  .google-reviews-badge__link:hover {
+    transform: translateY(-2px);
+    opacity: 1;
+  }
+
+  .google-reviews-badge__logo {
+    width: 22px;
+    height: 22px;
+    display: block;
+  }
+
+  .google-reviews-badge__stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .google-reviews-badge__stars span {
+    font-size: 15px;
+    line-height: 1;
+    color: #fbbc04;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  /* ✅ SECTION BLANCHE 80px */
   .footer-bottom-section {
     background: #ffffff;
     height: 80px;
@@ -184,8 +270,8 @@
     max-width: var(--layout-width);
   }
 
-  /* 📱 TABLETTE - 2 colonnes */
-  @media (max-width: 1024px) and (min-width: 768px) {
+  /* 📱 TABLETTE */
+  @media (max-width: 1023px) and (min-width: 768px) {
     .footer-content {
       grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
@@ -198,7 +284,7 @@
     }
   }
 
-  /* 📱 MOBILE - 1 colonne */
+  /* 📱 MOBILE */
   @media (max-width: 767px) {
     footer {
       min-height: auto;
@@ -215,10 +301,15 @@
       border-right: none;
       padding-right: 0;
     }
+
+    .footer-google-badge {
+      margin-top: 14px;
+      padding-top: 16px;
+    }
   }
 
-  /* 📱 TABLETTE PORTRAIT - Réduit l'espace entre colonnes */
-  @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  /* 📱 TABLETTE PORTRAIT */
+  @media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
     .footer-content {
       gap: 1rem !important;
     }
