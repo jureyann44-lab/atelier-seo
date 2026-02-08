@@ -1,0 +1,163 @@
+<section class="reviews-section" aria-labelledby="reviews-title">
+  <div class="reviews-container">
+    <h2 id="reviews-title" class="reviews-title">Ils nous font confiance</h2>
+
+    <div class="reviews-grid">
+      <!-- AVIS 1 -->
+      <article class="review-card">
+        <img
+          src="/linda-piazza.webp"
+          alt="Photo de Linda Piazza"
+          class="review-avatar"
+          loading="lazy"
+        />
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">
+          Travail très professionnel, à l’écoute et force de proposition. Je
+          recommande sans hésiter.
+        </p>
+        <p class="review-author">Linda Piazza</p>
+      </article>
+
+      <!-- AVIS 2 -->
+      <article class="review-card">
+        <img
+          src="/david-feuillatre.webp"
+          alt="Photo de David Feuillatre"
+          class="review-avatar"
+          loading="lazy"
+        />
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">
+          Site rapide, design propre et accompagnement sérieux du début à la
+          fin.
+        </p>
+        <p class="review-author">David Feuillatre</p>
+      </article>
+
+      <!-- AVIS 3 -->
+      <article class="review-card">
+        <img
+          src="/samantha-gandais.webp"
+          alt="Photo de Samantha Gandais"
+          class="review-avatar"
+          loading="lazy"
+        />
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">
+          Une vraie expertise web et SEO. Résultat clair et efficace.
+        </p>
+        <p class="review-author">Samantha Gandais</p>
+      </article>
+    </div>
+
+    <div class="reviews-cta">
+      <a
+        href="https://www.google.com/search?q=habeprod+avis"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="google-reviews-btn"
+      >
+        Nos avis Google
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews-section {
+    padding: 6rem var(--gutter);
+    background: #020308;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+  }
+
+  .reviews-container {
+    max-width: var(--layout-width);
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .reviews-title {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .review-card {
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+  }
+
+  .review-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+
+  .review-stars {
+    color: #f5c542;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .review-text {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+  }
+
+  .review-author {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .reviews-cta {
+    margin-top: 3rem;
+  }
+
+  /* ✅ BOUTON IDENTIQUE AU CTA */
+  .google-reviews-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.95rem 2.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: #ffffff00;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: all var(--transition-speed);
+  }
+
+  .google-reviews-btn:hover {
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 900px) {
+    .reviews-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .google-reviews-btn {
+      transition: none;
+    }
+
+    .google-reviews-btn:hover {
+      transform: none;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+    }
+  }
+</style>
