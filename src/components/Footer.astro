@@ -250,4 +250,41 @@
     width: 100%;
     max-width: var(--layout-width);
   }
+  /* 📱 TABLETTE */
+  @media (max-width: 1023px) and (min-width: 768px) {
+    .footer-content {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .footer-section-logo,
+    .footer-section-nav {
+      border-right: none;
+      padding-right: 0;
+    }
+  }
+
+  /* 📱 MOBILE */
+  @media (max-width: 767px) {
+    footer {
+      min-height: auto;
+      padding: 3rem var(--gutter-mobile);
+    }
+
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .footer-section-logo,
+    .footer-section-nav {
+      border-right: none;
+      padding-right: 0;
+    }
+
+    .footer-google-badge {
+      margin-top: 30px;
+      padding-top: 10px;
+    }
+  }
 </style>
