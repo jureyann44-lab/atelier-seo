@@ -1,77 +1,67 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "../layouts/Layout.astro";
-import Nav from "../components/Nav.astro";
-import Footer from "../components/Footer.astro";
+const {
+  title,
+  description,
+  canonical = "https://www.habeprod-agence.fr/",
+} = Astro.props;
 
-const allPosts = await getCollection("blog");
-const sortedPosts = allPosts.sort(
-  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
-);
+import CookieBanner from "../components/CookieBanner.astro";
+
+const ogImage =
+  "https://cdn.prod.website-files.com/681b6b36dcb0f115f4d39f76/681c83218f79910e7d6aff03_image-hero.webp";
 ---
 
-<Layout
-  title="Blog Communication Digitale Le Mans | Conseils SEO & UX - Habeprod"
-  description="Découvrez nos conseils en communication digitale : SEO, UX design, branding et stratégie web. Articles pratiques pour TPE et PME en Sarthe."
->
-  <Nav />
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <section class="blog-page">
-    <div class="container">
-      <h1>Blog Communication Digitale Le Mans</h1>
-      <p class="intro">
-        Conseils SEO, UX design et branding pour développer votre présence
-        digitale en Sarthe
-      </p>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
-      <div class="blog-grid">
-        {
-          sortedPosts.map((post) => (
-            <article class="blog-card">
-              <div class="blog-date">{post.data.date}</div>
-              <h2>
-                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
-              </h2>
-              <p>{post.data.description}</p>
-              <a href={`/blog/${post.slug}`} class="read-more">
-                <span class="read-more-text">Lire l'article</span>
-                <span class="read-more-arrow">→</span>
-              </a>
-            </article>
-          ))
-        }
-      </div>
+    <!-- OPEN GRAPH -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Habeprod" />
+    <meta property="og:locale" content="fr_FR" />
 
-      <div class="blog-footer">
-        <a href="/" class="back-to-home">
-          <span class="back-arrow">←</span>
-          <span class="back-text">Retour à l'accueil</span>
-        </a>
-      </div>
-    </div>
-  </section>
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
-  <Footer />
-
-  <!-- Schema.org pour le Blog -->
-  <script
-    type="application/ld+json"
-    set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Blog",
-      name: "Blog Habeprod - Communication Digitale Le Mans",
-      description:
-        "Conseils SEO, UX design et branding pour développer votre présence digitale en Sarthe",
-      url: "https://www.habeprod-agence.fr/blog",
-      inLanguage: "fr-FR",
-      publisher: {
-        "@type": "Organization",
+    <!-- SCHEMA LOCAL BUSINESS -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": canonical + "#localbusiness",
         name: "Habeprod",
-        url: "https://www.habeprod-agence.fr",
-        logo: {
-          "@type": "ImageObject",
-          url: "https://cdn.prod.website-files.com/681b6b36dcb0f115f4d39f76/681c83218f79910e7d6aff03_image-hero.webp",
+        legalName: "Habeprod",
+        description: description,
+        url: canonical,
+        logo: ogImage,
+        image: ogImage,
+        priceRange: "$$",
+        telephone: "+33627252568",
+        email: "agence.habeprod@gmail.com",
+
+        // Coordonnées géographiques
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: "47.998543990775",
+          longitude: "0.194459986032",
         },
+
+        // Adresse complète
         address: {
           "@type": "PostalAddress",
           streetAddress: "35 rue d'Iéna",
@@ -80,194 +70,106 @@ const sortedPosts = allPosts.sort(
           postalCode: "72000",
           addressCountry: "FR",
         },
-      },
-      blogPost: sortedPosts.slice(0, 3).map((post) => ({
-        "@type": "BlogPosting",
-        headline: post.data.title,
-        description: post.data.description,
-        datePublished: post.data.date,
-        author: {
-          "@type": "Organization",
-          name: "Habeprod",
+
+        // Zone de service
+        areaServed: [
+          {
+            "@type": "City",
+            name: "Le Mans",
+          },
+          {
+            "@type": "AdministrativeArea",
+            name: "Sarthe",
+          },
+          {
+            "@type": "State",
+            name: "Pays de la Loire",
+          },
+        ],
+
+        // Horaires d'ouverture
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday"],
+            opens: "09:00",
+            closes: "18:00",
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: "Thursday",
+            opens: "09:00",
+            closes: "17:00",
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: "Friday",
+            opens: "09:00",
+            closes: "18:00",
+          },
+        ],
+
+        // Services offerts
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Services digitaux",
+          itemListElement: [
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Création site internet Le Mans",
+                areaServed: "Le Mans",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Agence SEO Le Mans",
+                areaServed: "Le Mans",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Stratégie digitale Sarthe",
+                areaServed: "Sarthe",
+              },
+            },
+          ],
         },
-        url: `https://www.habeprod-agence.fr/blog/${post.slug}`,
-      })),
-    })}
-  />
-</Layout>
 
-<style>
-  .blog-page {
-    background: #020308;
-    min-height: 80vh;
-    padding: 20rem 0 4rem;
-  }
+        sameAs: [
+          "https://www.instagram.com/habeprod",
+          "https://www.linkedin.com/company/habeprod",
+        ],
+      })}
+    />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-  .container {
-    max-width: var(--layout-width);
-    margin: 0 auto;
-    width: 100%;
-    padding: 0 var(--gutter);
-  }
+  <body>
+    <slot />
+    <CookieBanner />
 
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: #ffffff;
-  }
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('a[target="_blank"]').forEach((link) => {
+          link.setAttribute("rel", "noopener noreferrer");
+        });
+      });
+    </script>
+  </body>
+</html>
 
-  .intro {
-    font-size: 1.2rem;
-    color: #d1d5db;
-    margin-bottom: 4rem;
-  }
-
-  .blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2.5rem;
-  }
-
-  .blog-card {
-    background: #0a0a0a;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 8px;
-    padding: 0;
-    transition: all 0.3s ease;
-    overflow: hidden;
-  }
-
-  .blog-card:hover {
-    border-color: rgba(255, 255, 255, 0.25);
-    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.08);
-    transform: translateY(-4px);
-  }
-
-  .blog-date {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    color: #9ca3af;
-    margin-bottom: 1rem;
-    letter-spacing: 0.1em;
-    padding: 2rem 2rem 0;
-  }
-
-  .blog-card h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    padding: 0 2rem;
-  }
-
-  .blog-card h2 a {
-    color: #ffffff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  .blog-card h2 a:hover {
-    color: #9ca3af;
-  }
-
-  .blog-card p {
-    color: #d1d5db;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    padding: 0 2rem;
-  }
-
-  .read-more {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 0.05em;
-    transition: gap 0.3s ease;
-    padding: 0 2rem 2rem;
-  }
-
-  .read-more:hover {
-    gap: 0.75rem;
-  }
-
-  .read-more-arrow {
-    transition: transform 0.3s ease;
-  }
-
-  .read-more:hover .read-more-arrow {
-    transform: translateX(3px);
-  }
-
-  .blog-footer {
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-  }
-
-  .back-to-home {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 500;
-    transition:
-      gap 0.3s ease,
-      color 0.3s ease;
-  }
-
-  .back-to-home:hover {
-    gap: 0.75rem;
-    color: #9ca3af;
-  }
-
-  .back-arrow {
-    transition: transform 0.3s ease;
-  }
-
-  .back-to-home:hover .back-arrow {
-    transform: translateX(-3px);
-  }
-
-  @media (max-width: 900px) {
-    .blog-page {
-      padding: 10rem 0 4rem;
-    }
-
-    .blog-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .blog-card:hover {
-      transform: none;
-    }
-
-    .read-more {
-      transition: none;
-    }
-
-    .read-more:hover {
-      gap: 0.5rem;
-    }
-
-    .read-more:hover .read-more-arrow {
-      transform: none;
-    }
-
-    .back-to-home {
-      transition: none;
-    }
-
-    .back-to-home:hover {
-      gap: 0.5rem;
-      color: #ffffff;
-    }
-
-    .back-to-home:hover .back-arrow {
-      transform: none;
-    }
-  }
+<style is:global>
+  @import "../styles/global.css";
 </style>
