@@ -52,12 +52,95 @@ const ogImage =
         image: ogImage,
         priceRange: "$$",
         telephone: "+33627252568",
+        email: "agence.habeprod@gmail.com",
+
+        // Coordonnées géographiques
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: "47.998543990775",
+          longitude: "0.194459986032",
+        },
+
+        // Adresse complète
         address: {
           "@type": "PostalAddress",
+          streetAddress: "35 rue d'Iéna",
           addressLocality: "Le Mans",
+          addressRegion: "Pays de la Loire",
           postalCode: "72000",
           addressCountry: "FR",
         },
+
+        // Zone de service
+        areaServed: [
+          {
+            "@type": "City",
+            name: "Le Mans",
+          },
+          {
+            "@type": "AdministrativeArea",
+            name: "Sarthe",
+          },
+          {
+            "@type": "State",
+            name: "Pays de la Loire",
+          },
+        ],
+
+        // Horaires d'ouverture
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday"],
+            opens: "09:00",
+            closes: "18:00",
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: "Thursday",
+            opens: "09:00",
+            closes: "17:00",
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: "Friday",
+            opens: "09:00",
+            closes: "18:00",
+          },
+        ],
+
+        // Services offerts
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Services digitaux",
+          itemListElement: [
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Création site internet Le Mans",
+                areaServed: "Le Mans",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Agence SEO Le Mans",
+                areaServed: "Le Mans",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Stratégie digitale Sarthe",
+                areaServed: "Sarthe",
+              },
+            },
+          ],
+        },
+
         sameAs: [
           "https://www.instagram.com/habeprod",
           "https://www.linkedin.com/company/habeprod",
