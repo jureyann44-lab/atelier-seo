@@ -18,10 +18,9 @@ const sortedPosts = allPosts.sort(
 
   <section class="blog-page">
     <div class="container">
-      <h1>Blog Communication Digitale Le Mans</h1>
+      <h1>Nos articles</h1>
       <p class="intro">
-        Conseils SEO, UX design et branding pour développer votre présence
-        digitale en Sarthe
+        Actualités, conseils et retours d'expérience en communication digitale
       </p>
 
       <div class="blog-grid">
@@ -52,48 +51,6 @@ const sortedPosts = allPosts.sort(
   </section>
 
   <Footer />
-
-  <!-- Schema.org pour le Blog -->
-  <script
-    type="application/ld+json"
-    set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Blog",
-      name: "Blog Habeprod - Communication Digitale Le Mans",
-      description:
-        "Conseils SEO, UX design et branding pour développer votre présence digitale en Sarthe",
-      url: "https://www.habeprod-agence.fr/blog",
-      inLanguage: "fr-FR",
-      publisher: {
-        "@type": "Organization",
-        name: "Habeprod",
-        url: "https://www.habeprod-agence.fr",
-        logo: {
-          "@type": "ImageObject",
-          url: "https://cdn.prod.website-files.com/681b6b36dcb0f115f4d39f76/681c83218f79910e7d6aff03_image-hero.webp",
-        },
-        address: {
-          "@type": "PostalAddress",
-          streetAddress: "35 rue d'Iéna",
-          addressLocality: "Le Mans",
-          addressRegion: "Pays de la Loire",
-          postalCode: "72000",
-          addressCountry: "FR",
-        },
-      },
-      blogPost: sortedPosts.slice(0, 3).map((post) => ({
-        "@type": "BlogPosting",
-        headline: post.data.title,
-        description: post.data.description,
-        datePublished: post.data.date,
-        author: {
-          "@type": "Organization",
-          name: "Habeprod",
-        },
-        url: `https://www.habeprod-agence.fr/blog/${post.slug}`,
-      })),
-    })}
-  />
 </Layout>
 
 <style>

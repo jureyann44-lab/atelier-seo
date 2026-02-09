@@ -1,0 +1,177 @@
+---
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("blog");
+const recentPosts = allPosts
+  .sort(
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+  )
+  .slice(0, 3);
+---
+
+<section class="news" id="actualites">
+  <div class="container">
+    <div class="section-subtitle">Actualités</div>
+    <h2 class="section-title">Nos dernières publications</h2>
+
+    <div class="news-grid">
+      {
+        recentPosts.map((post) => (
+          <article class="news-card">
+            <div class="news-date">{post.data.date}</div>
+            <h3 class="news-title">{post.data.title}</h3>
+            <p class="news-excerpt">{post.data.description}</p>
+            <a href={`/blog/${post.slug}`} class="news-link">
+              Lire l'article
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3.33334 8H12.6667M12.6667 8L8.00001 3.33333M12.6667 8L8.00001 12.6667"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="news-cta">
+      <a href="/blog" class="btn-blog">
+        <span>Voir tous les articles</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .news {
+    background: #0a0a0a;
+    color: #ffffff;
+  }
+
+  .news .section-subtitle {
+    color: #9ca3af;
+  }
+
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+  }
+
+  .news-card {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .news-card:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.08);
+    transform: translateY(-4px);
+  }
+
+  .news-date {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #9ca3af;
+    margin-bottom: 1rem;
+  }
+
+  .news-title {
+    font-size: 1.35rem;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+
+  .news-excerpt {
+    color: #d1d5db;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .news-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: gap 0.3s ease;
+  }
+
+  .news-link:hover {
+    gap: 0.75rem;
+  }
+
+  .news-link svg {
+    transition: transform 0.3s ease;
+  }
+
+  .news-link:hover svg {
+    transform: translateX(3px);
+  }
+
+  .news-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 3.5rem;
+  }
+
+  .btn-blog {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.95rem 2.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: transparent;
+    transition: all var(--transition-speed);
+  }
+
+  .btn-blog:hover {
+    box-shadow: 0 6px 25px rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 900px) {
+    .news-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .news-card:hover {
+      transform: none;
+    }
+
+    .btn-blog {
+      transition: none;
+    }
+
+    .btn-blog:hover {
+      transform: none;
+    }
+  }
+</style>
