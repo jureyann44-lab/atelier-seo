@@ -4,12 +4,15 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-  "build": "NODE_OPTIONS='--max-old-space-size=4096' astro build",
-  "preview": "astro preview",
+    "build": "NODE_OPTIONS='--max-old-space-size=4096' astro build",
+    "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.1",
     "astro": "^5.16.9"
+  },
+  "engines": {
+    "node": "20.x"
   }
 }
