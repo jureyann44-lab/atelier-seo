@@ -187,7 +187,8 @@ const { Content } = await post.render();
     transform: translateX(-3px);
   }
 
-  @media (max-width: 900px) {
+  /* 🔥 MOBILE (tactile OU petit écran) */
+  @media (max-width: 900px), (max-width: 1023px) and (pointer: coarse) {
     .blog-article {
       padding: 8rem 0 4rem;
     }

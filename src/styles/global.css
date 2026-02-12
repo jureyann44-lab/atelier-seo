@@ -27,6 +27,24 @@
   --h2-mb: 1.5rem;
 }
 
+/* 🔥 FORCE MOBILE SUR ÉCRANS TACTILES < 1024px (FIX XIAOMI) */
+@media (max-width: 1023px) and (pointer: coarse) {
+  :root {
+    --layout-width: 100% !important;
+    --gutter: 1.5rem !important;
+    --gutter-mobile: 1.5rem !important;
+    --h2-size: 24px !important;
+  }
+  
+  section:not(.hero):not(.services-collage) {
+    padding: 6rem 0 !important;
+  }
+  
+  .services-collage {
+    padding: 0 !important;
+  }
+}
+
 /* 📱 TABLETTE PORTRAIT */
 @media (min-width: 768px) and (max-width: 900px) {
   :root {

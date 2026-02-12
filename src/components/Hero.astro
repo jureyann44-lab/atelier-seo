@@ -248,8 +248,8 @@
     }
   }
 
-  /* 📱 TABLETTE PORTRAIT + MOBILE */
-  @media (max-width: 900px) {
+  /* 🔥 MOBILE (tactile OU petit écran) */
+  @media (max-width: 900px), (max-width: 1023px) and (pointer: coarse) {
     .hero {
       padding: 7rem 0 4.5rem;
     }
@@ -276,8 +276,8 @@
     }
   }
 
-  /* 📱 TABLETTE PORTRAIT - iPad Pro inclus */
-  @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  /* 📱 TABLETTE PORTRAIT - iPad Pro uniquement (grandes tablettes) */
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) and (min-height: 1000px) {
     .hero {
       align-items: center !important;
       padding-top: 7rem !important;

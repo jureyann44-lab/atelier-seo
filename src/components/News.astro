@@ -156,7 +156,8 @@ const recentPosts = allPosts
     transform: translateY(-1px);
   }
 
-  @media (max-width: 900px) {
+  /* 🔥 MOBILE (tactile OU petit écran) */
+  @media (max-width: 900px), (max-width: 1023px) and (pointer: coarse) {
     .news-grid {
       grid-template-columns: 1fr;
       gap: 2rem;

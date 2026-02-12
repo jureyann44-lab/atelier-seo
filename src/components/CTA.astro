@@ -49,8 +49,8 @@
     transform: translateY(-1px);
   }
 
-  /* ✅ Pas d'animation en mobile */
-  @media (max-width: 900px) {
+  /* 🔥 MOBILE (tactile OU petit écran) - Pas d'animation */
+  @media (max-width: 900px), (max-width: 1023px) and (pointer: coarse) {
     .btn-appel {
       transition: none;
     }

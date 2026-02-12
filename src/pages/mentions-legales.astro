@@ -285,7 +285,8 @@ import Footer from "../components/Footer.astro";
     font-style: italic;
   }
 
-  @media (max-width: 900px) {
+  /* 🔥 MOBILE (tactile OU petit écran) */
+  @media (max-width: 900px), (max-width: 1023px) and (pointer: coarse) {
     .mentions-legales {
       padding-top: calc(var(--nav-height) + 2rem);
       padding-bottom: 2rem;

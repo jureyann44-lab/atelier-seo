@@ -146,7 +146,8 @@
     color: #ef4444;
   }
 
-  @media (max-width: 900px) {
+  /* 🔥 MOBILE (tactile OU petit écran) */
+  @media (max-width: 900px), (max-width: 1023px) and (pointer: coarse) {
     .contact-grid {
       grid-template-columns: 1fr;
     }
@@ -160,7 +161,7 @@
   const form = document.getElementById("contact-form") as HTMLFormElement;
   const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
   const message = document.getElementById(
-    "form-message"
+    "form-message",
   ) as HTMLParagraphElement;
 
   form?.addEventListener("submit", async (e) => {

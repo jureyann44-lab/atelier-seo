@@ -257,8 +257,8 @@
     max-width: var(--layout-width);
   }
 
-  /* 📱 TABLETTE */
-  @media (max-width: 1023px) and (min-width: 768px) {
+  /* 🔥 TABLETTE (seulement avec souris - pointer: fine) */
+  @media (min-width: 768px) and (max-width: 1023px) and (pointer: fine) {
     .footer-content {
       grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
@@ -271,8 +271,8 @@
     }
   }
 
-  /* 📱 MOBILE */
-  @media (max-width: 767px) {
+  /* 🔥 MOBILE (tactile OU petit écran) */
+  @media (max-width: 767px), (max-width: 1023px) and (pointer: coarse) {
     footer {
       min-height: auto;
       padding: 3rem var(--gutter-mobile);

@@ -1,7 +1,7 @@
 ---
 title: "Formation Figma au Mans : maîtrisez le design UI/UX en 2026"
 description: "Apprenez à concevoir des interfaces modernes et performantes avec Figma. Formation pratique pour étudiants, entrepreneurs et professionnels en Sarthe."
-date: "10 février 2026"
+date: "11 février 2026"
 tags: ["Figma", "UI Design", "UX Design", "Formation", "Le Mans"]
 ---
 

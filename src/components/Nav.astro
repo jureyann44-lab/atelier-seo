@@ -344,8 +344,8 @@
     display: none;
   }
 
-  /* 🖥️ DESKTOP - Overlay transparent */
-  @media (min-width: 1101px) {
+  /* 🖥️ DESKTOP - Overlay transparent (seulement non-tactile) */
+  @media (min-width: 1101px) and (pointer: fine) {
     .nav.transparent {
       background: linear-gradient(
         to bottom,
@@ -382,8 +382,8 @@
     }
   }
 
-  /* 📱 TABLETTE + MOBILE - Burger menu */
-  @media (max-width: 1100px) {
+  /* 🔥 MOBILE (tactile OU petit écran) - Burger menu */
+  @media (max-width: 1100px), (max-width: 1023px) and (pointer: coarse) {
     .nav-container {
       padding: 1.5rem var(--gutter);
     }
@@ -470,7 +470,7 @@
     if (burger) {
       burger.setAttribute(
         "aria-label",
-        isOpen ? "Fermer le menu" : "Ouvrir le menu"
+        isOpen ? "Fermer le menu" : "Ouvrir le menu",
       );
       burger.setAttribute("aria-expanded", isOpen ? "true" : "false");
     }

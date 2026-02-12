@@ -2,10 +2,10 @@
 const projects = [
   {
     tag: "SITE WEB – WORDPRESS",
-    title: "Agence de placement basket aux États-Unis – Nath’s Shot | Études & sport",
-    desc: "Nath’s Shot accompagne les joueurs de basketball vers les universités américaines. Agence de placement sportif spécialisée USA : recrutement, démarches administratives, suivi académique et opportunités NCAA.",
+    title: "Agence de placement basket aux États-Unis – Nath's Shot | Études & sport",
+    desc: "Nath's Shot accompagne les joueurs de basketball vers les universités américaines. Agence de placement sportif spécialisée USA : recrutement, démarches administratives, suivi académique et opportunités NCAA.",
     image: "projet-nathsshot-habeprod.webp",
-    alt: "Site web Nath’s Shot, agence de placement basket aux États-Unis – création WordPress par Habeprod",
+    alt: "Site web Nath's Shot, agence de placement basket aux États-Unis – création WordPress par Habeprod",
     link: "https://nathsshot.fr/",
   },
   {
@@ -257,7 +257,8 @@ const projects = [
     z-index: 2;
   }
 
-  @media (max-width: 900px) {
+  /* 🔥 MOBILE (tactile OU petit écran) */
+  @media (max-width: 900px), (max-width: 1023px) and (pointer: coarse) {
     .projects-inner {
       grid-template-columns: 1fr;
       gap: 0;
