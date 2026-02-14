@@ -113,13 +113,13 @@ img {
 }
 
 /* ===== ALIGNEMENT GLOBAL ===== */
-section:not(.hero):not(.services-collage) {
+section:not(.hero):not(.services-collage):not(.footer-bottom-section) {
   padding: 6rem 0;
 }
 
 /* 📱 TABLETTE */
 @media (min-width: 768px) and (max-width: 1024px) {
-  section:not(.hero):not(.services-collage) {
+  section:not(.hero):not(.services-collage):not(.footer-bottom-section) {
     padding: 5rem 0;
   }
 }
@@ -133,6 +133,11 @@ section:not(.hero):not(.services-collage) {
   .services-collage {
     padding: 0 !important;
   }
+}
+
+/* ✅ Footer bottom avec padding 1rem */
+.footer-bottom-section {
+  padding: 1rem 0;
 }
 
 /* ✅ CONTAINER UNIFIÉ + RESPONSIVE */
@@ -228,7 +233,7 @@ p:last-child {
   }
   
   /* Padding réduit pour mobile paysage */
-  section:not(.hero):not(.services-collage) {
+  section:not(.hero):not(.services-collage):not(.footer-bottom-section) {
     padding: 3rem 0;
   }
   
@@ -243,13 +248,19 @@ p:last-child {
     line-height: 1.5;
   }
   
-  /* Conteneurs avec largeur confortable */
+  /* ✅ TOUS LES BLOCS avec largeur 90% en landscape */
   .hero-inner,
   .about-inner,
   .services-inner,
+  .expertise-inner,
   .projects-inner,
   .projects-header,
-  .footer-content {
+  .contact-inner,
+  .cta-inner,
+  .faq-inner,
+  .news-inner,
+  .footer-content,
+  .container {
     max-width: 90% !important;
     margin: 0 auto !important;
   }
@@ -278,5 +289,24 @@ p:last-child {
   h1.visually-hidden {
     font-size: 2.5rem;
     line-height: 1.1;
+  }
+}
+
+/* 📱 iPad Mini PORTRAIT - Alignement 90% */
+@media (min-width: 768px) and (max-width: 820px) and (orientation: portrait) {
+  .hero-inner,
+  .about-inner,
+  .services-inner,
+  .expertise-inner,
+  .projects-inner,
+  .projects-header,
+  .contact-inner,
+  .cta-inner,
+  .faq-inner,
+  .news-inner,
+  .footer-content,
+  .container {
+    max-width: 90% !important;
+    margin: 0 auto !important;
   }
 }

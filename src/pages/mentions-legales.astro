@@ -285,6 +285,44 @@ import Footer from "../components/Footer.astro";
     font-style: italic;
   }
 
+  /* 📱 MOBILE LANDSCAPE - Padding réduit */
+  @media (min-width: 667px) and (max-width: 960px) and (orientation: landscape) and (max-height: 450px) {
+    .mentions-legales {
+      padding-top: calc(var(--nav-height) + 2rem);
+      padding-bottom: 2rem;
+    }
+
+    .mentions-legales h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .mentions-legales h2 {
+      font-size: 1.25rem !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .mentions-legales h3 {
+      font-size: 1.05rem;
+    }
+
+    .legal-section {
+      margin-bottom: 2rem;
+    }
+
+    .mentions-legales p {
+      font-size: 0.95rem;
+    }
+  }
+
+  /* 📱 iPad Mini PORTRAIT - Container 90% */
+  @media (min-width: 768px) and (max-width: 820px) and (orientation: portrait) {
+    .container {
+      max-width: 90% !important;
+      margin: 0 auto !important;
+    }
+  }
+
   /* 🔥 MOBILE (tactile OU petit écran) */
   @media (max-width: 900px), (max-width: 1023px) and (pointer: coarse) {
     .mentions-legales {
