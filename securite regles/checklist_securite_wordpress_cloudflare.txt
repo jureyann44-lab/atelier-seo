@@ -1,0 +1,71 @@
+✅ Identité & utilisateurs
+- [x] Blocage de l'URL `/?author=1` pour empêcher l'énumération des auteurs (redirection 404)
+- [x] Modification du `user_nicename` dans la base de données pour cacher l'identifiant réel dans l'URL auteur
+- [x] Slug auteur personnalisé (`/author/pierre-sps` au lieu de `/author/admin`)
+- [x] Suppression du fichier `readme.html` pour éviter l’affichage de la version WordPress
+
+✅ Sécurité du site via `.htaccess`
+- [x] Ajout de `Options -Indexes` pour empêcher l'affichage des dossiers sans index
+
+✅ Nettoyage de l'en-tête HTML
+- [x] Suppression de la balise meta `generator` dans le <head> pour masquer la version WordPress :
+remove_action('wp_head', 'wp_generator');
+
+✅ Fichier `functions.php` (ajouts manuels)
+- [x] Blocage des pages auteurs :
+add_action('template_redirect', 'block_author_url');
+function block_author_url() {
+    if (is_author()) {
+        global $wp_query;
+        $wp_query->set_404();
+        status_header(404);
+        nocache_headers();
+        include( get_query_template( '404' ) );
+        exit;
+    }
+}
+- [x] Suppression de la version WordPress dans le code HTML :
+remove_action('wp_head', 'wp_generator');
+
+✅ Plugin complémentaire
+- [ ] Installation de Wordfence (recommandé) pour :
+  - Scanner les fichiers
+  - Bloquer les IPs
+  - Protéger les formulaires de connexion
+  - Avoir un WAF (pare-feu).
+
+✅ SSL & HTTPS
+- [x] Certificat SSL actif (Google Trust Services)
+- [x] Forçage HTTPS sur tout le site
+- [x] Pas de contenu mixte détecté
+
+✅ Sécurité via Cloudflare
+- [x] Activation du site sur Cloudflare
+- [x] Création d'une Response Header Transform Rule
+- [x] Headers ajoutés :
+  - `Strict-Transport-Security : max-age=31536000; includeSubDomains; preload`
+  - `X-Content-Type-Options : nosniff`
+  - `X-Frame-Options : SAMEORIGIN`
+- [x] Application sur All incoming requests (`*`)
+- [x] Ordre d'application : First
+- [x] Déploiement de la règle
+- [x] Purge complète du cache Cloudflare
+
+Bonus e commerce 📢 Concrètement :
+La Content-Security-Policy est un bonus "ultra-expert".
+
+Pas nécessaire aujourd'hui vu que ton site ne gère pas encore :
+
+des paiements,
+
+des formulaires ultra-sensibles,
+
+des scripts tiers très nombreux.
+
+Donc garder ton site tel qu’il est maintenant est le meilleur choix :
+
+Tu restes propre, rapide, sécurisé.
+
+Pas de risques de casser quelque chose.
+
+Pas d’obligation d'ajouter de la complexité inutile.

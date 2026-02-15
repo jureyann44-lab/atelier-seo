@@ -1,0 +1,146 @@
+
+CHECKLIST CONFIGURATION SÉCURITÉ & PERFORMANCE WORDPRESS
+Site configuré avec Cloudflare + WordPress + .htaccess
+
+========================================
+1) CLOUDFLARE — RÈGLES WAF (Custom Rules)
+========================================
+
+RÈGLE SAFE WORDPRESS (à mettre EN PREMIER)
+
+IF
+(http.request.uri.path contains "/wp-admin/admin-ajax.php")
+OR
+(http.user_agent contains "WordPress")
+THEN
+Skip → All security features
+
+----------------------------------------
+
+PROTECTION LOGIN
+
+IF
+(http.request.uri.path contains "wp-login.php")
+THEN
+Managed Challenge
+
+----------------------------------------
+
+PROTECTION ADMIN
+
+IF
+(http.request.uri.path contains "/wp-admin/")
+AND
+(http.request.uri.path does not contain "/wp-admin/admin-ajax.php")
+THEN
+Managed Challenge
+
+
+========================================
+2) .HTACCESS — SÉCURITÉ SERVEUR
+========================================
+
+À AJOUTER EN DESSOUS DU BLOC WORDPRESS
+
+# ===== HARDENING SÉCURITÉ WORDPRESS =====
+
+# Bloque accès aux fichiers critiques
+<Files wp-config.php>
+Order allow,deny
+Deny from all
+</Files>
+
+<FilesMatch "^\.(htaccess|htpasswd|env|git)">
+Order allow,deny
+Deny from all
+</FilesMatch>
+
+# Interdit exécution PHP dans uploads
+<IfModule mod_rewrite.c>
+RewriteRule ^wp-content/uploads/.*\.php$ - [F,L]
+</IfModule>
+
+# Bloque accès dossiers sensibles
+<IfModule mod_rewrite.c>
+RewriteRule ^wp-includes/ - [F,L]
+RewriteRule ^wp-admin/install\.php - [F,L]
+</IfModule>
+
+# Bloque énumération auteurs
+RewriteCond %{QUERY_STRING} author=\d
+RewriteRule ^ /? [L,R=301]
+
+# Désactive listing dossiers
+Options -Indexes
+
+
+========================================
+3) WORDPRESS — functions.php (THÈME ENFANT)
+========================================
+
+<?php
+if ( !defined( 'ABSPATH' ) ) exit;
+
+/* SAFE MODE */
+function habe_is_safe_context() {
+    return is_admin() || is_customize_preview() || wp_doing_ajax();
+}
+
+/* CSS thème enfant */
+function child_theme_configurator_css() {
+    wp_enqueue_style(
+        'chld_thm_cfg_separate',
+        trailingslashit( get_stylesheet_directory_uri() ) . 'ctc-style.css',
+        array( 'astra-theme-css' )
+    );
+}
+add_action( 'wp_enqueue_scripts', 'child_theme_configurator_css', 10 );
+
+/* Supprime emojis */
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
+
+/* Defer JS */
+function habe_defer_scripts($tag, $handle) {
+    if (habe_is_safe_context()) return $tag;
+    return str_replace(' src', ' defer src', $tag);
+}
+add_filter('script_loader_tag', 'habe_defer_scripts', 10, 2);
+
+/* CSS non bloquant */
+function habe_non_blocking_css($html, $handle) {
+    if (habe_is_safe_context()) return $html;
+
+    $non_blocking = [
+        'astra-theme-css',
+        'chld_thm_cfg_separate'
+    ];
+
+    if (in_array($handle, $non_blocking)) {
+        return str_replace(
+            "rel='stylesheet'",
+            "rel='preload' as='style' onload=\"this.onload=null;this.rel='stylesheet'\"",
+            $html
+        );
+    }
+
+    return $html;
+}
+add_filter('style_loader_tag', 'habe_non_blocking_css', 10, 2);
+
+/* Supprime version WP */
+function remove_wp_version_strings($src) {
+    if (habe_is_safe_context()) return $src;
+    return remove_query_arg('ver', $src);
+}
+add_filter('script_loader_src', 'remove_wp_version_strings');
+add_filter('style_loader_src', 'remove_wp_version_strings');
+
+/* Sécurité light */
+add_filter('xmlrpc_enabled', '__return_false');
+
+add_filter('rest_endpoints', function($endpoints){
+    unset($endpoints['/wp/v2/users']);
+    return $endpoints;
+});
+

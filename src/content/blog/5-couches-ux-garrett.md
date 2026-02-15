@@ -1,7 +1,7 @@
 ---
 title: "UX Design : pourquoi votre site ne convertit pas (et comment y remédier)"
 description: "Le modèle des 5 plans de l'expérience utilisateur expliqué simplement. Comment concevoir un site web qui transforme vos visiteurs en clients."
-date: "9 février 2026"
+date: "2026-02-09"
 tags: ["UX Design", "Site web", "Conversion", "TPE PME"]
 ---
 

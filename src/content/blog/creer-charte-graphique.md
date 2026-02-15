@@ -1,7 +1,7 @@
 ---
 title: "Charte graphique : pourquoi votre TPE au Mans en a besoin"
 description: "Comment créer une identité visuelle cohérente pour votre entreprise en Sarthe. Logo, couleurs, typographie : les étapes essentielles expliquées simplement."
-date: "9 février 2026"
+date: "2026-02-09"
 tags: ["Branding", "Identité visuelle", "Design", "Le Mans"]
 ---
 

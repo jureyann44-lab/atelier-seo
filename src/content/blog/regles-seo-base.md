@@ -1,7 +1,7 @@
 ---
 title: "SEO local au Mans : comment être visible sur Google en 2026"
 description: "Les fondamentaux du référencement naturel pour les TPE et PME en Sarthe. Stratégies SEO concrètes pour améliorer votre visibilité locale."
-date: "12 février 2026"
+date: "2026-02-12"
 tags: ["SEO", "Référencement local", "Google", "Le Mans"]
 ---
 

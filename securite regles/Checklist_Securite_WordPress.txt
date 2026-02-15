@@ -1,0 +1,44 @@
+
+🔐 Liste des sécurisations manuelles WordPress (exemple : pierresps-lemans.fr)
+
+✅ Identité & utilisateurs
+- [x] Blocage de l'URL `/?author=1` pour empêcher l'énumération des auteurs (redirection 404)
+- [x] Modification du `user_nicename` dans la base de données pour cacher l'identifiant réel dans l'URL auteur
+- [x] Slug auteur personnalisé (`/author/pierre-sps` au lieu de `/author/admin`)
+- [x] Suppression du fichier `readme.html` pour éviter l’affichage de la version WordPress
+
+✅ Sécurité du site via `.htaccess`
+- [x] Ajout de `Options -Indexes` pour empêcher l'affichage des dossiers sans index
+
+✅ Nettoyage de l'en-tête HTML
+- [x] Suppression de la balise meta `generator` dans le <head> pour masquer la version WordPress :
+```php
+remove_action('wp_head', 'wp_generator');
+```
+
+✅ Fichier `functions.php` (ajouts manuels)
+- [x] Blocage des pages auteurs :
+```php
+add_action('template_redirect', 'block_author_url');
+function block_author_url() {
+    if (is_author()) {
+        global $wp_query;
+        $wp_query->set_404();
+        status_header(404);
+        nocache_headers();
+        include( get_query_template( '404' ) );
+        exit;
+    }
+}
+```
+- [x] Suppression de la version WordPress dans le code HTML :
+```php
+remove_action('wp_head', 'wp_generator');
+```
+
+✅ Plugin complémentaire
+- [ ] Installation de Wordfence (recommandé) pour :
+  - Scanner les fichiers
+  - Bloquer les IPs
+  - Protéger les formulaires de connexion
+  - Avoir un WAF (pare-feu)
