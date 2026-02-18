@@ -19,6 +19,7 @@ const {
     <link rel="apple-touch-icon" href="/favicon.ico" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow" />
 
     <!-- OPEN GRAPH -->
     <meta property="og:title" content={title} />
@@ -100,6 +101,10 @@ const {
         ],
       })}
     />
+
+    <!-- SLOT HEAD (schema articles, og:type dynamique, etc.) -->
+    <slot name="head" />
+
   </head>
 
   <body>
