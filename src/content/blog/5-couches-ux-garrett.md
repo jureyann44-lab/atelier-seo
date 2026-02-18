@@ -9,200 +9,115 @@ tags: ["UX Design", "Site web", "Conversion", "TPE PME"]
 
 _Schéma conceptuel des 5 plans de l'expérience utilisateur_
 
-Votre site est beau, mais il ne génère aucun contact. Vos visiteurs arrivent et repartent sans agir. Le problème ? Probablement une **expérience utilisateur (UX) mal pensée**.
+---
 
-Un site performant ne se résume pas à un joli design. Il doit guider naturellement vos visiteurs vers l'action que vous souhaitez : demande de devis, prise de rendez-vous, achat.
+Un client nous appelle un jour, un peu agacé. Il avait investi 3 000€ dans un site refait à neuf six mois plus tôt. Beau, moderne, avec de belles photos. Et pourtant : zéro demande de devis. Zéro appel entrant. Juste du silence.
 
-Chez Habeprod, agence web au Mans, nous constatons que la plupart des sites de TPE et PME en Sarthe commettent les mêmes erreurs UX. Bonne nouvelle : elles sont évitables.
+On a regardé son site ensemble. Le problème n'était pas le design. C'était que personne ne savait quoi faire en arrivant dessus. Pas de bouton visible, un menu à 9 entrées, un numéro de téléphone planqué tout en bas de page. Le visiteur arrivait, lisait deux lignes, et repartait.
 
-Voici la méthode que nous appliquons pour concevoir des sites qui convertissent.
+Ce n'est pas un cas isolé. C'est le problème numéro un des sites de TPE et PME au Mans — et en France en général. Un site peut être beau et totalement inefficace. La différence entre les deux, c'est l'**UX Design**.
+
+---
 
 ## Qu'est-ce que l'UX design ?
 
-L'**UX (User Experience)** est l'expérience globale que vit un utilisateur en naviguant sur votre site.
+L'**UX (User Experience)** désigne l'expérience globale que vit un utilisateur en naviguant sur votre site. Une bonne UX signifie que votre visiteur comprend immédiatement ce que vous proposez, trouve facilement ce qu'il cherche, et sait quoi faire ensuite — vous contacter, acheter, réserver.
 
-Une bonne UX signifie que votre visiteur :
-
-- Comprend immédiatement ce que vous proposez
-- Trouve facilement l'information qu'il cherche
-- Sait quoi faire ensuite (vous contacter, acheter, réserver)
-
-Une mauvaise UX crée de la **frustration**. Et un visiteur frustré ? Il part chez votre concurrent.
+Une mauvaise UX crée de la frustration. Et un visiteur frustré ne vous rappelle pas. Il va chez votre concurrent.
 
 ## Le modèle des 5 plans de l'expérience utilisateur
 
-En 2000, Jesse James Garrett a formalisé une méthode qui structure la conception d'un site du plus abstrait (la stratégie) au plus concret (le design visuel).
-
-Cette approche garantit que chaque décision repose sur des fondations solides.
+En 2000, Jesse James Garrett a formalisé une méthode qui structure la conception d'un site du plus abstrait (la stratégie) au plus concret (le design visuel). C'est la méthode qu'on applique chez Habeprod sur chaque projet. Elle garantit que chaque décision repose sur des fondations solides — et pas sur des goûts personnels.
 
 ### 1. Stratégie : définir pourquoi le site existe
 
-Le plan stratégique répond à une question simple : **quel est l'objectif de ce site ?**
+Avant de parler de couleurs ou de mise en page, on pose une seule question : **quel est l'objectif de ce site ?**
 
-**Questions à se poser :**
+Qu'attendez-vous concrètement de votre site ? Générer des devis, vendre en ligne, recruter ? Qui sont vos visiteurs et que cherchent-ils quand ils arrivent ? Un artisan en Sarthe qui veut obtenir des demandes de devis doit d'abord comprendre que ses visiteurs veulent évaluer rapidement la qualité du travail et la zone d'intervention — pas lire l'histoire de l'entreprise sur 3 000 mots.
 
-- Qu'attendez-vous de votre site ? (Générer des devis, vendre en ligne, recruter)
-- Qui sont vos visiteurs ? (Particuliers, entreprises, collectivités)
-- Que cherchent-ils quand ils arrivent sur votre site ?
-
-**Exemple concret :** Un artisan en Sarthe veut obtenir des demandes de devis. Ses visiteurs cherchent à évaluer rapidement la qualité du travail et la zone d'intervention. Le site doit donc mettre en avant le portfolio et la zone géographique couverte.
-
-**L'erreur fréquente :** Créer un site "vitrine" sans objectif clair. Résultat : un site qui ne sert à rien.
+L'erreur la plus fréquente : créer un site "vitrine" sans objectif clair. Résultat : un site qui ne sert à rien.
 
 ### 2. Portée : lister ce que le site doit faire
 
-Le plan de portée définit **les fonctionnalités nécessaires** pour atteindre vos objectifs.
+Une fois l'objectif défini, on liste les fonctionnalités réellement nécessaires. Quelles pages sont indispensables ? Faut-il un formulaire de contact, un système de réservation, un catalogue ? Un restaurant au Mans a besoin de sa carte, ses horaires, un module de réservation et des avis clients. Il n'a pas besoin d'un blog ou d'une page institutionnelle que personne ne lira.
 
-**Ce qu'on définit ici :**
-
-- Quelles pages sont indispensables ?
-- Faut-il un formulaire de contact, un système de réservation, un catalogue ?
-- Quels contenus doivent être prioritaires ?
-
-**Exemple concret :** Un restaurant au Mans a besoin de montrer sa carte, ses horaires, un module de réservation et des avis clients. Il n'a PAS besoin d'un blog ou d'une page "histoire de l'entreprise" de 3000 mots.
-
-**L'erreur fréquente :** Vouloir "tout mettre" sur le site. Plus vous ajoutez de pages inutiles, plus vous diluez l'attention du visiteur.
+Plus vous ajoutez de pages inutiles, plus vous diluez l'attention du visiteur. C'est aussi simple que ça.
 
 ### 3. Structure : organiser l'information
 
-Le plan de structure organise **comment les contenus s'articulent**.
+Le plan de structure définit comment les contenus s'articulent entre eux — l'arborescence, les parcours logiques, les liens entre pages. Une entreprise de BTP en Sarthe doit structurer son site par type de prestation (rénovation, construction neuve, extension), pas par ordre chronologique de projets.
 
-**Concrètement :**
-
-- Quelle est l'arborescence du site ? (menu, sous-pages)
-- Quel est le parcours logique ? (page d'accueil → service → contact)
-- Comment les pages se lient entre elles ?
-
-**Exemple concret :** Une entreprise de BTP en Sarthe doit structurer son site par type de prestation (rénovation, construction neuve, extension) plutôt que par ordre chronologique de projets.
-
-**L'erreur fréquente :** Une navigation confuse où le visiteur ne sait pas où cliquer. Si votre menu contient 8 items, c'est trop.
+Si votre menu contient 8 items, c'est trop. Le visiteur ne doit jamais se demander où cliquer.
 
 ### 4. Squelette : positionner les éléments stratégiques
 
-Le plan squelette définit **où placer chaque élément** sur une page.
-
-**Ce qu'on décide ici :**
-
-- Où positionner le bouton de contact pour qu'il soit visible ?
-- Comment hiérarchiser les informations (titre, sous-titre, texte) ?
-- Quelle taille donner aux boutons d'action ?
-
-**Exemple concret :** Sur mobile (70% du trafic), le bouton "Appeler" doit être accessible au pouce sans scroller. Sur un site de TPE au Mans, cacher le numéro de téléphone dans le footer est une erreur.
-
-**L'erreur fréquente :** Mettre toutes les informations "au-dessus de la ligne de flottaison". Résultat : une page surchargée illisible.
+C'est ici qu'on décide où placer chaque élément sur une page. Où positionner le bouton de contact pour qu'il soit visible ? Comment hiérarchiser les informations ? Sur mobile — qui représente aujourd'hui 70% du trafic — le bouton "Appeler" doit être accessible au pouce sans scroller. Cacher le numéro de téléphone dans le footer d'un site de TPE au Mans, c'est se tirer une balle dans le pied.
 
 ### 5. Surface : créer le design final
 
-Le plan de surface finalise **l'apparence visuelle** du site.
+Seulement à cette étape, on travaille l'apparence visuelle — couleurs, typographie, images, animations. Le design doit découler des étapes précédentes, pas l'inverse. Une entreprise familiale en Sarthe bénéficiera d'un design sobre et rassurant plutôt qu'un design "startup tech" qui ne correspond pas à son positionnement.
 
-**Ce qu'on travaille ici :**
+L'erreur classique : commencer par choisir les couleurs avant d'avoir défini la stratégie.
 
-- Couleurs (cohérentes avec votre identité)
-- Typographie (lisible sur tous supports)
-- Images (professionnelles, pas de photos génériques)
-- Animations (subtiles, pas envahissantes)
+---
 
-**Exemple concret :** Une entreprise familiale en Sarthe bénéficiera d'un design sobre et rassurant (typographies classiques, photos authentiques) plutôt qu'un design "startup tech" inadapté à son positionnement.
+## Pourquoi cette approche change tout
 
-**L'erreur fréquente :** Commencer par choisir les couleurs avant d'avoir défini la stratégie. Le design doit découler des étapes précédentes, pas l'inverse.
+Travailler en couches garantit que chaque décision a une raison d'être. Vous ne choisissez pas une couleur "parce qu'elle est jolie", mais parce qu'elle guide l'œil vers l'action importante. Vous ne placez pas un bouton au hasard, mais à l'endroit où l'utilisateur s'attend naturellement à le trouver.
 
-## Pourquoi cette approche fonctionne
+C'est cette rigueur qui fait la différence entre un site qui convertit et un site qui dort.
 
-Travailler en couches garantit que **chaque décision a une raison d'être**.
-
-Vous ne choisissez pas une couleur "parce qu'elle est jolie", mais parce qu'elle guide l'œil vers l'action importante.
-
-Vous ne placez pas un bouton "au hasard", mais à l'endroit où l'utilisateur s'attend naturellement à le trouver.
-
-Cette rigueur fait la différence entre un site qui convertit et un site qui ne sert à rien.
+---
 
 ## Les 3 erreurs UX les plus fréquentes chez les TPE
 
-### Erreur 1 : Partir du design au lieu de la stratégie
+**Partir du design au lieu de la stratégie.** Beaucoup d'entreprises arrivent en disant "je veux un site bleu avec des animations". Sans stratégie claire, même un beau site sera inefficace. Il faut définir les objectifs d'abord, et laisser le design en découler.
 
-Beaucoup d'entreprises contactent une agence en disant : "Je veux un site bleu avec des animations".
+**Négliger l'expérience mobile.** En 2026, plus de 70% des visites se font sur smartphone. Un site pensé uniquement pour ordinateur, c'est un site qui rate la majorité de ses visiteurs. Textes trop petits, boutons impossibles à cliquer, images qui débordent — ces erreurs coûtent des clients réels.
 
-**Le problème :** Sans stratégie claire, même un beau site sera inefficace.
+**Oublier l'appel à l'action.** Votre visiteur arrive, lit, aime — et ne sait pas quoi faire ensuite. Chaque page doit avoir un CTA clair et visible : "Demander un devis", "Nous appeler", "Réserver". Sans ça, vous laissez partir des prospects chauds.
 
-**La solution :** Définir d'abord vos objectifs, puis adapter le design en conséquence.
-
-### Erreur 2 : Négliger l'expérience mobile
-
-En 2026, plus de 70% des visites se font sur mobile. Un site pensé uniquement pour ordinateur est obsolète.
-
-**Le problème :** Textes trop petits, boutons impossibles à cliquer, images qui débordent.
-
-**La solution :** Concevoir d'abord pour mobile (approche "mobile-first"), puis adapter au desktop.
-
-### Erreur 3 : Oublier l'appel à l'action
-
-Votre visiteur arrive sur votre site. Il lit. Il aime. Et... il ne sait pas quoi faire ensuite.
-
-**Le problème :** Pas de bouton visible, pas de numéro de téléphone cliquable, pas de formulaire de contact.
-
-**La solution :** Chaque page doit avoir un appel à l'action clair (CTA). "Demander un devis", "Nous appeler", "Réserver".
+---
 
 ## Ce qu'une bonne UX change concrètement
 
-Un site bien conçu transforme la relation avec vos visiteurs :
+Avant (mauvaise UX) : taux de rebond élevé, peu de conversions, temps passé faible, visiteurs frustrés. Après (bonne UX) : navigation fluide, visiteurs qui restent et explorent, actions claires, confiance renforcée.
 
-**Avant (mauvaise UX) :**
+Ce n'est pas de la théorie. C'est ce qu'on observe sur chaque refonte qu'on accompagne.
 
-- Taux de rebond élevé (les visiteurs partent immédiatement)
-- Peu de conversions
-- Temps passé faible
-- Frustration des utilisateurs
+---
 
-**Après (bonne UX) :**
+## Comment on travaille chez Habeprod
 
-- Navigation fluide
-- Visiteurs qui restent et explorent
-- Actions claires (appels, formulaires, achats)
-- Confiance renforcée
+Pour chaque projet web en Sarthe, on suit rigoureusement ces 5 étapes dans l'ordre.
 
-## Comment Habeprod applique cette méthode au Mans
+**Atelier stratégique** — On rencontre le client pour définir ses objectifs, comprendre ses clients, identifier ses concurrents. Rien ne commence avant ça.
 
-Pour chaque projet web en Sarthe, nous suivons rigoureusement ces 5 étapes :
+**Cadrage fonctionnel** — On liste les fonctionnalités nécessaires, ni plus ni moins, et on priorise ce qui apporte le plus de valeur.
 
-**1. Atelier stratégique**
-Nous rencontrons le client pour définir ses objectifs, comprendre ses clients et identifier ses concurrents.
+**Architecture de l'information** — On crée l'arborescence du site et définit les parcours utilisateurs.
 
-**2. Cadrage fonctionnel**
-Nous listons les fonctionnalités nécessaires (ni plus, ni moins) et priorisons ce qui apporte le plus de valeur.
+**Wireframes interactifs** — On conçoit des maquettes fonctionnelles sans design pour valider la structure avant d'investir dans le graphisme. Beaucoup d'agences sautent cette étape. C'est une erreur.
 
-**3. Architecture de l'information**
-Nous créons l'arborescence du site et définissons les parcours utilisateurs.
+**Design final** — Seulement là, on crée l'identité visuelle et les maquettes graphiques finales.
 
-**4. Wireframes interactifs**
-Nous concevons des maquettes fonctionnelles (sans design) pour valider la structure avant d'investir dans le graphisme.
+Cette rigueur garantit que le site final répond aux vrais besoins des utilisateurs — pas aux goûts du moment.
 
-**5. Design final**
-Seulement à ce stade, nous créons l'identité visuelle et les maquettes graphiques finales.
-
-Cette rigueur garantit que le site final répond aux vrais besoins des utilisateurs.
+---
 
 ## L'UX, c'est rentable ?
 
-Investir dans l'UX, c'est investir dans l'efficacité de votre site.
+Un site mal conçu coûte cher : budget marketing gaspillé parce que le trafic arrive mais ne convertit pas, opportunités perdues parce que vos visiteurs vont chez vos concurrents, image dégradée parce qu'un site confus renvoie une impression d'amateurisme.
 
-Un site mal conçu coûte cher :
+Un site bien conçu est un outil de vente qui travaille pour vous 24h/24. Ce n'est pas une dépense. C'est un investissement avec un retour mesurable.
 
-- Budget marketing gaspillé (le trafic arrive mais ne convertit pas)
-- Opportunités perdues (vos visiteurs vont chez vos concurrents)
-- Image dégradée (un site confus renvoie une image amateur)
+---
 
-Un site bien conçu est un **outil de vente** qui travaille pour vous 24h/24.
-
-## Pour aller plus loin
-
-L'UX design n'est pas une mode passagère. C'est une discipline indispensable pour tout site professionnel.
-
-Si votre site actuel ne génère pas de résultats, il est peut-être temps de l'auditer sous l'angle de l'expérience utilisateur.
-
-Chez Habeprod, nous accompagnons les TPE et PME au Mans et en Sarthe dans la création de sites performants, pensés d'abord pour leurs utilisateurs.
+Si votre site actuel ne génère pas de résultats, il y a de fortes chances que le problème vienne de l'expérience utilisateur — pas du SEO, pas du budget pub. Chez Habeprod, on commence toujours par là.
 
 ---
 
 **Votre site convertit-il vraiment ? Parlons-en.**
 
-Contactez-nous pour échanger sur votre projet : agence.habeprod@gmail.com
+📧 agence.habeprod@gmail.com
+📞 +33 6 27 25 25 68

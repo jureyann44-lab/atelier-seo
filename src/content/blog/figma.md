@@ -7,202 +7,93 @@ tags: ["Figma", "UI Design", "UX Design", "Formation", "Le Mans"]
 
 ![Formation Figma au Mans : création de maquette UI/UX professionnelle](/images/blog/formation-figma-le-mans.webp "Formation Figma UI UX au Mans - Habeprod")
 
-_Atelier pratique de conception d’interface sur Figma lors d’une formation au Mans_
+_Atelier pratique de conception d'interface sur Figma lors d'une formation au Mans_
 
-Vous avez des idées, mais vous ne savez pas comment les transformer en interface claire et professionnelle.
+---
 
-Aujourd’hui, que vous soyez étudiant, entrepreneur ou chargé de communication, **savoir utiliser Figma est devenu indispensable**.
+Un entrepreneur est venu nous voir avec une idée très claire dans la tête. Il savait exactement ce qu'il voulait : une application simple, intuitive, "comme Airbnb mais pour les prestataires locaux". Il avait même fait des croquis sur papier. Ce qu'il n'avait pas, c'était le moyen de le communiquer à un développeur sans que ça parte dans tous les sens — et sans exploser son budget en allers-retours inutiles.
 
-Chez Habeprod, agence digitale au Mans, nous formons chaque année des profils qui veulent passer d’une idée floue à une interface concrète, moderne et exploitable par les développeurs.
+On lui a appris Figma en quelques séances. Deux semaines plus tard, il présentait un prototype interactif complet à son développeur. Zéro ambiguïté, zéro surprise. Le projet a démarré directement en phase de développement.
 
-Voici ce qui change vraiment quand on maîtrise Figma en 2026.
+C'est ça, Figma. Pas juste un outil de design — un outil qui transforme une idée floue en quelque chose de concret, testable et communicable. Et en 2026, que vous soyez étudiant, entrepreneur ou chargé de communication, ne pas le maîtriser c'est se couper d'une compétence devenue centrale dans tous les projets digitaux.
 
 ---
 
 ## Pourquoi Figma est devenu incontournable
 
-Figma n’est pas juste un outil de design.
+Figma est aujourd'hui la référence mondiale pour le design d'interfaces web, les applications mobiles, les prototypes interactifs et le travail collaboratif en temps réel. 90% des équipes produit l'utilisent. Ce n'est plus un outil de designer — c'est l'outil commun autour duquel designers, développeurs, chefs de projet et clients se retrouvent.
 
-C’est **la référence mondiale** pour :
-
-- Le design d’interfaces web
-- Les applications mobiles
-- Les prototypes interactifs
-- Le travail collaboratif en temps réel
-
-Aujourd’hui, 90% des équipes produit utilisent Figma.
-
-Ne pas le maîtriser = être limité dans ses projets digitaux.
+Ne pas le maîtriser, c'est dépendre des autres pour traduire ses propres idées.
 
 ---
 
-## 1. Passer de l’idée au prototype concret
+## 1. Passer de l'idée au prototype concret
 
-Beaucoup ont des idées.  
-Peu savent les structurer visuellement.
+Beaucoup de gens ont des idées. Peu savent les structurer visuellement. Avec Figma, vous apprenez à créer des wireframes clairs, organiser une page web de façon logique, définir une hiérarchie visuelle efficace, et transformer un brief en maquette directement exploitable par un développeur.
 
-Avec Figma, vous apprenez à :
-
-- Créer des wireframes clairs
-- Structurer une page web logique
-- Définir une hiérarchie visuelle efficace
-- Transformer un brief en maquette exploitable
-
-**Un bon design n’est pas décoratif. Il est stratégique.**
+Un bon design n'est pas décoratif. Il est stratégique — et ça s'apprend.
 
 ---
 
-## 2. Comprendre les fondamentaux UI / UX
+## 2. Comprendre les fondamentaux UI/UX
 
-La formation ne se limite pas à l’outil.
+La formation ne se limite pas à l'outil. On aborde l'UX — parcours utilisateur, architecture de l'information, wireframing, tests utilisateurs — et l'UI — typographies, couleurs, grilles, espacements, design systems.
 
-Nous abordons :
-
-### UX Design
-
-- Parcours utilisateur
-- Architecture de l’information
-- Wireframing
-- Tests utilisateurs
-
-### UI Design
-
-- Typographies
-- Couleurs
-- Grilles et espacements
-- Design systems
-
-Un bel écran ne suffit pas.  
-Il doit être compréhensible, fluide et orienté conversion.
+Un bel écran ne suffit pas. Il doit être compréhensible, fluide et orienté conversion. Ces deux disciplines sont indissociables et c'est ce qu'on enseigne ensemble, pas séparément.
 
 ---
 
 ## 3. Maîtriser les composants et le Design System
 
-Figma permet de créer des composants réutilisables.
+Figma permet de créer des composants réutilisables — boutons, cartes, formulaires, navigation. Une fois ce réflexe acquis, le gain de temps est considérable, la cohérence graphique devient automatique, et la collaboration avec les développeurs est beaucoup plus fluide.
 
-Boutons, cartes, formulaires, navigation…
-
-Résultat :
-
-- Gain de temps énorme
-- Cohérence graphique
-- Collaboration simplifiée avec les développeurs
-
-Vous apprenez à structurer un vrai Design System, comme en entreprise.
+Vous apprenez à structurer un vrai Design System, comme on le fait en entreprise.
 
 ---
 
 ## 4. Prototyper et tester avant développement
 
-Avant même d’écrire une ligne de code, vous pouvez :
-
-- Simuler des interactions
-- Tester des parcours
-- Corriger les frictions
-- Valider une idée auprès d’un client
-
-Un prototype interactif évite des heures (et des budgets) de développement inutiles.
+Avant d'écrire une seule ligne de code, Figma vous permet de simuler des interactions, tester des parcours complets, identifier les frictions, et valider une idée auprès d'un client. Un prototype interactif évite des heures — et souvent des milliers d'euros — de développement inutile. C'est l'un des retours sur investissement les plus rapides qu'on ait observés chez nos stagiaires.
 
 ---
 
 ## 5. Collaboration et travail en équipe
 
-Figma fonctionne en ligne.
-
-- Commentaires en direct
-- Partage de maquettes
-- Travail simultané
-- Historique des versions
-
-C’est l’outil idéal pour travailler avec :
-
-- Développeurs
-- Chefs de projet
-- Clients
-- Équipes marketing
+Figma fonctionne entièrement en ligne. Commentaires en direct, partage de maquettes, travail simultané, historique des versions — c'est conçu pour travailler avec des développeurs, des chefs de projet, des clients, des équipes marketing. Plus d'allers-retours par email avec des fichiers nommés "final_v3_VRAIMENT_FINAL.png".
 
 ---
 
-## 6. Les erreurs que nous voyons souvent
+## 6. Les erreurs qu'on corrige dès le départ
 
-❌ Trop d’effets, pas assez de structure  
-❌ Mauvaise hiérarchie visuelle  
-❌ Absence de grille  
-❌ Aucune logique responsive  
-❌ Design non exploitable par les développeurs
-
-La formation corrige ces erreurs dès le départ.
+Dans les premières maquettes, on voit toujours les mêmes problèmes : trop d'effets et pas assez de structure, hiérarchie visuelle absente, aucune grille, logique responsive inexistante, et des designs qu'aucun développeur ne peut implémenter tel quel. La formation corrige ces réflexes dès les premiers exercices pratiques, avant qu'ils deviennent des habitudes.
 
 ---
 
 ## 7. Mobile-first obligatoire
 
-Plus de 70% du trafic est mobile.
-
-Nous travaillons :
-
-- Versions desktop
-- Adaptations tablette
-- Versions mobile-first
-- Contraintes responsive
-
-Un bon designer pense adaptabilité dès la première maquette.
+Plus de 70% du trafic est mobile. On travaille donc systématiquement les versions desktop, tablette et mobile-first. Un bon designer pense adaptabilité dès la première maquette — pas en dernière étape quand tout est déjà figé.
 
 ---
 
-## 8. À qui s’adresse cette formation ?
+## À qui s'adresse cette formation ?
 
-- Étudiants en communication / marketing digital
-- Entrepreneurs qui créent leur site
-- Freelances
-- Chargés de projet
-- Responsables communication
-
-Aucun prérequis avancé en design n’est nécessaire.  
-Mais de la rigueur et de la curiosité, oui.
+Aux étudiants en communication ou marketing digital, aux entrepreneurs qui conçoivent leur site ou leur application, aux freelances, aux chargés de projet, et aux responsables communication qui veulent reprendre la main sur leur production visuelle. Aucun prérequis avancé en design n'est nécessaire — juste de la rigueur et de la curiosité.
 
 ---
 
-## Concrètement, vous repartez avec :
+## Ce avec quoi vous repartez
 
-- Des maquettes professionnelles
-- Un prototype interactif
-- Une méthodologie claire
-- Une vraie compréhension UX/UI
-- La capacité de travailler avec des développeurs
+À la fin de la formation, vous repartez avec des maquettes professionnelles réalisées pendant les séances, un prototype interactif fonctionnel, une méthodologie claire et reproductible, une vraie compréhension des enjeux UX/UI, et la capacité de travailler efficacement avec des développeurs sans perdre le contrôle de votre projet.
 
 ---
 
-## Pourquoi se former maintenant ?
+La maîtrise de Figma n'est plus un "plus" sur un CV. C'est une compétence clé du digital en 2026 — et c'est accessible à tout le monde, pas seulement aux designers de métier.
 
-Le design est devenu stratégique.
-
-Une interface mal pensée :
-
-- Fait fuir les utilisateurs
-- Fait chuter le taux de conversion
-- Décrédibilise une marque
-
-Un bon design :
-
-- Clarifie
-- Rassure
-- Convertit
-
----
-
-## Pour aller plus loin
-
-La maîtrise de Figma n’est plus un “plus”.
-
-C’est une compétence clé du digital en 2026.
-
-Chez Habeprod, nous proposons une formation Figma pratique, structurée et orientée terrain au Mans et en Sarthe.
+Chez Habeprod, on propose une formation pratique, structurée et orientée terrain au Mans et en Sarthe.
 
 ---
 
 **Vous voulez apprendre à concevoir des interfaces modernes et efficaces ?**
 
-Parlons-en.  
-Contact : agence.habeprod@gmail.com
+📧 agence.habeprod@gmail.com
+📞 +33 6 27 25 25 68

@@ -9,274 +9,123 @@ tags: ["Branding", "Identité visuelle", "Design", "Le Mans"]
 
 _Composition d'éléments de charte graphique : logo, couleurs et typographie_
 
-Votre logo change de couleur selon qui l'utilise. Vos cartes de visite n'ont pas la même typo que votre site. Vos flyers ressemblent à ceux de n'importe qui. Le problème ? Vous n'avez pas de **charte graphique**.
+---
 
-Pour une TPE ou PME au Mans, une identité visuelle cohérente, c'est la différence entre une entreprise qu'on mémorise et une entreprise qu'on oublie.
+Il y a quelques mois, un artisan du bâtiment en Sarthe nous contacte. Il venait de faire imprimer 500 flyers pour une promotion. Problème : l'imprimeur avait utilisé le logo en version JPEG trouvé sur le site, l'avait étiré pour remplir l'espace, et avait "adapté" les couleurs à sa guise. Résultat : un flyer qui ressemblait à n'importe quelle autre entreprise — sauf à la sienne.
 
-Chez Habeprod, agence web en Sarthe, nous constatons que la plupart des petites entreprises locales négligent ce point. Pourtant, une charte graphique bien pensée augmente la mémorisation de votre marque et renforce la confiance.
+Ce n'est pas un problème d'imprimeur. C'est un problème de charte graphique. Ou plutôt : d'absence de charte graphique.
 
-Voici comment construire une identité visuelle cohérente, étape par étape.
+Pour une TPE ou PME au Mans, une identité visuelle cohérente c'est la différence entre une entreprise qu'on reconnaît et une entreprise qu'on oublie. Et pourtant, c'est systématiquement le premier poste sacrifié quand on lance son activité.
+
+---
 
 ## Qu'est-ce qu'une charte graphique ?
 
-Une charte graphique, c'est le **mode d'emploi de votre identité visuelle**.
-
-Elle définit :
-
-- Comment utiliser votre logo
-- Quelles couleurs représentent votre marque
-- Quelles typographies utiliser
-- Ce qu'il est interdit de faire
-
-**L'objectif :** Que tous vos supports (site, cartes, flyers, réseaux sociaux) soient immédiatement reconnaissables comme venant de votre entreprise.
+Une charte graphique, c'est le mode d'emploi de votre identité visuelle. Elle définit comment utiliser votre logo, quelles couleurs représentent votre marque, quelles typographies utiliser, et ce qu'il est interdit de faire. L'objectif est simple : que tous vos supports — site, cartes, flyers, réseaux sociaux — soient immédiatement reconnaissables comme venant de votre entreprise, peu importe qui les crée.
 
 ## Pourquoi c'est indispensable pour une TPE
 
-**Sans charte graphique :**
+Sans charte graphique, votre logo change de tête selon qui le manipule, vos supports manquent de cohérence, et votre image paraît amateur — même si votre travail est excellent. Impossible aussi de déléguer sereinement la création de supports à un prestataire sans risquer le résultat de l'artisan cité plus haut.
 
-- Votre logo apparaît différemment selon qui le manipule
-- Vos supports manquent de cohérence
-- Votre image paraît amateur
-- Impossible de déléguer la création de supports
+Avec une charte bien construite, vous gagnez en cohérence visuelle, en professionnalisme perçu, et surtout en mémorisation. Une identité visuelle cohérente augmente la mémorisation d'une marque de 80%. Pour une entreprise locale au Mans qui cherche à se démarquer dans sa zone géographique, c'est loin d'être anecdotique.
 
-**Avec une charte graphique :**
-
-- Cohérence visuelle sur tous les supports
-- Professionnalisme renforcé
-- Mémorisation de votre marque facilitée
-- Autonomie pour créer des supports
-
-Une étude montre qu'une identité visuelle cohérente augmente la mémorisation d'une marque de 80%. Pour une entreprise locale au Mans, être mémorisé fait la différence.
+---
 
 ## Étape 1 : Le logo principal
 
 ### Les versions indispensables
 
-Votre logo doit exister en plusieurs déclinaisons :
+Votre logo doit exister en plusieurs déclinaisons pour fonctionner dans toutes les situations. Une version couleur pour l'usage standard, une version noir et blanc pour l'impression économique et les tampons, une version monochrome pour la broderie ou la gravure, et une version négative pour les fonds sombres.
 
-**Version couleur :** Usage standard (site web, réseaux sociaux, documents couleur)
+Pourquoi ? Un logo qui fonctionne parfaitement en couleur peut devenir totalement illisible en noir et blanc. Le découvrir le jour de l'impression, c'est trop tard.
 
-**Version noir et blanc :** Impression économique, fax, tampons
+### Zone de protection et tailles minimales
 
-**Version monochrome :** Broderie, gravure, situations spécifiques
+Définissez un espace vide minimum autour du logo où aucun texte ni élément ne doit empiéter. La règle classique : la hauteur de la lettre la plus haute de votre logo. En dessous de 20mm en print ou 100px en digital, un logo perd sa lisibilité. Mieux vaut ne pas l'afficher du tout.
 
-**Version négative :** Pour fonds sombres (photo de couverture, vidéo)
-
-**Pourquoi plusieurs versions ?** Votre logo doit rester lisible dans toutes les situations. Un logo qui fonctionne en couleur peut devenir illisible en noir et blanc.
-
-### Zone de protection
-
-Définissez un espace vide minimum autour du logo où aucun texte, image ou élément ne doit apparaître.
-
-**Règle classique :** La hauteur de la lettre la plus haute de votre logo = zone de protection.
-
-### Tailles minimales
-
-Fixez les dimensions minimales pour garantir la lisibilité :
-
-- **Print :** Minimum 20mm de largeur
-- **Digital :** Minimum 100px de largeur
-
-En dessous de ces tailles, le logo devient illisible. Mieux vaut ne pas l'afficher.
+---
 
 ## Étape 2 : La palette de couleurs
 
 ### Couleurs primaires (2-3 maximum)
 
-Ce sont les couleurs principales de votre marque. Elles apparaissent sur tous vos supports.
+Pour chaque couleur principale, vous devez documenter son code HEX pour le web (#EA6432), ses valeurs RVB pour les écrans, et ses valeurs CMJN pour l'impression. Ces trois codes ne sont pas interchangeables : les écrans et les imprimantes ne reproduisent pas les couleurs de la même façon. Sans ces références précises, votre orange vif peut devenir rouge brique à l'impression.
 
-**Pour chaque couleur, documentez :**
+### Couleurs secondaires et neutres
 
-- **Code HEX :** #EA6432 (pour le web)
-- **RVB :** R234 G100 B50 (pour les écrans)
-- **CMJN :** C0 M72 Y84 N0 (pour l'impression)
-- **Pantone :** Si impression offset professionnelle
+Ajoutez 2 à 3 couleurs complémentaires pour enrichir vos supports, plus des neutres (gris, blanc, noir) pour les textes et fonds. L'erreur la plus fréquente : une palette de 8 à 10 couleurs. Résultat garanti : aucune cohérence visuelle. La règle d'or, c'est 5 à 6 couleurs maximum.
 
-**Pourquoi plusieurs codes ?** Les écrans (RVB) et les imprimantes (CMJN) n'affichent pas les couleurs de la même façon. Sans ces codes précis, votre orange vif peut devenir rouge brique à l'impression.
-
-### Couleurs secondaires (2-3 maximum)
-
-Couleurs complémentaires pour enrichir vos supports sans surcharger.
-
-### Couleurs neutres
-
-Gris, noir, blanc utilisés pour les textes et fonds.
-
-**Erreur fréquente :** Avoir 8-10 couleurs dans la palette. Résultat : aucune cohérence visuelle.
-
-**Règle d'or :** 5-6 couleurs maximum (primaires + secondaires + neutres).
+---
 
 ## Étape 3 : La typographie
 
-### Police principale (titres)
+### Police principale et secondaire
 
-Choisissez une police à forte personnalité pour vos titres.
+Choisissez une police à forte personnalité pour vos titres, et une police très lisible pour le corps de texte. Spécifiez le nom exact, les graisses utilisées (Light, Regular, Bold), et les tailles recommandées selon les supports.
 
-**Spécifiez :**
+L'erreur classique : utiliser une police "originale" pour les paragraphes. Résultat : un texte fatigant à lire, des lecteurs qui décrochent. Deux à trois polices maximum dans toute votre communication — c'est une règle à ne pas transgresser.
 
-- Nom exact de la police (ex : Montserrat Bold)
-- Graisses utilisées (Light, Regular, Bold, Black)
-- Tailles recommandées selon les supports
-
-### Police secondaire (textes courants)
-
-Privilégiez une police très lisible pour le corps de texte.
-
-**Erreur fréquente :** Utiliser une police "originale" pour les paragraphes. Résultat : texte fatigant à lire.
-
-**Règle d'or :** Maximum 2-3 polices différentes dans toute votre communication.
-
-**Exemple pour une TPE au Mans :**
-
-- Titres : Police à caractère (ex : Montserrat Bold)
-- Textes : Police neutre et lisible (ex : Open Sans Regular)
+---
 
 ## Étape 4 : Les éléments graphiques récurrents
 
-Si votre identité visuelle inclut des éléments graphiques (formes, motifs, style photo), documentez-les.
+Si votre identité intègre des formes, motifs ou un style photographique particulier, documentez-les. Une entreprise familiale en Sarthe gagnera à définir l'utilisation de photos authentiques — équipe, locaux, réalisations réelles — plutôt que des images de banque génériques qui ne ressemblent à personne. Même logique pour les icônes : définissez leur style, l'épaisseur des traits, et la librairie de référence pour garantir la cohérence.
 
-### Style photographique
+---
 
-Définissez le traitement des photos utilisées :
+## Étape 5 : Les règles d'usage — ce qu'il ne faut JAMAIS faire
 
-- Lumineuses ou sombres ?
-- Naturelles ou stylisées ?
-- Couleur ou noir et blanc ?
+C'est la section que tout le monde ignore. C'est aussi pour ça que les logos finissent étirés, colorés n'importe comment, avec une ombre portée digne de PowerPoint 2003.
 
-**Exemple :** Une entreprise familiale en Sarthe gagnera à utiliser des photos authentiques (équipe, locaux, réalisations) plutôt que des photos de banque d'images génériques.
+Sur le logo : ne jamais déformer les proportions, changer les couleurs, ajouter des effets visuels, pivoter ou modifier l'espacement des lettres. Chaque modification dégrade l'identité visuelle. Un logo étiré perd son équilibre. Un logo avec ombre portée sonne amateur — même si le reste du support est soigné.
 
-### Iconographie
+Sur les couleurs : pas de couleurs hors palette, pas de dégradés non validés, pas plus de 3 couleurs sur un même support. Sur la typographie : uniquement les polices référencées, maximum 2 par support.
 
-Si vous utilisez des icônes :
-
-- Style (ligne, rempli, duo-tone)
-- Épaisseur des traits
-- Librairie de référence (pour cohérence)
-
-## Étape 5 : Les règles d'usage (ce qu'il ne faut JAMAIS faire)
-
-C'est LA section que tout le monde ignore... et c'est pour ça que les logos sont massacrés.
-
-### Interdits sur le logo
-
-**Ne JAMAIS :**
-
-- Déformer les proportions (étirer, écraser)
-- Changer les couleurs
-- Ajouter des effets (ombre portée, biseautage, reflet)
-- Pivoter ou incliner le logo
-- Modifier l'espacement entre les lettres
-
-**Pourquoi ces interdits ?** Chaque modification dégrade l'identité visuelle. Un logo étiré perd son équilibre, un logo avec ombre portée paraît amateur.
-
-### Interdits sur les couleurs
-
-- Utiliser des couleurs hors palette
-- Créer des dégradés non validés
-- Mixer plus de 3 couleurs sur un même support
-
-### Interdits sur la typographie
-
-- Utiliser des polices non référencées
-- Mélanger plus de 2 polices par support
-- Modifier graisse ou interlignage sans validation
+---
 
 ## Étape 6 : Les exemples d'application
 
-Montrez concrètement comment utiliser la charte sur différents supports.
+Une charte sans exemples concrets reste théorique. Montrez comment utiliser l'identité visuelle sur une carte de visite, un papier à en-tête, un flyer, le site web, les réseaux sociaux et la signature email. Si vous avez une enseigne ou un véhicule de société, incluez-les aussi.
 
-### Print
+Sans ces exemples, même avec la meilleure charte du monde, vos équipes et prestataires ne sauront pas comment l'appliquer. Et vous vous retrouverez avec des flyers étirés.
 
-- Carte de visite
-- Papier à en-tête
-- Flyer / plaquette
-
-### Digital
-
-- Site web (favicon, header, footer)
-- Réseaux sociaux (photo de profil, bannière)
-- Signature email
-
-### Signalétique (si applicable)
-
-- Enseigne extérieure
-- Véhicule de société
-- Packaging produit
-
-**Ces exemples sont essentiels.** Sans eux, vos équipes (ou vos prestataires) ne savent pas comment appliquer la charte.
+---
 
 ## Les 3 erreurs fréquentes des TPE
 
-### Erreur 1 : Charte trop rigide
+**Une charte trop rigide.** Des règles qui interdisent toute créativité finissent par ne plus être utilisées. L'objectif c'est l'équilibre : des contraintes claires, mais une marge de manœuvre pour adapter aux supports.
 
-Une charte qui interdit toute créativité tue l'envie de l'utiliser.
+**Trop de variantes de logo.** Cinq versions différentes du logo, c'est la confusion assurée. Trois à quatre versions suffisent : couleur, noir et blanc, négatif, et éventuellement une version simplifiée.
 
-**Trouvez l'équilibre :** Des règles claires, mais une marge de manœuvre pour adapter aux supports.
+**Pas de fichiers sources.** Recevoir uniquement un PDF sans les fichiers vectoriels du logo (.AI, .SVG) rend toute utilisation professionnelle impossible. Exigez toujours les fichiers sources — c'est non négociable.
 
-### Erreur 2 : Trop de variantes de logo
+---
 
-4-5 versions du logo (horizontal, vertical, avec baseline, sans baseline, icône seule, etc.) = confusion.
+## Comment on travaille chez Habeprod
 
-**Limitez à 3-4 versions maximum** : couleur, noir et blanc, négatif, et éventuellement une version simplifiée.
+Pour chaque projet d'identité visuelle en Sarthe, on suit quatre phases dans l'ordre.
 
-### Erreur 3 : Pas de fichiers sources fournis
+**Audit de marque** — On analyse vos valeurs, votre positionnement sur le marché local, vos concurrents au Mans et en Sarthe, et votre cible client. Pas de logo avant ça.
 
-Recevoir uniquement un PDF de la charte sans les fichiers du logo en vectoriel (.AI, .SVG) rend impossible toute utilisation professionnelle.
+**Exploration créative** — On propose 3 pistes graphiques distinctes (logo + palette + typo) pour explorer plusieurs directions sans s'enfermer trop tôt.
 
-**Exigez les fichiers sources** : .AI, .EPS, .SVG pour le logo + polices installables.
+**Déclinaisons** — Une fois la direction choisie, on crée toutes les versions du logo, la palette complète, les règles typographiques et les exemples d'application.
 
-## Comment Habeprod crée des chartes graphiques au Mans
+**Livraison** — Vous repartez avec le document PDF complet, les fichiers sources en tous formats, et des templates prêts à l'emploi (carte de visite, signature email, etc.).
 
-Pour chaque projet d'identité visuelle en Sarthe, nous suivons un processus en 4 phases :
+---
 
-**1. Audit de marque**
+## Combien de temps pour une charte graphique ?
 
-Nous analysons :
+Comptez plusieurs semaines entre le brief initial et la livraison finale. Chaque choix — couleurs, typographie, formes — doit être réfléchi et validé. Une charte bâclée en une semaine ne tiendra pas dans le temps. Et recommencer six mois plus tard coûte toujours plus cher que bien faire dès le départ.
 
-- Vos valeurs d'entreprise
-- Votre positionnement sur le marché local
-- Vos concurrents au Mans et en Sarthe
-- Votre cible client
+---
 
-**2. Exploration créative**
-
-Nous proposons 3 pistes graphiques différentes (logo + palette + typo) pour explorer plusieurs directions.
-
-**3. Déclinaisons**
-
-Une fois la direction choisie, nous créons :
-
-- Les déclinaisons du logo
-- La palette de couleurs complète
-- Les règles typographiques
-- Les exemples d'application
-
-**4. Livraison**
-
-Vous recevez :
-
-- Document charte graphique PDF complet
-- Fichiers sources du logo (tous formats)
-- Templates de communication (carte de visite, signature email, etc.)
-
-## Combien de temps pour créer une charte graphique ?
-
-Cela dépend de la complexité du projet, mais comptez plusieurs semaines entre le brief initial et la livraison finale.
-
-**Les étapes prennent du temps** car chaque choix (couleurs, typographie, formes) doit être mûrement réfléchi et validé.
-
-Une charte graphique précipitée en 1 semaine ne sera jamais aussi solide qu'une charte travaillée sur plusieurs semaines.
-
-## Pour aller plus loin
-
-Une charte graphique n'est pas un luxe réservé aux grandes entreprises. C'est un outil indispensable pour toute TPE ou PME qui veut professionnaliser son image.
-
-Si vos supports visuels manquent de cohérence, si votre logo est utilisé différemment selon les prestataires, ou si vous voulez structurer votre identité visuelle, il est temps de créer votre charte graphique.
-
-Chez Habeprod, nous accompagnons les entreprises au Mans et en Sarthe dans la création de leur identité visuelle.
+Une charte graphique n'est pas un luxe réservé aux grandes entreprises. C'est un outil concret qui structure votre image, facilite la délégation, et professionnalise chaque support que vous produisez. Si aujourd'hui votre logo change de tête selon qui l'utilise, c'est le bon moment d'y remédier.
 
 ---
 
 **Besoin d'une identité visuelle cohérente ? Parlons-en.**
 
-Contactez-nous : agence.habeprod@gmail.com
+📧 agence.habeprod@gmail.com
+📞 +33 6 27 25 25 68
