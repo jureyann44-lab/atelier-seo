@@ -1,51 +1,28 @@
 <nav class="nav transparent">
   <div class="nav-container">
     <a href="/" class="nav-logo" aria-label="Retour à l'accueil Habeprod">
-      <img
-        src="/logo-habeprod-light.svg"
-        alt="Habeprod"
-        class="logo-site logo-light"
-      />
-      <img
-        src="/logo-habeprod-dark.svg"
-        alt="Habeprod"
-        class="logo-site logo-dark"
-      />
+      <img src="/logo-habeprod-light.svg" alt="Habeprod" class="logo-site logo-light" />
+      <img src="/logo-habeprod-dark.svg" alt="Habeprod" class="logo-site logo-dark" />
     </a>
 
     <ul class="nav-links">
       <li><a href="/#agence">L'agence</a></li>
-      <li><a href="/#services">Nos services</a></li>
-      <li><a href="/#expertise">Notre expertise</a></li>
-      <li><a href="/#projects">Nos réalisations</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#expertise">Expertise</a></li>
+      <li><a href="/#projects">Réalisations</a></li>
+      <li><a href="/tarifs">Tarifs</a></li>
       <li><a href="/#contact">Contact</a></li>
 
       <li class="nav-social">
         <div class="social-links-mobile">
-          <a
-            href="https://www.instagram.com/habeprod/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src="/logo-instagram.svg"
-              class="icon-social"
-              alt="Instagram"
-            />
+          <a href="https://www.instagram.com/habeprod/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <img src="/logo-instagram.svg" class="icon-social" alt="" />
           </a>
-          <a
-            href="https://www.linkedin.com/company/95178904/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="/logo-linkedin.svg" class="icon-social" alt="LinkedIn" />
+          <a href="https://www.linkedin.com/company/95178904/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <img src="/logo-linkedin.svg" class="icon-social" alt="" />
           </a>
-          <a
-            href="https://discord.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src="/logo-discord.svg" class="icon-social" alt="Discord" />
+          <a href="https://discord.com" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+            <img src="/logo-discord.svg" class="icon-social" alt="" />
           </a>
         </div>
       </li>
@@ -53,73 +30,25 @@
 
     <div class="nav-right">
       <div class="social-links">
-        <a
-          href="https://www.instagram.com/habeprod/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="/logo-instagram.svg"
-            alt="Instagram"
-            class="icon-social icon-light"
-          />
-          <img
-            src="/logo-instagram-dark.svg"
-            alt="Instagram"
-            class="icon-social icon-dark"
-          />
+        <a href="https://www.instagram.com/habeprod/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <img src="/logo-instagram.svg" alt="" class="icon-social icon-light" />
+          <img src="/logo-instagram-dark.svg" alt="" class="icon-social icon-dark" />
         </a>
-        <a
-          href="https://www.linkedin.com/company/95178904/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="/logo-linkedin.svg"
-            alt="LinkedIn"
-            class="icon-social icon-light"
-          />
-          <img
-            src="/logo-linkedin-dark.svg"
-            alt="LinkedIn"
-            class="icon-social icon-dark"
-          />
+        <a href="https://www.linkedin.com/company/95178904/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <img src="/logo-linkedin.svg" alt="" class="icon-social icon-light" />
+          <img src="/logo-linkedin-dark.svg" alt="" class="icon-social icon-dark" />
         </a>
-        <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
-          <img
-            src="/logo-discord.svg"
-            alt="Discord"
-            class="icon-social icon-light"
-          />
-          <img
-            src="/logo-discord-dark.svg"
-            alt="Discord"
-            class="icon-social icon-dark"
-          />
+        <a href="https://discord.com" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+          <img src="/logo-discord.svg" alt="" class="icon-social icon-light" />
+          <img src="/logo-discord-dark.svg" alt="" class="icon-social icon-dark" />
         </a>
       </div>
 
       <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
-        <img
-          src="/menu-burger-light.svg"
-          alt=""
-          class="burger-icon burger-icon-light"
-        />
-        <img
-          src="/menu-burger-dark.svg"
-          alt=""
-          class="burger-icon burger-icon-dark"
-        />
-        <img
-          src="/icon-close-light.svg"
-          alt=""
-          class="burger-close burger-close-light"
-        />
-        <img
-          src="/icon-close-dark.svg"
-          alt=""
-          class="burger-close burger-close-dark"
-        />
+        <img src="/menu-burger-light.svg" alt="" class="burger-icon burger-icon-light" />
+        <img src="/menu-burger-dark.svg" alt="" class="burger-icon burger-icon-dark" />
+        <img src="/icon-close-light.svg" alt="" class="burger-close burger-close-light" />
+        <img src="/icon-close-dark.svg" alt="" class="burger-close burger-close-dark" />
       </button>
     </div>
   </div>
@@ -179,8 +108,17 @@
   .logo-light {
     display: block;
   }
+  
   .logo-dark {
     display: none;
+  }
+
+  .nav.scrolled .logo-light {
+    display: none;
+  }
+  
+  .nav.scrolled .logo-dark {
+    display: block;
   }
 
   .nav-links {
@@ -196,6 +134,7 @@
     text-decoration: none;
     opacity: 0.8;
     transition: all var(--transition-speed);
+    white-space: nowrap;
   }
 
   .nav-links a:hover {
@@ -265,22 +204,19 @@
   .icon-light {
     display: block;
   }
+  
   .icon-dark {
     display: none;
   }
 
-  .nav.scrolled .logo-light {
-    display: none;
-  }
-  .nav.scrolled .logo-dark {
-    display: block;
-  }
   .nav.scrolled .icon-light {
     display: none;
   }
+  
   .nav.scrolled .icon-dark {
     display: block;
   }
+  
   .nav.scrolled .nav-logo::after {
     background: rgba(0, 0, 0, 0.25);
   }
@@ -307,9 +243,11 @@
   .burger-icon-dark {
     display: none;
   }
+  
   .nav.scrolled .burger-icon-light {
     display: none;
   }
+  
   .nav.scrolled .burger-icon-dark {
     display: block;
   }
@@ -336,6 +274,7 @@
   .nav.open.scrolled .burger-close-light {
     display: none;
   }
+  
   .nav.open.scrolled .burger-close-dark {
     display: block;
   }
@@ -344,19 +283,13 @@
     display: none;
   }
 
-  /* 🖥️ DESKTOP - Overlay transparent (seulement non-tactile) */
   @media (min-width: 1101px) and (pointer: fine) {
     .nav.transparent {
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.75),
-        rgba(0, 0, 0, 0.3)
-      );
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.3));
       backdrop-filter: blur(8px);
     }
   }
 
-  /* 📱 MOBILE LANDSCAPE - Alignement Nav à 90% comme les autres blocs */
   @media (min-width: 667px) and (max-width: 960px) and (orientation: landscape) and (max-height: 450px) {
     .nav-container {
       max-width: 90%;
@@ -374,7 +307,6 @@
     }
   }
 
-  /* 📱 iPad Mini PORTRAIT - Alignement Nav à 90% */
   @media (min-width: 768px) and (max-width: 820px) and (orientation: portrait) {
     .nav-container {
       max-width: 90%;
@@ -382,13 +314,11 @@
     }
   }
 
-  /* 🔥 MOBILE (tactile OU petit écran) - Burger menu */
   @media (max-width: 1100px), (max-width: 1023px) and (pointer: coarse) {
     .nav-container {
       padding: 1.5rem var(--gutter);
     }
 
-    /* Cache les liens du menu classique */
     .nav-links {
       position: fixed;
       inset: 70px var(--gutter) auto var(--gutter);
@@ -411,12 +341,10 @@
       font-size: 0.85rem;
     }
 
-    /* Cache les icônes sociales desktop */
     .nav-right .social-links {
       display: none;
     }
 
-    /* Affiche les icônes sociales dans le menu burger */
     .nav-social {
       display: block;
       margin-top: 1.5rem;
@@ -430,14 +358,12 @@
       justify-content: center;
     }
 
-    /* Affiche le burger */
     .burger {
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    /* Supprime le séparateur du logo en tablette/mobile */
     .nav-logo {
       padding-right: 0;
       margin-right: 0;
@@ -468,10 +394,7 @@
   function toggleMenu() {
     const isOpen = nav?.classList.toggle("open");
     if (burger) {
-      burger.setAttribute(
-        "aria-label",
-        isOpen ? "Fermer le menu" : "Ouvrir le menu",
-      );
+      burger.setAttribute("aria-label", isOpen ? "Fermer le menu" : "Ouvrir le menu");
       burger.setAttribute("aria-expanded", isOpen ? "true" : "false");
     }
   }
@@ -487,8 +410,6 @@
 
   window.addEventListener("scroll", handleScroll, { passive: true });
   burger?.addEventListener("click", toggleMenu);
-  links
-    ?.querySelectorAll("a")
-    .forEach((link) => link.addEventListener("click", closeMenu));
+  links?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
   handleScroll();
 </script>

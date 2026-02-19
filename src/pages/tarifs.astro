@@ -1,0 +1,836 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const title = "Tarifs & Configurateur | Habeprod - Agence Le Mans";
+const description = "Configurez votre projet web et obtenez une estimation tarifaire instantanée. Site vitrine WordPress ou Astro - Agence Habeprod Le Mans.";
+---
+
+<Layout title={title} description={description}>
+  <Nav />
+  
+  <main class="tarifs-page">
+    <!-- Hero -->
+    <section class="tarifs-hero">
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-label">Tarifs</span>
+          <h1>Estimez votre site<br><span class="highlight">en quelques clics</span></h1>
+          <p class="hero-subtitle">
+            Configurez votre projet web et obtenez une estimation tarifaire instantanée. 
+            Chaque paramètre influence le prix en temps réel.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Configurateur -->
+    <section class="configurateur">
+      <div class="container">
+        
+        <!-- Technologie -->
+        <div class="config-section">
+          <div class="section-header">
+            <span class="section-num">01</span>
+            <h2 class="section-title">Technologie</h2>
+          </div>
+          <div class="cards cards-2" id="tech-cards">
+            <div class="card active" data-group="tech" data-value="wordpress">
+              <h3 class="card-name">WordPress</h3>
+              <p class="card-desc">CMS populaire avec grande autonomie client. Idéal pour gérer facilement votre contenu. Base one page incluse.</p>
+              <span class="tech-tag">Flexible</span>
+              <span class="card-check">✓</span>
+            </div>
+            <div class="card" data-group="tech" data-value="astro">
+              <h3 class="card-name">Astro</h3>
+              <p class="card-desc">Performances maximales mesurées (PageSpeed 95+), SEO technique optimisé, architecture ultra-rapide. Base one page incluse.</p>
+              <span class="tech-tag">Performance ×10</span>
+              <span class="card-check">✓</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nombre de pages -->
+        <div class="config-section">
+          <div class="section-header">
+            <span class="section-num">02</span>
+            <h2 class="section-title">Nombre de pages</h2>
+          </div>
+          <div class="slider-wrap">
+            <div class="slider-header">
+              <div class="slider-value" id="pages-display">1 <span>page</span></div>
+              <span class="slider-hint">Glissez pour ajuster</span>
+            </div>
+            <input type="range" id="pages-slider" min="1" max="20" value="1">
+            <div class="slider-ticks">
+              <span>1</span>
+              <span>5</span>
+              <span>10</span>
+              <span>15</span>
+              <span>20+</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Options -->
+        <div class="config-section">
+          <div class="section-header">
+            <span class="section-num">03</span>
+            <h2 class="section-title">Options & services</h2>
+          </div>
+          <div class="options-grid">
+            <div class="option-card" data-option="seo-essentiel" data-price="800">
+              <div class="option-checkbox">
+                <span class="checkmark">✓</span>
+              </div>
+              <div class="option-info">
+                <h3 class="option-name">SEO Essentiel</h3>
+                <span class="option-price">+ 800 €</span>
+                <span class="option-note">Optimisation de base + balises meta</span>
+              </div>
+            </div>
+            <div class="option-card" data-option="seo-premium" data-price="1200">
+              <div class="option-checkbox">
+                <span class="checkmark">✓</span>
+              </div>
+              <div class="option-info">
+                <h3 class="option-name">SEO Local Premium</h3>
+                <span class="option-price">+ 1 200 €</span>
+                <span class="option-note">Audit complet + maillage + optimisation avancée</span>
+              </div>
+            </div>
+            <div class="option-card" id="maintenance-option" data-option="maintenance" data-price="1200">
+              <div class="option-checkbox">
+                <span class="checkmark">✓</span>
+              </div>
+              <div class="option-info">
+                <h3 class="option-name">Maintenance annuelle</h3>
+                <span class="option-price">+ 1 200 € / an</span>
+                <span class="option-note">WordPress uniquement · Sauvegardes + mises à jour + support</span>
+              </div>
+            </div>
+            <div class="option-card" data-option="logo" data-price="600">
+              <div class="option-checkbox">
+                <span class="checkmark">✓</span>
+              </div>
+              <div class="option-info">
+                <h3 class="option-name">Création de logo</h3>
+                <span class="option-price">+ 600 €</span>
+                <span class="option-note">2-3 propositions · Fichiers sources inclus</span>
+              </div>
+            </div>
+            <div class="option-card" data-option="identite" data-price="1500">
+              <div class="option-checkbox">
+                <span class="checkmark">✓</span>
+              </div>
+              <div class="option-info">
+                <h3 class="option-name">Identité visuelle complète</h3>
+                <span class="option-price">+ 1 500 €</span>
+                <span class="option-note">Logo + charte graphique + déclinaisons</span>
+              </div>
+            </div>
+            <div class="option-card" data-option="figma" data-price="600">
+              <div class="option-checkbox">
+                <span class="checkmark">✓</span>
+              </div>
+              <div class="option-info">
+                <h3 class="option-name">Formation Figma</h3>
+                <span class="option-price">+ 600 €</span>
+                <span class="option-note">Session personnalisée · Prise en main autonome</span>
+              </div>
+            </div>
+            <div class="option-card" data-option="redaction" data-price="700">
+              <div class="option-checkbox">
+                <span class="checkmark">✓</span>
+              </div>
+              <div class="option-info">
+                <h3 class="option-name">Rédaction One Page</h3>
+                <span class="option-price">+ 700 €</span>
+                <span class="option-note">Contenu SEO optimisé et structuré</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price Panel -->
+        <div class="price-panel">
+          <div class="price-content">
+            <div class="price-left">
+              <span class="price-label">Estimation de votre projet</span>
+              <div class="price-total" id="price-total">2 200 €</div>
+              <div class="price-detail" id="price-detail">
+                <strong>Site vitrine — WordPress</strong><br>
+                1 page (one page) · Tarifs indicatifs
+              </div>
+            </div>
+            <a href="/#contact" class="price-cta">
+              <span>Demander un devis</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Note e-commerce -->
+        <div class="note-ecommerce">
+          <p><strong>Vous avez besoin d'un site e-commerce ?</strong></p>
+          <p>Nos solutions e-commerce (WooCommerce, Shopify, Astro + Shopify) sont disponibles sur devis personnalisé.</p>
+          <a href="/#contact" class="note-link">Demander un devis e-commerce →</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Variables */
+  :root {
+    --orange: #ea6432;
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #9ca3af;
+    --dark-card: #1a1a1a;
+  }
+
+  /* Page */
+  .tarifs-page {
+    background: var(--black);
+    padding-top: 100px;
+  }
+
+  .container {
+    max-width: var(--layout-width);
+    margin: 0 auto;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+
+  /* Hero - ESPACEMENT RÉDUIT */
+  .tarifs-hero {
+    padding: 80px 0 40px;
+    text-align: left;
+  }
+
+  .hero-content {
+    max-width: 800px;
+  }
+
+  .hero-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 16px;
+  }
+
+  .tarifs-hero h1 {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+
+  .highlight {
+    color: var(--orange);
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--gray);
+    max-width: 600px;
+  }
+
+  /* Configurateur - ESPACEMENT RÉDUIT */
+  .configurateur {
+    padding: 40px 0 120px;
+  }
+
+  .config-section {
+    margin-bottom: 64px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .section-num {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--orange);
+    min-width: 32px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  /* Cards */
+  .cards {
+    display: grid;
+    gap: 16px;
+  }
+
+  .cards-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 600px) {
+    .cards-2 {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card {
+    position: relative;
+    background: var(--dark-card);
+    border: 2px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    border-color: var(--orange);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(234, 100, 50, 0.25);
+  }
+
+  .card.active {
+    border-color: var(--orange);
+    background: rgba(234, 100, 50, 0.1);
+  }
+
+  .card-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .card-desc {
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  .card-check {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    background: var(--orange);
+    color: var(--black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.3s ease;
+  }
+
+  .card.active .card-check {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .tech-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--gray);
+    background: rgba(209, 213, 219, 0.1);
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-top: 12px;
+  }
+
+  /* Slider */
+  .slider-wrap {
+    background: var(--dark-card);
+    border: 2px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 32px;
+    transition: border-color 0.3s ease;
+  }
+
+  .slider-wrap:hover {
+    border-color: var(--orange);
+  }
+
+  .slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 24px;
+  }
+
+  .slider-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .slider-value span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--gray);
+  }
+
+  .slider-hint {
+    font-size: 0.85rem;
+    color: var(--orange);
+  }
+
+  input[type="range"] {
+    width: 100%;
+    height: 6px;
+    background: #2a2a2a;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    background: var(--orange);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(234, 100, 50, 0.4);
+    transition: transform 0.2s;
+  }
+
+  input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    background: var(--orange);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+  }
+
+  .slider-ticks {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 12px;
+    padding: 0 12px;
+  }
+
+  .slider-ticks span {
+    font-size: 0.75rem;
+    color: var(--gray);
+    text-align: center;
+  }
+
+  .slider-ticks span:first-child {
+    text-align: left;
+  }
+
+  .slider-ticks span:last-child {
+    text-align: right;
+  }
+
+  /* Options */
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @media (max-width: 700px) {
+    .options-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .option-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: var(--dark-card);
+    border: 2px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .option-card:hover {
+    border-color: var(--orange);
+  }
+
+  .option-card.active {
+    border-color: var(--orange);
+    background: rgba(234, 100, 50, 0.1);
+  }
+
+  .option-card.disabled {
+    opacity: 1;
+    cursor: not-allowed;
+    background: var(--dark-card);
+    border-color: #2a2a2a;
+  }
+
+  .option-card.disabled:hover {
+    border-color: #2a2a2a;
+    transform: none;
+  }
+
+  .option-card.disabled .option-name,
+  .option-card.disabled .option-price,
+  .option-card.disabled .option-note {
+    opacity: 0.5;
+  }
+
+  .option-checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #3a3a3a;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    margin-top: 2px;
+  }
+
+  .option-card.disabled .option-checkbox {
+    opacity: 0.5;
+  }
+
+  .option-card.active .option-checkbox {
+    background: var(--orange);
+    border-color: var(--orange);
+  }
+
+  .checkmark {
+    color: var(--black);
+    font-size: 14px;
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .option-card.active .checkmark {
+    opacity: 1;
+  }
+
+  .option-info {
+    flex: 1;
+  }
+
+  .option-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .option-price {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--orange);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .option-note {
+    font-size: 0.75rem;
+    color: var(--gray);
+    font-style: italic;
+    display: block;
+    line-height: 1.4;
+  }
+
+  /* Price Panel */
+  .price-panel {
+    margin-top: 80px;
+    background: var(--dark-card);
+    border: 2px solid var(--orange);
+    border-radius: 16px;
+    padding: 48px;
+    box-shadow: 0 20px 60px rgba(234, 100, 50, 0.2);
+  }
+
+  .price-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .price-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 12px;
+  }
+
+  .price-total {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+  }
+
+  .price-total.pulse {
+    animation: pricePulse 0.3s ease;
+  }
+
+  @keyframes pricePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .price-detail {
+    font-size: 0.95rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  .price-detail strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .price-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 48px;
+    background: var(--orange);
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .price-cta:hover {
+    background: #d4581f;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(234, 100, 50, 0.4);
+  }
+
+  /* Note e-commerce */
+  .note-ecommerce {
+    margin-top: 48px;
+    text-align: center;
+    padding: 32px;
+    background: var(--dark-card);
+    border: 2px solid #2a2a2a;
+    border-radius: 12px;
+    transition: border-color 0.3s ease;
+  }
+
+  .note-ecommerce:hover {
+    border-color: var(--orange);
+  }
+
+  .note-ecommerce p {
+    color: var(--gray);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  .note-ecommerce strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .note-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--orange);
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 16px;
+    transition: all 0.3s ease;
+  }
+
+  .note-link:hover {
+    color: var(--white);
+    transform: translateX(4px);
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .tarifs-hero {
+      padding: 60px 0 30px;
+      text-align: left;
+    }
+
+    .tarifs-hero h1 {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .hero-subtitle {
+      margin: 0;
+    }
+
+    .configurateur {
+      padding: 30px 0 80px;
+    }
+
+    .config-section {
+      margin-bottom: 48px;
+    }
+
+    .price-panel {
+      padding: 32px 24px;
+    }
+
+    .price-content {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .price-total {
+      font-size: 2.5rem;
+    }
+
+    .price-cta {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  const BASE_PRICES = {
+    wordpress: 2200,
+    astro: 3000
+  };
+
+  const TECH_LABELS = {
+    wordpress: 'WordPress',
+    astro: 'Astro'
+  };
+
+  const PAGE_PRICE = 300;
+
+  let state = {
+    tech: 'wordpress',
+    pages: 1,
+    options: []
+  };
+
+  // Technologie
+  document.querySelectorAll('.card[data-group="tech"]').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.card[data-group="tech"]').forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      state.tech = card.dataset.value;
+
+      // Maintenance WordPress only
+      const maintenanceCard = document.getElementById('maintenance-option');
+      if (state.tech === 'wordpress') {
+        maintenanceCard.classList.remove('disabled');
+      } else {
+        maintenanceCard.classList.add('disabled');
+        maintenanceCard.classList.remove('active');
+        state.options = state.options.filter(o => o.key !== 'maintenance');
+      }
+
+      updatePrice();
+    });
+  });
+
+  // Options
+  document.querySelectorAll('.option-card').forEach(card => {
+    card.addEventListener('click', () => {
+      if (card.classList.contains('disabled')) return;
+
+      const opt = card.dataset.option;
+      const price = parseInt(card.dataset.price);
+
+      // SEO exclusif
+      if (opt === 'seo-essentiel' || opt === 'seo-premium') {
+        document.querySelectorAll('[data-option="seo-essentiel"], [data-option="seo-premium"]').forEach(c => {
+          if (c !== card) {
+            c.classList.remove('active');
+            state.options = state.options.filter(o => o.key !== c.dataset.option);
+          }
+        });
+      }
+
+      card.classList.toggle('active');
+
+      if (card.classList.contains('active')) {
+        if (!state.options.find(o => o.key === opt)) {
+          state.options.push({ key: opt, price });
+        }
+      } else {
+        state.options = state.options.filter(o => o.key !== opt);
+      }
+
+      updatePrice();
+    });
+  });
+
+  // Slider
+  const slider = document.getElementById('pages-slider');
+  slider.addEventListener('input', (e) => {
+    state.pages = parseInt(e.target.value);
+    document.getElementById('pages-display').innerHTML =
+      `${state.pages} <span>${state.pages == 1 ? 'page' : 'pages'}</span>`;
+    updatePrice();
+  });
+
+  function updatePrice() {
+    const base = BASE_PRICES[state.tech];
+    const pagesBonus = state.pages > 1 ? (state.pages - 1) * PAGE_PRICE : 0;
+    const opts = state.options.reduce((a, o) => a + o.price, 0);
+    const total = base + pagesBonus + opts;
+
+    const el = document.getElementById('price-total');
+    el.textContent = total.toLocaleString('fr-FR') + ' €';
+    el.classList.remove('pulse');
+    void el.offsetWidth;
+    el.classList.add('pulse');
+
+    let detail = `<strong>Site vitrine — ${TECH_LABELS[state.tech]}</strong><br>`;
+    detail += `${state.pages} page${state.pages > 1 ? 's' : ''}`;
+    if (state.options.length > 0) {
+      detail += ` · ${state.options.length} option${state.options.length > 1 ? 's' : ''} ajoutée${state.options.length > 1 ? 's' : ''}`;
+    }
+    document.getElementById('price-detail').innerHTML = detail;
+  }
+
+  updatePrice();
+</script>
