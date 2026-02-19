@@ -237,6 +237,13 @@ const serviceSchema = {
           <a href="/#contact" class="note-link">Demander un devis e-commerce →</a>
         </div>
 
+        <div class="tarifs-footer">
+          <a href="/" class="back-to-home">
+            <span class="back-arrow">←</span>
+            <span class="back-text">Retour à l'accueil</span>
+          </a>
+        </div>
+
       </div>
     </section>
   </main>
@@ -266,7 +273,7 @@ const serviceSchema = {
   }
 
   .tarifs-hero {
-    padding: 80px 0 0 !important;
+    padding: 80px 0 0;
     text-align: left;
   }
 
@@ -487,26 +494,39 @@ const serviceSchema = {
     cursor: pointer;
     border: none;
   }
-
-  .slider-ticks {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+.slider-ticks {
+    position: relative;
     margin-top: 12px;
-    padding: 0 12px;
+    height: 20px;
   }
 
   .slider-ticks span {
+    position: absolute;
     font-size: 0.75rem;
     color: var(--gray);
-    text-align: center;
+    transform: translateX(-50%);
   }
 
-  .slider-ticks span:first-child {
-    text-align: left;
+  .slider-ticks span:nth-child(1) {
+    left: 0%;
+    transform: translateX(0);
   }
 
-  .slider-ticks span:last-child {
-    text-align: right;
+  .slider-ticks span:nth-child(2) {
+    left: 21.05%;
+  }
+
+  .slider-ticks span:nth-child(3) {
+    left: 47.37%;
+  }
+
+  .slider-ticks span:nth-child(4) {
+    left: 73.68%;
+  }
+
+  .slider-ticks span:nth-child(5) {
+    left: 100%;
+    transform: translateX(-100%);
   }
 
   .options-grid {
@@ -740,6 +760,35 @@ const serviceSchema = {
     transform: translateX(4px);
   }
 
+  .tarifs-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .back-to-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: gap 0.3s ease, color 0.3s ease;
+  }
+
+  .back-to-home:hover {
+    gap: 0.75rem;
+    color: var(--gray);
+  }
+
+  .back-arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .back-to-home:hover .back-arrow {
+    transform: translateX(-3px);
+  }
+
   @media (max-width: 768px) {
     .tarifs-hero {
       padding: 60px 0 0;
@@ -778,6 +827,19 @@ const serviceSchema = {
 
     .price-cta {
       width: 100%;
+    }
+
+    .back-to-home {
+      transition: none;
+    }
+
+    .back-to-home:hover {
+      gap: 0.5rem;
+      color: var(--white);
+    }
+
+    .back-to-home:hover .back-arrow {
+      transform: none;
     }
   }
 
