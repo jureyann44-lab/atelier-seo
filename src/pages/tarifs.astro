@@ -266,7 +266,7 @@ const serviceSchema = {
   }
 
   .tarifs-hero {
-    padding: 80px 0 40px;
+    padding: 80px 0 0 !important;
     text-align: left;
   }
 
@@ -732,6 +732,7 @@ const serviceSchema = {
     font-weight: 600;
     margin-top: 16px;
     transition: all 0.3s ease;
+    white-space: nowrap;
   }
 
   .note-link:hover {
@@ -741,7 +742,7 @@ const serviceSchema = {
 
   @media (max-width: 768px) {
     .tarifs-hero {
-      padding: 60px 0 30px;
+      padding: 60px 0 0;
       text-align: left;
     }
 
@@ -777,6 +778,12 @@ const serviceSchema = {
 
     .price-cta {
       width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .note-link {
+      font-size: 0.9rem;
     }
   }
 </style>
