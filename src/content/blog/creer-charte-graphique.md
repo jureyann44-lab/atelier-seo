@@ -127,5 +127,5 @@ Une charte graphique n'est pas un luxe réservé aux grandes entreprises. C'est 
 
 **Besoin d'une identité visuelle cohérente ? Parlons-en.**
 
-📧 agence.habeprod@gmail.com
-📞 +33 6 27 25 25 68
+📧 [agence.habeprod@gmail.com](mailto:agence.habeprod@gmail.com)  
+[+33 6 27 25 25 68](tel:+33627252568)

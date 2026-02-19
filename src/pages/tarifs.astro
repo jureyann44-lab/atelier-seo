@@ -272,8 +272,10 @@ const serviceSchema = {
     padding-right: var(--gutter);
   }
 
+  /* ✅ FIX : padding-bottom à 0 avec !important */
   .tarifs-hero {
-    padding: 80px 0 0;
+    padding: 80px 0 0 !important;
+    padding-bottom: 0 !important;
     text-align: left;
   }
 
@@ -494,7 +496,8 @@ const serviceSchema = {
     cursor: pointer;
     border: none;
   }
-.slider-ticks {
+
+  .slider-ticks {
     position: relative;
     margin-top: 12px;
     height: 20px;
@@ -791,7 +794,8 @@ const serviceSchema = {
 
   @media (max-width: 768px) {
     .tarifs-hero {
-      padding: 60px 0 0;
+      padding: 60px 0 0 !important;
+      padding-bottom: 0 !important;
       text-align: left;
     }
 

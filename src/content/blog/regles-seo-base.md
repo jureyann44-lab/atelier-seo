@@ -105,5 +105,5 @@ Si votre site n'apparaît pas sur vos mots-clés principaux associés à Le Mans
 
 **Votre site est-il optimisé pour Google ? Parlons-en.**
 
-📧 agence.habeprod@gmail.com
-📞 +33 6 27 25 25 68
+📧 [agence.habeprod@gmail.com](mailto:agence.habeprod@gmail.com)  
+[+33 6 27 25 25 68](tel:+33627252568)

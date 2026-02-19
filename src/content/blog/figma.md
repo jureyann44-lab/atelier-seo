@@ -95,5 +95,5 @@ Chez Habeprod, on propose une formation pratique, structurée et orientée terra
 
 **Vous voulez apprendre à concevoir des interfaces modernes et efficaces ?**
 
-📧 agence.habeprod@gmail.com
-📞 +33 6 27 25 25 68
+📧 [agence.habeprod@gmail.com](mailto:agence.habeprod@gmail.com)  
+[+33 6 27 25 25 68](tel:+33627252568)

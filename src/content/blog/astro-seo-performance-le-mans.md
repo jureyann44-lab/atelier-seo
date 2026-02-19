@@ -151,5 +151,5 @@ On a fait le choix d'Astro parce qu'on y croit vraiment — pas pour vendre une 
 
 **Votre site est-il aussi rapide qu'il devrait l'être ? Parlons-en.**
 
-📧 [contact@habeprod-agence.fr](mailto:contact@habeprod-agence.fr)
-📞 +33 6 27 25 25 68
+📧 [agence.habeprod@gmail.com](mailto:agence.habeprod@gmail.com)  
+[+33 6 27 25 25 68](tel:+33627252568)
