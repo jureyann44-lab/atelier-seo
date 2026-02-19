@@ -4,6 +4,7 @@ const {
   description = "Agence de communication au Mans pour TPE et PME en Sarthe. Sites performants, SEO local, stratégie digitale. 10 ans d'expérience. Devis gratuit.",
   canonical = "https://www.habeprod-agence.fr/",
   ogImage = "https://cdn.prod.website-files.com/681b6b36dcb0f115f4d39f76/681c83218f79910e7d6aff03_image-hero.webp",
+  ogType = "website",
   faq = null,
 } = Astro.props;
 ---
@@ -26,7 +27,7 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="Habeprod" />
     <meta property="og:locale" content="fr_FR" />
 
@@ -60,8 +61,8 @@ const {
             legalName: "Habeprod",
             description: description,
             url: canonical,
-            logo: canonical + "logo-habeprod.png",
-            image: canonical + "logo-habeprod.png",
+            logo: "https://www.habeprod-agence.fr/logo-habeprod.png",
+            image: "https://www.habeprod-agence.fr/logo-habeprod.png",
             foundingDate: "2018",
             priceRange: "$$",
             telephone: "+33627252568",
@@ -102,7 +103,7 @@ const {
       })}
     />
 
-    <!-- SLOT HEAD (schema articles, og:type dynamique, etc.) -->
+    <!-- SLOT HEAD (schema additionnel, meta custom, etc.) -->
     <slot name="head" />
 
   </head>

@@ -3,15 +3,81 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
-const title = "Tarifs & Configurateur | Habeprod - Agence Le Mans";
-const description = "Configurez votre projet web et obtenez une estimation tarifaire instantanée. Site vitrine WordPress ou Astro - Agence Habeprod Le Mans.";
+const title = "Tarifs Site Web Le Mans | Configurateur en ligne | Habeprod";
+const description = "Estimez le prix de votre site web en temps réel. WordPress à partir de 2200€, Astro 3000€. Configurateur transparent avec options SEO, maintenance, identité visuelle. Agence web Le Mans.";
+const canonical = "https://www.habeprod-agence.fr/tarifs";
+const ogImage = "https://www.habeprod-agence.fr/og-tarifs.jpg";
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "Service",
+      "position": 1,
+      "name": "Site WordPress",
+      "description": "Création de site vitrine WordPress avec autonomie de gestion",
+      "provider": {
+        "@type": "Organization",
+        "name": "Habeprod",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Le Mans",
+          "addressCountry": "FR"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "2200",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "Service",
+      "position": 2,
+      "name": "Site Astro",
+      "description": "Site web ultra-performant avec Astro, PageSpeed 95+",
+      "provider": {
+        "@type": "Organization",
+        "name": "Habeprod"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "3000",
+        "priceCurrency": "EUR"
+      }
+    },
+    {
+      "@type": "Service",
+      "position": 3,
+      "name": "SEO Local Premium",
+      "description": "Référencement local Le Mans avec audit complet",
+      "provider": {
+        "@type": "Organization",
+        "name": "Habeprod"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "1200",
+        "priceCurrency": "EUR"
+      }
+    }
+  ]
+};
 ---
 
-<Layout title={title} description={description}>
+<Layout 
+  title={title} 
+  description={description}
+  canonical={canonical}
+  ogImage={ogImage}
+  ogType="website"
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
   <Nav />
   
   <main class="tarifs-page">
-    <!-- Hero -->
     <section class="tarifs-hero">
       <div class="container">
         <div class="hero-content">
@@ -25,11 +91,27 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
       </div>
     </section>
 
-    <!-- Configurateur -->
+    <section class="seo-content">
+      <div class="container">
+        <div class="seo-text">
+          <p>
+            <strong>Agence web au Mans</strong>, Habeprod vous accompagne dans la création de votre <strong>site internet professionnel</strong>. 
+            Que vous ayez besoin d'un <strong>site vitrine WordPress</strong> pour présenter votre activité ou d'un 
+            <strong>site ultra-performant avec Astro</strong> (PageSpeed 95+), nos <strong>tarifs sont transparents</strong> et adaptés aux TPE et PME du Mans et de la Sarthe.
+          </p>
+          <p>
+            Notre <strong>configurateur de prix en ligne</strong> vous permet d'estimer instantanément le coût de votre projet. 
+            Choisissez votre technologie, le nombre de pages, et ajoutez vos options (<strong>SEO local Le Mans</strong>, maintenance, 
+            <strong>identité visuelle</strong>, formation Figma, rédaction de contenu). Pour un <strong>site e-commerce</strong> sur mesure, 
+            <a href="/#contact">contactez-nous</a> pour un devis personnalisé.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <section class="configurateur">
       <div class="container">
         
-        <!-- Technologie -->
         <div class="config-section">
           <div class="section-header">
             <span class="section-num">01</span>
@@ -51,7 +133,6 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
           </div>
         </div>
 
-        <!-- Nombre de pages -->
         <div class="config-section">
           <div class="section-header">
             <span class="section-num">02</span>
@@ -73,7 +154,6 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
           </div>
         </div>
 
-        <!-- Options -->
         <div class="config-section">
           <div class="section-header">
             <span class="section-num">03</span>
@@ -153,7 +233,6 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
           </div>
         </div>
 
-        <!-- Price Panel -->
         <div class="price-panel">
           <div class="price-content">
             <div class="price-left">
@@ -170,7 +249,6 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
           </div>
         </div>
 
-        <!-- Note e-commerce -->
         <div class="note-ecommerce">
           <p><strong>Vous avez besoin d'un site e-commerce ?</strong></p>
           <p>Nos solutions e-commerce (WooCommerce, Shopify, Astro + Shopify) sont disponibles sur devis personnalisé.</p>
@@ -185,7 +263,6 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
 </Layout>
 
 <style>
-  /* Variables */
   :root {
     --orange: #ea6432;
     --black: #000000;
@@ -194,7 +271,6 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
     --dark-card: #1a1a1a;
   }
 
-  /* Page */
   .tarifs-page {
     background: var(--black);
     padding-top: 100px;
@@ -207,7 +283,6 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
     padding-right: var(--gutter);
   }
 
-  /* Hero - ESPACEMENT RÉDUIT */
   .tarifs-hero {
     padding: 80px 0 40px;
     text-align: left;
@@ -246,7 +321,37 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
     max-width: 600px;
   }
 
-  /* Configurateur - ESPACEMENT RÉDUIT */
+  .seo-content {
+    padding: 40px 0 60px;
+    background: var(--black);
+  }
+
+  .seo-text {
+    max-width: 800px;
+  }
+
+  .seo-text p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+  }
+
+  .seo-text strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .seo-text a {
+    color: var(--orange);
+    text-decoration: none;
+    transition: opacity 0.3s;
+  }
+
+  .seo-text a:hover {
+    opacity: 0.8;
+  }
+
   .configurateur {
     padding: 40px 0 120px;
   }
@@ -275,7 +380,6 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
     color: var(--white);
   }
 
-  /* Cards */
   .cards {
     display: grid;
     gap: 16px;
@@ -362,7 +466,6 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
     margin-top: 12px;
   }
 
-  /* Slider */
   .slider-wrap {
     background: var(--dark-card);
     border: 2px solid #2a2a2a;
@@ -455,7 +558,6 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
     text-align: right;
   }
 
-  /* Options */
   .options-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -568,7 +670,6 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
     line-height: 1.4;
   }
 
-  /* Price Panel */
   .price-panel {
     margin-top: 80px;
     background: var(--dark-card);
@@ -646,7 +747,6 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
     box-shadow: 0 8px 24px rgba(234, 100, 50, 0.4);
   }
 
-  /* Note e-commerce */
   .note-ecommerce {
     margin-top: 48px;
     text-align: center;
@@ -688,7 +788,6 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
     transform: translateX(4px);
   }
 
-  /* Mobile */
   @media (max-width: 768px) {
     .tarifs-hero {
       padding: 60px 0 30px;
@@ -702,6 +801,14 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
 
     .hero-subtitle {
       margin: 0;
+    }
+
+    .seo-content {
+      padding: 30px 0 40px;
+    }
+
+    .seo-text p {
+      font-size: 0.95rem;
     }
 
     .configurateur {
@@ -750,14 +857,12 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
     options: []
   };
 
-  // Technologie
   document.querySelectorAll('.card[data-group="tech"]').forEach(card => {
     card.addEventListener('click', () => {
       document.querySelectorAll('.card[data-group="tech"]').forEach(c => c.classList.remove('active'));
       card.classList.add('active');
       state.tech = card.dataset.value;
 
-      // Maintenance WordPress only
       const maintenanceCard = document.getElementById('maintenance-option');
       if (state.tech === 'wordpress') {
         maintenanceCard.classList.remove('disabled');
@@ -771,7 +876,6 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
     });
   });
 
-  // Options
   document.querySelectorAll('.option-card').forEach(card => {
     card.addEventListener('click', () => {
       if (card.classList.contains('disabled')) return;
@@ -779,7 +883,6 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
       const opt = card.dataset.option;
       const price = parseInt(card.dataset.price);
 
-      // SEO exclusif
       if (opt === 'seo-essentiel' || opt === 'seo-premium') {
         document.querySelectorAll('[data-option="seo-essentiel"], [data-option="seo-premium"]').forEach(c => {
           if (c !== card) {
@@ -803,7 +906,6 @@ const description = "Configurez votre projet web et obtenez une estimation tarif
     });
   });
 
-  // Slider
   const slider = document.getElementById('pages-slider');
   slider.addEventListener('input', (e) => {
     state.pages = parseInt(e.target.value);
