@@ -81,7 +81,7 @@ const serviceSchema = {
     <section class="tarifs-hero">
       <div class="container">
         <div class="hero-content">
-          <span class="hero-label">Estimez votre site en 2 minutes </span>
+          <span class="hero-label">Simulateur de projet web</span>
           <h1>Explorez votre futur site<br><span class="highlight">et comprenez ce qui compte</span></h1>
           <p class="hero-subtitle">
             Répondez à quelques questions simples pour découvrir la solution adaptée à votre besoin — et voir ce qui influence réellement le coût.
@@ -201,25 +201,46 @@ const serviceSchema = {
             <span class="section-num">03</span>
             <h2 class="section-title">Options & services</h2>
           </div>
+
+          <div class="seo-intro">
+            <h3 class="seo-intro-title">Optimisation SEO & visibilité</h3>
+            <p class="seo-intro-text">Le site inclut déjà une optimisation SEO de base lors de sa création (structure, performances et bonnes pratiques techniques). Les options ci-dessous correspondent à un accompagnement SEO renforcé, destiné à améliorer votre visibilité et vos résultats selon vos objectifs de développement.</p>
+          </div>
+
           <div class="options-grid">
             <div class="option-card" data-option="seo-essentiel" data-price="800">
               <div class="option-checkbox"><span class="checkmark">✓</span></div>
               <div class="option-info">
-                <h3 class="option-name">SEO Essentiel</h3>
+                <h3 class="option-name">Renforcement SEO Local</h3>
                 <span class="option-price">+ 800 €</span>
-                <span class="option-benefit">Vous apparaissez dans Google pour votre activité locale.</span>
-                <span class="option-note">Optimisation de base + balises meta</span>
+                <span class="option-benefit">Renforce l'optimisation déjà intégrée pour améliorer votre visibilité sur les recherches locales.</span>
+                <ul class="option-checklist">
+                  <li>Optimisation sémantique locale</li>
+                  <li>Ajustement des balises stratégiques</li>
+                  <li>Structuration des contenus clés</li>
+                  <li>Optimisation Google Business &amp; recherches locales</li>
+                </ul>
               </div>
             </div>
             <div class="option-card" data-option="seo-premium" data-price="1200">
               <div class="option-checkbox"><span class="checkmark">✓</span></div>
               <div class="option-info">
-                <h3 class="option-name">SEO Local Premium</h3>
+                <h3 class="option-name">SEO Local Avancé</h3>
                 <span class="option-price">+ 1 200 €</span>
-                <span class="option-benefit">Vous devancez vos concurrents locaux sur les recherches clés.</span>
-                <span class="option-note">Audit complet + maillage + optimisation avancée</span>
+                <span class="option-benefit">Accompagnement approfondi pour dépasser vos concurrents locaux sur les recherches stratégiques.</span>
+                <ul class="option-checklist">
+                  <li>Audit SEO complet</li>
+                  <li>Recherche &amp; stratégie de mots-clés</li>
+                  <li>Optimisation avancée des pages</li>
+                  <li>Maillage interne stratégique</li>
+                  <li>Optimisation concurrentielle locale</li>
+                </ul>
               </div>
             </div>
+
+          <div class="seo-reassurance">
+            💡 Ces options ne remplacent pas le SEO inclus dans le site : elles permettent d'aller plus loin selon vos objectifs de croissance.
+          </div>
             <div class="option-card" id="maintenance-option" data-option="maintenance" data-price="1200">
               <div class="option-checkbox"><span class="checkmark">✓</span></div>
               <div class="option-info">
@@ -721,6 +742,67 @@ const serviceSchema = {
     font-style: italic;
     min-height: 20px;
     transition: all 0.3s ease;
+  }
+
+  /* SEO INTRO */
+  .seo-intro {
+    background: rgba(234, 100, 50, 0.05);
+    border: 1px solid rgba(234, 100, 50, 0.2);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+
+  .seo-intro-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .seo-intro-text {
+    font-size: 0.875rem;
+    color: var(--gray);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .seo-reassurance {
+    grid-column: 1 / -1;
+    font-size: 0.85rem;
+    color: var(--gray);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+
+  .option-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .option-checklist li {
+    font-size: 0.75rem;
+    color: var(--gray);
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.4;
+  }
+
+  .option-checklist li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 0.7rem;
   }
 
   /* OPTIONS */
