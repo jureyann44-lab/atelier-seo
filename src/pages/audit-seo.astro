@@ -51,6 +51,8 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
               </button>
             </div>
             <p class="form-note">L'analyse prend environ 10-15 secondes</p>
+            <!-- SECURITY NOTE -->
+            <p class="security-note">🔒 Analyse sécurisée – aucune donnée stockée</p>
           </form>
         </div>
 
@@ -68,6 +70,13 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
               <div class="score-value" id="score-value">--</div>
             </div>
             <p class="score-label" id="score-label">Chargement...</p>
+          </div>
+
+          <!-- DIAGNOSTIC BLOC -->
+          <div class="result-card diagnostic-card" id="diagnostic-card" style="display: none;">
+            <div class="diagnostic-header" id="diagnostic-header"></div>
+            <div class="diagnostic-items" id="diagnostic-items"></div>
+            <div class="diagnostic-cta" id="diagnostic-cta"></div>
           </div>
 
           <!-- CORE WEB VITALS -->
@@ -162,9 +171,9 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     <!-- BOUTON RETOUR -->
     <section class="back-home-section">
       <div class="container">
-        <a href="/" class="back-home-btn">
-          <span class="arrow">←</span>
-          <span>Retour à l'accueil</span>
+        <a href="/" class="back-to-home">
+          <span class="back-arrow">←</span>
+          <span class="back-text">Retour à l'accueil</span>
         </a>
       </div>
     </section>
@@ -200,7 +209,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
   /* HERO */
   .audit-hero {
     padding: 80px 0 0 !important;
-    text-align: center;
+    text-align: left;
   }
 
   .hero-label {
@@ -228,7 +237,6 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     font-size: 1.1rem;
     color: var(--gray);
     max-width: 600px;
-    margin: 0 auto;
   }
 
   /* OUTIL */
@@ -317,6 +325,17 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     font-size: 0.85rem;
     color: var(--gray);
     margin-top: 12px;
+    margin-bottom: 0;
+  }
+
+  /* SECURITY NOTE */
+  .security-note {
+    text-align: right;
+    font-size: 0.78rem;
+    color: var(--gray);
+    margin-top: 10px;
+    margin-bottom: 0;
+    letter-spacing: 0.01em;
   }
 
   /* RÉSULTATS */
@@ -379,6 +398,64 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
   .score-label {
     font-size: 1.1rem;
     color: var(--gray);
+  }
+
+  /* DIAGNOSTIC BLOC */
+  .diagnostic-card {
+    padding: 28px 32px;
+    border-radius: 16px;
+    border-width: 2px;
+    border-style: solid;
+  }
+
+  .diagnostic-card.green {
+    background: rgba(16, 185, 129, 0.07);
+    border-color: rgba(16, 185, 129, 0.3);
+  }
+
+  .diagnostic-card.orange {
+    background: rgba(245, 158, 11, 0.07);
+    border-color: rgba(245, 158, 11, 0.3);
+  }
+
+  .diagnostic-card.red {
+    background: rgba(239, 68, 68, 0.07);
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+
+  .diagnostic-header {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff !important;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .diagnostic-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .diagnostic-item {
+    font-size: 0.92rem;
+    color: #ffffff !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .diagnostic-cta {
+    font-size: 0.9rem;
+    color: var(--gray);
+    padding-top: 14px;
+    border-top: 1px solid #2a2a2a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   /* VITALS */
@@ -578,39 +655,23 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
 
   /* BOUTON RETOUR */
   .back-home-section {
-   padding: 0 0 80px 0 !important;
-    text-align: center;
+    padding: 0 0 80px 0 !important;
+    text-align: left;
   }
 
-  .back-home-btn {
+  .back-to-home {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    padding: 14px 32px;
-    background: transparent;
-    color: var(--gray);
-    text-decoration: none;
-    border: 2px solid #2a2a2a;
-    border-radius: 999px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: all 0.3s;
-  }
-
-  .back-home-btn:hover {
+    gap: 0.5rem;
     color: var(--white);
-    border-color: #3a3a3a;
-    gap: 16px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: gap 0.3s ease, color 0.3s ease;
   }
 
-  .back-home-btn .arrow {
-    font-size: 1.2rem;
-    transition: transform 0.3s;
-  }
-
-  .back-home-btn:hover .arrow {
-    transform: translateX(-4px);
-  }
+  .back-to-home:hover { gap: 0.75rem; color: var(--gray); }
+  .back-arrow { transition: transform 0.3s ease; }
+  .back-to-home:hover .back-arrow { transform: translateX(-3px); }
 
   @media (max-width: 768px) {
     .audit-hero h1 {
@@ -645,12 +706,12 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
       gap: 8px;
     }
 
-    .back-home-btn {
-      transition: none;
-    }
-    
-    .back-home-btn:hover .arrow {
-      transform: none;
+    .back-to-home { transition: none; }
+    .back-to-home:hover { gap: 0.5rem; color: var(--white); }
+    .back-to-home:hover .back-arrow { transform: none; }
+
+    .security-note {
+      text-align: center;
     }
   }
 </style>
@@ -712,6 +773,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
 
     const perfScore = Math.round(categories.performance.score * 100);
     updateScore(perfScore);
+    displayDiagnostic(perfScore);
 
     const lcp = audits['largest-contentful-paint'];
     const fid = audits['max-potential-fid'] || audits['total-blocking-time'];
@@ -769,6 +831,44 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     }
 
     displayRecommandations(audits);
+  }
+
+  function displayDiagnostic(score) {
+    const card = document.getElementById('diagnostic-card');
+    const header = document.getElementById('diagnostic-header');
+    const items = document.getElementById('diagnostic-items');
+    const cta = document.getElementById('diagnostic-cta');
+
+    card.style.display = 'block';
+
+    if (score >= 85) {
+      card.className = 'result-card diagnostic-card green';
+      header.innerHTML = '<span style="color: #ffffff !important;">🟢 Votre site est performant 👍</span>';
+      items.innerHTML = `
+        <div class="diagnostic-item"><span>✔️</span> <span style="color: #ffffff !important;">Bonne vitesse</span></div>
+        <div class="diagnostic-item"><span>✔️</span> <span style="color: #ffffff !important;">Structure correcte</span></div>
+        <div class="diagnostic-item"><span>✔️</span> <span style="color: #ffffff !important;">Bon potentiel SEO</span></div>
+      `;
+      cta.innerHTML = '👉 Vous pouvez encore optimiser certains points pour dépasser vos concurrents.';
+    } else if (score >= 60) {
+      card.className = 'result-card diagnostic-card orange';
+      header.innerHTML = '<span style="color: #ffffff !important;">🟠 Votre site fonctionne… mais perd des opportunités.</span>';
+      items.innerHTML = `
+        <div class="diagnostic-item"><span>⚠️</span> <span style="color: #ffffff !important;">Chargement perfectible</span></div>
+        <div class="diagnostic-item"><span>⚠️</span> <span style="color: #ffffff !important;">Quelques freins SEO</span></div>
+        <div class="diagnostic-item"><span>⚠️</span> <span style="color: #ffffff !important;">Risque de perte de trafic</span></div>
+      `;
+      cta.innerHTML = '👉 Des optimisations simples peuvent améliorer votre visibilité.';
+    } else {
+      card.className = 'result-card diagnostic-card red';
+      header.innerHTML = '<span style="color: #ffffff !important;">🔴 Votre site pénalise votre visibilité.</span>';
+      items.innerHTML = `
+        <div class="diagnostic-item"><span>❌</span> <span style="color: #ffffff !important;">Temps de chargement élevé</span></div>
+        <div class="diagnostic-item"><span>❌</span> <span style="color: #ffffff !important;">Structure SEO insuffisante</span></div>
+        <div class="diagnostic-item"><span>❌</span> <span style="color: #ffffff !important;">Risque de mauvaise expérience utilisateur</span></div>
+      `;
+      cta.innerHTML = '👉 Une refonte technique s\'impose pour ne plus perdre de visiteurs et de positions.';
+    }
   }
 
   function updateScore(score) {

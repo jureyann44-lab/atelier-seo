@@ -130,6 +130,7 @@
 
   .hero-copy {
     color: #ffffff;
+    text-align: left;
   }
 
   .hero-kicker {
@@ -139,6 +140,7 @@
     position: relative;
     display: inline-block;
     margin-bottom: 1rem;
+    text-align: left;
   }
 
   .hero-kicker::after {
@@ -149,6 +151,7 @@
 
   .hero-title {
     margin-bottom: 1.5rem;
+    text-align: left;
   }
 
   .hero .hero-title {
@@ -162,6 +165,7 @@
     margin-bottom: 2.5rem;
     max-width: 520px;
     opacity: 0.9;
+    text-align: left;
   }
 
   .hero-cta {
@@ -179,6 +183,8 @@
     color: #ffffff;
     background: transparent;
     transition: all var(--transition-speed);
+    margin-left: 0;
+    margin-right: auto;
   }
 
   .hero-cta:hover {
@@ -218,10 +224,13 @@
       padding-top: 4.5rem;
       padding-left: 24px;
       padding-right: 24px;
+      text-align: left;
+      justify-items: start;
     }
 
     .hero-copy {
       padding-left: 0;
+      text-align: left;
     }
 
     .hero-kicker {
@@ -262,6 +271,12 @@
     .hero-inner {
       grid-template-columns: 1fr;
       row-gap: 3rem;
+      text-align: left;
+      justify-items: start;
+    }
+
+    .hero-copy {
+      text-align: left;
     }
 
     .hero-visual {
@@ -309,8 +324,9 @@
   @media (min-width: 901px) and (max-width: 1100px) {
     .hero-inner {
       grid-template-columns: 1fr;
-      text-align: center;
-      justify-items: center;
+      text-align: left;
+      justify-items: start;
+      margin: 0;
     }
 
     .hero-subtitle {
@@ -331,6 +347,8 @@
     .hero-inner {
       max-width: 90% !important;
       margin: 0 auto !important;
+      text-align: left !important;
+      justify-items: start !important;
     }
   }
 </style>
