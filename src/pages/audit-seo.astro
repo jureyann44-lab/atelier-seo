@@ -1,0 +1,934 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const title = "Audit SEO Gratuit | Analyseur de Performance Web | Habeprod";
+const description = "Analysez gratuitement les performances SEO de votre site : Core Web Vitals, meta tags, vitesse de chargement. Audit complet en temps réel.";
+const canonical = "https://www.habeprod-agence.fr/audit-seo";
+---
+
+<Layout 
+  title={title} 
+  description={description}
+  canonical={canonical}
+  ogType="website"
+>
+  <Nav />
+  
+  <main class="audit-page">
+    <section class="audit-hero">
+      <div class="container">
+        <span class="hero-label">Outil gratuit</span>
+        <h1>Audit SEO <span class="highlight">en temps réel</span></h1>
+        <p class="hero-subtitle">
+          Analysez les performances de votre site web : Core Web Vitals, meta tags, et recommandations d'optimisation.
+        </p>
+      </div>
+    </section>
+
+    <section class="audit-tool">
+      <div class="container">
+        
+        <!-- FORMULAIRE -->
+        <div class="audit-form-card">
+          <h2>Entrez l'URL de votre site</h2>
+          <form id="audit-form">
+            <div class="input-group">
+              <input 
+                type="url" 
+                id="url-input" 
+                placeholder="https://exemple.com" 
+                required
+                pattern="https?://.+"
+              />
+              <button type="submit" id="analyze-btn">
+                <span class="btn-text">Analyser</span>
+                <span class="btn-loader" style="display: none;">
+                  <span class="spinner"></span>
+                  Analyse en cours...
+                </span>
+              </button>
+            </div>
+            <p class="form-note">L'analyse prend environ 10-15 secondes</p>
+          </form>
+        </div>
+
+        <!-- RÉSULTATS -->
+        <div id="results" style="display: none;">
+          
+          <!-- SCORE GLOBAL -->
+          <div class="result-card score-card">
+            <h3>Score de performance</h3>
+            <div class="score-circle" id="score-circle">
+              <svg viewBox="0 0 200 200">
+                <circle class="score-bg" cx="100" cy="100" r="85"></circle>
+                <circle class="score-fill" cx="100" cy="100" r="85" id="score-fill"></circle>
+              </svg>
+              <div class="score-value" id="score-value">--</div>
+            </div>
+            <p class="score-label" id="score-label">Chargement...</p>
+          </div>
+
+          <!-- CORE WEB VITALS -->
+          <div class="result-card">
+            <h3>Core Web Vitals</h3>
+            <div class="vitals-grid">
+              <div class="vital-item">
+                <div class="vital-icon">⚡</div>
+                <div class="vital-info">
+                  <span class="vital-label">LCP</span>
+                  <span class="vital-desc">Largest Contentful Paint</span>
+                </div>
+                <div class="vital-value" id="lcp-value">--</div>
+                <div class="vital-status" id="lcp-status"></div>
+              </div>
+              <div class="vital-item">
+                <div class="vital-icon">🎯</div>
+                <div class="vital-info">
+                  <span class="vital-label">FID</span>
+                  <span class="vital-desc">First Input Delay</span>
+                </div>
+                <div class="vital-value" id="fid-value">--</div>
+                <div class="vital-status" id="fid-status"></div>
+              </div>
+              <div class="vital-item">
+                <div class="vital-icon">📐</div>
+                <div class="vital-info">
+                  <span class="vital-label">CLS</span>
+                  <span class="vital-desc">Cumulative Layout Shift</span>
+                </div>
+                <div class="vital-value" id="cls-value">--</div>
+                <div class="vital-status" id="cls-status"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- META TAGS -->
+          <div class="result-card">
+            <h3>Meta Tags SEO</h3>
+            <div class="meta-list">
+              <div class="meta-item">
+                <span class="meta-label">Title</span>
+                <span class="meta-value" id="meta-title">--</span>
+                <span class="meta-length" id="meta-title-length"></span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Description</span>
+                <span class="meta-value" id="meta-description">--</span>
+                <span class="meta-length" id="meta-description-length"></span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">OG:Image</span>
+                <span class="meta-value" id="meta-og-image">--</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Canonical</span>
+                <span class="meta-value" id="meta-canonical">--</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- RECOMMANDATIONS -->
+          <div class="result-card">
+            <h3>Recommandations prioritaires</h3>
+            <div id="recommendations" class="recommendations-list">
+              <!-- Généré dynamiquement -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ERREUR -->
+        <div id="error" class="error-card" style="display: none;">
+          <span class="error-icon">⚠️</span>
+          <h3>Erreur d'analyse</h3>
+          <p id="error-message"></p>
+          <button onclick="document.getElementById('error').style.display='none'">Réessayer</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="audit-cta">
+      <div class="container">
+        <h2>Besoin d'aide pour optimiser votre site ?</h2>
+        <p>Notre équipe peut vous accompagner dans l'amélioration de vos performances SEO.</p>
+        <a href="/#contact" class="cta-btn">Demander un audit complet</a>
+      </div>
+    </section>
+
+    <!-- BOUTON RETOUR -->
+    <section class="back-home-section">
+      <div class="container">
+        <a href="/" class="back-home-btn">
+          <span class="arrow">←</span>
+          <span>Retour à l'accueil</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  :root {
+    --orange: #ea6432;
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #9ca3af;
+    --dark-card: #1a1a1a;
+    --green: #10b981;
+    --yellow: #f59e0b;
+    --red: #ef4444;
+  }
+
+  .audit-page {
+    background: var(--black);
+    padding-top: 100px;
+  }
+
+  .container {
+    max-width: var(--layout-width);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* HERO */
+  .audit-hero {
+    padding: 80px 0 0 !important;
+    text-align: center;
+  }
+
+  .hero-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+
+  .audit-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+
+  .highlight {
+    color: var(--orange);
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* OUTIL */
+  .audit-tool {
+    padding: 40px 0 120px;
+  }
+
+  .audit-form-card {
+    background: var(--dark-card);
+    border: 2px solid #2a2a2a;
+    border-radius: 16px;
+    padding: 48px;
+    margin-bottom: 40px;
+  }
+
+  .audit-form-card h2 {
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .input-group {
+    display: flex;
+    gap: 12px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  #url-input {
+    flex: 1;
+    padding: 16px 24px;
+    background: var(--black);
+    border: 2px solid #2a2a2a;
+    border-radius: 12px;
+    color: var(--white);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+
+  #url-input:focus {
+    outline: none;
+    border-color: var(--orange);
+  }
+
+  #analyze-btn {
+    padding: 16px 48px;
+    background: var(--orange);
+    color: var(--white);
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+
+  #analyze-btn:hover {
+    background: #d4581f;
+    transform: translateY(-2px);
+  }
+
+  #analyze-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .form-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-top: 12px;
+  }
+
+  /* RÉSULTATS */
+  .result-card {
+    background: var(--dark-card);
+    border: 2px solid #2a2a2a;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+
+  .result-card h3 {
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  /* SCORE */
+  .score-card {
+    text-align: center;
+  }
+
+  .score-circle {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 20px;
+  }
+
+  .score-circle svg {
+    transform: rotate(-90deg);
+  }
+
+  .score-bg {
+    fill: none;
+    stroke: #2a2a2a;
+    stroke-width: 12;
+  }
+
+  .score-fill {
+    fill: none;
+    stroke: var(--orange);
+    stroke-width: 12;
+    stroke-linecap: round;
+    stroke-dasharray: 534;
+    stroke-dashoffset: 534;
+    transition: stroke-dashoffset 1s ease, stroke 0.5s;
+  }
+
+  .score-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .score-label {
+    font-size: 1.1rem;
+    color: var(--gray);
+  }
+
+  /* VITALS */
+  .vitals-grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  .vital-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 16px;
+    align-items: center;
+    padding: 20px;
+    background: var(--black);
+    border-radius: 12px;
+  }
+
+  .vital-icon {
+    font-size: 2rem;
+  }
+
+  .vital-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .vital-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .vital-desc {
+    font-size: 0.85rem;
+    color: var(--gray);
+  }
+
+  .vital-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .vital-status {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .vital-status.good {
+    background: var(--green);
+  }
+
+  .vital-status.needs-improvement {
+    background: var(--yellow);
+  }
+
+  .vital-status.poor {
+    background: var(--red);
+  }
+
+  /* META */
+  .meta-list {
+    display: grid;
+    gap: 16px;
+  }
+
+  .meta-item {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: 16px;
+    align-items: start;
+    padding: 16px;
+    background: var(--black);
+    border-radius: 8px;
+  }
+
+  .meta-label {
+    font-weight: 600;
+    color: var(--orange);
+    font-size: 0.9rem;
+  }
+
+  .meta-value {
+    color: var(--white);
+    word-break: break-word;
+  }
+
+  .meta-length {
+    font-size: 0.85rem;
+    color: var(--gray);
+    white-space: nowrap;
+  }
+
+  .meta-length.good {
+    color: var(--green);
+  }
+
+  .meta-length.warning {
+    color: var(--yellow);
+  }
+
+  /* RECOMMANDATIONS */
+  .recommendations-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .recommendation-item {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    background: var(--black);
+    border-radius: 8px;
+    border-left: 3px solid var(--orange);
+  }
+
+  .recommendation-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .recommendation-text {
+    color: #ffffff !important;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  /* ERREUR */
+  .error-card {
+    background: rgba(239, 68, 68, 0.1);
+    border: 2px solid var(--red);
+    border-radius: 16px;
+    padding: 48px;
+    text-align: center;
+  }
+
+  .error-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .error-card h3 {
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .error-card p {
+    color: var(--gray);
+    margin-bottom: 24px;
+  }
+
+  .error-card button {
+    padding: 12px 32px;
+    background: var(--red);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  /* CTA */
+  .audit-cta {
+    padding: 80px 0;
+    text-align: center;
+  }
+
+  .audit-cta h2 {
+    font-size: 2rem;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .audit-cta p {
+    font-size: 1.1rem;
+    color: var(--gray);
+    margin-bottom: 32px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 16px 48px;
+    background: var(--orange);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .cta-btn:hover {
+    background: #d4581f;
+    transform: translateY(-2px);
+  }
+
+  /* BOUTON RETOUR */
+  .back-home-section {
+    padding: 40px 0 80px;
+    text-align: center;
+  }
+
+  .back-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 32px;
+    background: transparent;
+    color: var(--gray);
+    text-decoration: none;
+    border: 2px solid #2a2a2a;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+
+  .back-home-btn:hover {
+    color: var(--white);
+    border-color: #3a3a3a;
+    gap: 16px;
+  }
+
+  .back-home-btn .arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+  }
+
+  .back-home-btn:hover .arrow {
+    transform: translateX(-4px);
+  }
+
+  @media (max-width: 768px) {
+    .audit-hero h1 {
+      font-size: 1.8rem;
+    }
+
+    .input-group {
+      flex-direction: column;
+    }
+
+    .audit-form-card {
+      padding: 32px 24px;
+    }
+
+    .result-card {
+      padding: 24px;
+    }
+
+    .vital-item {
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+    }
+
+    .vital-value,
+    .vital-status {
+      grid-column: 2;
+      justify-self: end;
+    }
+
+    .meta-item {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .back-home-btn {
+      transition: none;
+    }
+    
+    .back-home-btn:hover .arrow {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('audit-form');
+  const urlInput = document.getElementById('url-input');
+  const analyzeBtn = document.getElementById('analyze-btn');
+  const btnText = analyzeBtn.querySelector('.btn-text');
+  const btnLoader = analyzeBtn.querySelector('.btn-loader');
+  const resultsDiv = document.getElementById('results');
+  const errorDiv = document.getElementById('error');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const url = urlInput.value.trim();
+    if (!url) return;
+
+    analyzeBtn.disabled = true;
+    btnText.style.display = 'none';
+    btnLoader.style.display = 'flex';
+    resultsDiv.style.display = 'none';
+    errorDiv.style.display = 'none';
+
+    try {
+      const response = await fetch('/api/audit.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ url })
+      });
+      
+      const data = await response.json();
+
+      if (!response.ok || data.error) {
+        throw new Error(data.error || 'Impossible d\'analyser cette URL');
+      }
+      
+      displayResults(data);
+      resultsDiv.style.display = 'block';
+
+    } catch (error) {
+      console.error('Erreur:', error);
+      document.getElementById('error-message').textContent = error.message;
+      errorDiv.style.display = 'block';
+    } finally {
+      analyzeBtn.disabled = false;
+      btnText.style.display = 'inline';
+      btnLoader.style.display = 'none';
+    }
+  });
+
+  function displayResults(data) {
+    const lighthouse = data.lighthouseResult;
+    const categories = lighthouse.categories;
+    const audits = lighthouse.audits;
+
+    const perfScore = Math.round(categories.performance.score * 100);
+    updateScore(perfScore);
+
+    const lcp = audits['largest-contentful-paint'];
+    const fid = audits['max-potential-fid'] || audits['total-blocking-time'];
+    const cls = audits['cumulative-layout-shift'];
+
+    updateVital('lcp', lcp.displayValue, lcp.score);
+    updateVital('fid', fid.displayValue, fid.score);
+    updateVital('cls', cls.displayValue, cls.score);
+
+    const titleAudit = audits['document-title'];
+    if (titleAudit) {
+      let pageTitle = '';
+      
+      if (titleAudit.details && titleAudit.details.items && titleAudit.details.items.length > 0) {
+        pageTitle = titleAudit.details.items[0].snippet || '';
+      }
+      
+      if (!pageTitle && lighthouse.finalUrl) {
+        try {
+          const urlObj = new URL(lighthouse.finalUrl);
+          pageTitle = urlObj.hostname;
+        } catch (e) {
+          pageTitle = lighthouse.finalUrl;
+        }
+      }
+      
+      if (pageTitle) {
+        document.getElementById('meta-title').textContent = pageTitle;
+        updateMetaLength('title', pageTitle.length);
+      } else if (titleAudit.score === 1) {
+        document.getElementById('meta-title').textContent = '✓ Présent';
+      } else {
+        document.getElementById('meta-title').textContent = '❌ Non trouvé';
+      }
+    }
+    
+    const metaDesc = audits['meta-description'];
+    if (metaDesc) {
+      if (metaDesc.score === 1) {
+        document.getElementById('meta-description').textContent = '✓ Présente';
+        document.getElementById('meta-description-length').textContent = '';
+      } else {
+        document.getElementById('meta-description').textContent = '❌ Manquante ou vide';
+        document.getElementById('meta-description-length').textContent = '';
+      }
+    }
+
+    document.getElementById('meta-og-image').textContent = 'Vérifier manuellement';
+
+    const canonical = audits['canonical'];
+    if (canonical && canonical.score === 1) {
+      document.getElementById('meta-canonical').textContent = 'Présent ✓';
+    } else {
+      document.getElementById('meta-canonical').textContent = 'Non trouvé ❌';
+    }
+
+    displayRecommandations(audits);
+  }
+
+  function updateScore(score) {
+    const scoreFill = document.getElementById('score-fill');
+    const scoreValue = document.getElementById('score-value');
+    const scoreLabel = document.getElementById('score-label');
+
+    const circumference = 534;
+    const offset = circumference - (score / 100) * circumference;
+    
+    scoreFill.style.strokeDashoffset = offset;
+    scoreValue.textContent = score;
+
+    let color, label;
+    if (score >= 90) {
+      color = '#10b981';
+      label = 'Excellent';
+    } else if (score >= 50) {
+      color = '#f59e0b';
+      label = 'À améliorer';
+    } else {
+      color = '#ef4444';
+      label = 'Faible';
+    }
+
+    scoreFill.style.stroke = color;
+    scoreLabel.textContent = label;
+  }
+
+  function updateVital(id, value, score) {
+    document.getElementById(`${id}-value`).textContent = value;
+    const status = document.getElementById(`${id}-status`);
+    
+    if (score >= 0.9) {
+      status.className = 'vital-status good';
+    } else if (score >= 0.5) {
+      status.className = 'vital-status needs-improvement';
+    } else {
+      status.className = 'vital-status poor';
+    }
+  }
+
+  function updateMetaLength(type, length) {
+    const el = document.getElementById(`meta-${type}-length`);
+    if (!el) return;
+    
+    let status = '';
+    
+    if (type === 'title') {
+      if (length >= 50 && length <= 60) {
+        status = 'good';
+        el.textContent = `${length} caractères ✓`;
+      } else {
+        status = 'warning';
+        el.textContent = `${length} caractères (optimal: 50-60)`;
+      }
+    } else if (type === 'description') {
+      if (length >= 150 && length <= 160) {
+        status = 'good';
+        el.textContent = `${length} caractères ✓`;
+      } else {
+        status = 'warning';
+        el.textContent = `${length} caractères (optimal: 150-160)`;
+      }
+    }
+    
+    el.className = `meta-length ${status}`;
+  }
+
+  function displayRecommandations(audits) {
+    const container = document.getElementById('recommendations');
+    if (!container) return;
+    
+    container.innerHTML = '';
+
+    const traductions = {
+      "Render blocking requests": "Requêtes bloquant le rendu",
+      "Forced reflow": "Reflux forcé",
+      "Largest Contentful Paint": "Plus grand élément affiché (LCP)",
+      "Use efficient cache lifetimes": "Utiliser des durées de cache efficaces",
+      "Image elements do not have explicit `width` and `height`": "Les images n'ont pas de dimensions explicites",
+      "Time to Interactive": "Temps avant interactivité (TTI)",
+      "Eliminate render-blocking resources": "Éliminer les ressources bloquant le rendu",
+      "Properly size images": "Dimensionner correctement les images",
+      "Defer offscreen images": "Différer les images hors écran",
+      "Minify CSS": "Minifier le CSS",
+      "Minify JavaScript": "Minifier le JavaScript",
+      "Remove unused CSS": "Supprimer le CSS non utilisé",
+      "Remove unused JavaScript": "Supprimer le JavaScript non utilisé",
+      "Efficiently encode images": "Encoder efficacement les images",
+      "Serve images in next-gen formats": "Utiliser des formats d'image modernes (WebP, AVIF)",
+      "Enable text compression": "Activer la compression du texte",
+      "Preconnect to required origins": "Précharger les origines requises",
+      "Server response times are low": "Temps de réponse serveur faibles",
+      "Avoid multiple page redirects": "Éviter les redirections multiples",
+      "Preload key requests": "Précharger les requêtes clés",
+      "Use video formats for animated content": "Utiliser des formats vidéo pour le contenu animé",
+      "Reduce unused CSS": "Réduire le CSS inutilisé",
+      "Reduce unused JavaScript": "Réduire le JavaScript inutilisé",
+      "Avoid serving legacy JavaScript to modern browsers": "Éviter le JavaScript obsolète",
+      "Avoid enormous network payloads": "Éviter les charges réseau importantes",
+      "Uses efficient cache policy on static assets": "Politique de cache efficace",
+      "Avoid an excessive DOM size": "Éviter une taille de DOM excessive",
+      "Ensure text remains visible during webfont load": "Texte visible pendant chargement des polices",
+      "Keep request counts low and transfer sizes small": "Limiter les requêtes et transferts",
+      "Minimize main-thread work": "Minimiser le travail du thread principal",
+      "Reduce JavaScript execution time": "Réduire le temps d'exécution JavaScript",
+      "Minimize critical requests depth": "Minimiser la profondeur des requêtes critiques",
+      "Serve static assets with an efficient cache policy": "Politique de cache efficace pour ressources statiques",
+      "Avoid chaining critical requests": "Éviter l'enchaînement de requêtes critiques",
+      "User Timing marks and measures": "Marqueurs et mesures User Timing",
+      "Avoid long main-thread tasks": "Éviter les tâches longues",
+      "Minimize third-party usage": "Minimiser l'utilisation de scripts tiers",
+      "Lazy load third-party resources with facades": "Charger les ressources tierces en différé",
+      "Largest Contentful Paint image was lazily loaded": "Image LCP chargée en différé",
+      "Does not use passive listeners to improve scrolling performance": "Utiliser des écouteurs passifs",
+      "Image elements have explicit width and height": "Les images ont des dimensions explicites",
+      "Avoid large layout shifts": "Éviter les décalages de mise en page",
+      "Reduce the impact of third-party code": "Réduire l'impact du code tiers",
+      "Network dependency tree": "Arbre des dépendances réseau",
+      "Render-blocking requests": "Requêtes bloquant le rendu",
+      "Improve image delivery": "Améliorer la livraison des images",
+      "Use efficient cache lifetime": "Utiliser une durée de cache efficace",
+      "First Contentful Paint": "Premier contenu affiché (FCP)",
+      "Speed Index": "Indice de vitesse",
+      "Total Blocking Time": "Temps de blocage total (TBT)",
+      "Cumulative Layout Shift": "Décalage cumulatif de mise en page (CLS)",
+      "Max Potential First Input Delay": "Délai maximal de première interaction"
+    };
+
+    const important = [];
+    
+    Object.keys(audits).forEach(key => {
+      const audit = audits[key];
+      if (audit.score !== null && audit.score !== undefined && audit.score < 0.9 && audit.title) {
+        const titreFr = traductions[audit.title] || audit.title;
+        
+        important.push({
+          title: titreFr,
+          score: audit.score
+        });
+      }
+    });
+
+    important.sort((a, b) => a.score - b.score);
+
+    const toShow = important.slice(0, 8);
+    
+    if (toShow.length > 0) {
+      toShow.forEach(rec => {
+        const div = document.createElement('div');
+        div.className = 'recommendation-item';
+        div.innerHTML = `
+          <span class="recommendation-icon">💡</span>
+          <span class="recommendation-text" style="color: #ffffff !important;">${rec.title}</span>
+        `;
+        container.appendChild(div);
+      });
+    } else {
+      container.innerHTML = '<p style="color: #9ca3af; text-align: center;">Aucune recommandation majeure. Votre site est bien optimisé ! ✓</p>';
+    }
+  }
+</script>
