@@ -9,7 +9,7 @@
       <li><a href="/#agence">L'agence</a></li>
       <li><a href="/#services">Services</a></li>
       <li><a href="/#projects">Réalisations</a></li>
-      <li><a href="/audit-seo">Audit/SEO</a></li>
+      <li class="nav-audit"><a href="/audit-seo" class="btn-nav-audit">🚀 Audit SEO</a></li>
       <li><a href="/tarifs">Tarifs</a></li>
       <li><a href="/#contact">Contact</a></li>
 
@@ -128,6 +128,7 @@
     font-size: 0.75rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
+    align-items: center;
   }
 
   .nav-links a {
@@ -154,6 +155,24 @@
   .nav.scrolled .nav-links a:hover {
     opacity: 1;
     transform: translateY(-1px);
+  }
+
+  /* BOUTON AUDIT SEO */
+  .btn-nav-audit {
+    background: #ea6432 !important;
+    color: #ffffff !important;
+    padding: 0.75rem 1.1rem !important;
+    opacity: 1 !important;
+    transition: background 0.3s ease, transform 0.3s ease !important;
+  }
+
+  .btn-nav-audit:hover {
+    background: #d4581f !important;
+    transform: translateY(-1px) !important;
+  }
+
+  .nav.scrolled .btn-nav-audit {
+    color: #ffffff !important;
   }
 
   .nav-right {
@@ -339,6 +358,10 @@
       color: #ffffff;
       opacity: 1;
       font-size: 0.85rem;
+    }
+
+    .nav.open .btn-nav-audit {
+      color: #ffffff !important;
     }
 
     .nav-right .social-links {
