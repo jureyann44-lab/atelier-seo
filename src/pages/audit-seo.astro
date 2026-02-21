@@ -1,539 +1,1241 @@
-const form = document.getElementById('audit-form');
-const urlInput = document.getElementById('url-input');
-const analyzeBtn = document.getElementById('analyze-btn');
-const btnText = analyzeBtn.querySelector('.btn-text');
-const btnLoader = analyzeBtn.querySelector('.btn-loader');
-const resultsDiv = document.getElementById('results');
-const errorDiv = document.getElementById('error');
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 
-form?.addEventListener('submit', async (e) => {
-  e.preventDefault();
+const title = "Audit SEO Gratuit | Analyseur de Performance Web | Habeprod";
+const description = "Analysez gratuitement les performances SEO de votre site : Core Web Vitals, meta tags, vitesse de chargement. Audit complet en temps réel.";
+const canonical = "https://www.habeprod-agence.fr/audit-seo";
+---
 
-  const url = urlInput.value.trim();
-  if (!url) return;
+<Layout 
+  title={title} 
+  description={description}
+  canonical={canonical}
+  ogType="website"
+>
+  <Nav />
+  
+  <main class="audit-page">
+    <section class="audit-hero">
+      <div class="container">
+        <span class="hero-label">Outil gratuit</span>
+        <h1>Audit SEO <span class="highlight">en temps réel</span></h1>
+        <p class="hero-subtitle">
+          Analysez les performances de votre site web : Core Web Vitals, meta tags, et recommandations d'optimisation.
+        </p>
+      </div>
+    </section>
 
-  analyzeBtn.disabled = true;
-  btnText.style.display = 'none';
-  btnLoader.style.display = 'flex';
-  resultsDiv.style.display = 'none';
-  errorDiv.style.display = 'none';
+    <section class="audit-tool">
+      <div class="container">
+        
+        <!-- FORMULAIRE -->
+        <div class="audit-form-card">
+          <h2>Entrez l'URL de votre site</h2>
+          <form id="audit-form">
+            <div class="input-group">
+              <input 
+                type="url" 
+                id="url-input" 
+                placeholder="https://exemple.com" 
+                required
+                pattern="https?://.+"
+              />
+              <button type="submit" id="analyze-btn">
+                <span class="btn-text">Analyser</span>
+                <span class="btn-loader" style="display: none;">
+                  <span class="spinner"></span>
+                  Analyse en cours...
+                </span>
+              </button>
+            </div>
+            <p class="form-note">L'analyse prend environ 10-15 secondes</p>
+            <p class="security-note">🔒 Analyse sécurisée – aucune donnée stockée</p>
+          </form>
+        </div>
 
-  try {
-    const response = await fetch('/api/audit.json', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ url })
-    });
+        <!-- RÉSULTATS -->
+        <div id="results" style="display: none;">
+          
+          <!-- SCORE GLOBAL -->
+          <div class="result-card score-card">
+            <h3>Score de performance</h3>
+            <div class="score-circle" id="score-circle">
+              <svg viewBox="0 0 200 200">
+                <circle class="score-bg" cx="100" cy="100" r="85"></circle>
+                <circle class="score-fill" cx="100" cy="100" r="85" id="score-fill"></circle>
+              </svg>
+              <div class="score-value" id="score-value">--</div>
+            </div>
+            <p class="score-label" id="score-label">Chargement...</p>
+          </div>
 
-    const data = await response.json();
+          <!-- DIAGNOSTIC BLOC -->
+          <div class="result-card diagnostic-card" id="diagnostic-card" style="display: none;">
+            <div class="diagnostic-header" id="diagnostic-header"></div>
+            <div class="diagnostic-items" id="diagnostic-items"></div>
+            <div class="diagnostic-cta" id="diagnostic-cta"></div>
+          </div>
 
-    if (!response.ok || data.error) {
-      throw new Error(data.error || "Impossible d'analyser cette URL");
+          <!-- CORE WEB VITALS -->
+          <div class="result-card">
+            <h3>Core Web Vitals</h3>
+            <div class="vitals-grid">
+              <div class="vital-item">
+                <div class="vital-icon">⚡</div>
+                <div class="vital-info">
+                  <span class="vital-label">LCP</span>
+                  <span class="vital-desc">Largest Contentful Paint</span>
+                </div>
+                <div class="vital-value" id="lcp-value">--</div>
+                <div class="vital-status" id="lcp-status"></div>
+              </div>
+              <div class="vital-item">
+                <div class="vital-icon">🎯</div>
+                <div class="vital-info">
+                  <span class="vital-label">FID</span>
+                  <span class="vital-desc">First Input Delay</span>
+                </div>
+                <div class="vital-value" id="fid-value">--</div>
+                <div class="vital-status" id="fid-status"></div>
+              </div>
+              <div class="vital-item">
+                <div class="vital-icon">📐</div>
+                <div class="vital-info">
+                  <span class="vital-label">CLS</span>
+                  <span class="vital-desc">Cumulative Layout Shift</span>
+                </div>
+                <div class="vital-value" id="cls-value">--</div>
+                <div class="vital-status" id="cls-status"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- META TAGS -->
+          <div class="result-card">
+            <h3>Meta Tags SEO</h3>
+            <div class="meta-list">
+              <div class="meta-item">
+                <span class="meta-label">Title</span>
+                <span class="meta-value" id="meta-title">--</span>
+                <span class="meta-length" id="meta-title-length"></span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Description</span>
+                <span class="meta-value" id="meta-description">--</span>
+                <span class="meta-length" id="meta-description-length"></span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">OG:Image</span>
+                <span class="meta-value" id="meta-og-image">--</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Canonical</span>
+                <span class="meta-value" id="meta-canonical">--</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- RECOMMANDATIONS -->
+          <div class="result-card">
+            <h3>Recommandations prioritaires</h3>
+            <div id="recommendations" class="recommendations-list"></div>
+          </div>
+
+        </div>
+
+        <!-- BLOC AIDE -->
+        <div id="help-block" style="display: none;">
+          <div class="result-card" style="text-align: center; border-color: #2a2a2a;">
+            <p style="font-size: 1.5rem; margin-bottom: 8px;">🤯</p>
+            <p style="color: var(--white); font-size: 1rem; font-weight: 600; margin-bottom: 8px;">
+              Ces résultats ressemblent à du chinois ?
+            </p>
+            <p style="color: var(--gray); font-size: 0.9rem; margin-bottom: 20px;">
+              C'est normal, on ne vous a pas encore appris à lire le Lighthouse. Envoyez-nous l'URL et on vous explique tout ça en humain. 🧑‍💻
+            </p>
+            <a href="/#contact" class="cta-btn" style="font-size: 0.9rem; padding: 12px 32px;">
+              On m'explique tout →
+            </a>
+          </div>
+        </div>
+
+        <!-- ERREUR -->
+        <div id="error" class="error-card" style="display: none;">
+          <span class="error-icon">⚠️</span>
+          <h3>Erreur d'analyse</h3>
+          <p id="error-message"></p>
+          <button onclick="document.getElementById('error').style.display='none'">Réessayer</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="audit-cta">
+      <div class="container">
+        <h2>Besoin d'aide pour optimiser votre site ?</h2>
+        <p>Notre équipe peut vous accompagner dans l'amélioration de vos performances SEO.</p>
+        <a href="/#contact" class="cta-btn">Demander un audit complet</a>
+      </div>
+    </section>
+
+    <!-- BOUTON RETOUR -->
+    <section class="back-home-section">
+      <div class="container">
+        <a href="/" class="back-to-home">
+          <span class="back-arrow">←</span>
+          <span class="back-text">Retour à l'accueil</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  :root {
+    --orange: #ea6432;
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #9ca3af;
+    --dark-card: #1a1a1a;
+    --green: #10b981;
+    --yellow: #f59e0b;
+    --red: #ef4444;
+  }
+
+  .audit-page {
+    background: var(--black);
+    padding-top: 100px;
+  }
+
+  .container {
+    max-width: var(--layout-width);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* HERO */
+  .audit-hero {
+    padding: 80px 0 0 !important;
+    text-align: left;
+  }
+
+  .hero-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 16px;
+  }
+
+  .audit-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+
+  .highlight {
+    color: var(--orange);
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray);
+    max-width: 600px;
+  }
+
+  /* OUTIL */
+  .audit-tool {
+    padding: 80px 0 0 !important;
+  }
+
+  .audit-form-card {
+    background: var(--dark-card);
+    border: 2px solid #2a2a2a;
+    border-radius: 16px;
+    padding: 48px;
+    margin-bottom: 40px;
+  }
+
+  .audit-form-card h2 {
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .input-group {
+    display: flex;
+    gap: 12px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  #url-input {
+    flex: 1;
+    padding: 16px 24px;
+    background: var(--black);
+    border: 2px solid #2a2a2a;
+    border-radius: 12px;
+    color: var(--white);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+
+  #url-input:focus {
+    outline: none;
+    border-color: var(--orange);
+  }
+
+  #analyze-btn {
+    padding: 16px 48px;
+    background: var(--orange);
+    color: var(--white);
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+
+  #analyze-btn:hover {
+    background: #d4581f;
+    transform: translateY(-2px);
+  }
+
+  #analyze-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .form-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-top: 12px;
+    margin-bottom: 0;
+  }
+
+  .security-note {
+    text-align: right;
+    font-size: 0.78rem;
+    color: var(--gray);
+    margin-top: 10px;
+    margin-bottom: 0;
+    letter-spacing: 0.01em;
+  }
+
+  /* RÉSULTATS */
+  .result-card {
+    background: var(--dark-card);
+    border: 2px solid #2a2a2a;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+
+  .result-card h3 {
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  /* SCORE */
+  .score-card {
+    text-align: center;
+  }
+
+  .score-circle {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 20px;
+  }
+
+  .score-circle svg {
+    transform: rotate(-90deg);
+  }
+
+  .score-bg {
+    fill: none;
+    stroke: #2a2a2a;
+    stroke-width: 12;
+  }
+
+  .score-fill {
+    fill: none;
+    stroke: var(--orange);
+    stroke-width: 12;
+    stroke-linecap: round;
+    stroke-dasharray: 534;
+    stroke-dashoffset: 534;
+    transition: stroke-dashoffset 1s ease, stroke 0.5s;
+  }
+
+  .score-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .score-label {
+    font-size: 1.1rem;
+    color: var(--gray);
+  }
+
+  /* DIAGNOSTIC BLOC */
+  .diagnostic-card {
+    padding: 28px 32px;
+    border-radius: 16px;
+    border-width: 2px;
+    border-style: solid;
+  }
+
+  .diagnostic-card.green {
+    background: rgba(16, 185, 129, 0.07);
+    border-color: rgba(16, 185, 129, 0.3);
+  }
+
+  .diagnostic-card.orange {
+    background: rgba(245, 158, 11, 0.07);
+    border-color: rgba(245, 158, 11, 0.3);
+  }
+
+  .diagnostic-card.red {
+    background: rgba(239, 68, 68, 0.07);
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+
+  .diagnostic-header {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .diagnostic-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .diagnostic-item {
+    font-size: 0.92rem;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .diagnostic-cta {
+    font-size: 0.9rem;
+    color: var(--gray);
+    padding-top: 14px;
+    border-top: 1px solid #2a2a2a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* VITALS */
+  .vitals-grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  .vital-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 16px;
+    align-items: center;
+    padding: 20px;
+    background: var(--black);
+    border-radius: 12px;
+  }
+
+  .vital-icon {
+    font-size: 2rem;
+  }
+
+  .vital-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .vital-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .vital-desc {
+    font-size: 0.85rem;
+    color: var(--gray);
+  }
+
+  .vital-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .vital-status {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .vital-status.good { background: var(--green); }
+  .vital-status.needs-improvement { background: var(--yellow); }
+  .vital-status.poor { background: var(--red); }
+
+  /* META */
+  .meta-list {
+    display: grid;
+    gap: 16px;
+  }
+
+  .meta-item {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: 16px;
+    align-items: start;
+    padding: 16px;
+    background: var(--black);
+    border-radius: 8px;
+  }
+
+  .meta-label {
+    font-weight: 600;
+    color: var(--orange);
+    font-size: 0.9rem;
+  }
+
+  .meta-value {
+    color: var(--white);
+    word-break: break-word;
+  }
+
+  .meta-length {
+    font-size: 0.85rem;
+    color: var(--gray);
+    white-space: nowrap;
+  }
+
+  .meta-length.good { color: var(--green); }
+  .meta-length.warning { color: var(--yellow); }
+
+  /* RECOMMANDATIONS */
+  .recommendations-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .recommendation-item {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    background: var(--black);
+    border-radius: 8px;
+    border-left: 3px solid var(--orange);
+  }
+
+  .recommendation-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .recommendation-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .recommendation-text {
+    color: #ffffff;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .recommendation-desc {
+    font-size: 0.82rem;
+    color: #9ca3af;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* ERREUR */
+  .error-card {
+    background: rgba(239, 68, 68, 0.1);
+    border: 2px solid var(--red);
+    border-radius: 16px;
+    padding: 48px;
+    text-align: center;
+  }
+
+  .error-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .error-card h3 {
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .error-card p {
+    color: var(--gray);
+    margin-bottom: 24px;
+  }
+
+  .error-card button {
+    padding: 12px 32px;
+    background: var(--red);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  /* CTA */
+  .audit-cta {
+    padding: 80px 0;
+    text-align: center;
+  }
+
+  .audit-cta h2 {
+    font-size: 2rem;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .audit-cta p {
+    font-size: 1.1rem;
+    color: var(--gray);
+    margin-bottom: 32px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 16px 48px;
+    background: var(--orange);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .cta-btn:hover {
+    background: #d4581f;
+    transform: translateY(-2px);
+  }
+
+  /* BOUTON RETOUR */
+  .back-home-section {
+    padding: 0 0 80px 0 !important;
+    text-align: left;
+  }
+
+  .back-to-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: gap 0.3s ease, color 0.3s ease;
+  }
+
+  .back-to-home:hover { gap: 0.75rem; color: var(--gray); }
+  .back-arrow { transition: transform 0.3s ease; }
+  .back-to-home:hover .back-arrow { transform: translateX(-3px); }
+
+  @media (max-width: 768px) {
+    .audit-hero h1 { font-size: 1.8rem; }
+    .input-group { flex-direction: column; }
+    .audit-form-card { padding: 32px 24px; }
+    .result-card { padding: 24px; }
+
+    .vital-item {
+      grid-template-columns: auto 1fr;
+      gap: 12px;
     }
 
-    displayResults(data);
-    resultsDiv.style.display = 'block';
-
-  } catch (error) {
-    console.error('Erreur:', error);
-    document.getElementById('error-message').textContent = error.message;
-    errorDiv.style.display = 'block';
-  } finally {
-    analyzeBtn.disabled = false;
-    btnText.style.display = 'inline';
-    btnLoader.style.display = 'none';
-  }
-});
-
-function getSeverityIcon(score) {
-  if (score >= 0.9) return '✅';
-  if (score >= 0.5) return '⚠️';
-  return '❌';
-}
-
-function displayResults(data) {
-  const lighthouse = data.lighthouseResult;
-  const categories = lighthouse.categories;
-  const audits = lighthouse.audits;
-
-  const perfScore = Math.round(categories.performance.score * 100);
-  updateScore(perfScore);
-  displayDiagnostic(perfScore);
-
-  const lcp = audits['largest-contentful-paint'];
-  const fid = audits['max-potential-fid'] || audits['total-blocking-time'];
-  const cls = audits['cumulative-layout-shift'];
-
-  updateVital('lcp', lcp.displayValue, lcp.score);
-  updateVital('fid', fid.displayValue, fid.score);
-  updateVital('cls', cls.displayValue, cls.score);
-
-  const titleAudit = audits['document-title'];
-  if (titleAudit) {
-    let pageTitle = '';
-
-    if (titleAudit.details && titleAudit.details.items && titleAudit.details.items.length > 0) {
-      pageTitle = titleAudit.details.items[0].snippet || '';
+    .vital-value,
+    .vital-status {
+      grid-column: 2;
+      justify-self: end;
     }
 
-    if (!pageTitle && lighthouse.finalUrl) {
-      try {
-        const urlObj = new URL(lighthouse.finalUrl);
-        pageTitle = urlObj.hostname;
-      } catch (e) {
-        pageTitle = lighthouse.finalUrl;
-      }
+    .meta-item {
+      grid-template-columns: 1fr;
+      gap: 8px;
     }
 
-    if (pageTitle) {
-      document.getElementById('meta-title').textContent = pageTitle;
-      updateMetaLength('title', pageTitle.length);
-    } else if (titleAudit.score === 1) {
-      document.getElementById('meta-title').textContent = '✓ Présent';
-    } else {
-      document.getElementById('meta-title').textContent = '❌ Non trouvé';
-    }
+    .back-to-home { transition: none; }
+    .back-to-home:hover { gap: 0.5rem; color: var(--white); }
+    .back-to-home:hover .back-arrow { transform: none; }
+    .security-note { text-align: center; }
   }
+</style>
 
-  const metaDesc = audits['meta-description'];
-  if (metaDesc) {
-    if (metaDesc.score === 1) {
-      document.getElementById('meta-description').textContent = '✓ Présente';
-      document.getElementById('meta-description-length').textContent = '';
-    } else {
-      document.getElementById('meta-description').textContent = '❌ Manquante ou vide';
-      document.getElementById('meta-description-length').textContent = '';
-    }
-  }
+<script is:inline>
+  const form = document.getElementById('audit-form');
+  const urlInput = document.getElementById('url-input');
+  const analyzeBtn = document.getElementById('analyze-btn');
+  const btnText = analyzeBtn.querySelector('.btn-text');
+  const btnLoader = analyzeBtn.querySelector('.btn-loader');
+  const resultsDiv = document.getElementById('results');
+  const errorDiv = document.getElementById('error');
 
-  document.getElementById('meta-og-image').textContent = 'Vérifier manuellement';
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-  const canonical = audits['canonical'];
-  if (canonical && canonical.score === 1) {
-    document.getElementById('meta-canonical').textContent = 'Présent ✓';
-  } else {
-    document.getElementById('meta-canonical').textContent = 'Non trouvé ❌';
-  }
+    var url = urlInput.value.trim();
+    if (!url) return;
 
-  displayRecommandations(audits);
-}
+    analyzeBtn.disabled = true;
+    btnText.style.display = 'none';
+    btnLoader.style.display = 'flex';
+    resultsDiv.style.display = 'none';
+    errorDiv.style.display = 'none';
 
-function displayDiagnostic(score) {
-  const card = document.getElementById('diagnostic-card');
-  const header = document.getElementById('diagnostic-header');
-  const items = document.getElementById('diagnostic-items');
-  const cta = document.getElementById('diagnostic-cta');
-
-  card.style.display = 'block';
-
-  if (score >= 85) {
-    card.className = 'result-card diagnostic-card green';
-    header.innerHTML = '<span>🟢 Votre site est performant 👍</span>';
-    items.innerHTML = `
-      <div class="diagnostic-item"><span>✔️</span> <span>Bonne vitesse</span></div>
-      <div class="diagnostic-item"><span>✔️</span> <span>Structure correcte</span></div>
-      <div class="diagnostic-item"><span>✔️</span> <span>Bon potentiel SEO</span></div>
-    `;
-    cta.innerHTML = '👉 Vous pouvez encore optimiser certains points pour dépasser vos concurrents.';
-  } else if (score >= 60) {
-    card.className = 'result-card diagnostic-card orange';
-    header.innerHTML = '<span>🟠 Votre site fonctionne… mais perd des opportunités.</span>';
-    items.innerHTML = `
-      <div class="diagnostic-item"><span>⚠️</span> <span>Chargement perfectible</span></div>
-      <div class="diagnostic-item"><span>⚠️</span> <span>Quelques freins SEO</span></div>
-      <div class="diagnostic-item"><span>⚠️</span> <span>Risque de perte de trafic</span></div>
-    `;
-    cta.innerHTML = '👉 Des optimisations simples peuvent améliorer votre visibilité.';
-  } else {
-    card.className = 'result-card diagnostic-card red';
-    header.innerHTML = '<span>🔴 Votre site pénalise votre visibilité.</span>';
-    items.innerHTML = `
-      <div class="diagnostic-item"><span>❌</span> <span>Temps de chargement élevé</span></div>
-      <div class="diagnostic-item"><span>❌</span> <span>Structure SEO insuffisante</span></div>
-      <div class="diagnostic-item"><span>❌</span> <span>Risque de mauvaise expérience utilisateur</span></div>
-    `;
-    cta.innerHTML = "👉 Une refonte technique s'impose pour ne plus perdre de visiteurs et de positions.";
-  }
-}
-
-function updateScore(score) {
-  const scoreFill = document.getElementById('score-fill');
-  const scoreValue = document.getElementById('score-value');
-  const scoreLabel = document.getElementById('score-label');
-
-  const circumference = 534;
-  const offset = circumference - (score / 100) * circumference;
-
-  scoreFill.style.strokeDashoffset = offset;
-  scoreValue.textContent = score;
-
-  let color, label;
-  if (score >= 90) {
-    color = '#10b981';
-    label = 'Excellent';
-  } else if (score >= 50) {
-    color = '#f59e0b';
-    label = 'À améliorer';
-  } else {
-    color = '#ef4444';
-    label = 'Faible';
-  }
-
-  scoreFill.style.stroke = color;
-  scoreLabel.textContent = label;
-}
-
-function updateVital(id, value, score) {
-  document.getElementById(`${id}-value`).textContent = value;
-  const status = document.getElementById(`${id}-status`);
-
-  if (score >= 0.9) {
-    status.className = 'vital-status good';
-  } else if (score >= 0.5) {
-    status.className = 'vital-status needs-improvement';
-  } else {
-    status.className = 'vital-status poor';
-  }
-}
-
-function updateMetaLength(type, length) {
-  const el = document.getElementById(`meta-${type}-length`);
-  if (!el) return;
-
-  let status = '';
-
-  if (type === 'title') {
-    if (length >= 50 && length <= 60) {
-      status = 'good';
-      el.textContent = `${length} caractères ✓`;
-    } else {
-      status = 'warning';
-      el.textContent = `${length} caractères (optimal: 50-60)`;
-    }
-  } else if (type === 'description') {
-    if (length >= 150 && length <= 160) {
-      status = 'good';
-      el.textContent = `${length} caractères ✓`;
-    } else {
-      status = 'warning';
-      el.textContent = `${length} caractères (optimal: 150-160)`;
-    }
-  }
-
-  el.className = `meta-length ${status}`;
-}
-
-function displayRecommandations(audits) {
-  const container = document.getElementById('recommendations');
-  if (!container) return;
-
-  container.innerHTML = '';
-
-  const traductionsById = {
-    "largest-contentful-paint": "Plus grand élément affiché (LCP)",
-    "first-contentful-paint": "Premier contenu affiché (FCP)",
-    "total-blocking-time": "Temps de blocage total (TBT)",
-    "cumulative-layout-shift": "Décalage cumulatif de mise en page (CLS)",
-    "interactive": "Temps avant interactivité (TTI)",
-    "speed-index": "Indice de vitesse",
-    "max-potential-fid": "Délai maximal de première interaction",
-    "server-response-time": "Temps de réponse serveur trop long",
-    "render-blocking-resources": "Ressources bloquant le rendu",
-    "unused-javascript": "JavaScript inutilisé détecté",
-    "unused-css-rules": "Règles CSS inutilisées",
-    "unminified-javascript": "JavaScript non minifié",
-    "unminified-css": "CSS non minifié",
-    "uses-optimized-images": "Images non optimisées",
-    "uses-webp-images": "Utiliser des formats modernes (WebP/AVIF)",
-    "uses-responsive-images": "Images non adaptées à la taille d'écran",
-    "offscreen-images": "Différer les images hors écran",
-    "uses-text-compression": "Compression texte non activée",
-    "uses-long-cache-ttl": "Durée de cache insuffisante",
-    "dom-size": "Taille du DOM excessive",
-    "bootup-time": "Temps de démarrage JavaScript excessif",
-    "mainthread-work-breakdown": "Travail excessif sur le thread principal",
-    "font-display": "Optimiser l'affichage des polices",
-    "uses-rel-preload": "Ressources importantes non préchargées",
-    "uses-rel-preconnect": "Connexions externes non préconnectées",
-    "long-tasks": "Tâches longues bloquant le thread principal",
-    "critical-request-chains": "Chaînes de requêtes critiques trop longues",
-    "third-party-summary": "Impact des scripts tiers",
-    "duplicated-javascript": "JavaScript dupliqué",
-    "legacy-javascript": "JavaScript obsolète",
-    "preload-lcp-image": "Image LCP non préchargée",
-    "lcp-lazy-loaded": "Image LCP chargée en différé",
-    "efficient-animated-content": "Animations non optimisées",
-    "redirects": "Redirections inutiles",
-    "resource-summary": "Ressources trop lourdes",
-    "network-requests": "Trop de requêtes réseau",
-    "non-composited-animations": "Animations non composites",
-    "unsized-images": "Images sans dimensions définies",
-    "uses-passive-event-listeners": "Écouteurs passifs manquants",
-    "no-document-write": "Utilisation de document.write()",
-    "uses-http2": "HTTP/2 non activé",
-    "uses-http3": "HTTP/3 non activé",
-    "bf-cache": "Cache de navigation arrière incompatible",
-    "valid-source-maps": "Source maps invalides",
-    "forced-reflow": "Recalcul de mise en page forcé",
-    "improve-image-delivery": "Améliorer la livraison des images",
-    "render-blocking-requests": "Requêtes bloquant le rendu",
-    "network-dependency-tree": "Arbre des dépendances réseau",
-    "network-server-latency": "Latence serveur élevée",
-    "largest-contentful-paint-element": "Élément LCP identifié",
-    "layout-shift-elements": "Éléments provoquant des décalages visuels",
-    "no-unload-listeners": "Écouteur unload déconseillé",
-    "third-party-facades": "Ressources tierces chargeables en différé",
-    "document-title": "Balise title manquante",
-    "meta-description": "Meta description manquante",
-    "canonical": "Balise canonical incorrecte",
-    "robots-txt": "Fichier robots.txt invalide",
-    "is-crawlable": "Page non indexable par Google",
-    "hreflang": "Attributs hreflang incorrects",
-    "link-text": "Texte de lien non descriptif",
-    "crawlable-anchors": "Liens non explorables",
-    "structured-data": "Données structurées incorrectes",
-    "meta-robots": "Balise meta robots mal configurée",
-    "image-alt": "Images sans attribut alt",
-    "color-contrast": "Contraste insuffisant",
-    "label": "Champs de formulaire sans label",
-    "button-name": "Boutons sans nom accessible",
-    "link-name": "Liens sans nom accessible",
-    "heading-order": "Hiérarchie des titres incorrecte",
-    "html-has-lang": "Langue du document non définie",
-    "meta-viewport": "Meta viewport mal configurée",
-    "tap-targets": "Zones tactiles trop petites",
-    "content-width": "Contenu plus large que l'écran",
-    "aria-valid-attr-value": "Valeurs ARIA invalides",
-    "aria-required-attr": "Attributs ARIA manquants",
-    "uses-https": "HTTPS manquant",
-    "mixed-content": "Contenu mixte HTTP/HTTPS",
-    "no-vulnerable-libraries": "Bibliothèques JS vulnérables",
-    "external-anchors-use-rel-noopener": "Liens externes sans rel=noopener",
-    "geolocation-on-start": "Géolocalisation demandée au chargement",
-    "notification-on-start": "Notifications demandées au chargement",
-    "csp-xss": "Politique de sécurité (CSP) absente"
-  };
-
-  // Traductions par titre Lighthouse (insensible à la casse grâce au lookup plus bas)
-  const traductionsByTitle = {
-    "forced reflow": "Recalcul de mise en page forcé",
-    "improve image delivery": "Améliorer la livraison des images",
-    "render blocking requests": "Requêtes bloquant le rendu",
-    "render-blocking requests": "Requêtes bloquant le rendu",
-    "font display": "Optimiser l'affichage des polices",
-    "network dependency tree": "Arbre des dépendances réseau",
-    "uses http/2": "HTTP/2 non activé",
-    "uses http/3": "HTTP/3 non activé",
-    "properly size images": "Dimensionner correctement les images",
-    "serve images in next-gen formats": "Utiliser des formats modernes (WebP/AVIF)",
-    "eliminate render-blocking resources": "Éliminer les ressources bloquant le rendu",
-    "defer offscreen images": "Différer les images hors écran",
-    "efficiently encode images": "Encoder efficacement les images",
-    "enable text compression": "Activer la compression du texte",
-    "minify css": "Minifier le CSS",
-    "minify javascript": "Minifier le JavaScript",
-    "remove unused css": "Supprimer le CSS inutilisé",
-    "remove unused javascript": "Supprimer le JavaScript inutilisé",
-    "avoid enormous network payloads": "Éviter les charges réseau trop importantes",
-    "serve static assets with an efficient cache policy": "Politique de cache insuffisante",
-    "avoid an excessive dom size": "Taille du DOM trop importante",
-    "avoid multiple page redirects": "Éviter les redirections multiples",
-    "preconnect to required origins": "Précharger les origines requises",
-    "avoid long main-thread tasks": "Éviter les tâches longues sur le thread principal",
-    "minimize main-thread work": "Minimiser le travail du thread principal",
-    "reduce javascript execution time": "Réduire le temps d'exécution JavaScript",
-    "keep request counts low and transfer sizes small": "Réduire le nombre de requêtes et leur poids",
-    "minimize critical requests depth": "Minimiser la profondeur des requêtes critiques",
-    "ensure text remains visible during webfont load": "Garder le texte visible pendant le chargement des polices",
-    "avoid large layout shifts": "Éviter les décalages de mise en page",
-    "lazy load third-party resources with facades": "Charger les ressources tierces en différé",
-    "largest contentful paint image was lazily loaded": "L'image LCP est chargée en différé",
-    "preload largest contentful paint image": "Précharger l'image LCP",
-    "avoid non-composited animations": "Éviter les animations non composites",
-    "reduce the impact of third-party code": "Réduire l'impact du code tiers",
-    "minimize third-party usage": "Minimiser l'utilisation de scripts tiers",
-    "time to interactive": "Temps avant interactivité (TTI)",
-    "first contentful paint": "Premier contenu affiché (FCP)",
-    "largest contentful paint": "Plus grand élément affiché (LCP)",
-    "speed index": "Indice de vitesse",
-    "total blocking time": "Temps de blocage total (TBT)",
-    "cumulative layout shift": "Décalage cumulatif de mise en page (CLS)",
-    "max potential first input delay": "Délai maximal de première interaction",
-    "server response times are low": "Temps de réponse serveur trop long",
-    "avoid serving legacy javascript to modern browsers": "Éviter le JavaScript obsolète",
-    "preload key requests": "Précharger les requêtes clés",
-    "use video formats for animated content": "Utiliser des vidéos plutôt que des GIFs animés",
-    "image elements have explicit width and height": "Les images n'ont pas de dimensions définies",
-    "does not use passive listeners to improve scrolling performance": "Utiliser des écouteurs passifs",
-    "avoid chaining critical requests": "Éviter l'enchaînement de requêtes critiques",
-    "duplicated javascript": "JavaScript dupliqué",
-    "legacy javascript": "JavaScript obsolète",
-    "uses text compression": "Compression texte non activée",
-    "uses long cache ttl": "Durée de cache insuffisante",
-    "redirects": "Redirections inutiles"
-  };
-
-  const descriptionsById = {
-    "largest-contentful-paint": "Le plus grand élément visible met trop de temps à s'afficher.",
-    "first-contentful-paint": "Vos visiteurs attendent trop longtemps avant de voir quoi que ce soit.",
-    "total-blocking-time": "Votre page met du temps à réagir aux clics de vos visiteurs.",
-    "cumulative-layout-shift": "Des éléments bougent pendant le chargement, ce qui perturbe la lecture.",
-    "interactive": "Votre page tarde à devenir utilisable après son chargement.",
-    "speed-index": "Le contenu de votre page s'affiche trop lentement.",
-    "server-response-time": "Votre serveur répond trop lentement aux requêtes.",
-    "render-blocking-resources": "Certains fichiers bloquent l'affichage de votre page.",
-    "unused-javascript": "Du JavaScript est chargé mais jamais utilisé, ce qui ralentit votre site.",
-    "unused-css-rules": "Des règles CSS sont chargées mais inutilisées, ce qui alourdit la page.",
-    "unminified-javascript": "Votre JavaScript n'est pas compressé, il prend plus de place que nécessaire.",
-    "unminified-css": "Votre CSS n'est pas compressé, il prend plus de place que nécessaire.",
-    "uses-optimized-images": "Vos images ne sont pas optimisées et ralentissent le chargement.",
-    "uses-webp-images": "Utiliser WebP ou AVIF réduirait le poids de vos images.",
-    "uses-responsive-images": "Vos images sont trop grandes pour la taille d'écran de vos visiteurs.",
-    "offscreen-images": "Des images hors écran sont chargées inutilement au démarrage.",
-    "uses-text-compression": "Vos fichiers ne sont pas compressés avant d'être envoyés au navigateur.",
-    "uses-long-cache-ttl": "Vos ressources ne sont pas mises en cache assez longtemps.",
-    "dom-size": "Votre page contient trop d'éléments HTML, ce qui ralentit le navigateur.",
-    "bootup-time": "L'exécution de votre JavaScript prend trop de temps au démarrage.",
-    "mainthread-work-breakdown": "Le navigateur est surchargé de travail pendant le chargement.",
-    "font-display": "Vos polices bloquent l'affichage du texte pendant leur chargement.",
-    "uses-rel-preload": "Certaines ressources importantes pourraient être chargées plus tôt.",
-    "uses-rel-preconnect": "Des connexions externes pourraient être établies plus tôt.",
-    "long-tasks": "Des tâches trop longues bloquent le navigateur et dégradent la réactivité.",
-    "critical-request-chains": "Des dépendances en cascade rallongent le temps de chargement.",
-    "third-party-summary": "Des scripts tiers ralentissent votre site et échappent à votre contrôle.",
-    "duplicated-javascript": "Du JavaScript est chargé plusieurs fois inutilement.",
-    "legacy-javascript": "Du JavaScript obsolète est envoyé à des navigateurs modernes.",
-    "preload-lcp-image": "L'image principale de la page n'est pas préchargée.",
-    "lcp-lazy-loaded": "L'image principale est chargée en différé, ce qui retarde son affichage.",
-    "efficient-animated-content": "Des GIFs pourraient être remplacés par des vidéos plus légères.",
-    "redirects": "Des redirections inutiles allongent le temps de chargement.",
-    "resource-summary": "Le poids total des ressources chargées est trop élevé.",
-    "network-requests": "Trop de requêtes réseau sont effectuées au chargement.",
-    "non-composited-animations": "Certaines animations forcent le navigateur à recalculer la mise en page.",
-    "unsized-images": "Des images sans dimensions provoquent des décalages visuels.",
-    "uses-passive-event-listeners": "Certains écouteurs d'événements ralentissent le défilement.",
-    "no-document-write": "L'utilisation de document.write() bloque le chargement de la page.",
-    "uses-http2": "Votre serveur n'utilise pas HTTP/2, une version plus rapide du protocole.",
-    "bf-cache": "Votre page n'est pas compatible avec le cache de navigation arrière.",
-    "forced-reflow": "Votre page force le navigateur à recalculer la mise en page, ce qui ralentit l'affichage.",
-    "improve-image-delivery": "La livraison de vos images peut être optimisée pour accélérer le chargement.",
-    "render-blocking-requests": "Certaines requêtes bloquent l'affichage de votre page.",
-    "network-dependency-tree": "Des dépendances réseau en cascade rallongent le temps de chargement.",
-    "largest-contentful-paint-element": "L'élément principal de votre page met trop de temps à s'afficher.",
-    "layout-shift-elements": "Certains éléments se déplacent au chargement et perturbent la lecture.",
-    "document-title": "Votre page n'a pas de titre, ce qui nuit à son référencement.",
-    "meta-description": "Votre page n'a pas de méta description visible dans les résultats Google.",
-    "canonical": "L'URL canonique est mal configurée ou absente.",
-    "robots-txt": "Votre fichier robots.txt est invalide ou inaccessible.",
-    "is-crawlable": "Google ne peut pas explorer cette page.",
-    "hreflang": "Les balises de langue sont incorrectes ou manquantes.",
-    "link-text": "Certains liens n'ont pas de texte descriptif pour Google.",
-    "crawlable-anchors": "Certains liens ne peuvent pas être suivis par les moteurs de recherche.",
-    "structured-data": "Les données structurées sont absentes ou incorrectes.",
-    "image-alt": "Certaines images n'ont pas de description pour les moteurs de recherche.",
-    "color-contrast": "Le contraste entre le texte et le fond est insuffisant pour être lisible.",
-    "label": "Des champs de formulaire n'ont pas de label associé.",
-    "button-name": "Certains boutons n'ont pas de nom accessible aux lecteurs d'écran.",
-    "link-name": "Certains liens n'ont pas de nom accessible.",
-    "heading-order": "La hiérarchie de vos titres (H1, H2…) n'est pas correcte.",
-    "html-has-lang": "La langue de votre page n'est pas définie.",
-    "meta-viewport": "La configuration du viewport mobile est incorrecte.",
-    "tap-targets": "Certains boutons ou liens sont trop petits pour être cliqués sur mobile.",
-    "content-width": "Votre contenu dépasse la largeur de l'écran sur mobile.",
-    "aria-valid-attr-value": "Certaines valeurs d'attributs ARIA sont invalides.",
-    "aria-required-attr": "Des attributs ARIA obligatoires sont manquants.",
-    "uses-https": "Votre site n'utilise pas HTTPS, ce qui nuit à la confiance et au SEO.",
-    "mixed-content": "Votre page charge des ressources non sécurisées (HTTP) sur une page HTTPS.",
-    "no-vulnerable-libraries": "Des bibliothèques JS avec des failles connues sont utilisées.",
-    "external-anchors-use-rel-noopener": "Des liens externes sans rel=noopener peuvent poser des risques.",
-    "geolocation-on-start": "Votre site demande la géolocalisation dès le chargement.",
-    "notification-on-start": "Votre site demande les notifications dès le chargement.",
-    "csp-xss": "Aucune politique de sécurité (CSP) n'est configurée."
-  };
-
-  const descByTitle = {
-    "forced reflow": "Votre page force le navigateur à recalculer la mise en page, ce qui ralentit l'affichage.",
-    "improve image delivery": "La livraison de vos images peut être optimisée pour accélérer le chargement.",
-    "render blocking requests": "Certaines requêtes bloquent l'affichage de votre page.",
-    "render-blocking requests": "Certaines requêtes bloquent l'affichage de votre page.",
-    "font display": "Vos polices bloquent l'affichage du texte pendant leur chargement.",
-    "network dependency tree": "Des dépendances réseau en cascade rallongent le temps de chargement.",
-    "properly size images": "Vos images sont trop grandes pour la taille d'écran de vos visiteurs.",
-    "serve images in next-gen formats": "Utiliser WebP ou AVIF réduirait le poids de vos images.",
-    "eliminate render-blocking resources": "Certains fichiers CSS ou JS bloquent l'affichage de votre page.",
-    "defer offscreen images": "Des images invisibles au démarrage sont chargées inutilement.",
-    "efficiently encode images": "Vos images peuvent être mieux compressées sans perte de qualité.",
-    "enable text compression": "Vos fichiers texte ne sont pas compressés avant d'être envoyés.",
-    "minify css": "Votre CSS contient des espaces et commentaires inutiles.",
-    "minify javascript": "Votre JavaScript contient des espaces et commentaires inutiles.",
-    "remove unused css": "Du CSS est chargé mais jamais utilisé sur cette page.",
-    "remove unused javascript": "Du JavaScript est chargé mais jamais exécuté sur cette page.",
-    "avoid enormous network payloads": "Le poids total des ressources chargées est trop élevé.",
-    "serve static assets with an efficient cache policy": "Vos ressources statiques ne sont pas mises en cache assez longtemps.",
-    "avoid an excessive dom size": "Votre page contient trop d'éléments HTML, ce qui ralentit le navigateur.",
-    "avoid multiple page redirects": "Des redirections inutiles allongent le temps de chargement.",
-    "preconnect to required origins": "Des connexions externes pourraient être établies plus tôt.",
-    "minimize main-thread work": "Le navigateur est surchargé de travail pendant le chargement.",
-    "reduce javascript execution time": "L'exécution de votre JavaScript prend trop de temps.",
-    "ensure text remains visible during webfont load": "Vos polices bloquent l'affichage du texte pendant leur chargement.",
-    "avoid large layout shifts": "Des éléments bougent pendant le chargement et perturbent la lecture.",
-    "reduce the impact of third-party code": "Des scripts tiers ralentissent votre site.",
-    "minimize third-party usage": "Trop de scripts tiers impactent les performances.",
-    "uses http/2": "Votre serveur n'utilise pas HTTP/2, une version plus rapide du protocole.",
-    "avoid serving legacy javascript to modern browsers": "Du JavaScript obsolète est envoyé à des navigateurs modernes.",
-    "image elements have explicit width and height": "Des images sans dimensions provoquent des décalages visuels.",
-    "keep request counts low and transfer sizes small": "Trop de requêtes réseau alourdissent le chargement.",
-    "preload key requests": "Certaines ressources importantes pourraient être chargées plus tôt.",
-    "lazy load third-party resources with facades": "Des scripts tiers pourraient être chargés en différé.",
-    "largest contentful paint image was lazily loaded": "L'image principale est chargée en différé.",
-    "preload largest contentful paint image": "L'image principale de la page n'est pas préchargée."
-  };
-
-  const important = [];
-
-  Object.keys(audits).forEach(key => {
-    const audit = audits[key];
-    if (audit.score !== null && audit.score !== undefined && audit.score < 0.9 && audit.title) {
-      // Lookup par ID en priorité, puis par titre en lowercase (insensible à la casse)
-      const titleLower = audit.title.toLowerCase();
-      const titreFr = traductionsById[key]
-        || traductionsByTitle[titleLower]
-        || audit.title;
-
-      important.push({
-        title: titreFr,
-        key: key,
-        originalTitle: audit.title,
-        score: audit.score
+    try {
+      var response = await fetch('/api/audit.json', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: url })
       });
+
+      var data = await response.json();
+
+      if (!response.ok || data.error) {
+        throw new Error(data.error || "Impossible d'analyser cette URL");
+      }
+
+      displayResults(data);
+      resultsDiv.style.display = 'block';
+      document.getElementById('help-block').style.display = 'block';
+
+    } catch (error) {
+      console.error('Erreur:', error);
+      document.getElementById('error-message').textContent = error.message;
+      errorDiv.style.display = 'block';
+    } finally {
+      analyzeBtn.disabled = false;
+      btnText.style.display = 'inline';
+      btnLoader.style.display = 'none';
     }
   });
 
-  important.sort((a, b) => a.score - b.score);
-
-  const toShow = important.slice(0, 8);
-
-  if (toShow.length > 0) {
-    toShow.forEach(rec => {
-      const div = document.createElement('div');
-      div.className = 'recommendation-item';
-      const severityIcon = getSeverityIcon(rec.score);
-      // Lookup description par ID en priorité, puis par titre en lowercase
-      const originalTitleLower = rec.originalTitle?.toLowerCase() || '';
-      const desc = descriptionsById[rec.key]
-        || descByTitle[originalTitleLower]
-        || '';
-
-      div.innerHTML = `
-        <span class="recommendation-icon">${severityIcon}</span>
-        <div class="recommendation-content">
-          <span class="recommendation-text">${rec.title}</span>
-          ${desc ? `<span class="recommendation-desc">${desc}</span>` : ''}
-        </div>
-      `;
-      container.appendChild(div);
-    });
-  } else {
-    container.innerHTML = '<p style="color: #9ca3af; text-align: center;">Aucune recommandation majeure. Votre site est bien optimisé ! ✓</p>';
+  function getSeverityIcon(score) {
+    if (score >= 0.9) return '✅';
+    if (score >= 0.5) return '⚠️';
+    return '❌';
   }
-}
+
+  function displayResults(data) {
+    var lighthouse = data.lighthouseResult;
+    var categories = lighthouse.categories;
+    var audits = lighthouse.audits;
+
+    var perfScore = Math.round(categories.performance.score * 100);
+    updateScore(perfScore);
+    displayDiagnostic(perfScore);
+
+    var lcp = audits['largest-contentful-paint'];
+    var fid = audits['max-potential-fid'] || audits['total-blocking-time'];
+    var cls = audits['cumulative-layout-shift'];
+
+    updateVital('lcp', lcp.displayValue, lcp.score);
+    updateVital('fid', fid.displayValue, fid.score);
+    updateVital('cls', cls.displayValue, cls.score);
+
+    var titleAudit = audits['document-title'];
+    if (titleAudit) {
+      var pageTitle = '';
+
+      if (titleAudit.details && titleAudit.details.items && titleAudit.details.items.length > 0) {
+        pageTitle = titleAudit.details.items[0].snippet || '';
+      }
+
+      if (!pageTitle && lighthouse.finalUrl) {
+        try {
+          var urlObj = new URL(lighthouse.finalUrl);
+          pageTitle = urlObj.hostname;
+        } catch (e) {
+          pageTitle = lighthouse.finalUrl;
+        }
+      }
+
+      if (pageTitle) {
+        document.getElementById('meta-title').textContent = pageTitle;
+        updateMetaLength('title', pageTitle.length);
+      } else if (titleAudit.score === 1) {
+        document.getElementById('meta-title').textContent = '✓ Présent';
+      } else {
+        document.getElementById('meta-title').textContent = '❌ Non trouvé';
+      }
+    }
+
+    var metaDesc = audits['meta-description'];
+    if (metaDesc) {
+      if (metaDesc.score === 1) {
+        document.getElementById('meta-description').textContent = '✓ Présente';
+        document.getElementById('meta-description-length').textContent = '';
+      } else {
+        document.getElementById('meta-description').textContent = '❌ Manquante ou vide';
+        document.getElementById('meta-description-length').textContent = '';
+      }
+    }
+
+    document.getElementById('meta-og-image').textContent = 'Vérifier manuellement';
+
+    var canonical = audits['canonical'];
+    if (canonical && canonical.score === 1) {
+      document.getElementById('meta-canonical').textContent = 'Présent ✓';
+    } else {
+      document.getElementById('meta-canonical').textContent = 'Non trouvé ❌';
+    }
+
+    displayRecommandations(audits);
+  }
+
+  function displayDiagnostic(score) {
+    var card = document.getElementById('diagnostic-card');
+    var header = document.getElementById('diagnostic-header');
+    var items = document.getElementById('diagnostic-items');
+    var cta = document.getElementById('diagnostic-cta');
+
+    card.style.display = 'block';
+
+    if (score >= 85) {
+      card.className = 'result-card diagnostic-card green';
+      header.innerHTML = '<span>🟢 Votre site est performant 👍</span>';
+      items.innerHTML = '<div class="diagnostic-item"><span>✔️</span> <span>Bonne vitesse</span></div><div class="diagnostic-item"><span>✔️</span> <span>Structure correcte</span></div><div class="diagnostic-item"><span>✔️</span> <span>Bon potentiel SEO</span></div>';
+      cta.innerHTML = '👉 Vous pouvez encore optimiser certains points pour dépasser vos concurrents.';
+    } else if (score >= 60) {
+      card.className = 'result-card diagnostic-card orange';
+      header.innerHTML = '<span>🟠 Votre site fonctionne… mais perd des opportunités.</span>';
+      items.innerHTML = '<div class="diagnostic-item"><span>⚠️</span> <span>Chargement perfectible</span></div><div class="diagnostic-item"><span>⚠️</span> <span>Quelques freins SEO</span></div><div class="diagnostic-item"><span>⚠️</span> <span>Risque de perte de trafic</span></div>';
+      cta.innerHTML = '👉 Des optimisations simples peuvent améliorer votre visibilité.';
+    } else {
+      card.className = 'result-card diagnostic-card red';
+      header.innerHTML = '<span>🔴 Votre site pénalise votre visibilité.</span>';
+      items.innerHTML = '<div class="diagnostic-item"><span>❌</span> <span>Temps de chargement élevé</span></div><div class="diagnostic-item"><span>❌</span> <span>Structure SEO insuffisante</span></div><div class="diagnostic-item"><span>❌</span> <span>Risque de mauvaise expérience utilisateur</span></div>';
+      cta.innerHTML = "👉 Une refonte technique s'impose pour ne plus perdre de visiteurs et de positions.";
+    }
+  }
+
+  function updateScore(score) {
+    var scoreFill = document.getElementById('score-fill');
+    var scoreValue = document.getElementById('score-value');
+    var scoreLabel = document.getElementById('score-label');
+
+    var circumference = 534;
+    var offset = circumference - (score / 100) * circumference;
+
+    scoreFill.style.strokeDashoffset = offset;
+    scoreValue.textContent = score;
+
+    var color, label;
+    if (score >= 90) {
+      color = '#10b981';
+      label = 'Excellent';
+    } else if (score >= 50) {
+      color = '#f59e0b';
+      label = 'À améliorer';
+    } else {
+      color = '#ef4444';
+      label = 'Faible';
+    }
+
+    scoreFill.style.stroke = color;
+    scoreLabel.textContent = label;
+  }
+
+  function updateVital(id, value, score) {
+    document.getElementById(id + '-value').textContent = value;
+    var status = document.getElementById(id + '-status');
+
+    if (score >= 0.9) {
+      status.className = 'vital-status good';
+    } else if (score >= 0.5) {
+      status.className = 'vital-status needs-improvement';
+    } else {
+      status.className = 'vital-status poor';
+    }
+  }
+
+  function updateMetaLength(type, length) {
+    var el = document.getElementById('meta-' + type + '-length');
+    if (!el) return;
+
+    var status = '';
+
+    if (type === 'title') {
+      if (length >= 50 && length <= 60) {
+        status = 'good';
+        el.textContent = length + ' caractères ✓';
+      } else {
+        status = 'warning';
+        el.textContent = length + ' caractères (optimal: 50-60)';
+      }
+    } else if (type === 'description') {
+      if (length >= 150 && length <= 160) {
+        status = 'good';
+        el.textContent = length + ' caractères ✓';
+      } else {
+        status = 'warning';
+        el.textContent = length + ' caractères (optimal: 150-160)';
+      }
+    }
+
+    el.className = 'meta-length ' + status;
+  }
+
+  function displayRecommandations(audits) {
+    var container = document.getElementById('recommendations');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    var traductionsById = {
+      "largest-contentful-paint": "Plus grand élément affiché (LCP)",
+      "first-contentful-paint": "Premier contenu affiché (FCP)",
+      "total-blocking-time": "Temps de blocage total (TBT)",
+      "cumulative-layout-shift": "Décalage cumulatif de mise en page (CLS)",
+      "interactive": "Temps avant interactivité (TTI)",
+      "speed-index": "Indice de vitesse",
+      "max-potential-fid": "Délai maximal de première interaction",
+      "server-response-time": "Temps de réponse serveur trop long",
+      "render-blocking-resources": "Ressources bloquant le rendu",
+      "unused-javascript": "JavaScript inutilisé détecté",
+      "unused-css-rules": "Règles CSS inutilisées",
+      "unminified-javascript": "JavaScript non minifié",
+      "unminified-css": "CSS non minifié",
+      "uses-optimized-images": "Images non optimisées",
+      "uses-webp-images": "Utiliser des formats modernes (WebP/AVIF)",
+      "uses-responsive-images": "Images non adaptées à la taille d'écran",
+      "offscreen-images": "Différer les images hors écran",
+      "uses-text-compression": "Compression texte non activée",
+      "uses-long-cache-ttl": "Durée de cache insuffisante",
+      "dom-size": "Taille du DOM excessive",
+      "bootup-time": "Temps de démarrage JavaScript excessif",
+      "mainthread-work-breakdown": "Travail excessif sur le thread principal",
+      "font-display": "Optimiser l'affichage des polices",
+      "uses-rel-preload": "Ressources importantes non préchargées",
+      "uses-rel-preconnect": "Connexions externes non préconnectées",
+      "long-tasks": "Tâches longues bloquant le thread principal",
+      "critical-request-chains": "Chaînes de requêtes critiques trop longues",
+      "third-party-summary": "Impact des scripts tiers",
+      "duplicated-javascript": "JavaScript dupliqué",
+      "legacy-javascript": "JavaScript obsolète",
+      "preload-lcp-image": "Image LCP non préchargée",
+      "lcp-lazy-loaded": "Image LCP chargée en différé",
+      "efficient-animated-content": "Animations non optimisées",
+      "redirects": "Redirections inutiles",
+      "resource-summary": "Ressources trop lourdes",
+      "network-requests": "Trop de requêtes réseau",
+      "non-composited-animations": "Animations non composites",
+      "unsized-images": "Images sans dimensions définies",
+      "uses-passive-event-listeners": "Écouteurs passifs manquants",
+      "no-document-write": "Utilisation de document.write()",
+      "uses-http2": "HTTP/2 non activé",
+      "uses-http3": "HTTP/3 non activé",
+      "bf-cache": "Cache de navigation arrière incompatible",
+      "valid-source-maps": "Source maps invalides",
+      "forced-reflow": "Recalcul de mise en page forcé",
+      "improve-image-delivery": "Améliorer la livraison des images",
+      "render-blocking-requests": "Requêtes bloquant le rendu",
+      "network-dependency-tree": "Arbre des dépendances réseau",
+      "network-server-latency": "Latence serveur élevée",
+      "largest-contentful-paint-element": "Élément LCP identifié",
+      "layout-shift-elements": "Éléments provoquant des décalages visuels",
+      "no-unload-listeners": "Écouteur unload déconseillé",
+      "third-party-facades": "Ressources tierces chargeables en différé",
+      "document-title": "Balise title manquante",
+      "meta-description": "Meta description manquante",
+      "canonical": "Balise canonical incorrecte",
+      "robots-txt": "Fichier robots.txt invalide",
+      "is-crawlable": "Page non indexable par Google",
+      "hreflang": "Attributs hreflang incorrects",
+      "link-text": "Texte de lien non descriptif",
+      "crawlable-anchors": "Liens non explorables",
+      "structured-data": "Données structurées incorrectes",
+      "meta-robots": "Balise meta robots mal configurée",
+      "image-alt": "Images sans attribut alt",
+      "color-contrast": "Contraste insuffisant",
+      "label": "Champs de formulaire sans label",
+      "button-name": "Boutons sans nom accessible",
+      "link-name": "Liens sans nom accessible",
+      "heading-order": "Hiérarchie des titres incorrecte",
+      "html-has-lang": "Langue du document non définie",
+      "meta-viewport": "Meta viewport mal configurée",
+      "tap-targets": "Zones tactiles trop petites",
+      "content-width": "Contenu plus large que l'écran",
+      "aria-valid-attr-value": "Valeurs ARIA invalides",
+      "aria-required-attr": "Attributs ARIA manquants",
+      "uses-https": "HTTPS manquant",
+      "mixed-content": "Contenu mixte HTTP/HTTPS",
+      "no-vulnerable-libraries": "Bibliothèques JS vulnérables",
+      "external-anchors-use-rel-noopener": "Liens externes sans rel=noopener",
+      "geolocation-on-start": "Géolocalisation demandée au chargement",
+      "notification-on-start": "Notifications demandées au chargement",
+      "csp-xss": "Politique de sécurité (CSP) absente"
+    };
+
+    // Clés en minuscules — lookup insensible à la casse
+    var traductionsByTitle = {
+      "forced reflow": "Recalcul de mise en page forcé",
+      "improve image delivery": "Améliorer la livraison des images",
+      "render blocking requests": "Requêtes bloquant le rendu",
+      "render-blocking requests": "Requêtes bloquant le rendu",
+      "font display": "Optimiser l'affichage des polices",
+      "network dependency tree": "Arbre des dépendances réseau",
+      "uses http/2": "HTTP/2 non activé",
+      "uses http/3": "HTTP/3 non activé",
+      "properly size images": "Dimensionner correctement les images",
+      "serve images in next-gen formats": "Utiliser des formats modernes (WebP/AVIF)",
+      "eliminate render-blocking resources": "Éliminer les ressources bloquant le rendu",
+      "defer offscreen images": "Différer les images hors écran",
+      "efficiently encode images": "Encoder efficacement les images",
+      "enable text compression": "Activer la compression du texte",
+      "minify css": "Minifier le CSS",
+      "minify javascript": "Minifier le JavaScript",
+      "remove unused css": "Supprimer le CSS inutilisé",
+      "remove unused javascript": "Supprimer le JavaScript inutilisé",
+      "avoid enormous network payloads": "Éviter les charges réseau trop importantes",
+      "serve static assets with an efficient cache policy": "Politique de cache insuffisante",
+      "avoid an excessive dom size": "Taille du DOM trop importante",
+      "avoid multiple page redirects": "Éviter les redirections multiples",
+      "preconnect to required origins": "Précharger les origines requises",
+      "avoid long main-thread tasks": "Éviter les tâches longues sur le thread principal",
+      "minimize main-thread work": "Minimiser le travail du thread principal",
+      "reduce javascript execution time": "Réduire le temps d'exécution JavaScript",
+      "keep request counts low and transfer sizes small": "Réduire le nombre de requêtes et leur poids",
+      "minimize critical requests depth": "Minimiser la profondeur des requêtes critiques",
+      "ensure text remains visible during webfont load": "Garder le texte visible pendant le chargement des polices",
+      "avoid large layout shifts": "Éviter les décalages de mise en page",
+      "lazy load third-party resources with facades": "Charger les ressources tierces en différé",
+      "largest contentful paint image was lazily loaded": "L'image LCP est chargée en différé",
+      "preload largest contentful paint image": "Précharger l'image LCP",
+      "avoid non-composited animations": "Éviter les animations non composites",
+      "reduce the impact of third-party code": "Réduire l'impact du code tiers",
+      "minimize third-party usage": "Minimiser l'utilisation de scripts tiers",
+      "time to interactive": "Temps avant interactivité (TTI)",
+      "first contentful paint": "Premier contenu affiché (FCP)",
+      "largest contentful paint": "Plus grand élément affiché (LCP)",
+      "speed index": "Indice de vitesse",
+      "total blocking time": "Temps de blocage total (TBT)",
+      "cumulative layout shift": "Décalage cumulatif de mise en page (CLS)",
+      "max potential first input delay": "Délai maximal de première interaction",
+      "server response times are low": "Temps de réponse serveur trop long",
+      "avoid serving legacy javascript to modern browsers": "Éviter le JavaScript obsolète",
+      "preload key requests": "Précharger les requêtes clés",
+      "use video formats for animated content": "Utiliser des vidéos plutôt que des GIFs animés",
+      "image elements have explicit width and height": "Les images n'ont pas de dimensions définies",
+      "does not use passive listeners to improve scrolling performance": "Utiliser des écouteurs passifs",
+      "avoid chaining critical requests": "Éviter l'enchaînement de requêtes critiques",
+      "duplicated javascript": "JavaScript dupliqué",
+      "legacy javascript": "JavaScript obsolète",
+      "uses text compression": "Compression texte non activée",
+      "uses long cache ttl": "Durée de cache insuffisante",
+      "redirects": "Redirections inutiles"
+    };
+
+    var descriptionsById = {
+      "largest-contentful-paint": "Le plus grand élément visible met trop de temps à s'afficher.",
+      "first-contentful-paint": "Vos visiteurs attendent trop longtemps avant de voir quoi que ce soit.",
+      "total-blocking-time": "Votre page met du temps à réagir aux clics de vos visiteurs.",
+      "cumulative-layout-shift": "Des éléments bougent pendant le chargement, ce qui perturbe la lecture.",
+      "interactive": "Votre page tarde à devenir utilisable après son chargement.",
+      "speed-index": "Le contenu de votre page s'affiche trop lentement.",
+      "server-response-time": "Votre serveur répond trop lentement aux requêtes.",
+      "render-blocking-resources": "Certains fichiers bloquent l'affichage de votre page.",
+      "unused-javascript": "Du JavaScript est chargé mais jamais utilisé, ce qui ralentit votre site.",
+      "unused-css-rules": "Des règles CSS sont chargées mais inutilisées, ce qui alourdit la page.",
+      "unminified-javascript": "Votre JavaScript n'est pas compressé, il prend plus de place que nécessaire.",
+      "unminified-css": "Votre CSS n'est pas compressé, il prend plus de place que nécessaire.",
+      "uses-optimized-images": "Vos images ne sont pas optimisées et ralentissent le chargement.",
+      "uses-webp-images": "Utiliser WebP ou AVIF réduirait le poids de vos images.",
+      "uses-responsive-images": "Vos images sont trop grandes pour la taille d'écran de vos visiteurs.",
+      "offscreen-images": "Des images hors écran sont chargées inutilement au démarrage.",
+      "uses-text-compression": "Vos fichiers ne sont pas compressés avant d'être envoyés au navigateur.",
+      "uses-long-cache-ttl": "Vos ressources ne sont pas mises en cache assez longtemps.",
+      "dom-size": "Votre page contient trop d'éléments HTML, ce qui ralentit le navigateur.",
+      "bootup-time": "L'exécution de votre JavaScript prend trop de temps au démarrage.",
+      "mainthread-work-breakdown": "Le navigateur est surchargé de travail pendant le chargement.",
+      "font-display": "Vos polices bloquent l'affichage du texte pendant leur chargement.",
+      "uses-rel-preload": "Certaines ressources importantes pourraient être chargées plus tôt.",
+      "uses-rel-preconnect": "Des connexions externes pourraient être établies plus tôt.",
+      "long-tasks": "Des tâches trop longues bloquent le navigateur et dégradent la réactivité.",
+      "critical-request-chains": "Des dépendances en cascade rallongent le temps de chargement.",
+      "third-party-summary": "Des scripts tiers ralentissent votre site et échappent à votre contrôle.",
+      "duplicated-javascript": "Du JavaScript est chargé plusieurs fois inutilement.",
+      "legacy-javascript": "Du JavaScript obsolète est envoyé à des navigateurs modernes.",
+      "preload-lcp-image": "L'image principale de la page n'est pas préchargée.",
+      "lcp-lazy-loaded": "L'image principale est chargée en différé, ce qui retarde son affichage.",
+      "efficient-animated-content": "Des GIFs pourraient être remplacés par des vidéos plus légères.",
+      "redirects": "Des redirections inutiles allongent le temps de chargement.",
+      "resource-summary": "Le poids total des ressources chargées est trop élevé.",
+      "network-requests": "Trop de requêtes réseau sont effectuées au chargement.",
+      "non-composited-animations": "Certaines animations forcent le navigateur à recalculer la mise en page.",
+      "unsized-images": "Des images sans dimensions provoquent des décalages visuels.",
+      "uses-passive-event-listeners": "Certains écouteurs d'événements ralentissent le défilement.",
+      "no-document-write": "L'utilisation de document.write() bloque le chargement de la page.",
+      "uses-http2": "Votre serveur n'utilise pas HTTP/2, une version plus rapide du protocole.",
+      "bf-cache": "Votre page n'est pas compatible avec le cache de navigation arrière.",
+      "forced-reflow": "Votre page force le navigateur à recalculer la mise en page, ce qui ralentit l'affichage.",
+      "improve-image-delivery": "La livraison de vos images peut être optimisée pour accélérer le chargement.",
+      "render-blocking-requests": "Certaines requêtes bloquent l'affichage de votre page.",
+      "network-dependency-tree": "Des dépendances réseau en cascade rallongent le temps de chargement.",
+      "largest-contentful-paint-element": "L'élément principal de votre page met trop de temps à s'afficher.",
+      "layout-shift-elements": "Certains éléments se déplacent au chargement et perturbent la lecture.",
+      "document-title": "Votre page n'a pas de titre, ce qui nuit à son référencement.",
+      "meta-description": "Votre page n'a pas de méta description visible dans les résultats Google.",
+      "canonical": "L'URL canonique est mal configurée ou absente.",
+      "robots-txt": "Votre fichier robots.txt est invalide ou inaccessible.",
+      "is-crawlable": "Google ne peut pas explorer cette page.",
+      "hreflang": "Les balises de langue sont incorrectes ou manquantes.",
+      "link-text": "Certains liens n'ont pas de texte descriptif pour Google.",
+      "crawlable-anchors": "Certains liens ne peuvent pas être suivis par les moteurs de recherche.",
+      "structured-data": "Les données structurées sont absentes ou incorrectes.",
+      "image-alt": "Certaines images n'ont pas de description pour les moteurs de recherche.",
+      "color-contrast": "Le contraste entre le texte et le fond est insuffisant pour être lisible.",
+      "label": "Des champs de formulaire n'ont pas de label associé.",
+      "button-name": "Certains boutons n'ont pas de nom accessible aux lecteurs d'écran.",
+      "link-name": "Certains liens n'ont pas de nom accessible.",
+      "heading-order": "La hiérarchie de vos titres (H1, H2…) n'est pas correcte.",
+      "html-has-lang": "La langue de votre page n'est pas définie.",
+      "meta-viewport": "La configuration du viewport mobile est incorrecte.",
+      "tap-targets": "Certains boutons ou liens sont trop petits pour être cliqués sur mobile.",
+      "content-width": "Votre contenu dépasse la largeur de l'écran sur mobile.",
+      "aria-valid-attr-value": "Certaines valeurs d'attributs ARIA sont invalides.",
+      "aria-required-attr": "Des attributs ARIA obligatoires sont manquants.",
+      "uses-https": "Votre site n'utilise pas HTTPS, ce qui nuit à la confiance et au SEO.",
+      "mixed-content": "Votre page charge des ressources non sécurisées (HTTP) sur une page HTTPS.",
+      "no-vulnerable-libraries": "Des bibliothèques JS avec des failles connues sont utilisées.",
+      "external-anchors-use-rel-noopener": "Des liens externes sans rel=noopener peuvent poser des risques.",
+      "geolocation-on-start": "Votre site demande la géolocalisation dès le chargement.",
+      "notification-on-start": "Votre site demande les notifications dès le chargement.",
+      "csp-xss": "Aucune politique de sécurité (CSP) n'est configurée."
+    };
+
+    var descByTitle = {
+      "forced reflow": "Votre page force le navigateur à recalculer la mise en page, ce qui ralentit l'affichage.",
+      "improve image delivery": "La livraison de vos images peut être optimisée pour accélérer le chargement.",
+      "render blocking requests": "Certaines requêtes bloquent l'affichage de votre page.",
+      "render-blocking requests": "Certaines requêtes bloquent l'affichage de votre page.",
+      "font display": "Vos polices bloquent l'affichage du texte pendant leur chargement.",
+      "network dependency tree": "Des dépendances réseau en cascade rallongent le temps de chargement.",
+      "properly size images": "Vos images sont trop grandes pour la taille d'écran de vos visiteurs.",
+      "serve images in next-gen formats": "Utiliser WebP ou AVIF réduirait le poids de vos images.",
+      "eliminate render-blocking resources": "Certains fichiers CSS ou JS bloquent l'affichage de votre page.",
+      "defer offscreen images": "Des images invisibles au démarrage sont chargées inutilement.",
+      "efficiently encode images": "Vos images peuvent être mieux compressées sans perte de qualité.",
+      "enable text compression": "Vos fichiers texte ne sont pas compressés avant d'être envoyés.",
+      "minify css": "Votre CSS contient des espaces et commentaires inutiles.",
+      "minify javascript": "Votre JavaScript contient des espaces et commentaires inutiles.",
+      "remove unused css": "Du CSS est chargé mais jamais utilisé sur cette page.",
+      "remove unused javascript": "Du JavaScript est chargé mais jamais exécuté sur cette page.",
+      "avoid enormous network payloads": "Le poids total des ressources chargées est trop élevé.",
+      "serve static assets with an efficient cache policy": "Vos ressources statiques ne sont pas mises en cache assez longtemps.",
+      "avoid an excessive dom size": "Votre page contient trop d'éléments HTML, ce qui ralentit le navigateur.",
+      "avoid multiple page redirects": "Des redirections inutiles allongent le temps de chargement.",
+      "preconnect to required origins": "Des connexions externes pourraient être établies plus tôt.",
+      "minimize main-thread work": "Le navigateur est surchargé de travail pendant le chargement.",
+      "reduce javascript execution time": "L'exécution de votre JavaScript prend trop de temps.",
+      "ensure text remains visible during webfont load": "Vos polices bloquent l'affichage du texte pendant leur chargement.",
+      "avoid large layout shifts": "Des éléments bougent pendant le chargement et perturbent la lecture.",
+      "reduce the impact of third-party code": "Des scripts tiers ralentissent votre site.",
+      "minimize third-party usage": "Trop de scripts tiers impactent les performances.",
+      "uses http/2": "Votre serveur n'utilise pas HTTP/2, une version plus rapide du protocole.",
+      "avoid serving legacy javascript to modern browsers": "Du JavaScript obsolète est envoyé à des navigateurs modernes.",
+      "image elements have explicit width and height": "Des images sans dimensions provoquent des décalages visuels.",
+      "keep request counts low and transfer sizes small": "Trop de requêtes réseau alourdissent le chargement.",
+      "preload key requests": "Certaines ressources importantes pourraient être chargées plus tôt.",
+      "lazy load third-party resources with facades": "Des scripts tiers pourraient être chargés en différé.",
+      "largest contentful paint image was lazily loaded": "L'image principale est chargée en différé.",
+      "preload largest contentful paint image": "L'image principale de la page n'est pas préchargée."
+    };
+
+    var important = [];
+
+    Object.keys(audits).forEach(function(key) {
+      var audit = audits[key];
+      if (audit.score !== null && audit.score !== undefined && audit.score < 0.9 && audit.title) {
+        var titleLower = audit.title.toLowerCase();
+        var titreFr = traductionsById[key] || traductionsByTitle[titleLower] || audit.title;
+
+        important.push({
+          title: titreFr,
+          key: key,
+          originalTitle: audit.title,
+          score: audit.score
+        });
+      }
+    });
+
+    important.sort(function(a, b) { return a.score - b.score; });
+
+    var toShow = important.slice(0, 8);
+
+    if (toShow.length > 0) {
+      toShow.forEach(function(rec) {
+        var div = document.createElement('div');
+        div.className = 'recommendation-item';
+        var severityIcon = getSeverityIcon(rec.score);
+        var originalTitleLower = rec.originalTitle ? rec.originalTitle.toLowerCase() : '';
+        var desc = descriptionsById[rec.key] || descByTitle[originalTitleLower] || '';
+
+        div.innerHTML =
+          '<span class="recommendation-icon">' + severityIcon + '</span>' +
+          '<div class="recommendation-content">' +
+            '<span class="recommendation-text">' + rec.title + '</span>' +
+            (desc ? '<span class="recommendation-desc">' + desc + '</span>' : '') +
+          '</div>';
+
+        container.appendChild(div);
+      });
+    } else {
+      container.innerHTML = '<p style="color: #9ca3af; text-align: center;">Aucune recommandation majeure. Votre site est bien optimisé ! ✓</p>';
+    }
+  }
+</script>
+  
