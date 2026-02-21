@@ -145,19 +145,16 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
 
         </div>
 
-        <!-- BLOC AIDE -->
+        <!-- BLOC AIDE — sans bouton -->
         <div id="help-block" style="display: none;">
           <div class="result-card" style="text-align: center; border-color: #2a2a2a;">
             <p style="font-size: 1.5rem; margin-bottom: 8px;">🤯</p>
-            <p style="color: var(--white); font-size: 1rem; font-weight: 600; margin-bottom: 8px;">
+            <p style="color: #ffffff; font-size: 1rem; font-weight: 600; margin-bottom: 8px;">
               Ces résultats ressemblent à du chinois ?
             </p>
-            <p style="color: var(--gray); font-size: 0.9rem; margin-bottom: 20px;">
+            <p style="color: #9ca3af; font-size: 0.9rem; margin-bottom: 0;">
               C'est normal, on ne vous a pas encore appris à lire le Lighthouse. Envoyez-nous l'URL et on vous explique tout ça en humain. 🧑‍💻
             </p>
-            <a href="/#contact" class="cta-btn" style="font-size: 0.9rem; padding: 12px 32px;">
-              On m'explique tout →
-            </a>
           </div>
         </div>
 
@@ -172,12 +169,12 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
       </div>
     </section>
 
-    <!-- CTA -->
+    <!-- CTA — texte modifié -->
     <section class="audit-cta">
       <div class="container">
         <h2>Besoin d'aide pour optimiser votre site ?</h2>
         <p>Notre équipe peut vous accompagner dans l'amélioration de vos performances SEO.</p>
-        <a href="/#contact" class="cta-btn">Demander un audit complet</a>
+        <a href="/#contact" class="cta-btn">On m'explique tout →</a>
       </div>
     </section>
 
@@ -219,7 +216,6 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     padding: 0 var(--gutter);
   }
 
-  /* HERO */
   .audit-hero {
     padding: 80px 0 0 !important;
     text-align: left;
@@ -242,9 +238,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     color: var(--white);
   }
 
-  .highlight {
-    color: var(--orange);
-  }
+  .highlight { color: var(--orange); }
 
   .hero-subtitle {
     font-size: 1.1rem;
@@ -252,7 +246,6 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     max-width: 600px;
   }
 
-  /* OUTIL */
   .audit-tool {
     padding: 80px 0 0 !important;
   }
@@ -350,7 +343,6 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     letter-spacing: 0.01em;
   }
 
-  /* RÉSULTATS */
   .result-card {
     background: var(--dark-card);
     border: 2px solid #2a2a2a;
@@ -365,10 +357,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     margin-bottom: 24px;
   }
 
-  /* SCORE */
-  .score-card {
-    text-align: center;
-  }
+  .score-card { text-align: center; }
 
   .score-circle {
     position: relative;
@@ -377,9 +366,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     margin: 0 auto 20px;
   }
 
-  .score-circle svg {
-    transform: rotate(-90deg);
-  }
+  .score-circle svg { transform: rotate(-90deg); }
 
   .score-bg {
     fill: none;
@@ -412,7 +399,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     color: var(--gray);
   }
 
-  /* DIAGNOSTIC BLOC */
+  /* DIAGNOSTIC */
   .diagnostic-card {
     padding: 28px 32px;
     border-radius: 16px;
@@ -438,7 +425,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
   .diagnostic-header {
     font-size: 1.15rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #ffffff !important;
     margin-bottom: 16px;
     display: flex;
     align-items: center;
@@ -454,10 +441,16 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
 
   .diagnostic-item {
     font-size: 0.92rem;
-    color: #ffffff;
+    color: #ffffff !important;
     display: flex;
     align-items: center;
     gap: 8px;
+  }
+
+  /* Force le blanc sur tous les spans enfants du diagnostic */
+  .diagnostic-item span,
+  .diagnostic-header span {
+    color: #ffffff !important;
   }
 
   .diagnostic-cta {
@@ -470,11 +463,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     gap: 8px;
   }
 
-  /* VITALS */
-  .vitals-grid {
-    display: grid;
-    gap: 20px;
-  }
+  .vitals-grid { display: grid; gap: 20px; }
 
   .vital-item {
     display: grid;
@@ -486,9 +475,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     border-radius: 12px;
   }
 
-  .vital-icon {
-    font-size: 2rem;
-  }
+  .vital-icon { font-size: 2rem; }
 
   .vital-info {
     display: flex;
@@ -522,11 +509,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
   .vital-status.needs-improvement { background: var(--yellow); }
   .vital-status.poor { background: var(--red); }
 
-  /* META */
-  .meta-list {
-    display: grid;
-    gap: 16px;
-  }
+  .meta-list { display: grid; gap: 16px; }
 
   .meta-item {
     display: grid;
@@ -558,11 +541,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
   .meta-length.good { color: var(--green); }
   .meta-length.warning { color: var(--yellow); }
 
-  /* RECOMMANDATIONS */
-  .recommendations-list {
-    display: grid;
-    gap: 12px;
-  }
+  .recommendations-list { display: grid; gap: 12px; }
 
   .recommendation-item {
     display: flex;
@@ -581,23 +560,24 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
   .recommendation-content {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
   }
 
   .recommendation-text {
-    color: #ffffff;
+    color: #ffffff !important;
     line-height: 1.6;
     font-size: 0.95rem;
+    margin: 0;
   }
 
   .recommendation-desc {
     font-size: 0.82rem;
-    color: #9ca3af;
+    color: #9ca3af !important;
     line-height: 1.5;
     font-style: italic;
+    margin: 0;
   }
 
-  /* ERREUR */
   .error-card {
     background: rgba(239, 68, 68, 0.1);
     border: 2px solid var(--red);
@@ -612,15 +592,8 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     margin-bottom: 16px;
   }
 
-  .error-card h3 {
-    color: var(--white);
-    margin-bottom: 12px;
-  }
-
-  .error-card p {
-    color: var(--gray);
-    margin-bottom: 24px;
-  }
+  .error-card h3 { color: var(--white); margin-bottom: 12px; }
+  .error-card p { color: var(--gray); margin-bottom: 24px; }
 
   .error-card button {
     padding: 12px 32px;
@@ -631,7 +604,6 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     cursor: pointer;
   }
 
-  /* CTA */
   .audit-cta {
     padding: 80px 0;
     text-align: center;
@@ -665,7 +637,6 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     transform: translateY(-2px);
   }
 
-  /* BOUTON RETOUR */
   .back-home-section {
     padding: 0 0 80px 0 !important;
     text-align: left;
@@ -715,13 +686,13 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
 </style>
 
 <script is:inline>
-  const form = document.getElementById('audit-form');
-  const urlInput = document.getElementById('url-input');
-  const analyzeBtn = document.getElementById('analyze-btn');
-  const btnText = analyzeBtn.querySelector('.btn-text');
-  const btnLoader = analyzeBtn.querySelector('.btn-loader');
-  const resultsDiv = document.getElementById('results');
-  const errorDiv = document.getElementById('error');
+  var form = document.getElementById('audit-form');
+  var urlInput = document.getElementById('url-input');
+  var analyzeBtn = document.getElementById('analyze-btn');
+  var btnText = analyzeBtn.querySelector('.btn-text');
+  var btnLoader = analyzeBtn.querySelector('.btn-loader');
+  var resultsDiv = document.getElementById('results');
+  var errorDiv = document.getElementById('error');
 
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -846,18 +817,18 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
 
     if (score >= 85) {
       card.className = 'result-card diagnostic-card green';
-      header.innerHTML = '<span>🟢 Votre site est performant 👍</span>';
-      items.innerHTML = '<div class="diagnostic-item"><span>✔️</span> <span>Bonne vitesse</span></div><div class="diagnostic-item"><span>✔️</span> <span>Structure correcte</span></div><div class="diagnostic-item"><span>✔️</span> <span>Bon potentiel SEO</span></div>';
+      header.innerHTML = '<span style="color:#ffffff">🟢 Votre site est performant 👍</span>';
+      items.innerHTML = '<div class="diagnostic-item"><span>✔️</span><span style="color:#ffffff">Bonne vitesse</span></div><div class="diagnostic-item"><span>✔️</span><span style="color:#ffffff">Structure correcte</span></div><div class="diagnostic-item"><span>✔️</span><span style="color:#ffffff">Bon potentiel SEO</span></div>';
       cta.innerHTML = '👉 Vous pouvez encore optimiser certains points pour dépasser vos concurrents.';
     } else if (score >= 60) {
       card.className = 'result-card diagnostic-card orange';
-      header.innerHTML = '<span>🟠 Votre site fonctionne… mais perd des opportunités.</span>';
-      items.innerHTML = '<div class="diagnostic-item"><span>⚠️</span> <span>Chargement perfectible</span></div><div class="diagnostic-item"><span>⚠️</span> <span>Quelques freins SEO</span></div><div class="diagnostic-item"><span>⚠️</span> <span>Risque de perte de trafic</span></div>';
+      header.innerHTML = '<span style="color:#ffffff">🟠 Votre site fonctionne… mais perd des opportunités.</span>';
+      items.innerHTML = '<div class="diagnostic-item"><span>⚠️</span><span style="color:#ffffff">Chargement perfectible</span></div><div class="diagnostic-item"><span>⚠️</span><span style="color:#ffffff">Quelques freins SEO</span></div><div class="diagnostic-item"><span>⚠️</span><span style="color:#ffffff">Risque de perte de trafic</span></div>';
       cta.innerHTML = '👉 Des optimisations simples peuvent améliorer votre visibilité.';
     } else {
       card.className = 'result-card diagnostic-card red';
-      header.innerHTML = '<span>🔴 Votre site pénalise votre visibilité.</span>';
-      items.innerHTML = '<div class="diagnostic-item"><span>❌</span> <span>Temps de chargement élevé</span></div><div class="diagnostic-item"><span>❌</span> <span>Structure SEO insuffisante</span></div><div class="diagnostic-item"><span>❌</span> <span>Risque de mauvaise expérience utilisateur</span></div>';
+      header.innerHTML = '<span style="color:#ffffff">🔴 Votre site pénalise votre visibilité.</span>';
+      items.innerHTML = '<div class="diagnostic-item"><span>❌</span><span style="color:#ffffff">Temps de chargement élevé</span></div><div class="diagnostic-item"><span>❌</span><span style="color:#ffffff">Structure SEO insuffisante</span></div><div class="diagnostic-item"><span>❌</span><span style="color:#ffffff">Risque de mauvaise expérience utilisateur</span></div>';
       cta.innerHTML = "👉 Une refonte technique s'impose pour ne plus perdre de visiteurs et de positions.";
     }
   }
@@ -1020,7 +991,6 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
       "csp-xss": "Politique de sécurité (CSP) absente"
     };
 
-    // Clés en minuscules — lookup insensible à la casse
     var traductionsByTitle = {
       "forced reflow": "Recalcul de mise en page forcé",
       "improve image delivery": "Améliorer la livraison des images",
@@ -1227,15 +1197,14 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
         div.innerHTML =
           '<span class="recommendation-icon">' + severityIcon + '</span>' +
           '<div class="recommendation-content">' +
-            '<span class="recommendation-text">' + rec.title + '</span>' +
-            (desc ? '<span class="recommendation-desc">' + desc + '</span>' : '') +
+            '<p class="recommendation-text" style="color:#ffffff;margin:0;">' + rec.title + '</p>' +
+            (desc ? '<p class="recommendation-desc" style="color:#9ca3af;margin:0;">' + desc + '</p>' : '') +
           '</div>';
 
         container.appendChild(div);
       });
     } else {
-      container.innerHTML = '<p style="color: #9ca3af; text-align: center;">Aucune recommandation majeure. Votre site est bien optimisé ! ✓</p>';
+      container.innerHTML = '<p style="color:#9ca3af;text-align:center;">Aucune recommandation majeure. Votre site est bien optimisé ! ✓</p>';
     }
   }
 </script>
-  
