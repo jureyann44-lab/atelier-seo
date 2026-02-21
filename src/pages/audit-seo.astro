@@ -585,6 +585,8 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     font-size: 0.95rem;
   }
 
+
+
   /* ERREUR */
   .error-card {
     background: rgba(239, 68, 68, 0.1);
@@ -1020,8 +1022,6 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
       "Uses document.write()": "Utilisation de document.write() détectée",
       "Uses passive listeners to improve scrolling performance": "Écouteurs d'événements passifs manquants",
       "Avoids `unload` event listeners": "Écouteur unload détecté (déconseillé)",
-      "Image elements have explicit width and height": "Images sans dimensions définies",
-      "Avoid serving legacy JavaScript to modern browsers": "Éviter le JavaScript obsolète pour navigateurs modernes",
       "Time to First Byte": "Temps avant le premier octet (TTFB)",
       "Initial server response time was short": "Temps de réponse serveur initial trop long",
       "Largest Contentful Paint element": "Élément LCP identifié",
@@ -1030,7 +1030,6 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
       "Browser errors were logged to the console": "Erreurs JavaScript dans la console",
       "Image natural dimensions": "Dimensions naturelles des images incorrectes",
       "Resource timing": "Analyse du timing des ressources",
-      "Avoid long main-thread tasks": "Éviter les tâches longues sur le thread principal",
       "Avoid non-composited animations": "Éviter les animations non composites",
       "Non-composited animations": "Animations non composites détectées",
       "Has a meta viewport": "Balise meta viewport manquante",
@@ -1043,7 +1042,115 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
       "Document has a title": "Balise title manquante",
       "Document has a meta description": "Meta description manquante",
       "Page has successful HTTP status code": "Code HTTP en erreur",
-      "Link text": "Texte de lien non descriptif"
+      "Link text": "Texte de lien non descriptif",
+      "Links are not crawlable": "Liens non explorables par les moteurs",
+      "Page has no meta name robots tag": "Balise meta robots absente",
+      "robots.txt is not accessible": "Fichier robots.txt inaccessible",
+      "Sitemap is not valid": "Sitemap invalide",
+      "Page has a valid rel=canonical": "Balise canonical incorrecte ou absente",
+      "Structured data is invalid": "Données structurées invalides",
+      "Structured data": "Données structurées manquantes ou incorrectes",
+      "Reduce initial server response time": "Réduire le temps de réponse initial du serveur",
+      "Uses HTTP/2": "HTTP/2 non activé",
+      "Uses HTTP/3": "HTTP/3 non activé",
+      "Document request latency": "Latence élevée de la requête principale",
+      "Main thread tasks": "Tâches bloquantes sur le thread principal",
+      "Script Treemap Data": "Scripts trop volumineux",
+      "Unused JavaScript": "JavaScript inutilisé détecté",
+      "Unused CSS Rules": "Règles CSS inutilisées détectées",
+      "Buttons do not have an accessible name": "Boutons sans nom accessible",
+      "Form elements do not have associated labels": "Champs de formulaire sans label",
+      "Background and foreground colors do not have sufficient contrast ratio": "Contraste insuffisant entre le texte et le fond",
+      "ARIA roles are not valid": "Rôles ARIA invalides",
+      "ARIA attributes are not valid": "Attributs ARIA incorrects",
+      "Images do not have alternate text": "Images sans attribut alt",
+      "List items are not contained within `<ul>` or `<ol>`": "Éléments de liste mal structurés",
+      "Viewport not set": "Viewport non défini pour mobile",
+      "Interactive elements are too close together": "Éléments interactifs trop proches",
+      "Content wider than screen": "Contenu plus large que l'écran",
+      "Touch targets": "Zones tactiles trop petites",
+      "Does not use HTTPS": "Site non sécurisé (HTTPS manquant)",
+      "Mixed content": "Contenu mixte (HTTP et HTTPS)",
+      "Insecure requests": "Requêtes non sécurisées"
+    };
+
+    const traductionsById = {
+      "uses-http2": "HTTP/2 non activé",
+      "uses-http3": "HTTP/3 non activé",
+      "redirects": "Redirections inutiles détectées",
+      "unused-javascript": "JavaScript inutilisé détecté",
+      "unused-css-rules": "Règles CSS inutilisées détectées",
+      "render-blocking-resources": "Ressources bloquant le rendu",
+      "uses-optimized-images": "Images non optimisées",
+      "uses-webp-images": "Utiliser des formats modernes (WebP/AVIF)",
+      "uses-responsive-images": "Images non adaptées à la taille d'écran",
+      "offscreen-images": "Différer les images hors écran",
+      "unminified-css": "CSS non minifié",
+      "unminified-javascript": "JavaScript non minifié",
+      "uses-text-compression": "Compression texte non activée",
+      "uses-long-cache-ttl": "Durée de cache insuffisante",
+      "server-response-time": "Temps de réponse serveur trop long",
+      "largest-contentful-paint": "Plus grand élément affiché (LCP)",
+      "first-contentful-paint": "Premier contenu affiché (FCP)",
+      "total-blocking-time": "Temps de blocage total (TBT)",
+      "cumulative-layout-shift": "Décalage cumulatif de mise en page (CLS)",
+      "max-potential-fid": "Délai maximal de première interaction",
+      "interactive": "Temps avant interactivité (TTI)",
+      "speed-index": "Indice de vitesse",
+      "font-display": "Optimiser l'affichage des polices",
+      "dom-size": "Taille du DOM excessive",
+      "bootup-time": "Temps de démarrage JavaScript excessif",
+      "mainthread-work-breakdown": "Travail excessif sur le thread principal",
+      "third-party-summary": "Impact des scripts tiers",
+      "legacy-javascript": "JavaScript obsolète pour navigateurs modernes",
+      "efficient-animated-content": "Animations non optimisées",
+      "duplicated-javascript": "JavaScript dupliqué",
+      "preload-lcp-image": "Image LCP non préchargée",
+      "lcp-lazy-loaded": "Image LCP chargée en différé",
+      "non-composited-animations": "Animations non composites détectées",
+      "unsized-images": "Images sans dimensions définies",
+      "uses-passive-event-listeners": "Écouteurs d'événements passifs manquants",
+      "no-document-write": "Utilisation de document.write() détectée",
+      "canonical": "Balise canonical incorrecte ou absente",
+      "robots-txt": "Fichier robots.txt invalide",
+      "is-crawlable": "Page non indexable par Google",
+      "hreflang": "Attributs hreflang incorrects",
+      "document-title": "Balise title manquante",
+      "meta-description": "Meta description manquante",
+      "link-text": "Texte de lien non descriptif",
+      "crawlable-anchors": "Liens non explorables par les moteurs",
+      "image-alt": "Images sans attribut alt",
+      "uses-https": "Site non sécurisé (HTTPS manquant)",
+      "mixed-content": "Contenu mixte (HTTP et HTTPS)",
+      "viewport": "Viewport non défini pour mobile",
+      "tap-targets": "Zones tactiles trop petites",
+      "content-width": "Contenu plus large que l'écran",
+      "uses-rel-preload": "Ressources importantes non préchargées",
+      "uses-rel-preconnect": "Connexions externes non préconnectées",
+      "critical-request-chains": "Chaînes de requêtes critiques trop longues",
+      "performance-budget": "Budget de performance dépassé",
+      "resource-summary": "Ressources trop lourdes (poids total élevé)",
+      "network-requests": "Nombre de requêtes réseau trop élevé",
+      "long-tasks": "Tâches longues bloquant le thread principal",
+      "diagnostics": "Problèmes de diagnostic détectés",
+      "valid-source-maps": "Source maps invalides ou manquantes",
+      "structured-data": "Données structurées manquantes ou incorrectes",
+      "meta-robots": "Balise meta robots mal configurée",
+      "csp-xss": "Politique de sécurité (CSP) non configurée",
+      "bf-cache": "Page incompatible avec le cache arrière (bfcache)",
+      "aria-valid-attr-value": "Valeurs ARIA invalides",
+      "aria-required-attr": "Attributs ARIA obligatoires manquants",
+      "color-contrast": "Contraste insuffisant entre texte et fond",
+      "label": "Champs de formulaire sans label",
+      "button-name": "Boutons sans nom accessible",
+      "link-name": "Liens sans nom accessible",
+      "heading-order": "Hiérarchie des titres incorrecte",
+      "html-has-lang": "Langue du document non définie",
+      "meta-viewport": "Meta viewport mal configurée",
+      "no-vulnerable-libraries": "Bibliothèques JavaScript vulnérables détectées",
+      "external-anchors-use-rel-noopener": "Liens externes sans rel=noopener",
+      "geolocation-on-start": "Demande de géolocalisation au chargement",
+      "notification-on-start": "Demande de notification au chargement"
     };
 
     const important = [];
@@ -1051,7 +1158,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     Object.keys(audits).forEach(key => {
       const audit = audits[key];
       if (audit.score !== null && audit.score !== undefined && audit.score < 0.9 && audit.title) {
-        const titreFr = traductions[audit.title] || audit.title;
+        const titreFr = traductionsById[key] || traductions[audit.title] || audit.title;
         
         important.push({
           title: titreFr,
@@ -1069,7 +1176,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
         const div = document.createElement('div');
         div.className = 'recommendation-item';
         div.innerHTML = `
-          <span class="recommendation-icon">💡</span>
+          <span class="recommendation-icon" style="color: #ffffff !important;">💡</span>
           <span class="recommendation-text" style="color: #ffffff !important;">${rec.title}</span>
         `;
         container.appendChild(div);
