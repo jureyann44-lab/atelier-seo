@@ -15,7 +15,6 @@ export const POST: APIRoute = async ({ request }) => {
 
     const apiKey = import.meta.env.GOOGLE_API_KEY || '';
 
-    // DEBUG TEMPORAIRE — retourne le statut de la clé
     if (!apiKey) {
       return new Response(JSON.stringify({ error: '🔑 CLÉ VIDE - GOOGLE_API_KEY non lue par Cloudflare' }), {
         status: 500,
@@ -25,7 +24,6 @@ export const POST: APIRoute = async ({ request }) => {
 
     const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&category=performance&category=seo&strategy=mobile${apiKey ? `&key=${apiKey}` : ''}`;
 
-    // Lancement en parallèle : PageSpeed + headers sécurité
     const [psiResponse, securityData] = await Promise.all([
       fetch(apiUrl),
       checkSecurityHeaders(url)
@@ -39,8 +37,6 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const data = await psiResponse.json();
-
-    // On ajoute les données sécurité au résultat
     data.securityHeaders = securityData;
 
     return new Response(JSON.stringify(data), {
@@ -49,7 +45,6 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
   } catch (error: any) {
-    console.error('❌ Erreur audit:', error.message);
     return new Response(
       JSON.stringify({
         error: error.message || "Impossible d'analyser cette URL."
