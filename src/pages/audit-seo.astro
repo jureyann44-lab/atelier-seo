@@ -844,7 +844,8 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
       var response = await fetch('/api/audit.json', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url: url })
+        body: JSON.stringify({ url: url }),
+        signal: AbortSignal.timeout(90000)
       });
 
       var data = await response.json();
