@@ -14,7 +14,14 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const apiKey = import.meta.env.GOOGLE_API_KEY || '';
-    console.log('🔑 Clé chargée:', apiKey ? 'OUI (' + apiKey.substring(0, 8) + '...)' : 'NON - VIDE!');
+
+    // DEBUG TEMPORAIRE — retourne le statut de la clé
+    if (!apiKey) {
+      return new Response(JSON.stringify({ error: '🔑 CLÉ VIDE - GOOGLE_API_KEY non lue par Cloudflare' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
 
     const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&category=performance&category=seo&strategy=mobile${apiKey ? `&key=${apiKey}` : ''}`;
 
