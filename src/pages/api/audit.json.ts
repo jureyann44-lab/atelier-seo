@@ -13,7 +13,7 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const apiKey = import.meta.env.PUBLIC_GOOGLE_API_KEY || '';
+    const apiKey = import.meta.env.GOOGLE_API_KEY || '';
     const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&category=performance&category=seo&strategy=mobile${apiKey ? `&key=${apiKey}` : ''}`;
 
     // Lancement en parallèle : PageSpeed + headers sécurité
