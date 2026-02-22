@@ -2,7 +2,8 @@ import type { APIRoute } from 'astro';
 
 export const prerender = false;
 
-export const POST: APIRoute = async ({ request }) => {
+// ✅ IMPORTANT : ajouter "locals"
+export const POST: APIRoute = async ({ request, locals }) => {
   try {
     const { url } = await request.json();
 
@@ -13,17 +14,28 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const apiKey = import.meta.env.GOOGLE_API_KEY || '';
+    // ✅ Lecture correcte de la clé depuis Cloudflare runtime
+    const apiKey = locals.runtime?.env?.GOOGLE_API_KEY || '';
 
+    // DEBUG TEMPORAIRE
     if (!apiKey) {
-      return new Response(JSON.stringify({ error: '🔑 CLÉ VIDE - GOOGLE_API_KEY non lue par Cloudflare' }), {
+      return new Response(JSON.stringify({
+        error: '🔑 GOOGLE_API_KEY introuvable (Cloudflare runtime)'
+      }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' }
       });
     }
 
-    const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&category=performance&category=seo&strategy=mobile${apiKey ? `&key=${apiKey}` : ''}`;
+    const apiUrl =
+      `https://www.googleapis.com/pagespeedonline/v5/runPagespeed` +
+      `?url=${encodeURIComponent(url)}` +
+      `&category=performance` +
+      `&category=seo` +
+      `&strategy=mobile` +
+      `&key=${apiKey}`;
 
+    // Lancement en parallèle : PageSpeed + headers sécurité
     const [psiResponse, securityData] = await Promise.all([
       fetch(apiUrl),
       checkSecurityHeaders(url)
@@ -37,6 +49,8 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const data = await psiResponse.json();
+
+    // Ajout données sécurité
     data.securityHeaders = securityData;
 
     return new Response(JSON.stringify(data), {
@@ -45,6 +59,8 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
   } catch (error: any) {
+    console.error('❌ Erreur audit:', error.message);
+
     return new Response(
       JSON.stringify({
         error: error.message || "Impossible d'analyser cette URL."
@@ -93,7 +109,7 @@ async function checkSecurityHeaders(url: string) {
 
     return { results, score, grade, presentCount, total };
 
-  } catch (e) {
+  } catch {
     return {
       results: headersToCheck.map(h => ({
         key: h.key,
