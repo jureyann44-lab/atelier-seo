@@ -87,6 +87,23 @@ function formatDate(dateString: string): string {
 
   <Footer />
 </Layout>
+<Fragment slot="head">
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Blog Habeprod",
+    "description": "Conseils en communication digitale : SEO, UX design, branding et stratégie web pour TPE et PME en Sarthe.",
+    "url": "https://www.habeprod-agence.fr/blog/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Habeprod",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.habeprod-agence.fr/logo-habeprod.png"
+      }
+    }
+  })} />
+</Fragment>
 
 <style>
   .blog-page {
