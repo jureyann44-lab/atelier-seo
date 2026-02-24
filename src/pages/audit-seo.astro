@@ -248,6 +248,46 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
   </main>
 
   <Footer />
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Comment fonctionne l'audit SEO gratuit ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Notre outil analyse votre site en temps réel via Google PageSpeed Insights. Il vérifie les Core Web Vitals, les meta tags, la vitesse de chargement et les headers de sécurité."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien de temps dure l'analyse SEO ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "L'analyse prend environ 10 à 15 secondes. Vous obtenez un rapport complet avec un score de performance et des recommandations prioritaires."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "L'audit SEO est-il vraiment gratuit ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, l'audit est entièrement gratuit et sans inscription. Aucune donnée n'est stockée."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Que sont les Core Web Vitals ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Les Core Web Vitals sont trois métriques Google : le LCP, le TBT et le CLS. Ils influencent directement votre position dans les résultats de recherche."
+          }
+        }
+      ]
+    })} />
+  </Fragment>
 </Layout>
 
 <style>
