@@ -885,7 +885,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url: url }),
-        signal: AbortSignal.timeout(90000)
+        signal: AbortSignal.timeout(45000)
       });
 
       var data = await response.json();
@@ -901,7 +901,11 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
 
     } catch (error) {
       console.error('Erreur:', error);
-      document.getElementById('error-message').textContent = error.message;
+      var msg = error.message;
+      if (!msg || msg.includes('fetch') || msg.includes('network') || msg.includes('Failed') || msg.includes('analyser') || msg.includes('Impossible') || msg.includes('timed out') || msg.includes('timeout') || msg.includes('500') || msg.includes('API Google')) {
+        msg = "⚠️ Ce site bloque les outils d'analyse automatique (bots, Lighthouse).<br>L'analyse de performance n'est pas possible.";
+      }
+      document.getElementById('error-message').innerHTML = msg;
       errorDiv.style.display = 'block';
     } finally {
       analyzeBtn.disabled = false;
@@ -1100,7 +1104,6 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     scoreFill.style.stroke = color;
     scoreLabel.textContent = label;
 
-    // Message humain basé sur les vraies données CrUX terrain
     if (scoreHuman) {
       var human = '';
       if (loadingExp && loadingExp.overall_category) {
@@ -1112,7 +1115,6 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
         } else if (cat === 'SLOW') {
           human = "❌ Données terrain : votre site est lent pour vos vrais visiteurs Chrome.";
         }
-        // Ajouter le % fast si disponible
         var fcp = loadingExp.metrics && loadingExp.metrics['FIRST_CONTENTFUL_PAINT_MS'];
         if (fcp && fcp.distributions && fcp.distributions[0]) {
           var pctFast = Math.round(fcp.distributions[0].proportion * 100);
@@ -1140,7 +1142,6 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     else if (score >= 0.5) status.className = 'vital-status needs-improvement';
     else status.className = 'vital-status poor';
 
-    // Phrase humaine sous chaque métrique
     var humanEl = document.getElementById(id + '-human');
     if (!humanEl) return;
     var msg = '', cls = '';
