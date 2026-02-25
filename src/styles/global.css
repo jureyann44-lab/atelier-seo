@@ -36,12 +36,12 @@
     --h2-size: 24px !important;
   }
   section:not(.hero):not(.services-collage):not(.footer-bottom-section) {
-  padding: 6rem 0;
-}
+    padding: 6rem 0;
+  }
   /* Footer bottom avec padding 1rem */
-.footer-bottom-section {
-  padding: 1rem 0;
-}
+  .footer-bottom-section {
+    padding: 1rem 0;
+  }
   .services-collage {
     padding: 0 !important;
   }
@@ -309,10 +309,12 @@ p:last-child {
     max-width: 90% !important;
     margin: 0 auto !important;
   }
-  @media (max-width: 900px) and (orientation: portrait),
-       (max-width: 1023px) and (pointer: coarse) and (orientation: portrait) {
+}
+
+/* 📱 STICKY BAR - padding body téléphone portrait uniquement */
+@media (max-width: 480px) and (orientation: portrait),
+       (max-width: 767px) and (pointer: coarse) and (orientation: portrait) {
   body {
     padding-bottom: calc(70px + env(safe-area-inset-bottom));
-  }
   }
 }
