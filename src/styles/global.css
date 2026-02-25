@@ -309,4 +309,10 @@ p:last-child {
     max-width: 90% !important;
     margin: 0 auto !important;
   }
+  @media (max-width: 900px) and (orientation: portrait),
+       (max-width: 1023px) and (pointer: coarse) and (orientation: portrait) {
+  body {
+    padding-bottom: calc(70px + env(safe-area-inset-bottom));
+  }
+  }
 }
