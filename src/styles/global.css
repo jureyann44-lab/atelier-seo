@@ -311,7 +311,9 @@ p:last-child {
   }
 }
 
-/* 📱 STICKY BAR - padding body téléphone portrait uniquement */
+
+
+/* 📱 STICKY BAR - padding body téléphone portrait */
 @media (max-width: 480px) and (orientation: portrait),
        (max-width: 767px) and (pointer: coarse) and (orientation: portrait) {
   body {
