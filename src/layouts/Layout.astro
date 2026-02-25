@@ -1,4 +1,6 @@
 ---
+import StickyMobileBar from '../components/StickyMobileBar.astro';
+
 const {
   title = "Agence de communication au Mans | SEO & Sites performants | Habeprod",
   description = "Agence de communication au Mans pour TPE et PME en Sarthe. Sites performants, SEO local, stratégie digitale. 10 ans d'expérience. Devis gratuit.",
@@ -110,6 +112,9 @@ const {
 
   <body>
     <slot />
+
+    <!-- BARRE STICKY MOBILE -->
+    <StickyMobileBar />
 
     <!-- ✅ SÉCURITÉ LIENS EXTERNES -->
     <script>
