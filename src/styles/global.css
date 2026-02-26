@@ -310,13 +310,3 @@ p:last-child {
     margin: 0 auto !important;
   }
 }
-
-
-
-/* 📱 STICKY BAR - padding body téléphone portrait */
-@media (max-width: 480px) and (orientation: portrait),
-       (max-width: 767px) and (pointer: coarse) and (orientation: portrait) {
-  body {
-    padding-bottom: calc(70px + env(safe-area-inset-bottom));
-  }
-}

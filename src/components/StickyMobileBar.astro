@@ -120,14 +120,12 @@
     const windowHeight = window.innerHeight;
     const docHeight = document.documentElement.scrollHeight;
 
-    // Apparaît seulement quand on scroll vers le bas
     if (scrollY > lastScrollY && scrollY > 100) {
       bar?.classList.add('visible');
     } else if (scrollY < lastScrollY) {
       bar?.classList.remove('visible');
     }
 
-    // Reste visible en bas de page
     if (scrollY + windowHeight >= docHeight - 50) {
       bar?.classList.add('visible');
     }
