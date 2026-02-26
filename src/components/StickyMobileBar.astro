@@ -118,7 +118,9 @@
 
   function updateBar() {
     const scrollY = window.scrollY;
-    const windowHeight = window.innerHeight;
+    const windowHeight = window.visualViewport
+      ? window.visualViewport.height
+      : window.innerHeight;
     const docHeight = document.documentElement.scrollHeight;
 
     if (scrollY > lastScrollY && scrollY > 100) {
