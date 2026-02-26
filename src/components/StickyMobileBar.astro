@@ -115,8 +115,17 @@
   const bar = document.getElementById('sticky-bar');
   let lastScrollY = window.scrollY;
   let ticking = false;
+  let ready = false;
+
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      ready = true;
+      updateBar();
+    }, 350); // temps pour stabiliser viewport Chrome privé
+  });
 
   function updateBar() {
+    if (!ready) return;
     const scrollY = window.scrollY;
     const windowHeight = window.visualViewport
       ? window.visualViewport.height
