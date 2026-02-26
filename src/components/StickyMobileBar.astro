@@ -59,12 +59,13 @@
       gap: 0.5rem;
       justify-content: space-around;
       align-items: center;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
+      bottom: -120px;
+      transition: bottom 0.3s ease;
+      will-change: bottom;
     }
 
     .sticky-bar.visible {
-      transform: translateY(0);
+      bottom: 0;
     }
 
     .sticky-btn {
