@@ -1,7 +1,13 @@
-<section class="hero">
+<!--
+  ⚠️ role="banner" : à ajouter SEULEMENT si tu n'as pas de <header> global.
+  Si tu as déjà un <header> dans ton layout, NE PAS l'ajouter :
+  <header> possède déjà implicitement ce rôle, et il ne doit y avoir
+  qu'un seul banner landmark par page.
+-->
+<section class="hero" aria-label="Agence de communication digitale au Mans" role="banner">
   <img
     src="/background-hero.webp"
-    alt="Arrière-plan moderne pour agence de communication digitale au Mans"
+    alt="Agence de communication digitale au Mans spécialisée en création de site web et SEO"
     class="hero-bg"
     loading="eager"
     fetchpriority="high"
@@ -12,17 +18,23 @@
 
   <div class="hero-inner">
     <div class="hero-copy">
-      <h1 class="visually-hidden">Habeprod agence de communication le Mans</h1>
 
-      <div class="hero-kicker">HABEPROD</div>
+  <div class="hero-kicker">HABEPROD</div>
 
-      <h2 class="hero-title">Votre agence de communication au Mans</h2>
-      <p class="hero-subtitle">
-        Nous concevons des dispositifs digitaux cohérents et performants pour
-        structurer et amplifier votre visibilité locale.
-      </p>
-      <a href="/tarifs" class="hero-cta">OBTENIR UNE ESTIMATION</a>
-    </div>
+  <h1 class="hero-title">
+    Agence de communication digitale au Mans
+  </h1>
+
+  <p class="hero-subtitle">
+    Création de site web performant, référencement SEO local et stratégie digitale
+    pour les entreprises du Mans et de la Sarthe.
+  </p>
+
+  <a href="/tarifs" class="hero-cta">
+    OBTENIR UNE ESTIMATION
+  </a>
+
+</div>
 
     <div class="hero-visual"></div>
   </div>
@@ -340,12 +352,3 @@
     }
   }
 </style>
-
-<script>
-  const preloadLink = document.createElement("link");
-  preloadLink.rel = "preload";
-  preloadLink.as = "image";
-  preloadLink.href = "/background-hero.webp";
-  preloadLink.fetchpriority = "high";
-  document.head.appendChild(preloadLink);
-</script>

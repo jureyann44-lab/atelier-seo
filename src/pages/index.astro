@@ -19,6 +19,15 @@ import "../styles/global.css";
   title="Habeprod - Agence Communication Digitale Le Mans | Création Web & SEO"
   description="Habeprod - Agence de communication digitale au Mans. Création de sites web, SEO, branding et identité visuelle pour TPE et PME en Sarthe."
 >
+  <!-- ✅ Preload hero image injecté dans le <head> via slot nommé -->
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    href="/background-hero.webp"
+    fetchpriority="high"
+  />
+
   <Nav />
   <Hero />
   <About />
@@ -33,7 +42,6 @@ import "../styles/global.css";
 </Layout>
 
 <script>
-  // Smooth scroll pour tous les liens d'ancrage
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", (e) => {
       const href = anchor.getAttribute("href");
