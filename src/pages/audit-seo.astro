@@ -3,8 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
-const title = "Audit SEO Gratuit | Analyseur de Performance Web | Habeprod";
-const description = "Analysez gratuitement les performances SEO de votre site : Core Web Vitals, meta tags, vitesse de chargement. Audit complet en temps réel.";
+const title = "Audit SEO Gratuit au Mans | Analyse Performance Site Web | Habeprod";
+const description = "Analysez gratuitement les performances SEO de votre site au Mans et en Sarthe : Core Web Vitals, meta tags, vitesse de chargement. Audit complet en temps réel.";
 const canonical = "https://www.habeprod-agence.fr/audit-seo";
 ---
 
@@ -20,7 +20,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     <section class="audit-hero">
       <div class="container">
         <span class="hero-label">TESTEZ VOTRE SITE GRATUITEMENT</span>
-        <h1>Audit SEO <span class="highlight">en temps réel</span></h1>
+        <h1>Audit SEO Gratuit <span class="highlight">en temps réel</span></h1>
         <p class="hero-subtitle">
           Analysez les performances de votre site web : Core Web Vitals, meta tags, et recommandations d'optimisation.
         </p>
@@ -233,7 +233,25 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
       </div>
     </section>
 
-
+    <!-- ✅ BLOC LOCAL SEO — ajouté pour cibler "audit SEO Le Mans" -->
+    <section class="audit-local">
+      <div class="container">
+        <div class="audit-local-inner">
+          <h2>Audit SEO pour les entreprises au Mans</h2>
+          <p>
+           Vous êtes une entreprise au Mans ou en Sarthe et votre site ne génère pas assez de contacts 
+           Cet audit SEO gratuit analyse les performances techniques de votre site et identifie
+           les freins qui limitent votre visibilité sur Google
+          </p>
+          <p>
+            Basée au Mans, l’agence Habeprod accompagne les entreprises locales dans
+            l’amélioration de leur référencement naturel, de leurs performances web
+            et de leur acquisition de clients en ligne.
+          </p>
+          <a href="/#contact" class="cta-btn">Obtenir mon audit →</a>
+        </div>
+      </div>
+    </section>
 
     <!-- BOUTON RETOUR -->
     <section class="back-home-section">
@@ -350,7 +368,6 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     border: 2px solid #2a2a2a;
     border-radius: 16px;
     padding: 48px;
-    margin-bottom: 40px;
   }
 
   .audit-form-card h2 {
@@ -615,9 +632,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     transition: all 0.2s;
   }
 
-  .accordion-arrow.open {
-    color: var(--gray);
-  }
+  .accordion-arrow.open { color: var(--gray); }
 
   .accordion-body {
     padding: 0 32px 28px 32px;
@@ -808,11 +823,39 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     margin-bottom: 28px;
   }
 
-  /* CTA */
-  .audit-cta { padding: 80px 0; text-align: center; }
-  .audit-cta h2 { font-size: 2rem; color: var(--white); margin-bottom: 16px; }
-  .audit-cta p { font-size: 1.1rem; color: var(--gray); margin-bottom: 32px; }
+  /* ✅ BLOC LOCAL SEO */
+  .audit-local {
+    padding: 80px 0 40px;
+    background: var(--black);
+  }
 
+  .audit-local-inner {
+    background: var(--dark-card);
+    border: 2px solid #2a2a2a;
+    border-radius: 16px;
+    padding: 40px 48px;
+    max-width: 860px;
+  }
+
+  .audit-local h2 {
+    font-size: 1.8rem;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .audit-local p {
+    font-size: 1rem;
+    color: var(--gray);
+    max-width: 680px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .audit-local .cta-btn {
+    margin-top: 12px;
+  }
+
+  /* CTA */
   .cta-btn {
     display: inline-block;
     padding: 16px 48px;
@@ -856,6 +899,8 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     .back-to-home:hover { gap: 0.5rem; color: var(--white); }
     .back-to-home:hover .back-arrow { transform: none; }
     .security-note { text-align: center; }
+    .audit-local h2 { font-size: 1.4rem; }
+    .audit-local-inner { padding: 28px 24px; }
   }
 </style>
 
@@ -938,13 +983,11 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     updateScore(perfScore, loadingExp);
     displayDiagnostic(perfScore);
 
-    // Note vitesse
     var speedGrade = getSpeedGrade(perfScore);
     var speedEl = document.getElementById('speed-grade-letter');
     speedEl.textContent = speedGrade;
     speedEl.className = 'grade-letter ' + speedGrade;
 
-    // Note sécurité
     if (data.securityHeaders) {
       var secGrade = data.securityHeaders.grade;
       var secEl = document.getElementById('security-grade-letter');
@@ -1012,9 +1055,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
   function displaySecurityHeaders(securityData) {
     var list = document.getElementById('security-headers-list');
     if (!list || !securityData.results) return;
-
     list.innerHTML = '';
-
     securityData.results.forEach(function(h) {
       var item = document.createElement('div');
       item.className = 'security-header-item';
@@ -1034,12 +1075,10 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     var items = document.getElementById('security-diagnostic-items');
     var cta = document.getElementById('security-diagnostic-cta');
     if (!card) return;
-
     card.style.display = 'block';
     var score = securityData.score || 0;
     var present = securityData.presentCount || 0;
     var total = securityData.total || 6;
-
     if (score >= 80) {
       card.className = 'result-card diagnostic-card green';
       header.innerHTML = '<span style="color:#ffffff">🟢 Votre site est bien sécurisé 🔒</span>';
@@ -1063,9 +1102,7 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     var header = document.getElementById('diagnostic-header');
     var items = document.getElementById('diagnostic-items');
     var cta = document.getElementById('diagnostic-cta');
-
     card.style.display = 'block';
-
     if (score >= 85) {
       card.className = 'result-card diagnostic-card green';
       header.innerHTML = '<span style="color:#ffffff">🟢 Votre site est performant 👍</span>';
@@ -1089,47 +1126,32 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     var scoreValue = document.getElementById('score-value');
     var scoreLabel = document.getElementById('score-label');
     var scoreHuman = document.getElementById('score-human');
-
     var circumference = 534;
     var offset = circumference - (score / 100) * circumference;
-
     scoreFill.style.strokeDashoffset = offset;
     scoreValue.textContent = score;
-
     var color, label;
     if (score >= 90) { color = '#10b981'; label = 'Excellent'; }
     else if (score >= 50) { color = '#f59e0b'; label = 'À améliorer'; }
     else { color = '#ef4444'; label = 'Faible'; }
-
     scoreFill.style.stroke = color;
     scoreLabel.textContent = label;
-
     if (scoreHuman) {
       var human = '';
       if (loadingExp && loadingExp.overall_category) {
         var cat = loadingExp.overall_category;
-        if (cat === 'FAST') {
-          human = "✅ Données terrain : votre site est rapide pour vos vrais visiteurs.";
-        } else if (cat === 'AVERAGE') {
-          human = "⚠️ Données terrain : votre site est moyen pour vos vrais visiteurs Chrome.";
-        } else if (cat === 'SLOW') {
-          human = "❌ Données terrain : votre site est lent pour vos vrais visiteurs Chrome.";
-        }
+        if (cat === 'FAST') { human = "✅ Données terrain : votre site est rapide pour vos vrais visiteurs."; }
+        else if (cat === 'AVERAGE') { human = "⚠️ Données terrain : votre site est moyen pour vos vrais visiteurs Chrome."; }
+        else if (cat === 'SLOW') { human = "❌ Données terrain : votre site est lent pour vos vrais visiteurs Chrome."; }
         var fcp = loadingExp.metrics && loadingExp.metrics['FIRST_CONTENTFUL_PAINT_MS'];
         if (fcp && fcp.distributions && fcp.distributions[0]) {
           var pctFast = Math.round(fcp.distributions[0].proportion * 100);
           human += " " + pctFast + "% de vos visiteurs ont un chargement rapide.";
         }
       } else {
-        if (score >= 90) {
-          human = "Votre site charge vite — vos visiteurs ne perdent pas patience.";
-        } else if (score >= 70) {
-          human = "Votre site est correct, mais un chargement plus rapide pourrait améliorer l'expérience utilisateur.";
-        } else if (score >= 50) {
-          human = "Votre site est lent — vous perdez probablement des visiteurs avant même qu'ils voient votre contenu.";
-        } else {
-          human = "Votre site est lent — vous perdez probablement des visiteurs avant même qu'ils voient votre contenu.";
-        }
+        if (score >= 90) { human = "Votre site charge vite — vos visiteurs ne perdent pas patience."; }
+        else if (score >= 70) { human = "Votre site est correct, mais un chargement plus rapide pourrait améliorer l'expérience utilisateur."; }
+        else { human = "Votre site est lent — vous perdez probablement des visiteurs avant même qu'ils voient votre contenu."; }
       }
       scoreHuman.textContent = human;
     }
@@ -1141,7 +1163,6 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
     if (score >= 0.9) status.className = 'vital-status good';
     else if (score >= 0.5) status.className = 'vital-status needs-improvement';
     else status.className = 'vital-status poor';
-
     var humanEl = document.getElementById(id + '-human');
     if (!humanEl) return;
     var msg = '', cls = '';
@@ -1193,7 +1214,6 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
   function displayRecommandations(audits) {
     var container = document.getElementById('recommendations');
     if (!container) return;
-
     container.innerHTML = '';
 
     var traductionsById = {
@@ -1231,112 +1251,13 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
       "lcp-lazy-loaded": "Image LCP chargée en différé",
       "efficient-animated-content": "Animations non optimisées",
       "redirects": "Redirections inutiles",
-      "resource-summary": "Ressources trop lourdes",
-      "network-requests": "Trop de requêtes réseau",
-      "non-composited-animations": "Animations non composites",
-      "unsized-images": "Images sans dimensions définies",
-      "uses-passive-event-listeners": "Écouteurs passifs manquants",
-      "no-document-write": "Utilisation de document.write()",
-      "uses-http2": "HTTP/2 non activé",
-      "uses-http3": "HTTP/3 non activé",
-      "bf-cache": "Cache de navigation arrière incompatible",
-      "valid-source-maps": "Source maps invalides",
-      "forced-reflow": "Recalcul de mise en page forcé",
-      "improve-image-delivery": "Améliorer la livraison des images",
-      "render-blocking-requests": "Requêtes bloquant le rendu",
-      "network-dependency-tree": "Arbre des dépendances réseau",
-      "network-server-latency": "Latence serveur élevée",
-      "largest-contentful-paint-element": "Élément LCP identifié",
-      "layout-shift-elements": "Éléments provoquant des décalages visuels",
-      "no-unload-listeners": "Écouteur unload déconseillé",
-      "third-party-facades": "Ressources tierces chargeables en différé",
       "document-title": "Balise title manquante",
       "meta-description": "Meta description manquante",
       "canonical": "Balise canonical incorrecte",
-      "robots-txt": "Fichier robots.txt invalide",
-      "is-crawlable": "Page non indexable par Google",
-      "hreflang": "Attributs hreflang incorrects",
-      "link-text": "Texte de lien non descriptif",
-      "crawlable-anchors": "Liens non explorables",
-      "structured-data": "Données structurées incorrectes",
-      "meta-robots": "Balise meta robots mal configurée",
       "image-alt": "Images sans attribut alt",
-      "color-contrast": "Contraste insuffisant",
-      "label": "Champs de formulaire sans label",
-      "button-name": "Boutons sans nom accessible",
-      "link-name": "Liens sans nom accessible",
-      "heading-order": "Hiérarchie des titres incorrecte",
-      "html-has-lang": "Langue du document non définie",
-      "meta-viewport": "Meta viewport mal configurée",
-      "tap-targets": "Zones tactiles trop petites",
-      "content-width": "Contenu plus large que l'écran",
-      "aria-valid-attr-value": "Valeurs ARIA invalides",
-      "aria-required-attr": "Attributs ARIA manquants",
+      "is-crawlable": "Page non indexable par Google",
       "uses-https": "HTTPS manquant",
-      "mixed-content": "Contenu mixte HTTP/HTTPS",
-      "no-vulnerable-libraries": "Bibliothèques JS vulnérables",
-      "external-anchors-use-rel-noopener": "Liens externes sans rel=noopener",
-      "geolocation-on-start": "Géolocalisation demandée au chargement",
-      "notification-on-start": "Notifications demandées au chargement",
-      "csp-xss": "Politique de sécurité (CSP) absente"
-    };
-
-    var traductionsByTitle = {
-      "forced reflow": "Recalcul de mise en page forcé",
-      "improve image delivery": "Améliorer la livraison des images",
-      "render blocking requests": "Requêtes bloquant le rendu",
-      "render-blocking requests": "Requêtes bloquant le rendu",
-      "font display": "Optimiser l'affichage des polices",
-      "network dependency tree": "Arbre des dépendances réseau",
-      "uses http/2": "HTTP/2 non activé",
-      "uses http/3": "HTTP/3 non activé",
-      "properly size images": "Dimensionner correctement les images",
-      "serve images in next-gen formats": "Utiliser des formats modernes (WebP/AVIF)",
-      "eliminate render-blocking resources": "Éliminer les ressources bloquant le rendu",
-      "defer offscreen images": "Différer les images hors écran",
-      "efficiently encode images": "Encoder efficacement les images",
-      "enable text compression": "Activer la compression du texte",
-      "minify css": "Minifier le CSS",
-      "minify javascript": "Minifier le JavaScript",
-      "remove unused css": "Supprimer le CSS inutilisé",
-      "remove unused javascript": "Supprimer le JavaScript inutilisé",
-      "avoid enormous network payloads": "Éviter les charges réseau trop importantes",
-      "serve static assets with an efficient cache policy": "Politique de cache insuffisante",
-      "avoid an excessive dom size": "Taille du DOM trop importante",
-      "avoid multiple page redirects": "Éviter les redirections multiples",
-      "preconnect to required origins": "Précharger les origines requises",
-      "avoid long main-thread tasks": "Éviter les tâches longues sur le thread principal",
-      "minimize main-thread work": "Minimiser le travail du thread principal",
-      "reduce javascript execution time": "Réduire le temps d'exécution JavaScript",
-      "keep request counts low and transfer sizes small": "Réduire le nombre de requêtes et leur poids",
-      "minimize critical requests depth": "Minimiser la profondeur des requêtes critiques",
-      "ensure text remains visible during webfont load": "Garder le texte visible pendant le chargement des polices",
-      "avoid large layout shifts": "Éviter les décalages de mise en page",
-      "lazy load third-party resources with facades": "Charger les ressources tierces en différé",
-      "largest contentful paint image was lazily loaded": "L'image LCP est chargée en différé",
-      "preload largest contentful paint image": "Précharger l'image LCP",
-      "avoid non-composited animations": "Éviter les animations non composites",
-      "reduce the impact of third-party code": "Réduire l'impact du code tiers",
-      "minimize third-party usage": "Minimiser l'utilisation de scripts tiers",
-      "time to interactive": "Temps avant interactivité (TTI)",
-      "first contentful paint": "Premier contenu affiché (FCP)",
-      "largest contentful paint": "Plus grand élément affiché (LCP)",
-      "speed index": "Indice de vitesse",
-      "total blocking time": "Temps de blocage total (TBT)",
-      "cumulative layout shift": "Décalage cumulatif de mise en page (CLS)",
-      "max potential first input delay": "Délai maximal de première interaction",
-      "server response times are low": "Temps de réponse serveur trop long",
-      "avoid serving legacy javascript to modern browsers": "Éviter le JavaScript obsolète",
-      "preload key requests": "Précharger les requêtes clés",
-      "use video formats for animated content": "Utiliser des vidéos plutôt que des GIFs animés",
-      "image elements have explicit width and height": "Les images n'ont pas de dimensions définies",
-      "does not use passive listeners to improve scrolling performance": "Utiliser des écouteurs passifs",
-      "avoid chaining critical requests": "Éviter l'enchaînement de requêtes critiques",
-      "duplicated javascript": "JavaScript dupliqué",
-      "legacy javascript": "JavaScript obsolète",
-      "uses text compression": "Compression texte non activée",
-      "uses long cache ttl": "Durée de cache insuffisante",
-      "redirects": "Redirections inutiles"
+      "tap-targets": "Zones tactiles trop petites"
     };
 
     var descriptionsById = {
@@ -1344,130 +1265,33 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
       "first-contentful-paint": "Vos visiteurs attendent trop longtemps avant de voir quoi que ce soit.",
       "total-blocking-time": "Votre page met du temps à réagir aux clics de vos visiteurs.",
       "cumulative-layout-shift": "Des éléments bougent pendant le chargement, ce qui perturbe la lecture.",
-      "interactive": "Votre page tarde à devenir utilisable après son chargement.",
-      "speed-index": "Le contenu de votre page s'affiche trop lentement.",
       "server-response-time": "Votre serveur répond trop lentement aux requêtes.",
       "render-blocking-resources": "Certains fichiers bloquent l'affichage de votre page.",
       "unused-javascript": "Du JavaScript est chargé mais jamais utilisé, ce qui ralentit votre site.",
-      "unused-css-rules": "Des règles CSS sont chargées mais inutilisées, ce qui alourdit la page.",
-      "unminified-javascript": "Votre JavaScript n'est pas compressé, il prend plus de place que nécessaire.",
-      "unminified-css": "Votre CSS n'est pas compressé, il prend plus de place que nécessaire.",
-      "uses-optimized-images": "Vos images ne sont pas optimisées et ralentissent le chargement.",
+      "unused-css-rules": "Des règles CSS sont chargées mais inutilisées.",
       "uses-webp-images": "Utiliser WebP ou AVIF réduirait le poids de vos images.",
-      "uses-responsive-images": "Vos images sont trop grandes pour la taille d'écran de vos visiteurs.",
-      "offscreen-images": "Des images hors écran sont chargées inutilement au démarrage.",
       "uses-text-compression": "Vos fichiers ne sont pas compressés avant d'être envoyés au navigateur.",
-      "uses-long-cache-ttl": "Vos ressources ne sont pas mises en cache assez longtemps.",
       "dom-size": "Votre page contient trop d'éléments HTML, ce qui ralentit le navigateur.",
-      "bootup-time": "L'exécution de votre JavaScript prend trop de temps au démarrage.",
-      "mainthread-work-breakdown": "Le navigateur est surchargé de travail pendant le chargement.",
       "font-display": "Vos polices bloquent l'affichage du texte pendant leur chargement.",
-      "uses-rel-preload": "Certaines ressources importantes pourraient être chargées plus tôt.",
-      "uses-rel-preconnect": "Des connexions externes pourraient être établies plus tôt.",
-      "long-tasks": "Des tâches trop longues bloquent le navigateur et dégradent la réactivité.",
-      "critical-request-chains": "Des dépendances en cascade rallongent le temps de chargement.",
-      "third-party-summary": "Des scripts tiers ralentissent votre site et échappent à votre contrôle.",
-      "duplicated-javascript": "Du JavaScript est chargé plusieurs fois inutilement.",
-      "legacy-javascript": "Du JavaScript obsolète est envoyé à des navigateurs modernes.",
+      "third-party-summary": "Des scripts tiers ralentissent votre site.",
       "preload-lcp-image": "L'image principale de la page n'est pas préchargée.",
       "lcp-lazy-loaded": "L'image principale est chargée en différé, ce qui retarde son affichage.",
-      "efficient-animated-content": "Des GIFs pourraient être remplacés par des vidéos plus légères.",
-      "redirects": "Des redirections inutiles allongent le temps de chargement.",
-      "resource-summary": "Le poids total des ressources chargées est trop élevé.",
-      "network-requests": "Trop de requêtes réseau sont effectuées au chargement.",
-      "non-composited-animations": "Certaines animations forcent le navigateur à recalculer la mise en page.",
-      "unsized-images": "Des images sans dimensions provoquent des décalages visuels.",
-      "uses-passive-event-listeners": "Certains écouteurs d'événements ralentissent le défilement.",
-      "no-document-write": "L'utilisation de document.write() bloque le chargement de la page.",
-      "uses-http2": "Votre serveur n'utilise pas HTTP/2, une version plus rapide du protocole.",
-      "bf-cache": "Votre page n'est pas compatible avec le cache de navigation arrière.",
-      "forced-reflow": "Votre page force le navigateur à recalculer la mise en page, ce qui ralentit l'affichage.",
-      "improve-image-delivery": "La livraison de vos images peut être optimisée pour accélérer le chargement.",
-      "render-blocking-requests": "Certaines requêtes bloquent l'affichage de votre page.",
-      "network-dependency-tree": "Des dépendances réseau en cascade rallongent le temps de chargement.",
-      "largest-contentful-paint-element": "L'élément principal de votre page met trop de temps à s'afficher.",
-      "layout-shift-elements": "Certains éléments se déplacent au chargement et perturbent la lecture.",
       "document-title": "Votre page n'a pas de titre, ce qui nuit à son référencement.",
       "meta-description": "Votre page n'a pas de méta description visible dans les résultats Google.",
-      "canonical": "L'URL canonique est mal configurée ou absente.",
-      "robots-txt": "Votre fichier robots.txt est invalide ou inaccessible.",
-      "is-crawlable": "Google ne peut pas explorer cette page.",
-      "hreflang": "Les balises de langue sont incorrectes ou manquantes.",
-      "link-text": "Certains liens n'ont pas de texte descriptif pour Google.",
-      "crawlable-anchors": "Certains liens ne peuvent pas être suivis par les moteurs de recherche.",
-      "structured-data": "Les données structurées sont absentes ou incorrectes.",
       "image-alt": "Certaines images n'ont pas de description pour les moteurs de recherche.",
-      "color-contrast": "Le contraste entre le texte et le fond est insuffisant pour être lisible.",
-      "label": "Des champs de formulaire n'ont pas de label associé.",
-      "button-name": "Certains boutons n'ont pas de nom accessible aux lecteurs d'écran.",
-      "link-name": "Certains liens n'ont pas de nom accessible.",
-      "heading-order": "La hiérarchie de vos titres (H1, H2…) n'est pas correcte.",
-      "html-has-lang": "La langue de votre page n'est pas définie.",
-      "meta-viewport": "La configuration du viewport mobile est incorrecte.",
-      "tap-targets": "Certains boutons ou liens sont trop petits pour être cliqués sur mobile.",
-      "content-width": "Votre contenu dépasse la largeur de l'écran sur mobile.",
-      "aria-valid-attr-value": "Certaines valeurs d'attributs ARIA sont invalides.",
-      "aria-required-attr": "Des attributs ARIA obligatoires sont manquants.",
-      "uses-https": "Votre site n'utilise pas HTTPS, ce qui nuit à la confiance et au SEO.",
-      "mixed-content": "Votre page charge des ressources non sécurisées (HTTP) sur une page HTTPS.",
-      "no-vulnerable-libraries": "Des bibliothèques JS avec des failles connues sont utilisées.",
-      "external-anchors-use-rel-noopener": "Des liens externes sans rel=noopener peuvent poser des risques.",
-      "geolocation-on-start": "Votre site demande la géolocalisation dès le chargement.",
-      "notification-on-start": "Votre site demande les notifications dès le chargement.",
-      "csp-xss": "Aucune politique de sécurité (CSP) n'est configurée."
-    };
-
-    var descByTitle = {
-      "forced reflow": "Votre page force le navigateur à recalculer la mise en page, ce qui ralentit l'affichage.",
-      "improve image delivery": "La livraison de vos images peut être optimisée pour accélérer le chargement.",
-      "render blocking requests": "Certaines requêtes bloquent l'affichage de votre page.",
-      "render-blocking requests": "Certaines requêtes bloquent l'affichage de votre page.",
-      "font display": "Vos polices bloquent l'affichage du texte pendant leur chargement.",
-      "network dependency tree": "Des dépendances réseau en cascade rallongent le temps de chargement.",
-      "properly size images": "Vos images sont trop grandes pour la taille d'écran de vos visiteurs.",
-      "serve images in next-gen formats": "Utiliser WebP ou AVIF réduirait le poids de vos images.",
-      "eliminate render-blocking resources": "Certains fichiers CSS ou JS bloquent l'affichage de votre page.",
-      "defer offscreen images": "Des images invisibles au démarrage sont chargées inutilement.",
-      "efficiently encode images": "Vos images peuvent être mieux compressées sans perte de qualité.",
-      "enable text compression": "Vos fichiers texte ne sont pas compressés avant d'être envoyés.",
-      "minify css": "Votre CSS contient des espaces et commentaires inutiles.",
-      "minify javascript": "Votre JavaScript contient des espaces et commentaires inutiles.",
-      "remove unused css": "Du CSS est chargé mais jamais utilisé sur cette page.",
-      "remove unused javascript": "Du JavaScript est chargé mais jamais exécuté sur cette page.",
-      "avoid enormous network payloads": "Le poids total des ressources chargées est trop élevé.",
-      "serve static assets with an efficient cache policy": "Vos ressources statiques ne sont pas mises en cache assez longtemps.",
-      "avoid an excessive dom size": "Votre page contient trop d'éléments HTML, ce qui ralentit le navigateur.",
-      "avoid multiple page redirects": "Des redirections inutiles allongent le temps de chargement.",
-      "preconnect to required origins": "Des connexions externes pourraient être établies plus tôt.",
-      "minimize main-thread work": "Le navigateur est surchargé de travail pendant le chargement.",
-      "reduce javascript execution time": "L'exécution de votre JavaScript prend trop de temps.",
-      "ensure text remains visible during webfont load": "Vos polices bloquent l'affichage du texte pendant leur chargement.",
-      "avoid large layout shifts": "Des éléments bougent pendant le chargement et perturbent la lecture.",
-      "reduce the impact of third-party code": "Des scripts tiers ralentissent votre site.",
-      "minimize third-party usage": "Trop de scripts tiers impactent les performances.",
-      "uses http/2": "Votre serveur n'utilise pas HTTP/2, une version plus rapide du protocole.",
-      "avoid serving legacy javascript to modern browsers": "Du JavaScript obsolète est envoyé à des navigateurs modernes.",
-      "image elements have explicit width and height": "Des images sans dimensions provoquent des décalages visuels.",
-      "keep request counts low and transfer sizes small": "Trop de requêtes réseau alourdissent le chargement.",
-      "preload key requests": "Certaines ressources importantes pourraient être chargées plus tôt.",
-      "lazy load third-party resources with facades": "Des scripts tiers pourraient être chargés en différé.",
-      "largest contentful paint image was lazily loaded": "L'image principale est chargée en différé.",
-      "preload largest contentful paint image": "L'image principale de la page n'est pas préchargée."
+      "tap-targets": "Certains boutons ou liens sont trop petits pour être cliqués sur mobile."
     };
 
     var important = [];
-
     Object.keys(audits).forEach(function(key) {
       var audit = audits[key];
       if (audit.score !== null && audit.score !== undefined && audit.score < 0.9 && audit.title) {
-        var titleLower = audit.title.toLowerCase();
-        var titreFr = traductionsById[key] || traductionsByTitle[titleLower] || audit.title;
+        var titreFr = traductionsById[key] || audit.title;
         important.push({ title: titreFr, key: key, originalTitle: audit.title, score: audit.score });
       }
     });
 
     important.sort(function(a, b) { return a.score - b.score; });
-
     var toShow = important.slice(0, 8);
 
     if (toShow.length > 0) {
@@ -1475,16 +1299,13 @@ const canonical = "https://www.habeprod-agence.fr/audit-seo";
         var div = document.createElement('div');
         div.className = 'recommendation-item';
         var severityIcon = getSeverityIcon(rec.score);
-        var originalTitleLower = rec.originalTitle ? rec.originalTitle.toLowerCase() : '';
-        var desc = descriptionsById[rec.key] || descByTitle[originalTitleLower] || '';
-
+        var desc = descriptionsById[rec.key] || '';
         div.innerHTML =
           '<span class="recommendation-icon">' + severityIcon + '</span>' +
           '<div class="recommendation-content">' +
             '<p class="recommendation-text" style="color:#ffffff;margin:0;">' + rec.title + '</p>' +
             (desc ? '<p class="recommendation-desc" style="color:#9ca3af;margin:0;">' + desc + '</p>' : '') +
           '</div>';
-
         container.appendChild(div);
       });
     } else {
