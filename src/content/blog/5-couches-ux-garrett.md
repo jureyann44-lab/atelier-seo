@@ -11,6 +11,9 @@ _Schéma conceptuel des 5 plans de l'expérience utilisateur_
 
 ---
 
+
+## Beau ne veut pas dire efficace : pourquoi l’UX change tout
+
 Un client nous appelle un jour, un peu agacé. Il avait investi 3 000€ dans un site refait à neuf six mois plus tôt. Beau, moderne, avec de belles photos. Et pourtant : zéro demande de devis. Zéro appel entrant. Juste du silence.
 
 On a regardé son site ensemble. Le problème n'était pas le design. C'était que personne ne savait quoi faire en arrivant dessus. Pas de bouton visible, un menu à 9 entrées, un numéro de téléphone planqué tout en bas de page. Le visiteur arrivait, lisait deux lignes, et repartait.
@@ -112,6 +115,8 @@ Un site mal conçu coûte cher : budget marketing gaspillé parce que le trafic 
 Un site bien conçu est un outil de vente qui travaille pour vous 24h/24. Ce n'est pas une dépense. C'est un investissement avec un retour mesurable.
 
 ---
+
+## Avant le SEO ou la publicité, il y a l’UX
 
 Si votre site actuel ne génère pas de résultats, il y a de fortes chances que le problème vienne de l'expérience utilisateur — pas du SEO, pas du budget pub. Chez Habeprod, on commence toujours par là.
 

@@ -11,6 +11,8 @@ _Analyse des mots-clés et stratégie de référencement naturel_
 
 ---
 
+## De la page 4 à la première page Google : l’impact du SEO local au Mans
+
 Un gérant d'une entreprise de menuiserie au Mans nous a contactés l'année dernière. Il avait un bon site, de belles photos de ses réalisations, des avis clients positifs. Mais quand on tapait "menuisier Le Mans" dans Google, il n'apparaissait nulle part. Page 4. Autant dire invisible.
 
 Pendant ce temps, un concurrent avec un site bien moins soigné trustait la première position. La différence ? Pas le talent, pas la qualité du travail. Juste le SEO.
@@ -98,6 +100,8 @@ Les premiers mois, Google indexe vos pages. Entre le 3ème et le 6ème mois, vou
 Ce n'est pas magique, et ce n'est pas rapide. Mais contrairement à Google Ads, le trafic SEO ne s'arrête pas quand vous arrêtez de payer.
 
 ---
+
+## Invisible sur Google au Mans ?
 
 Si votre site n'apparaît pas sur vos mots-clés principaux associés à Le Mans ou la Sarthe, chaque jour qui passe, c'est des clients qui appellent quelqu'un d'autre. Le bon moment pour s'en occuper, c'est maintenant.
 

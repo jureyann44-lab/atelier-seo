@@ -11,6 +11,8 @@ _Atelier pratique de conception d'interface sur Figma lors d'une formation au Ma
 
 ---
 
+## Pourquoi maîtriser Figma est devenu indispensable en 2026
+
 Un entrepreneur est venu nous voir avec une idée très claire dans la tête. Il savait exactement ce qu'il voulait : une application simple, intuitive, "comme Airbnb mais pour les prestataires locaux". Il avait même fait des croquis sur papier. Ce qu'il n'avait pas, c'était le moyen de le communiquer à un développeur sans que ça parte dans tous les sens — et sans exploser son budget en allers-retours inutiles.
 
 On lui a appris Figma en quelques séances. Deux semaines plus tard, il présentait un prototype interactif complet à son développeur. Zéro ambiguïté, zéro surprise. Le projet a démarré directement en phase de développement.
@@ -86,6 +88,8 @@ Aux étudiants en communication ou marketing digital, aux entrepreneurs qui con�
 À la fin de la formation, vous repartez avec des maquettes professionnelles réalisées pendant les séances, un prototype interactif fonctionnel, une méthodologie claire et reproductible, une vraie compréhension des enjeux UX/UI, et la capacité de travailler efficacement avec des développeurs sans perdre le contrôle de votre projet.
 
 ---
+
+## Figma : une compétence clé du digital en 2026
 
 La maîtrise de Figma n'est plus un "plus" sur un CV. C'est une compétence clé du digital en 2026 — et c'est accessible à tout le monde, pas seulement aux designers de métier.
 

@@ -11,6 +11,8 @@ _Astro, le framework qui révolutionne les performances web et le SEO_
 
 ---
 
+## Le choix technique qui change vraiment le SEO des PME au Mans
+
 Il y a deux ans, on tournait encore sous WordPress comme tout le monde. Plugins, mises à jour, hébergement qui rame, scores PageSpeed dans les chaussettes. On passait plus de temps à maintenir le site qu'à travailler pour nos clients.
 
 Un jour, un prospect nous envoie un audit de son site. Score mobile : **28/100**. Il perdait des clients sans s'en rendre compte. On lui a proposé une refonte. On a cherché la meilleure option. On a découvert Astro.

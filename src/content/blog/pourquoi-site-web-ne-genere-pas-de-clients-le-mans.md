@@ -11,6 +11,8 @@ _Analyse des performances et recherche de mots-clés pour optimiser la visibilit
 
 ---
 
+## Un site web qui ne génère aucun client coûte toujours plus cher qu’un site qui convertit.
+
 Un site web qui ne génère aucun client coûte plus cher qu'un site qui convertit.
 
 Parce qu'il y a eu un investissement, du temps, de l'énergie. Et derrière : rien. Pas d'appels, pas de devis, pas de prospects. Juste une présence en ligne qui rassure son propriétaire sans lui rapporter quoi que ce soit.
@@ -78,6 +80,8 @@ Un site web n'est pas une dépense. C'est un outil commercial. Et quand il est b
 La différence entre un site qui génère des clients et un site qui dort, c'est rarement le design. C'est la stratégie derrière.
 
 ---
+
+## Votre site est-il vraiment visible sur Google ?
 
 Pour aider les dirigeants à y voir plus clair, nous avons mis en place un audit SEO rapide directement sur notre site — première lecture en quelques secondes, sans engagement.
 

@@ -11,6 +11,8 @@ _Composition d'éléments de charte graphique : logo, couleurs et typographie_
 
 ---
 
+## Un logo étiré, des couleurs modifiées : l’erreur qui décrédibilise une entreprise
+
 Il y a quelques mois, un artisan du bâtiment en Sarthe nous contacte. Il venait de faire imprimer 500 flyers pour une promotion. Problème : l'imprimeur avait utilisé le logo en version JPEG trouvé sur le site, l'avait étiré pour remplir l'espace, et avait "adapté" les couleurs à sa guise. Résultat : un flyer qui ressemblait à n'importe quelle autre entreprise — sauf à la sienne.
 
 Ce n'est pas un problème d'imprimeur. C'est un problème de charte graphique. Ou plutôt : d'absence de charte graphique.
@@ -120,6 +122,8 @@ Pour chaque projet d'identité visuelle en Sarthe, on suit quatre phases dans l'
 Comptez plusieurs semaines entre le brief initial et la livraison finale. Chaque choix — couleurs, typographie, formes — doit être réfléchi et validé. Une charte bâclée en une semaine ne tiendra pas dans le temps. Et recommencer six mois plus tard coûte toujours plus cher que bien faire dès le départ.
 
 ---
+
+## Professionnaliser son image commence par une charte claire
 
 Une charte graphique n'est pas un luxe réservé aux grandes entreprises. C'est un outil concret qui structure votre image, facilite la délégation, et professionnalise chaque support que vous produisez. Si aujourd'hui votre logo change de tête selon qui l'utilise, c'est le bon moment d'y remédier.
 
