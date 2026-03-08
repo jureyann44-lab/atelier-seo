@@ -3,9 +3,9 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout
-  title="404 - Page introuvable | Habeprod"
+  title="404 - Page introuvable | Atelier SEO"
   description="La page que vous recherchez n'existe pas."
-  canonical="https://www.habeprod-agence.fr/404"
+  canonical="https://atelier-seo.fr/404"
 >
   <div class="error-container">
     <div class="error-content">
@@ -14,13 +14,12 @@ import Layout from "../layouts/Layout.astro";
       <p class="error-message">
         La page que vous cherchez semble avoir disparu dans les méandres du web.
       </p>
-      <a href="/" class="error-cta"> Retour à l'accueil </a>
+      <a href="/" class="error-cta">Retour à l'accueil</a>
     </div>
   </div>
 </Layout>
 
 <style>
-  /* ✅ IMPORTANT : Enlève le padding du body */
   :global(body) {
     margin: 0 !important;
     padding: 0 !important;
@@ -48,31 +47,10 @@ import Layout from "../layouts/Layout.astro";
   .error-code {
     font-size: clamp(120px, 20vw, 200px);
     font-weight: 600;
-    color: #ff8a3c;
+    color: #ffffff;
     margin: 0;
     line-height: 1;
     letter-spacing: -0.02em;
-    animation: glitch 3s infinite;
-  }
-
-  @keyframes glitch {
-    0%,
-    96%,
-    100% {
-      text-shadow:
-        2px 2px 0 rgba(255, 138, 60, 0.3),
-        -2px -2px 0 rgba(255, 138, 60, 0.3);
-    }
-    97% {
-      text-shadow:
-        5px 5px 0 rgba(255, 138, 60, 0.5),
-        -5px -5px 0 rgba(255, 138, 60, 0.5);
-    }
-    98% {
-      text-shadow:
-        -5px 5px 0 rgba(255, 138, 60, 0.5),
-        5px -5px 0 rgba(255, 138, 60, 0.5);
-    }
   }
 
   .error-title {
@@ -95,23 +73,20 @@ import Layout from "../layouts/Layout.astro";
     align-items: center;
     justify-content: center;
     padding: 1rem 2.5rem;
-    background: #ff8a3c;
-    color: #ffffff;
+    background: #ffffff;
+    color: #020308;
     text-decoration: none;
     border-radius: 50px;
     font-size: 1rem;
     font-weight: 500;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(255, 138, 60, 0.3);
   }
 
   .error-cta:hover {
-    background: #e67730;
+    background: #e5e5e5;
     transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(255, 138, 60, 0.4);
   }
 
-  /* 🔥 MOBILE (tactile OU petit écran) */
   @media (max-width: 768px), (max-width: 1023px) and (pointer: coarse) {
     .error-container {
       padding: 1.5rem;

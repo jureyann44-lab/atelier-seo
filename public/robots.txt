@@ -1,4 +1,4 @@
-# robots.txt pour Habeprod - Agence de communication Le Mans
+# robots.txt pour L'Atelier SEO - Consultant SEO au Mans
 
 User-agent: *
 Allow: /
@@ -9,4 +9,4 @@ Disallow: /mentions-legales
 Disallow: /cgu
 
 # Sitemap
-Sitemap: https://www.habeprod-agence.fr/sitemap-index.xml
+Sitemap: https://www.atelier-seo.fr/sitemap-index.xml

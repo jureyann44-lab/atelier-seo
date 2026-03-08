@@ -2,10 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
-import Services from "../components/Services.astro";
-import Expertise from "../components/Expertise.astro";
-import Projects from "../components/Projects.astro";
+import ConsultantSEO from "../components/consultant-seo-le-mans.astro";
+import ServicesSeo from "../components/Services-seo.astro";
+import Methode from "../components/Methode.astro";
+import PourquoiSEO from "../components/pourquoi-seo.astro";
 import Contact from "../components/Contact.astro";
 import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
@@ -16,24 +16,18 @@ import "../styles/global.css";
 ---
 
 <Layout
-  title="Habeprod - Agence Communication Digitale Le Mans | Création Web & SEO"
-  description="Habeprod - Agence de communication digitale au Mans. Création de sites web, SEO, branding et identité visuelle pour TPE et PME en Sarthe."
+  title="Consultant SEO au Mans | Référencement Google & SEO local | L'Atelier SEO"
+  description="Consultant SEO au Mans spécialisé dans le référencement Google et le SEO local pour les entreprises de la Sarthe. Audit SEO gratuit — réponse sous 48h."
+  canonical="https://www.atelier-seo.fr/"
+  ogTitle="Consultant SEO au Mans | L'Atelier SEO"
+  ogDescription="Consultant SEO au Mans spécialisé dans le référencement Google et le SEO local pour les entreprises de la Sarthe."
 >
-  <!-- ✅ Preload hero image injecté dans le <head> via slot nommé -->
-  <link
-    slot="head"
-    rel="preload"
-    as="image"
-    href="/background-hero.webp"
-    fetchpriority="high"
-  />
-
   <Nav />
   <Hero />
-  <About />
-  <Services />
-  <Expertise />
-  <Projects />
+  <ConsultantSEO />
+  <ServicesSeo />
+  <Methode />
+  <PourquoiSEO />
   <Contact />
   <FAQ />
   <CTA />

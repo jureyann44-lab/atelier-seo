@@ -23,17 +23,17 @@ function formatDate(dateString: string): string {
 ---
 
 <Layout
-  title="Blog Communication Digitale Le Mans | Conseils SEO & UX - Habeprod"
-  description="Découvrez nos conseils en communication digitale : SEO, UX design, branding et stratégie web. Articles pratiques pour TPE et PME en Sarthe."
-  canonical="https://www.habeprod-agence.fr/blog/"
+  title="Blog SEO Le Mans | Conseils Référencement Naturel & SEO Local - SEO Atelier"
+  description="Conseils SEO, référencement local, stratégie de contenu et GEO : les ressources de SEO Atelier pour améliorer votre visibilité sur Google au Mans et en Sarthe."
+  canonical="https://www.atelier-seo.fr/blog/"
 >
   <Nav />
 
   <section class="blog-page">
     <div class="container">
-      <h1>Nos articles</h1>
+      <h1>Nos ressources SEO</h1>
       <p class="intro">
-        Actualités, conseils et retours d'expérience en communication digitale
+        Conseils, méthodes et retours terrain pour améliorer votre référencement au Mans et en Sarthe
       </p>
 
       <div class="blog-grid">
@@ -91,15 +91,22 @@ function formatDate(dateString: string): string {
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Blog",
-    "name": "Blog Habeprod",
-    "description": "Conseils en communication digitale : SEO, UX design, branding et stratégie web pour TPE et PME en Sarthe.",
-    "url": "https://www.habeprod-agence.fr/blog/",
+    "name": "Blog SEO Atelier",
+    "description": "Conseils SEO, référencement local, stratégie de contenu et GEO pour les entreprises du Mans et de la Sarthe.",
+    "url": "https://www.atelier-seo.fr/blog/",
     "publisher": {
-      "@type": "Organization",
-      "name": "Habeprod",
+      "@type": "LocalBusiness",
+      "name": "SEO Atelier",
+      "url": "https://www.atelier-seo.fr",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Le Mans",
+        "addressRegion": "Sarthe",
+        "addressCountry": "FR"
+      },
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.habeprod-agence.fr/logo-habeprod.png"
+        "url": "https://www.atelier-seo.fr/logo-seo-atelier.png"
       }
     }
   })} />
@@ -178,11 +185,11 @@ function formatDate(dateString: string): string {
   }
 
   .blog-card-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 1rem;
-  gap: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    gap: 0.6rem;
   }
 
   .blog-date {

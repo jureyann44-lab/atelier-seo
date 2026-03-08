@@ -1,0 +1,181 @@
+<section class="consultant-seo" id="consultant-seo">
+  <div class="consultant-seo-container">
+    <div class="consultant-seo-inner">
+      <div class="consultant-seo-text">
+        <div class="section-subtitle consultant-seo-subtitle">Accompagnement SEO</div>
+        <h2 class="section-title consultant-seo-title">Consultant SEO au Mans</h2>
+        <p class="consultant-seo-body">
+          Nous accompagnons les entreprises du Mans et de la Sarthe dans l'amélioration de leur visibilité sur Google grâce à des stratégies SEO durables et efficaces.
+        </p>
+        <p class="consultant-seo-body">
+          Audit, optimisation technique, stratégie de contenu et SEO local : chaque action vise un objectif clair — améliorer votre positionnement et attirer plus de clients.
+        </p>
+        <div class="btn-container">
+          <a href="/consultant-seo-le-mans" class="btn-expertise">
+            <span>Découvrir l'accompagnement SEO→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="consultant-seo-rotator">
+        <div class="consultant-seo-grid">
+          <div class="consultant-seo-box">
+            <div class="consultant-seo-box-inner">
+              <img
+                src="/images/blog/consultant-seo-recherche-google-le-mans.webp"
+                alt="Consultant SEO au Mans analysant les résultats de recherche Google pour améliorer le référencement naturel"
+                title="Consultant SEO Le Mans — recherche Google"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <div class="consultant-seo-box">
+            <div class="consultant-seo-box-inner">
+              <img
+                src="/performance-seo-google.webp"
+                alt="Analyse des performances SEO sur Google pour une entreprise au Mans et en Sarthe"
+                title="Analyse SEO et performance Google"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <div class="consultant-seo-box">
+            <div class="consultant-seo-box-inner">
+              <img
+                src="/seo-local-le-mans.webp"
+                alt="Stratégie SEO local au Mans — optimisation du référencement naturel pour les entreprises de la Sarthe"
+                title="SEO local Le Mans — stratégie de référencement"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          <div class="consultant-seo-box">
+            <div class="consultant-seo-box-inner">
+              <img
+                src="/strategie-contenu-seo.webp"
+                alt="Consultant SEO au Mans analysant une stratégie de contenu pour améliorer le référencement naturel"
+                title="Stratégie de contenu SEO au Mans"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .consultant-seo {
+    background: #ffffff;
+    color: #111827;
+    position: relative;
+    min-height: 768px;
+  }
+
+  .consultant-seo-container {
+    max-width: var(--layout-width);
+    margin: 0 auto;
+  }
+
+  .consultant-seo-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    align-items: center;
+    column-gap: 4rem;
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .consultant-seo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .consultant-seo-box {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #f0f0f0;
+  }
+
+  .consultant-seo-box-inner {
+    width: 100%;
+    height: 100%;
+  }
+
+  .consultant-seo-box-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .consultant-seo-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #9ca3af;
+    margin-bottom: 0.75rem;
+  }
+
+  .consultant-seo-body {
+    line-height: 1.8;
+    color: #4b5563;
+    margin-bottom: 1rem;
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 1rem;
+  }
+
+  .btn-expertise {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.95rem 2.6rem;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border-radius: 6px;
+    color: #000;
+    background: transparent;
+    transition: all var(--transition-speed);
+  }
+
+  .btn-expertise:hover {
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 900px), (max-width: 1023px) and (pointer: coarse) {
+    .consultant-seo-inner {
+      grid-template-columns: 1fr;
+      row-gap: 3rem;
+      padding-top: 70px;
+      padding-bottom: 70px;
+    }
+
+    .btn-expertise { transition: none; }
+    .btn-expertise:hover { transform: none; }
+  }
+
+  @media (min-width: 667px) and (max-width: 960px) and (orientation: landscape) and (max-height: 450px) {
+    .consultant-seo-inner {
+      grid-template-columns: 1fr;
+      row-gap: 1.5rem;
+    }
+
+    .consultant-seo-body { font-size: 0.95rem; line-height: 1.5; margin-bottom: 0.4rem; }
+    .btn-expertise { font-size: 0.75rem; padding: 0.8rem 2rem; transition: none; }
+    .btn-expertise:hover { transform: none; }
+  }
+</style>

@@ -12,7 +12,22 @@
   --color-gray: #666;
   --color-border: #e5e5e5;
   --font-main: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  
+
+  /* TOKENS TEXTE */
+  --text-body:  clamp(1rem, 1.5vw, 1.15rem);
+  --text-small: 0.78rem;
+  --text-btn:   0.85rem;
+
+  /* Gris sur fond BLANC */
+  --gray-label-light: #9ca3af;
+  --gray-body-light:  #6b7280;
+  --gray-muted-light: #4b5563;
+
+  /* Gris sur fond NOIR */
+  --gray-label-dark:  rgba(255, 255, 255, 0.5);
+  --gray-body-dark:   rgba(255, 255, 255, 0.55);
+  --gray-muted-dark:  rgba(255, 255, 255, 0.35);
+
   /* 📱 MOBILE PAR DÉFAUT */
   --layout-width: 100%;
   --nav-height: 70px;
@@ -35,14 +50,13 @@
     --gutter-mobile: 1.5rem !important;
     --h2-size: 24px !important;
   }
-  section:not(.hero):not(.services-collage):not(.footer-bottom-section) {
+  section:not(.hero):not(.consultant-seo):not(.footer-bottom-section) {
     padding: 6rem 0;
   }
-  /* Footer bottom avec padding 1rem */
   .footer-bottom-section {
     padding: 1rem 0;
   }
-  .services-collage {
+  .consultant-seo {
     padding: 0 !important;
   }
 }
@@ -113,34 +127,34 @@ img {
 }
 
 /* ===== ALIGNEMENT GLOBAL ===== */
-section:not(.hero):not(.services-collage):not(.footer-bottom-section) {
+section:not(.hero):not(.consultant-seo):not(.footer-bottom-section) {
   padding: 6rem 0;
 }
 
 /* 📱 TABLETTE */
 @media (min-width: 768px) and (max-width: 1024px) {
-  section:not(.hero):not(.services-collage):not(.footer-bottom-section) {
+  section:not(.hero):not(.consultant-seo):not(.footer-bottom-section) {
     padding: 5rem 0;
   }
 }
 
-/* ✅ EXCEPTION SERVICES-COLLAGE - Padding 96px sauf mobile */
-.services-collage {
+/* ✅ EXCEPTION CONSULTANT-SEO */
+.consultant-seo {
   padding: 96px 0 !important;
 }
 
 @media (max-width: 900px) {
-  .services-collage {
+  .consultant-seo {
     padding: 0 !important;
   }
 }
 
-/* ✅ Footer bottom avec padding 1rem */
+/* ✅ Footer bottom */
 .footer-bottom-section {
   padding: 1rem 0;
 }
 
-/* ✅ CONTAINER UNIFIÉ + RESPONSIVE */
+/* ===== CONTAINERS ===== */
 .container {
   max-width: var(--layout-width);
   margin: 0 auto;
@@ -148,12 +162,8 @@ section:not(.hero):not(.services-collage):not(.footer-bottom-section) {
   padding-right: var(--gutter);
 }
 
-/* ✅ TOUS LES INNERS RESPONSIVE */
 .hero-inner,
-.about-inner,
-.services-inner,
-.projects-inner,
-.projects-header,
+.consultant-seo-inner,
 .footer-content,
 .footer-bottom {
   max-width: var(--layout-width);
@@ -166,7 +176,7 @@ section:not(.hero):not(.services-collage):not(.footer-bottom-section) {
 h2,
 .hero-title,
 .section-title,
-.services-title,
+.consultant-seo-title,
 .project-title,
 .cta h2 {
   font-size: var(--h2-size) !important;
@@ -176,24 +186,82 @@ h2,
   margin-bottom: var(--h2-mb) !important;
 }
 
+/* ===== PARAGRAPHES ===== */
 p {
-  font-size: 1.1rem;
-  margin-bottom: 2.5rem;
-}
-
-/* 📱 TABLETTE - Ajuste la taille du texte */
-@media (min-width: 768px) and (max-width: 1024px) {
-  p {
-    font-size: 1.05rem;
-    margin-bottom: 2rem;
-  }
+  font-size: var(--text-body);
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
 }
 
 p:last-child {
   margin-bottom: 0;
 }
 
-/* ===== SHADOW SIMPLE - PAS D'ANIMATIONS COMPLEXES ===== */
+/* ===== SECTION LABELS ===== */
+
+/* Sur fond blanc */
+.section-subtitle,
+.methode-label,
+.consultant-seo-subtitle {
+  font-size: var(--text-small);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray-label-light);
+}
+
+/* Sur fond noir */
+.expertise .section-subtitle,
+.pourquoi-seo-label {
+  color: var(--gray-label-dark);
+}
+
+/* ===== PARAGRAPHES PAR SECTION ===== */
+
+/* Blocs blancs */
+.consultant-seo-body,
+.methode-step-intro {
+  font-size: var(--text-body) !important;
+  color: var(--gray-body-light);
+  line-height: 1.75;
+}
+
+.methode-list li {
+  font-size: var(--text-body) !important;
+  color: var(--gray-muted-light);
+}
+
+/* Blocs noirs */
+.expertise-item p {
+  font-size: var(--text-body) !important;
+  color: var(--gray-body-dark);
+  line-height: 1.75;
+}
+
+.pourquoi-seo-statement {
+  font-size: var(--text-body) !important;
+  color: #ffffff;
+}
+
+.pourquoi-seo-reason-right p {
+  font-size: var(--text-body) !important;
+  color: var(--gray-body-dark);
+}
+
+/* Hero */
+.hero-subtitle,
+.hero-keywords {
+  font-size: var(--text-body) !important;
+}
+
+/* ===== TAGS NON-BOUTONS ===== */
+.pourquoi-seo-tag {
+  border: none !important;
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* ===== BOUTONS ===== */
 .hero-cta,
 .btn-appel,
 .project-link,
@@ -202,21 +270,19 @@ p:last-child {
   transition: all var(--transition-speed);
 }
 
-/* Tous les boutons - Effet shadow + lift */
 .hero-cta,
 .btn-appel,
 .project-link {
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .hero-cta:hover,
 .btn-appel:hover,
 .project-link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* 📱 MOBILE - Désactive les effets hover pour éviter les bugs tactiles */
 @media (hover: none) and (pointer: coarse) {
   .hero-cta:hover,
   .btn-appel:hover,
@@ -225,36 +291,32 @@ p:last-child {
   }
 }
 
-/* 📱 MOBILE LANDSCAPE - Couvre TOUS les smartphones (iPhone SE → Pixel 9 Pro XL) */
+/* ===== MOBILE LANDSCAPE ===== */
 @media (min-width: 667px) and (max-width: 960px) and (orientation: landscape) and (max-height: 450px) {
   :root {
     --gutter: 2rem;
     --h2-size: 22px;
   }
-  
-  /* Padding réduit pour mobile paysage */
-  section:not(.hero):not(.services-collage):not(.footer-bottom-section) {
+
+  section:not(.hero):not(.consultant-seo):not(.footer-bottom-section) {
     padding: 3rem 0;
   }
-  
-  .services-collage {
+
+  .consultant-seo {
     padding: 0 !important;
   }
-  
-  /* Texte plus compact */
+
   p {
-    font-size: 0.95rem;
     margin-bottom: 1.25rem;
     line-height: 1.5;
   }
-  
-  /* ✅ TOUS LES BLOCS avec largeur 90% en landscape */
+
   .hero-inner,
-  .about-inner,
-  .services-inner,
+  .hero-container,
+    .consultant-seo-inner,
+  .methode-container,
+  .pourquoi-seo-container,
   .expertise-inner,
-  .projects-inner,
-  .projects-header,
   .contact-inner,
   .cta-inner,
   .faq-inner,
@@ -264,8 +326,7 @@ p:last-child {
     max-width: 90% !important;
     margin: 0 auto !important;
   }
-  
-  /* Footer copyright adapté */
+
   .footer-bottom {
     background-color: #ffffff;
     max-width: 100% !important;
@@ -275,31 +336,29 @@ p:last-child {
     color: #0a0a0a;
     font-size: 0.85rem;
   }
-  
-  /* Titres adaptés */
+
   h2,
   .hero-title,
   .section-title,
-  .services-title {
+  .consultant-seo-title {
     font-size: 20px !important;
     margin-bottom: 1rem !important;
   }
 
-  /* ⚡ Correction warning H1 API obsolète */
   h1.visually-hidden {
     font-size: 2.5rem;
     line-height: 1.1;
   }
 }
 
-/* 📱 iPad Mini PORTRAIT - Alignement 90% */
+/* ===== iPad Mini PORTRAIT ===== */
 @media (min-width: 768px) and (max-width: 820px) and (orientation: portrait) {
   .hero-inner,
-  .about-inner,
-  .services-inner,
+  .hero-container,
+    .consultant-seo-inner,
+  .methode-container,
+  .pourquoi-seo-container,
   .expertise-inner,
-  .projects-inner,
-  .projects-header,
   .contact-inner,
   .cta-inner,
   .faq-inner,

@@ -8,7 +8,7 @@ export default defineConfig({
   adapter: cloudflare({
     platformProxy: { enabled: true }
   }),
-  site: "https://www.habeprod-agence.fr",
+  site: "https://www.atelier-seo.fr",
   integrations: [sitemap()],
 
   vite: {

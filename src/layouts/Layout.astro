@@ -1,12 +1,11 @@
 ---
-import StickyMobileBar from '../components/StickyMobileBar.astro';
-
 const {
-  title = "Agence de communication au Mans | SEO & Sites performants | Habeprod",
-  description = "Agence de communication au Mans pour TPE et PME en Sarthe. Sites performants, SEO local, stratégie digitale. 10 ans d'expérience. Devis gratuit.",
-  canonical = "https://www.habeprod-agence.fr/",
-  ogImage = "https://cdn.prod.website-files.com/681b6b36dcb0f115f4d39f76/681c83218f79910e7d6aff03_image-hero.webp",
-  ogType = "website",
+  title = "Consultant SEO au Mans – Référencement Google & SEO local | L'Atelier SEO",
+  description = "Consultant SEO au Mans spécialisé en référencement Google et SEO local pour les entreprises de la Sarthe. Audit SEO gratuit et stratégie de visibilité durable.",
+  canonical = "https://www.atelier-seo.fr/",
+  ogImage = "https://www.atelier-seo.fr/atelier-seo-social.png",
+  ogTitle = title,
+  ogDescription = description,
   faq = null,
 } = Astro.props;
 ---
@@ -14,32 +13,41 @@ const {
 <!doctype html>
 <html lang="fr">
   <head>
-    <!-- META SEO -->
-    <title>{title}</title>
+    <!-- ===== CHARSET & VIEWPORT ===== -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/favicon.ico" />
+
+    <!-- ===== META SEO ===== -->
+    <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <meta name="robots" content="index, follow" />
+    <meta name="author" content="L'Atelier SEO" />
 
-    <!-- OPEN GRAPH -->
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:url" content={canonical} />
-    <meta property="og:type" content={ogType} />
-    <meta property="og:site_name" content="Habeprod" />
+    <!-- ===== FAVICON & THEME ===== -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#ff8a3c" />
+
+    <!-- ===== OPEN GRAPH ===== -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="L'Atelier SEO" />
     <meta property="og:locale" content="fr_FR" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="L'Atelier SEO – Consultant SEO au Mans" />
 
-    <!-- TWITTER CARD -->
+    <!-- ===== TWITTER CARD ===== -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- FONTS -->
+    <!-- ===== FONTS ===== -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -47,38 +55,85 @@ const {
       rel="stylesheet"
     />
 
-    <!-- SCHEMA LOCAL BUSINESS -->
+    <!-- ===== SCHEMA.ORG ===== -->
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
         "@context": "https://schema.org",
         "@graph": [
           {
-            "@type": [
-              "LocalBusiness",
-              "MarketingAgency",
-            ],
-            "@id": canonical + "#localbusiness",
-            name: "Habeprod",
-            legalName: "Habeprod",
+            "@type": "WebSite",
+            "@id": "https://www.atelier-seo.fr/#website",
+            url: "https://www.atelier-seo.fr",
+            name: "L'Atelier SEO",
+            publisher: {
+              "@id": "https://www.atelier-seo.fr/#localbusiness",
+            },
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://www.atelier-seo.fr/#webpage",
+            url: "https://www.atelier-seo.fr",
+            name: title,
             description: description,
-            url: canonical,
-            logo: "https://www.habeprod-agence.fr/logo-habeprod.png",
-            image: "https://www.habeprod-agence.fr/logo-habeprod.png",
-            foundingDate: "2018",
+            inLanguage: "fr",
+          },
+          {
+            "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
+            "@id": "https://www.atelier-seo.fr/#localbusiness",
+            name: "L'Atelier SEO",
+            legalName: "L'Atelier SEO",
+            description: description,
+            url: "https://www.atelier-seo.fr",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://www.atelier-seo.fr/logo-atelier-seo.png",
+              width: 1024,
+              height: 1024,
+            },
+            image: "https://www.atelier-seo.fr/atelier-seo-social.png",
+            foundingDate: "2024",
             priceRange: "$$",
             telephone: "+33627252568",
+            email: "contact@atelier-seo.fr",
             address: {
               "@type": "PostalAddress",
-              streetAddress: "35 rue d'Iena",
+              streetAddress: "35 rue d'Iéna",
               postalCode: "72000",
               addressLocality: "Le Mans",
+              addressRegion: "Sarthe",
               addressCountry: "FR",
             },
             geo: {
               "@type": "GeoCoordinates",
               latitude: 48.003386,
               longitude: 0.199563,
+            },
+            areaServed: {
+              "@type": "Place",
+              name: "Le Mans",
+            },
+            serviceArea: {
+              "@type": "AdministrativeArea",
+              name: "Sarthe",
+            },
+            knowsAbout: [
+              "SEO local",
+              "SEO Le Mans",
+              "référencement Google",
+              "référencement Le Mans",
+              "consultant SEO Le Mans",
+              "consultant SEO Sarthe",
+              "SEO Sarthe",
+              "audit SEO",
+              "stratégie de contenu SEO",
+            ],
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+33627252568",
+              contactType: "customer service",
+              areaServed: "FR",
+              availableLanguage: "French",
             },
             openingHoursSpecification: [
               {
@@ -94,27 +149,37 @@ const {
                 closes: "18:00",
               },
             ],
+            hasMap: "https://www.google.com/maps",
             sameAs: [
-              "https://www.facebook.com/habeprod",
-              "https://www.instagram.com/habeprod",
-              "https://www.linkedin.com/company/habeprod",
-              "https://discord.gg/gna3b2YNUq",
+              "https://www.habeprod-agence.fr",
             ],
           },
         ],
       })}
     />
 
-    <!-- SLOT HEAD (schema additionnel, meta custom, etc.) -->
-    <slot name="head" />
-
+    <!-- ===== FAQ SCHEMA (conditionnel) ===== -->
+    {faq && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faq.map((item: { question: string; answer: string }) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
+            },
+          })),
+        })}
+      />
+    )}
   </head>
 
   <body>
     <slot />
-
-    <!-- BARRE STICKY MOBILE -->
-    <StickyMobileBar />
 
     <!-- ✅ SÉCURITÉ LIENS EXTERNES -->
     <script>

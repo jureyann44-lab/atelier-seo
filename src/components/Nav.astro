@@ -1,16 +1,17 @@
 <nav class="nav transparent">
   <div class="nav-container">
-    <a href="/" class="nav-logo" aria-label="Retour à l'accueil Habeprod">
-      <img src="/logo-habeprod-light.svg" alt="Habeprod" class="logo-site logo-light" />
-      <img src="/logo-habeprod-dark.svg" alt="Habeprod" class="logo-site logo-dark" />
+    <a href="/" class="nav-logo" aria-label="Retour à l'accueil Atelier SEO">
+      <img src="/atelier-seo-logo-light.svg" alt="Atelier SEO" class="logo-site logo-light" />
+      <img src="/atelier-seo-logo-dark.svg" alt="Atelier SEO" class="logo-site logo-dark" />
     </a>
 
     <ul class="nav-links">
-      <li><a href="/#agence">L'agence</a></li>
-      <li><a href="/#services">Services</a></li>
-      <li><a href="/#projects">Réalisations</a></li>
-      <li class="nav-audit-desktop"><a href="/audit-seo" class="btn-nav-audit">🚀 Audit SEO</a></li>
-      <li><a href="/tarifs">Tarifs</a></li>
+      <li><a href="/">Accueil</a></li>
+      <li><a href="/#consultant-seo">Consultant SEO</a></li>
+      <li><a href="/#seo-local">SEO local</a></li>
+      <li class="nav-audit-desktop" style="display:none"><a href="/audit-seo" class="btn-nav-audit">Audit SEO</a></li>
+      <li><a href="/#methode">Méthode</a></li>
+      <li><a href="/blog">Blog</a></li>
       <li><a href="/#contact">Contact</a></li>
 
       <li class="nav-social">
@@ -21,9 +22,6 @@
               <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.531 5.845L.057 23.571a.5.5 0 0 0 .612.612l5.726-1.474A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.523-5.157-1.431l-.369-.216-3.828.985.999-3.718-.236-.38A9.955 9.955 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
             </svg>
           </a>
-          <a href="https://www.instagram.com/habeprod/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <img src="/logo-instagram.svg" class="icon-social" alt="" />
-          </a>
           <a href="https://www.linkedin.com/company/95178904/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <img src="/logo-linkedin.svg" class="icon-social" alt="" />
           </a>
@@ -32,6 +30,8 @@
     </ul>
 
     <div class="nav-right">
+      <a href="/audit-seo" class="btn-nav-audit">Audit SEO</a>
+
       <div class="social-links">
         <a href="https://wa.me/33627252568" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-social" fill="currentColor">
@@ -39,17 +39,11 @@
             <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.531 5.845L.057 23.571a.5.5 0 0 0 .612.612l5.726-1.474A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.523-5.157-1.431l-.369-.216-3.828.985.999-3.718-.236-.38A9.955 9.955 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
           </svg>
         </a>
-        <a href="https://www.instagram.com/habeprod/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <img src="/logo-instagram.svg" alt="" class="icon-social icon-light" />
-          <img src="/logo-instagram-dark.svg" alt="" class="icon-social icon-dark" />
-        </a>
         <a href="https://www.linkedin.com/company/95178904/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <img src="/logo-linkedin.svg" alt="" class="icon-social icon-light" />
           <img src="/logo-linkedin-dark.svg" alt="" class="icon-social icon-dark" />
         </a>
       </div>
-
-      <a href="/audit-seo" class="btn-nav-audit-mobile">🚀 Audit SEO</a>
 
       <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
         <img src="/menu-burger-light.svg" alt="" class="burger-icon burger-icon-light" />
@@ -108,7 +102,7 @@
     transition: background var(--transition-speed);
   }
 
-  .logo-site { height: 32px; display: block; }
+  .logo-site { height: 44px; display: block; }
   .logo-light { display: block; }
   .logo-dark { display: none; }
   .nav.scrolled .logo-light { display: none; }
@@ -139,24 +133,41 @@
   .nav.scrolled .nav-links a:hover { opacity: 1; transform: translateY(-1px); }
 
   .btn-nav-audit {
-    background: #ea6432 !important;
-    color: #ffffff !important;
+    background: #ffffff !important;
+    color: #0a0a0a !important;
     padding: 0.75rem 1.1rem !important;
     border-radius: 6px !important;
     opacity: 1 !important;
-    transition: background 0.3s ease, transform 0.3s ease !important;
+    text-decoration: none !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    flex-shrink: 0;
+    transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease !important;
   }
 
   .btn-nav-audit:hover {
-    background: #d4581f !important;
+    background: #f0f0f0 !important;
     transform: translateY(-1px) !important;
   }
 
-  .nav.scrolled .btn-nav-audit { color: #ffffff !important; }
+  .nav.scrolled .btn-nav-audit {
+    background: #0a0a0a !important;
+    color: #ffffff !important;
+  }
+
+  .nav.scrolled .btn-nav-audit:hover {
+    background: #333333 !important;
+  }
 
   .btn-nav-audit-mobile {
     display: none;
-    background: #ea6432;
+    background: #0a0a0a;
     color: #ffffff !important;
     padding: 0.75rem 0.85rem !important;
     border-radius: 6px;
@@ -170,7 +181,14 @@
     transition: background 0.3s ease;
   }
 
-  .btn-nav-audit-mobile:hover { background: #d4581f; }
+  .btn-nav-audit-mobile:hover { background: #333333; }
+
+  .nav.transparent .btn-nav-audit-mobile {
+    background: #ffffff;
+    color: #0a0a0a !important;
+  }
+
+  .nav.transparent .btn-nav-audit-mobile:hover { background: #f0f0f0; }
 
   .nav-right {
     margin-left: auto;
