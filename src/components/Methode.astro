@@ -369,7 +369,8 @@
 
     .methode-step-content,
     .methode-step-content--reverse {
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 2rem;
       direction: ltr;
       padding: 32px 0 56px;
@@ -378,9 +379,6 @@
     /* ✅ FIX : image toujours en premier sur mobile */
     .methode-step-image {
       order: -1;
-    }
-
-    .methode-step-image {
       aspect-ratio: 16 / 9;
     }
 
