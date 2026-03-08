@@ -161,9 +161,7 @@
   const submitBtn = document.getElementById("submit-btn");
   const message = document.getElementById("form-message");
 
-  if (!form) return;
-
-  form.addEventListener("submit", async (e) => {
+  if (form) form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     submitBtn.disabled = true;
