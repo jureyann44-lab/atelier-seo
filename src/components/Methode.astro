@@ -375,6 +375,11 @@
       padding: 32px 0 56px;
     }
 
+    /* ✅ FIX : image toujours en premier sur mobile */
+    .methode-step-image {
+      order: -1;
+    }
+
     .methode-step-image {
       aspect-ratio: 16 / 9;
     }
@@ -409,21 +414,17 @@
       const stepsRect = steps.getBoundingClientRect();
       const windowH = window.innerHeight;
 
-      // Progression globale de la ligne (0 → 1)
       const total = stepsRect.height + windowH;
       const passed = windowH - stepsRect.top;
       const progress = Math.min(1, Math.max(0, passed / total));
 
       fill.style.height = (progress * 100) + '%';
 
-      // Hauteur actuelle de la ligne en pixels depuis le haut du bloc steps
       const fillPx = progress * stepsRect.height;
 
-      // Activer chaque numéro quand la ligne le dépasse
       nums.forEach(function (num) {
         if (!num) return;
         const numRect = num.getBoundingClientRect();
-        // Position du centre du cercle par rapport au haut du bloc steps
         const numTop = numRect.top - stepsRect.top + numRect.height / 2;
 
         if (fillPx >= numTop) {
