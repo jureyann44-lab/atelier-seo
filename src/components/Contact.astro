@@ -157,14 +157,13 @@
 <script>
   const WORKER_URL =
     "https://atelier-seo-contact-form.workers.dev";
+  const form = document.getElementById("contact-form");
+  const submitBtn = document.getElementById("submit-btn");
+  const message = document.getElementById("form-message");
 
-  const form = document.getElementById("contact-form") as HTMLFormElement;
-  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
-  const message = document.getElementById(
-    "form-message",
-  ) as HTMLParagraphElement;
+  if (!form) return;
 
-  form?.addEventListener("submit", async (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     submitBtn.disabled = true;
