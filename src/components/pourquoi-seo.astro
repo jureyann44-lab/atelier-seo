@@ -2,12 +2,9 @@
   <div class="pourquoi-seo-container">
 
     <div class="pourquoi-seo-top">
-      <!-- petit label : gris clair mais lisible sur fond noir -->
       <span class="pourquoi-seo-label">Pourquoi investir dans le SEO ?</span>
-      <a href="/audit-seo" class="pourquoi-seo-cta">Demander un audit →</a>
     </div>
 
-    <!-- ✅ statement : blanc, même taille que hero-subtitle -->
     <p class="pourquoi-seo-statement">
       Le référencement naturel attire des visiteurs qui cherchent déjà vos services — sans payer chaque clic. Contrairement à la publicité, le SEO génère un trafic durable qui continue de travailler pour vous longtemps après la mise en place.
     </p>
@@ -16,7 +13,6 @@
 
       <div class="pourquoi-seo-reason">
         <div class="pourquoi-seo-reason-left">
-          <!-- ✅ tag : texte simple, plus de border/pill -->
           <span class="pourquoi-seo-tag">Visibilité</span>
         </div>
         <div class="pourquoi-seo-reason-right">
@@ -51,7 +47,6 @@
 </section>
 
 <style>
-  /* ── Tokens locaux alignés sur le design system ── */
   .pourquoi-seo {
     background: #080808;
     color: #ffffff;
@@ -64,7 +59,6 @@
     padding: 0 var(--gutter);
   }
 
-  /* TOP */
   .pourquoi-seo-top {
     display: flex;
     align-items: center;
@@ -72,7 +66,6 @@
     margin-bottom: 3rem;
   }
 
-  /* ✅ label : gris plus clair, lisible mais discret */
   .pourquoi-seo-label {
     font-size: 0.75rem;
     letter-spacing: 0.18em;
@@ -80,27 +73,6 @@
     color: rgba(255, 255, 255, 0.5);
   }
 
-  /* ✅ CTA : outline simple, cohérent avec btn-hero-primary */
-  .pourquoi-seo-cta {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.75rem 1.6rem;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 6px;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: background 0.25s ease, border-color 0.25s ease;
-  }
-
-  .pourquoi-seo-cta:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: #ffffff;
-  }
-
-  /* ✅ STATEMENT : blanc plein, taille hero-subtitle */
   .pourquoi-seo-statement {
     font-size: clamp(1rem, 1.5vw, 1.15rem) !important;
     font-weight: 400;
@@ -112,7 +84,6 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  /* RAISONS */
   .pourquoi-seo-reasons {
     display: flex;
     flex-direction: column;
@@ -136,7 +107,6 @@
     padding-top: 0.25rem;
   }
 
-  /* ✅ tag : texte simple, lettrée, sans border ni pill */
   .pourquoi-seo-tag {
     font-size: 0.72rem;
     letter-spacing: 0.2em;
@@ -144,7 +114,6 @@
     color: #ffffff;
   }
 
-  /* ✅ h3 : blanc, pas de gras excessif */
   .pourquoi-seo-reason-right h3 {
     font-size: clamp(1rem, 1.5vw, 1.15rem) !important;
     font-weight: 400 !important;
@@ -154,7 +123,6 @@
     letter-spacing: -0.01em !important;
   }
 
-  /* ✅ paragraphes : même taille que hero-subtitle, gris cohérent fond noir */
   .pourquoi-seo-reason-right p {
     font-size: clamp(1rem, 1.5vw, 1.15rem) !important;
     color: rgba(255, 255, 255, 0.55);
@@ -163,7 +131,6 @@
     max-width: 640px;
   }
 
-  /* MOBILE */
   @media (max-width: 900px), (max-width: 1023px) and (pointer: coarse) {
     .pourquoi-seo { padding: 60px 0; }
 
@@ -184,8 +151,6 @@
       gap: 0.75rem;
       padding: 2rem 0;
     }
-
-    .pourquoi-seo-cta:hover { background: transparent; }
   }
 
   @media (min-width: 667px) and (max-width: 960px) and (orientation: landscape) and (max-height: 450px) {

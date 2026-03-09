@@ -127,11 +127,6 @@
 
     </div>
 
-    <!-- CTA -->
-    <div class="methode-cta">
-      <a href="/audit-seo" class="btn-methode">Demander un audit SEO gratuit →</a>
-    </div>
-
   </div>
 </section>
 
@@ -148,7 +143,6 @@
     padding: 0 var(--gutter);
   }
 
-  /* EN-TÊTE */
   .methode-header {
     margin-bottom: 80px;
   }
@@ -172,11 +166,11 @@
     margin: 0 !important;
   }
 
-  /* ÉTAPES */
   .methode-steps {
     display: flex;
     flex-direction: column;
     gap: 0;
+    position: relative;
   }
 
   .methode-step {
@@ -185,7 +179,6 @@
     gap: 0 2rem;
   }
 
-  /* COLONNE GAUCHE - numéro + ligne */
   .methode-step-left {
     display: flex;
     flex-direction: column;
@@ -217,7 +210,6 @@
     border-color: #0a0a0a;
   }
 
-  /* LIGNE DE PROGRESSION */
   .methode-progress-track {
     position: absolute;
     left: 17px;
@@ -237,11 +229,6 @@
     transition: height 0.1s linear;
   }
 
-  .methode-steps {
-    position: relative;
-  }
-
-  /* CONTENU */
   .methode-step-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -264,7 +251,6 @@
     direction: ltr;
   }
 
-  /* IMAGE */
   .methode-step-image {
     aspect-ratio: 4 / 3;
     overflow: hidden;
@@ -285,7 +271,6 @@
     transform: scale(1.03);
   }
 
-  /* TEXTE */
   .methode-step-text h3 {
     font-size: 1.5rem;
     font-weight: 400;
@@ -328,36 +313,6 @@
     font-size: 0.75rem;
   }
 
-  /* CTA */
-  .methode-cta {
-    margin-top: 72px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .btn-methode {
-    display: inline-flex;
-    align-items: center;
-    padding: 1rem 2.5rem;
-    border: 1px solid rgba(0, 0, 0, 0.25);
-    border-radius: 6px;
-    color: #0a0a0a;
-    text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    background: transparent;
-  }
-
-  .btn-methode:hover {
-    background: #0a0a0a;
-    color: #ffffff;
-    border-color: #0a0a0a;
-    transform: translateY(-1px);
-  }
-
-  /* MOBILE */
   @media (max-width: 900px), (max-width: 1023px) and (pointer: coarse) {
     .methode-section { padding: 60px 0; }
     .methode-header { margin-bottom: 48px; }
@@ -376,7 +331,6 @@
       padding: 32px 0 56px;
     }
 
-    /* ✅ FIX : image toujours en premier sur mobile */
     .methode-step-image {
       order: -1;
       aspect-ratio: 16 / 9;
@@ -384,9 +338,6 @@
 
     .methode-step-image img { filter: none; }
     .methode-step-image:hover img { transform: none; }
-
-    .btn-methode { transition: none; }
-    .btn-methode:hover { transform: none; }
   }
 
   @media (min-width: 667px) and (max-width: 960px) and (orientation: landscape) and (max-height: 450px) {
