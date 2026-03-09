@@ -182,6 +182,26 @@ const {
           hasMap: "https://www.google.com/maps",
           sameAs: ["https://www.habeprod-agence.fr"],
         },
+        {
+          "@type": "Person",
+          "@id": "https://www.atelier-seo.fr/#person",
+          name: "Yann",
+          jobTitle: "Consultant SEO",
+          worksFor: { "@id": "https://www.atelier-seo.fr/#localbusiness" },
+          url: "https://www.atelier-seo.fr",
+          sameAs: ["https://www.habeprod-agence.fr"],
+        },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Accueil",
+              item: "https://www.atelier-seo.fr",
+            },
+          ],
+        },
       ],
     })} />
 
