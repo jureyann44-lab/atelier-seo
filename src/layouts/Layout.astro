@@ -1,4 +1,5 @@
 ---
+import StickyMobileBar from '../components/StickyMobileBar.astro';
 const {
   title = "Consultant SEO au Mans – Référencement Google & SEO local | L'Atelier SEO",
   description = "Consultant SEO au Mans spécialisé en référencement Google et SEO local pour les entreprises de la Sarthe. Audit SEO gratuit et stratégie de visibilité durable.",
@@ -181,6 +182,8 @@ const {
 
   <body>
     <slot />
+
+    <StickyMobileBar />
 
     <!-- ✅ SÉCURITÉ LIENS EXTERNES -->
     <script>
