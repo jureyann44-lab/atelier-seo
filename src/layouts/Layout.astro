@@ -60,6 +60,7 @@ const {
           url: "https://www.atelier-seo.fr",
           name: "L'Atelier SEO",
           publisher: { "@id": "https://www.atelier-seo.fr/#localbusiness" },
+          creator: { "@id": "https://www.atelier-seo.fr/#person" },
         },
         {
           "@type": "WebPage",
@@ -68,6 +69,7 @@ const {
           name: title,
           description: description,
           inLanguage: "fr",
+          isPartOf: { "@id": "https://www.atelier-seo.fr/#website" },
         },
         {
           "@type": ["Organization", "LocalBusiness", "ProfessionalService"],
@@ -188,11 +190,13 @@ const {
           name: "Yann",
           jobTitle: "Consultant SEO",
           worksFor: { "@id": "https://www.atelier-seo.fr/#localbusiness" },
+          memberOf: { "@id": "https://www.atelier-seo.fr/#localbusiness" },
           url: "https://www.atelier-seo.fr",
           sameAs: ["https://www.habeprod-agence.fr"],
         },
         {
           "@type": "BreadcrumbList",
+          "@id": "https://www.atelier-seo.fr/#breadcrumb",
           itemListElement: [
             {
               "@type": "ListItem",
