@@ -31,7 +31,7 @@ Cela implique notamment de :
 - prévoir les balises titre et méta-description dès la création
 - rendre le site accessible sur mobile
 
-Un site construit sans ces fondations nécessitera des corrections coûteuses par la suite. C'est notamment le rôle d'une agence digitale spécialisée comme [Habeprod](https://www.habeprod-agence.fr/) qui accompagne les entreprises dans la création de sites web performants, conçus pour répondre aux exigences des moteurs de recherche.
+Un site construit sans ces fondations nécessitera des corrections coûteuses par la suite. C'est notamment le rôle d'une agence digitale spécialisée comme <a href="https://www.habeprod-agence.fr/" target="_blank" rel="noopener noreferrer">Habeprod</a> qui accompagne les entreprises dans la création de sites web performants, conçus pour répondre aux exigences des moteurs de recherche.
 
 ---
 
