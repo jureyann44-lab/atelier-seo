@@ -26,6 +26,13 @@ const {
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#ff8a3c" />
+
+    <!-- GÉOLOCALISATION -->
+    <meta name="geo.region" content="FR-72" />
+    <meta name="geo.placename" content="Le Mans" />
+    <meta name="geo.position" content="48.003386;0.199563" />
+    <meta name="ICBM" content="48.003386, 0.199563" />
+
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="L'Atelier SEO" />
     <meta property="og:locale" content="fr_FR" />
@@ -93,8 +100,64 @@ const {
             latitude: 48.003386,
             longitude: 0.199563,
           },
-          areaServed: { "@type": "Place", name: "Le Mans" },
+          areaServed: [
+            { "@type": "City", name: "Le Mans" },
+            { "@type": "AdministrativeArea", name: "Sarthe" },
+            { "@type": "City", name: "Angers" },
+            { "@type": "City", name: "Nantes" },
+            { "@type": "AdministrativeArea", name: "Pays de la Loire" },
+          ],
           serviceArea: { "@type": "AdministrativeArea", name: "Sarthe" },
+          makesOffer: [
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Audit SEO",
+                description: "Analyse complète du site pour identifier les axes d'amélioration et les opportunités de référencement au Mans et en Sarthe.",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Référencement naturel",
+                description: "Optimisation du référencement naturel pour améliorer durablement la visibilité sur Google.",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "SEO local",
+                description: "Stratégie de référencement local pour apparaître sur Google Maps et les recherches géolocalisées au Mans.",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Stratégie SEO",
+                description: "Élaboration d'une stratégie SEO sur mesure adaptée aux objectifs des entreprises de la Sarthe et des Pays de la Loire.",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Optimisation technique SEO",
+                description: "Optimisation des performances techniques du site : vitesse, structure, Core Web Vitals et accessibilité pour les moteurs de recherche.",
+              },
+            },
+            {
+              "@type": "Offer",
+              itemOffered: {
+                "@type": "Service",
+                name: "Rédaction SEO",
+                description: "Création de contenus optimisés pour le référencement naturel, ciblant les requêtes locales au Mans et en Sarthe.",
+              },
+            },
+          ],
           knowsAbout: [
             "SEO local", "SEO Le Mans", "référencement Google",
             "référencement Le Mans", "consultant SEO Le Mans",
