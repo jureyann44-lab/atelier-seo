@@ -11,8 +11,6 @@ import FAQ from "../components/FAQ.astro";
 import CTA from "../components/CTA.astro";
 import News from "../components/News.astro";
 import Footer from "../components/Footer.astro";
-
-import "../styles/global.css";
 ---
 
 <Layout
@@ -23,29 +21,16 @@ import "../styles/global.css";
   ogDescription="Consultant SEO au Mans spécialisé dans le référencement Google et le SEO local pour les entreprises de la Sarthe."
 >
   <Nav />
-  <Hero />
-  <ConsultantSEO />
-  <ServicesSeo />
-  <Methode />
-  <PourquoiSEO />
-  <Contact />
-  <FAQ />
-  <CTA />
-  <News />
+  <main>
+    <Hero />
+    <ConsultantSEO />
+    <ServicesSeo />
+    <Methode />
+    <PourquoiSEO />
+    <Contact />
+    <FAQ />
+    <CTA />
+    <News />
+  </main>
   <Footer />
 </Layout>
-
-<script>
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", (e) => {
-      const href = anchor.getAttribute("href");
-      if (!href || href === "#") return;
-
-      const target = document.querySelector(href);
-      if (!target) return;
-
-      e.preventDefault();
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  });
-</script>
