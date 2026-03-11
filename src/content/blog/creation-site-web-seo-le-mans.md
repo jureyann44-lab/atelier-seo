@@ -110,4 +110,4 @@ Créer un site web performant et mettre en place une stratégie SEO locale cohé
 
 L'Atelier SEO accompagne les entreprises du Mans et de la Sarthe dans leur stratégie de référencement naturel.
 
-👉 [Demandez votre audit SEO gratuit.](https://www.atelier-seo.fr/audit-seo)
+👉 [Demandez votre audit SEO gratuit.](/audit-seo)
