@@ -40,9 +40,11 @@ function formatDate(dateString: string): string {
     "headline": post.data.title,
     "description": post.data.description,
     "datePublished": post.data.date,
+    "dateModified": post.data.updatedDate ?? post.data.date,
     "author": {
-      "@type": "Organization",
-      "name": "L'Atelier SEO",
+      "@type": "Person",
+      "@id": "https://atelier-seo.fr/#person",
+      "name": "Yann",
       "url": "https://atelier-seo.fr"
     },
     "publisher": {

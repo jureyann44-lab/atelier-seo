@@ -8,8 +8,13 @@ export default defineConfig({
   adapter: cloudflare({
     platformProxy: { enabled: true }
   }),
-  site: "https://www.atelier-seo.fr",
-  integrations: [sitemap()],
+  site: "https://atelier-seo.fr",
+  integrations: [
+    sitemap({
+      filter: (page) =>
+        !page.includes("/mentions-legales") && !page.includes("/cgu"),
+    }),
+  ],
 
   vite: {
     build: {
