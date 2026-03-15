@@ -14,9 +14,9 @@ const CSP_ADMIN =
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; " +
   "font-src 'self' https://fonts.gstatic.com; " +
   "img-src 'self' data: blob: https:; " +
-  "connect-src 'self' https://api.github.com https://raw.githubusercontent.com https://github.com https://unpkg.com https://cloudflareinsights.com; " +
-  "frame-src https://github.com; " +
-  "form-action 'self' https://github.com; " +
+  "connect-src 'self' https://api.netlify.com https://api.github.com https://raw.githubusercontent.com https://github.com https://unpkg.com https://cloudflareinsights.com; " +
+  "frame-src https://github.com https://api.netlify.com; " +
+  "form-action 'self' https://github.com https://api.netlify.com; " +
   "worker-src 'self' blob:;";
 
 export const onRequest = defineMiddleware(async ({ url }, next) => {
