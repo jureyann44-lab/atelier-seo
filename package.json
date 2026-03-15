@@ -4,21 +4,17 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "cp node_modules/decap-cms/dist/decap-cms.js public/admin/decap-cms.js",
     "build": "NODE_OPTIONS='--max-old-space-size=4096' astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.13",
-    "@astrojs/netlify": "^6.5.13",
     "@astrojs/sitemap": "^3.6.1",
     "astro": "^5.16.9"
   },
   "engines": {
     "node": "20.x"
   },
-  "devDependencies": {
-    "decap-cms": "^3.10.1"
-  }
+  "devDependencies": {}
 }
