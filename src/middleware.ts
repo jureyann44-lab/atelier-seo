@@ -21,6 +21,7 @@ const CSP_ADMIN =
 
 export const onRequest = defineMiddleware(({ url, request }, next) =>
   next().then((response) => {
+    console.log('[CSP middleware] pathname:', url.pathname, '| startsWith /admin:', url.pathname.startsWith('/admin'));
     const isAdmin = url.pathname.startsWith('/admin');
     const csp = isAdmin ? CSP_ADMIN : CSP_DEFAULT;
 
