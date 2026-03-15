@@ -2,8 +2,7 @@ import type { APIRoute } from 'astro';
 
 export const prerender = false;
 
-// ✅ IMPORTANT : ajouter "locals"
-export const POST: APIRoute = async ({ request, locals }) => {
+export const POST: APIRoute = async ({ request }) => {
   try {
     const { url } = await request.json();
 
@@ -14,13 +13,11 @@ export const POST: APIRoute = async ({ request, locals }) => {
       });
     }
 
-    // ✅ Lecture correcte de la clé depuis Cloudflare runtime
-    const apiKey = locals.runtime?.env?.GOOGLE_API_KEY || '';
+    const apiKey = import.meta.env.GOOGLE_API_KEY || '';
 
-    // DEBUG TEMPORAIRE
     if (!apiKey) {
       return new Response(JSON.stringify({
-        error: '🔑 GOOGLE_API_KEY introuvable (Cloudflare runtime)'
+        error: '🔑 GOOGLE_API_KEY introuvable'
       }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' }
@@ -35,7 +32,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
       `&strategy=mobile` +
       `&key=${apiKey}`;
 
-    // Lancement en parallèle : PageSpeed + headers sécurité
     const [psiResponse, securityData] = await Promise.all([
       fetch(apiUrl),
       checkSecurityHeaders(url)
@@ -49,8 +45,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
     }
 
     const data = await psiResponse.json();
-
-    // Ajout données sécurité
     data.securityHeaders = securityData;
 
     return new Response(JSON.stringify(data), {
