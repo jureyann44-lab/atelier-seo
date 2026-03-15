@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "cp node_modules/decap-cms/dist/decap-cms.js public/admin/decap-cms.js",
     "build": "NODE_OPTIONS='--max-old-space-size=4096' astro build",
     "preview": "astro preview",
     "astro": "astro"
@@ -15,5 +16,8 @@
   },
   "engines": {
     "node": "20.x"
+  },
+  "devDependencies": {
+    "decap-cms": "^3.10.1"
   }
 }
