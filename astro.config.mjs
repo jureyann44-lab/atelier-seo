@@ -1,11 +1,11 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import netlify from "@astrojs/netlify";
+import cloudflare from "@astrojs/cloudflare";
 
 export default defineConfig({
-  output: "static",
-  adapter: netlify(),
+  output: "server",
+  adapter: cloudflare(),
   site: "https://atelier-seo.fr",
   integrations: [
     sitemap({
@@ -15,7 +15,6 @@ export default defineConfig({
         !page.includes("/admin"),
     }),
   ],
-
   vite: {
     build: {
       minify: "esbuild",
