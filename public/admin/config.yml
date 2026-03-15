@@ -1,0 +1,49 @@
+backend:
+  name: github
+  repo: jureyann44-lab/atelier-seo
+  branch: main
+  base_url: https://atelier-seo.fr
+
+media_folder: public/images/blog
+public_folder: /images/blog
+
+locale: fr
+
+collections:
+  - name: blog
+    label: Articles de blog
+    label_singular: Article
+    folder: src/content/blog
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - label: Titre
+        name: title
+        widget: string
+        hint: "Titre principal de l'article (balise <h1> et title SEO)"
+
+      - label: Description
+        name: description
+        widget: text
+        hint: "Meta description SEO — 120 à 160 caractères"
+
+      - label: Date de publication
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "DD/MM/YYYY"
+        time_format: false
+        default: ""
+
+      - label: Tags
+        name: tags
+        widget: list
+        allow_add: true
+        hint: "Ex : SEO, Le Mans, Référencement naturel"
+
+      - label: Contenu
+        name: body
+        widget: markdown
+        hint: "Contenu de l'article au format Markdown"

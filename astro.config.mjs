@@ -12,7 +12,9 @@ export default defineConfig({
   integrations: [
     sitemap({
       filter: (page) =>
-        !page.includes("/mentions-legales") && !page.includes("/cgu"),
+        !page.includes("/mentions-legales") &&
+        !page.includes("/cgu") &&
+        !page.includes("/admin"),
     }),
   ],
 
