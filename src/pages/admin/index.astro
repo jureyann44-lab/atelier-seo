@@ -1,3 +1,4 @@
+cat > src/pages/admin/index.astro << 'EOF'
 ---
 export const prerender = true;
 ---
@@ -18,7 +19,9 @@ export const prerender = true;
           backend: {
             name: "github",
             repo: "jureyann44-lab/atelier-seo",
-            branch: "main"
+            branch: "main",
+            auth_type: "implicit",
+            app_id: "Ov23liZ0ZxUsiAvadHGG"
           },
           media_folder: "public/images/blog",
           public_folder: "/images/blog",
@@ -46,3 +49,4 @@ export const prerender = true;
     </script>
   </body>
 </html>
+EOF
