@@ -24,7 +24,7 @@ const perRouteCsp = {
 };
 
 export default defineConfig({
-  output: "hybrid",
+  output: "static",
   adapter: cloudflare({
     platformProxy: { enabled: true }
   }),

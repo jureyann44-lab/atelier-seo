@@ -2,7 +2,6 @@ backend:
   name: github
   repo: jureyann44-lab/atelier-seo
   branch: main
-  base_url: https://atelier-seo.fr
 
 media_folder: public/images/blog
 public_folder: /images/blog
