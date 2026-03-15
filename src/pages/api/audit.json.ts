@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 
 export const prerender = false;
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, locals }) => {
   try {
     const { url } = await request.json();
 
@@ -13,7 +13,7 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const apiKey = import.meta.env.GOOGLE_API_KEY || '';
+    const apiKey = (locals as any)?.runtime?.env?.GOOGLE_API_KEY || import.meta.env.GOOGLE_API_KEY || '';
 
     if (!apiKey) {
       return new Response(JSON.stringify({
