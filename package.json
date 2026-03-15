@@ -11,10 +11,15 @@
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.13",
     "@astrojs/sitemap": "^3.6.1",
+    "@portabletext/to-html": "^5.0.2",
+    "@sanity/client": "^7.17.0",
+    "@sanity/image-url": "^2.0.3",
     "astro": "^5.16.9"
   },
   "engines": {
     "node": "20.x"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@sanity/vision": "^5.16.0"
+  }
 }

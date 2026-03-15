@@ -1,22 +1,32 @@
 ---
 export const prerender = true;
-import { getCollection } from "astro:content";
+import { toHTML } from "@portabletext/to-html";
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
+import { getAllPosts, getPostBySlug } from "../../sanity/queries";
+import { urlFor } from "../../sanity/imageUrl";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getAllPosts();
   return posts.map((post) => ({
     params: { slug: post.slug },
-    props: { post },
   }));
 }
 
-const { post } = Astro.props;
-const { Content } = await post.render();
+const { slug } = Astro.params;
+const post = await getPostBySlug(slug as string);
+
+if (!post) {
+  return Astro.redirect("/404");
+}
 
 const canonicalUrl = `https://atelier-seo.fr/blog/${post.slug}/`;
+const ogImage = post.image
+  ? urlFor(post.image).width(1200).height(630).url()
+  : "https://atelier-seo.fr/atelier-seo-social.png";
+
+const bodyHtml = post.body ? toHTML(post.body) : "";
 
 function formatDate(dateString: string): string {
   const date = new Date(dateString);
@@ -30,18 +40,18 @@ function formatDate(dateString: string): string {
 ---
 
 <Layout
-  title={`${post.data.title} | L'Atelier SEO`}
-  description={post.data.description}
+  title={`${post.title} | L'Atelier SEO`}
+  description={post.description}
   canonical={canonicalUrl}
-  ogImage={post.data.image ?? "https://atelier-seo.fr/atelier-seo-social.png"}
+  ogImage={ogImage}
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": post.data.title,
-    "description": post.data.description,
-    "datePublished": post.data.date,
-    "dateModified": post.data.updatedDate ?? post.data.date,
+    "headline": post.title,
+    "description": post.description,
+    "datePublished": post.date,
+    "dateModified": post.date,
     "author": {
       "@type": "Person",
       "@id": "https://atelier-seo.fr/#person",
@@ -57,7 +67,7 @@ function formatDate(dateString: string): string {
       }
     },
     "url": canonicalUrl,
-    ...(post.data.image ? { "image": `https://atelier-seo.fr${post.data.image}` } : {})
+    ...(post.image ? { "image": ogImage } : {})
   })} />
 
   <Nav />
@@ -66,22 +76,20 @@ function formatDate(dateString: string): string {
     <div class="container">
       <div class="article-header">
         <div class="article-meta">
-          <span class="article-date">{formatDate(post.data.date)}</span>
-          {post.data.tags && post.data.tags.length > 0 && (
+          <span class="article-date">{formatDate(post.date)}</span>
+          {post.tags && post.tags.length > 0 && (
             <div class="article-tags">
-              {post.data.tags.map((tag: string) => (
+              {post.tags.map((tag: string) => (
                 <span class="article-tag">{tag}</span>
               ))}
             </div>
           )}
         </div>
-        <h1>{post.data.title}</h1>
-        <p class="article-description">{post.data.description}</p>
+        <h1>{post.title}</h1>
+        <p class="article-description">{post.description}</p>
       </div>
 
-      <div class="article-content">
-        <Content />
-      </div>
+      <div class="article-content" set:html={bodyHtml} />
 
       <div class="article-footer">
         <a href="/blog" class="back-to-blog">
