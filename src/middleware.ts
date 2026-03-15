@@ -10,38 +10,32 @@ const CSP_DEFAULT =
 
 const CSP_ADMIN =
   "default-src 'self'; " +
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com; " +
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://static.cloudflareinsights.com; " +
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; " +
   "font-src 'self' https://fonts.gstatic.com; " +
   "img-src 'self' data: blob: https:; " +
-  "connect-src 'self' https://api.github.com https://raw.githubusercontent.com https://cloudflareinsights.com; " +
+  "connect-src 'self' https://api.github.com https://raw.githubusercontent.com https://github.com https://unpkg.com https://cloudflareinsights.com; " +
   "frame-src https://github.com; " +
   "form-action 'self' https://github.com; " +
   "worker-src 'self' blob:;";
 
-export const onRequest = defineMiddleware(({ url, request }, next) =>
-  next().then((response) => {
-    console.log('[CSP middleware] pathname:', url.pathname, '| startsWith /admin:', url.pathname.startsWith('/admin'));
-    const isAdmin = url.pathname.startsWith('/admin');
-    const csp = isAdmin ? CSP_ADMIN : CSP_DEFAULT;
+export const onRequest = defineMiddleware(async ({ url }, next) => {
+  const response = await next();
 
-    const headers = new Headers(response.headers);
-    headers.set('Content-Security-Policy', csp);
+  const isAdmin = url.pathname.startsWith('/admin');
 
-    if (isAdmin) {
-      headers.set('X-Robots-Tag', 'noindex');
-    }
+  if (!isAdmin) {
+    response.headers.set('Content-Security-Policy', CSP_DEFAULT);
+  } else {
+    response.headers.set('Content-Security-Policy', CSP_ADMIN);
+    response.headers.set('X-Robots-Tag', 'noindex');
+  }
 
-    headers.set('X-Frame-Options', 'DENY');
-    headers.set('X-Content-Type-Options', 'nosniff');
-    headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-    headers.set('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
-    headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+  response.headers.set('X-Frame-Options', 'DENY');
+  response.headers.set('X-Content-Type-Options', 'nosniff');
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  response.headers.set('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
+  response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
 
-    return new Response(response.body, {
-      status: response.status,
-      statusText: response.statusText,
-      headers,
-    });
-  })
-);
+  return response;
+});
