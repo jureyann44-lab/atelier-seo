@@ -6,7 +6,17 @@
     <title>Content Manager</title>
   </head>
   <body>
-    <!-- L'interface Decap CMS se monte ici -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+    <script src="/admin/decap-cms.js"></script>
+    <script>
+      CMS.init({
+        config: {
+          load_config_file: true,
+          config_file: '/admin/config.yml'
+        }
+      });
+    </script>
   </body>
 </html>
