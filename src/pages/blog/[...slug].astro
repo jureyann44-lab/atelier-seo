@@ -89,6 +89,11 @@ function formatDate(dateString: string): string {
         <p class="article-description">{post.description}</p>
       </div>
 
+      {post.image && (
+        <div class="article-image">
+          <img src={urlFor(post.image).width(1200).url()} alt={post.title} />
+        </div>
+      )}
       <div class="article-content" set:html={bodyHtml} />
 
       <div class="article-footer">
@@ -165,6 +170,16 @@ function formatDate(dateString: string): string {
     font-size: 1.2rem;
     color: #d1d5db;
     line-height: 1.6;
+  }
+
+  .article-image {
+    margin-bottom: 2.5rem;
+  }
+
+  .article-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
   }
 
   .article-content {
