@@ -1,12 +1,8 @@
 ---
-import { getCollection } from "astro:content";
+import { getAllPosts } from "../sanity/queries";
 
-const allPosts = await getCollection("blog");
-const recentPosts = allPosts
-  .sort(
-    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
-  )
-  .slice(0, 3);
+const allPosts = await getAllPosts();
+const recentPosts = allPosts.slice(0, 3);
 ---
 
 <section class="news" id="actualites">
@@ -18,9 +14,9 @@ const recentPosts = allPosts
       {
         recentPosts.map((post) => (
           <article class="news-card">
-            <div class="news-date">{post.data.date}</div>
-            <h3 class="news-title">{post.data.title}</h3>
-            <p class="news-excerpt">{post.data.description}</p>
+            <div class="news-date">{post.date?.slice(0, 10)}</div>
+            <h3 class="news-title">{post.title}</h3>
+            <p class="news-excerpt">{post.description}</p>
             <a href={`/blog/${post.slug}`} class="news-link">
               Lire l'article
               <svg
@@ -156,7 +152,6 @@ const recentPosts = allPosts
     transform: translateY(-1px);
   }
 
-  /* 🔥 MOBILE (tactile OU petit écran) */
   @media (max-width: 900px), (max-width: 1023px) and (pointer: coarse) {
     .news-grid {
       grid-template-columns: 1fr;
