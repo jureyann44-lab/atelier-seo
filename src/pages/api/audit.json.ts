@@ -47,6 +47,13 @@ export const POST: APIRoute = async ({ request, locals }) => {
     const data = await psiResponse.json();
     data.securityHeaders = securityData;
 
+    // DEBUG temporaire
+    data.debug = {
+      headersReceived: securityData.results,
+      score: securityData.score,
+      grade: securityData.grade
+    };
+
     return new Response(JSON.stringify(data), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
@@ -88,10 +95,6 @@ async function checkSecurityHeaders(url: string) {
       },
       signal: AbortSignal.timeout(10000),
     });
-
-    // DEBUG
-    console.log('Status:', response.status);
-    console.log('Headers reçus:', JSON.stringify(Object.fromEntries(response.headers)));
 
     const results = headersToCheck.map(h => ({
       key: h.key,
