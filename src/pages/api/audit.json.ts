@@ -78,11 +78,14 @@ async function checkSecurityHeaders(url: string) {
   ];
 
   try {
-    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
-
-    const response = await fetch(proxyUrl, {
-      method: 'GET',
+    const response = await fetch(url, {
+      method: 'HEAD',
       redirect: 'follow',
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'cf-no-loop': '1',
+      },
       signal: AbortSignal.timeout(10000),
     });
 
