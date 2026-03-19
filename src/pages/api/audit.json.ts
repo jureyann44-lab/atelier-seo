@@ -78,22 +78,19 @@ async function checkSecurityHeaders(url: string) {
   ];
 
   try {
-    const response = await fetch(url, {
-      method: 'GET',
-      redirect: 'follow',
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'Accept-Language': 'fr-FR,fr;q=0.9,en;q=0.8',
-      },
+    const workerUrl = `https://security-headers-checker.jure-yann44.workers.dev/?url=${encodeURIComponent(url)}`;
+
+    const response = await fetch(workerUrl, {
       signal: AbortSignal.timeout(10000),
     });
+
+    const headersData = await response.json() as Record<string, string | null>;
 
     const results = headersToCheck.map(h => ({
       key: h.key,
       label: h.label,
-      present: response.headers.has(h.key),
-      value: response.headers.get(h.key) || null
+      present: headersData[h.key] !== null,
+      value: headersData[h.key] || null
     }));
 
     const presentCount = results.filter(r => r.present).length;
