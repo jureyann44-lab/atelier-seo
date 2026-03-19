@@ -79,7 +79,7 @@ async function checkSecurityHeaders(url: string) {
 
   try {
     const response = await fetch(url, {
-      method: 'GET',                        // ← HEAD → GET
+      method: 'GET',
       redirect: 'follow',
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
@@ -88,6 +88,10 @@ async function checkSecurityHeaders(url: string) {
       },
       signal: AbortSignal.timeout(10000),
     });
+
+    // DEBUG
+    console.log('Status:', response.status);
+    console.log('Headers reçus:', JSON.stringify(Object.fromEntries(response.headers)));
 
     const results = headersToCheck.map(h => ({
       key: h.key,
