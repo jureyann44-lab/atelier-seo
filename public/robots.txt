@@ -4,9 +4,8 @@ User-agent: *
 Allow: /
 
 # Pages à ne pas indexer
-Disallow: /404
 Disallow: /mentions-legales
 Disallow: /cgu
 
 # Sitemap
-Sitemap: https://www.atelier-seo.fr/sitemap-index.xml
+Sitemap: https://atelier-seo.fr/sitemap-index.xml

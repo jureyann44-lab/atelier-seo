@@ -1,16 +1,9 @@
 ---
 import { getAllPosts } from "../sanity/queries";
+import { urlFor } from "../sanity/imageUrl";
 
 const allPosts = await getAllPosts();
 const recentPosts = allPosts.slice(0, 3);
-
-const imageMap: Record<string, string> = {
-  "consultant-seo-le-mans":                              "/images/blog/consultant-seo-recherche-google-le-mans.webp",
-  "creation-site-web-seo-le-mans":                       "/images/blog/seo-local-le-mans-visibilite-google.webp",
-  "geo-referencement-naturel-intelligence-artificielle": "/images/blog/generative-engine-optimization-geo-strategie-seo-ia.webp",
-  "google-ai-overviews-seo-2026":                        "/images/blog/google-ai-overview-smartphone-recherche.webp",
-  "pourquoi-site-web-ne-genere-pas-de-clients":          "/images/blog/site-web-ne-genere-pas-de-clients-analyse-seo.webp",
-};
 ---
 
 <section class="news" id="actualites">
@@ -21,7 +14,7 @@ const imageMap: Record<string, string> = {
     <div class="news-grid">
       {
         recentPosts.map((post) => {
-          const imgSrc = imageMap[post.slug] ?? "";
+          const imgSrc = post.image ? urlFor(post.image).width(800).height(450).url() : null;
           return (
             <article class="news-card">
               <div class="news-body">
@@ -32,6 +25,8 @@ const imageMap: Record<string, string> = {
                       <img
                         src={imgSrc}
                         alt={post.title}
+                        width={800}
+                        height={450}
                         class="news-img"
                         loading="lazy"
                         decoding="async"

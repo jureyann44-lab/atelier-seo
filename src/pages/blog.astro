@@ -5,20 +5,9 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import { getAllPosts } from "../sanity/queries";
 import { urlFor } from "../sanity/imageUrl";
+import { formatDate } from "../utils/formatDate";
 
 const sortedPosts = await getAllPosts();
-
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  const day = date.getDate();
-  const months = [
-    "janvier", "février", "mars", "avril", "mai", "juin",
-    "juillet", "août", "septembre", "octobre", "novembre", "décembre",
-  ];
-  const month = months[date.getMonth()];
-  const year = date.getFullYear();
-  return `${day} ${month} ${year}`;
-}
 ---
 
 <Layout
@@ -55,7 +44,7 @@ function formatDate(dateString: string): string {
 
   <section class="blog-page">
     <div class="container">
-      <h1>Nos ressources SEO</h1>
+      <h1>Ressources SEO pour les entreprises du Mans et de la Sarthe</h1>
       <p class="intro">
         Conseils, méthodes et retours terrain pour améliorer votre référencement au Mans et en Sarthe
       </p>

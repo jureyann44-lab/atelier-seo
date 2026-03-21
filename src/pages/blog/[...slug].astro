@@ -6,6 +6,7 @@ import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import { getAllPosts, getPostBySlug } from "../../sanity/queries";
 import { urlFor } from "../../sanity/imageUrl";
+import { formatDate } from "../../utils/formatDate";
 
 export async function getStaticPaths() {
   const posts = await getAllPosts();
@@ -28,15 +29,6 @@ const ogImage = post.image
 
 const bodyHtml = post.body ? toHTML(post.body) : "";
 
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  const day = date.getDate();
-  const months = [
-    "janvier", "février", "mars", "avril", "mai", "juin",
-    "juillet", "août", "septembre", "octobre", "novembre", "décembre",
-  ];
-  return `${day} ${months[date.getMonth()]} ${date.getFullYear()}`;
-}
 ---
 
 <Layout
@@ -45,9 +37,14 @@ function formatDate(dateString: string): string {
   canonical={canonicalUrl}
   ogImage={ogImage}
 >
+  <meta property="og:image:alt" slot="head" content={`${post.title} | L'Atelier SEO`} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": canonicalUrl
+    },
     "headline": post.title,
     "description": post.description,
     "datePublished": post.date,
@@ -91,7 +88,14 @@ function formatDate(dateString: string): string {
 
       {post.image && (
         <div class="article-image">
-          <img src={urlFor(post.image).width(1200).url()} alt={post.title} />
+          <img
+            src={urlFor(post.image).width(1200).height(675).url()}
+            alt={post.title}
+            width={1200}
+            height={675}
+            loading="eager"
+            decoding="async"
+          />
         </div>
       )}
       <div class="article-content" set:html={bodyHtml} />

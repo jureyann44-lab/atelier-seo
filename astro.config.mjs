@@ -7,6 +7,9 @@ export default defineConfig({
   output: "server",
   adapter: cloudflare(),
   site: "https://atelier-seo.fr",
+  image: {
+    domains: ["cdn.sanity.io"],
+  },
   integrations: [
     sitemap({
       filter: (page) =>

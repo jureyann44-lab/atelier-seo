@@ -112,11 +112,14 @@
 html {
   scroll-behavior: smooth;
 }
+
 body {
   font-family: var(--font-main);
   line-height: 1.6;
   color: var(--color-dark);
   overflow-x: hidden;
+  background-color: #ffffff;
+  overscroll-behavior: none;
 }
 
 a {

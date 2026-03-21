@@ -50,7 +50,15 @@ const {
     <meta name="twitter:image" content={ogImage} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Montserrat:wght@300;400;500;600&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    </noscript>
 
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
@@ -65,8 +73,8 @@ const {
         },
         {
           "@type": "WebPage",
-          "@id": "https://atelier-seo.fr/#webpage",
-          url: "https://atelier-seo.fr",
+          "@id": `${canonical}#webpage`,
+          url: canonical,
           name: title,
           description: description,
           inLanguage: "fr",
@@ -182,7 +190,7 @@ const {
               closes: "18:00",
             },
           ],
-          hasMap: "https://www.google.com/maps",
+          hasMap: "https://share.google/VnBgZH20kpBOdHCcw",
           sameAs: [
             "https://www.habeprod-agence.fr",
             "https://www.linkedin.com/company/95178904/",
